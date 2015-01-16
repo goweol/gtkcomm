@@ -356,7 +356,7 @@ GetLines(FILE * fp)
 	}
 
 	if (p > (buf + totalLen))
-	    g_memmove(buf + totalLen, p, strlen(p) + 1);
+	    memmove(buf + totalLen, p, strlen(p) + 1);
 
 	contFlag = FALSE;
 	lineLen = strlen(buf + totalLen);
@@ -615,7 +615,9 @@ SoundPlay(const char *soundFile)
     }
     if (UseBeep)
     {
-	XBell(gdk_display, (int) BeepPercent);
+	GdkDisplay *display = gdk_display_get_default();
+
+	XBell(GDK_DISPLAY_XDISPLAY(display), (int) BeepPercent);
 	return 0;
     }
     return -1;

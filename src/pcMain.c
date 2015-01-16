@@ -1038,10 +1038,6 @@ main(int argc, char *argv[])
     textdomain(PACKAGE);
 #endif
 
-    g_thread_init(NULL);
-    if (!g_thread_supported())
-	g_error("glib does not support thread!\n");
-
     gtk_set_locale();
     gtk_init(&argc, &argv);
 

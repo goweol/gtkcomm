@@ -14,7 +14,7 @@ INCLUDES = \
 
 bin_PROGRAMS = gtkcomm gtkcomm_lock
 gtkcomm_LDADD = $(GTK_LIBS) $(GTHREAD_LIBS) $(GDK_IMLIB_LIBS) \
-		$(UTIL_LIBS) $(GLIB_LIBS)
+		$(UTIL_LIBS) $(GLIB_LIBS) -lX11
 
 gtkcomm_SOURCES = \
 	pcAutoRes.c	\

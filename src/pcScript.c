@@ -1845,13 +1845,15 @@ ScriptRunNext(void)
 	    if (SoundPlay(SoundBeepFile) < 0)
 	    {
 		int percent = (int) BeepPercent;
+		GdkDisplay *display = gdk_display_get_default();
+
 		if (script->argc > 0)
 		{
 		    if (sscanf(script->argv[0], "%d", &percent) != 1
 			|| percent == 0)
 			percent = (int) BeepPercent;
 		}
-		XBell(gdk_display, percent);
+		XBell(GDK_DISPLAY_XDISPLAY(display), percent);
 	    }
 	    ScriptResult = 0;
 	    break;

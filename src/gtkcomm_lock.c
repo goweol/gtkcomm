@@ -11,7 +11,7 @@
 int
 main(int argc, char *argv[])
 {
-    int handle, lck;
+    int r = 0, handle, lck, len;
     char buf[128], fname[MAX_PATH];
     struct stat st;
 
@@ -31,22 +31,22 @@ main(int argc, char *argv[])
 	if (stat(fname, &st) == 0)
 	    exit(1);
 
-	if ((handle = open(fname, O_CREAT | O_WRONLY | O_EXCL)) == -1)
+	if ((handle = open(fname, O_CREAT | O_WRONLY | O_EXCL,
+			   S_IWRITE | S_IREAD | S_IRGRP | S_IROTH)) == -1)
 	    exit(1);
 
-	fchmod(handle, S_IWRITE | S_IREAD | S_IRGRP | S_IROTH);
-
-	snprintf(buf, sizeof(buf), "%010d\n", getpid());
-	write(handle, buf, strlen(buf));
+	len = snprintf(buf, sizeof(buf), "%010d\n", getpid());
+	if (write(handle, buf, len) != len)
+	    r = 1;
 	close(handle);
     }
     else
     {
 	if (stat(fname, &st) == 0)
 	    if (unlink(fname) < 0)
-		exit(1);
+		r = 1;
     }
 
-    exit(0);
+    exit(r);
 }
 
