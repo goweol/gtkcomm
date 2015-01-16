@@ -1,0 +1,292 @@
+// gtkcomm type defines
+-T ChatType
+-T ScrolledChatType
+-T TelnetInfoType
+-T ModemInfoType
+-T SignalType
+-T KeyMapFuncType
+-T KeyMapType
+-T TermType
+-T TermClassType
+-T ToTermFuncType
+-T FromTermFuncType
+
+// glib/gtk+ type defines
+-T gboolean
+-T gchar
+-T gdouble
+-T gfloat
+-T gint
+-T gint16
+-T gint32
+-T gint8
+-T glong
+-T gpointer
+-T gshort
+-T guchar
+-T guint
+-T guint16
+-T guint32
+-T guint8
+-T gulong
+-T gushort
+-T GAllocator
+-T GArray
+-T GByteArray
+-T GCache
+-T GCompletion
+-T GData
+-T GDebugKey
+-T GHashTable
+-T GHook
+-T GHookList
+-T GList
+-T GMemChunk
+-T GNode
+-T GPtrArray
+-T GRelation
+-T GScanner
+-T GScannerConfig
+-T GSList
+-T GString
+-T GStringChunk
+-T GTimer
+-T GTree
+-T GTuples
+-T GTokenValue
+-T GIOChannel
+-T GdkAtom
+-T GdkBitmap
+-T GdkColorContext
+-T GdkColor
+-T GdkCursor
+-T GdkDeviceInfo
+-T GdkDeviceKey
+-T GdkDragContext
+-T GdkDrawable
+-T GdkEvent
+-T GdkEventAny
+-T GdkEventButton
+-T GdkEventClient
+-T GdkEventConfigure
+-T GdkEventCrossing
+-T GdkEventDND
+-T GdkEventExpose
+-T GdkEventFocus
+-T GdkEventKey
+-T GdkEventMotion
+-T GdkEventNoExpose
+-T GdkEventProperty
+-T GdkEventProximity
+-T GdkEventSelection
+-T GdkEventVisibility
+-T GdkFilterReturn
+-T GdkFont
+-T GdkGC
+-T GdkGCValues
+-T GdkGeometry
+-T GdkIC
+-T GdkICAttr
+-T GdkImage
+-T GdkImlibImage
+-T GdkImlibColor
+-T GdkPixmap
+-T GdkPoint
+-T GdkRectangle
+-T GdkRegion
+-T GdkSegment
+-T GdkTimeCoord
+-T GdkVisual
+-T GdkWChar
+-T GdkWindowAttr
+-T GdkWindow
+-T GdkWindowHints
+-T ImlibData
+-T GtkAccelEntry
+-T GtkAccelGroup
+-T GtkAccelLabel
+-T GtkAdjustment
+-T GtkAlignment
+-T GtkAllocation
+-T GtkArg
+-T GtkArgInfo
+-T GtkArrow
+-T GtkAspectFrame
+-T GtkBin
+-T GtkBoxChild
+-T GtkBox
+-T GtkButtonBox
+-T GtkButton
+-T GtkCList
+-T GtkCListColumn
+-T GtkCListRow
+-T GtkCTree
+-T GtkCTreeNode
+-T GtkCTreeRow
+-T GtkCalendar
+-T GtkCell
+-T GtkCellPixText
+-T GtkCellPixmap
+-T GtkCellText
+-T GtkCellWidget
+-T GtkCheckButton
+-T GtkCheckMenuItem
+-T GtkColorSelection
+-T GtkColorSelectionDialog
+-T GtkCombo
+-T GtkContainer
+-T GtkCurve
+-T GtkData
+-T GtkDialogButton
+-T GtkDialog
+-T GtkDitherInfo
+-T GtkDrawingArea
+-T GtkEditable
+-T GtkEntry
+-T GtkEnumValue
+-T GtkEventBox
+-T GtkFileSelection
+-T GtkFixedChild
+-T GtkFixed
+-T GtkFlagValue
+-T GtkFontSelection
+-T GtkFontSelectionDialog
+-T GtkFrame
+-T GtkGammaCurve
+-T GtkHBox
+-T GtkHButtonBox
+-T GtkHPaned
+-T GtkHRuler
+-T GtkHScale
+-T GtkHScrollbar
+-T GtkHSeparator
+-T GtkHandleBox
+-T GtkImage
+-T GtkInputDialog
+-T GtkItem
+-T GtkItemFactory
+-T GtkItemFactoryEntry
+-T GtkLabel
+-T GtkLabelWord
+-T GtkLayout
+-T GtkList
+-T GtkListItem
+-T GtkMenuBar
+-T GtkMenu
+-T GtkMenuEntry
+-T GtkMenuFactory
+-T GtkMenuItem
+-T GtkMenuPath
+-T GtkMenuShell
+-T GtkMisc
+-T GtkNotebook
+-T GtkNotebookPage
+-T GtkObject
+-T GtkObject
+-T GtkOptionMenu
+-T GtkPackerChild
+-T GtkPacker
+-T GtkPaned
+-T GtkPatternSpec
+-T GtkPixmap
+-T GtkPlug
+-T GtkPreview
+-T GtkPreviewInfo
+-T GtkProgressBar
+-T GtkProgress
+-T GtkPropertyMark
+-T GtkRadioButton
+-T GtkRadioMenuItem
+-T GtkRange
+-T GtkRequisition
+-T GtkRuler
+-T GtkRulerMetric
+-T GtkScale
+-T GtkScrollbar
+-T GtkScrolledWindow
+-T GtkSelectioData
+-T GtkSeparator
+-T GtkSocket
+-T GtkSpinButton
+-T GtkStatusbar
+-T GtkStatusbarMsg
+-T GtkStyle
+-T GtkTableChild
+-T GtkTable
+-T GtkTableRowCol
+-T GtkTargetEntry
+-T GtkTargetList
+-T GtkTearoffMenuItem
+-T GtkText
+-T GtkTextFont
+-T GtkTipsQuery
+-T GtkToggleButton
+-T GtkToolbarChild
+-T GtkToolbar
+-T GtkTooltips
+-T GtkTooltipsData
+-T GtkTree
+-T GtkTreeItem
+-T GtkType
+-T GtkTypeQuery
+-T GtkVBox
+-T GtkVButtonBox
+-T GtkVPaned
+-T GtkVRuler
+-T GtkVScale
+-T GtkVScrollbar
+-T GtkVSeparator
+-T GtkViewport
+-T GtkWidgetAuxInfo
+-T GtkWidgetShapeInfo
+-T GtkWidget
+-T GtkWindow
+-T GtkPrintFunc
+-T GtkTranslateFunc
+-T GtkItemFactoryCallback
+-T GtkClassInitFunc
+-T GtkObjectInitFunc
+-T GtkSignalFunc
+
+// default indent options
+--no-blank-lines-after-declarations
+--no-blank-lines-after-procedures
+--no-blank-lines-after-block-comments
+--break-before-boolean-operator
+--no-blank-lines-after-commas
+--braces-after-if-line
+--brace-indent0
+--braces-on-struct-decl-line
+--no-blank-before-sizeof
+--comment-indentation0
+--case-brace-indentation0
+--declaration-comment-column0
+--no-comment-delimiters-on-blank-lines
+--dont-cuddle-else
+--continuation-indentation0
+--case-indentation4
+--else-endif-column0
+--space-after-cast
+--line-comments-indentation0
+--declaration-indentation0
+--dont-format-first-column-comments
+--dont-format-comments
+--honour-newlines
+--indent-level4
+--parameter-indentation0
+--line-length80
+--comment-line-length80
+--continue-at-parentheses
+--leave-preprocessor-space
+--no-space-after-function-call-names
+--paren-indentation0
+--preserve-mtime
+--dont-break-procedure-type
+--struct-brace-indentation4
+--start-left-side-of-comments
+--swallow-optional-blank-lines
+--space-special-semicolon
+--tab-size8
+--no-verbosity
+
+// vim:set ts=78:

@@ -1,0 +1,57 @@
+# flash memory write/verify script
+#
+# THIS FILE IS PART OF THE 'download.scr'
+
+# prompt = BOARD_NAME [history_number]$
+assign      prompt   "]\$"
+
+set config IdleGapBetweenChar 1000
+set config IdleGapBetweenLine 0
+
+transmit    "^M"
+waitfor     $prompt
+
+if "$fl_opt" == "wr"
+
+    assign retry 0
+retry:
+
+    # write to flash memory
+    transmit    "ep -w d0000000 100000 80000^M"
+    waitfor     $prompt 20 "protected"
+    if $? == 1
+	# "protected" message가 출력되었다면...
+	beep 100
+	message "\n\033[35m\033[47m FLASH PROTECTED. USE ROM WRITER TO UNPROTECT!!! \033[0m\n"
+	end
+    fi
+    pause 1
+
+    # verify flash memory
+    transmit    "mp d0000000 100000 80000^M"
+    waitfor     "identical" 2
+    if $? == -1
+	if "$retry" == 0
+	    message "\n\033[35m\033[47m FLASH WRITE ERROR. RETRY!!! \033[0m\n"
+	    transmit "^M"
+	    waitfor $prompt
+	    assign retry 1
+	    goto retry
+	fi
+	beep 0
+	message "\n\033[34m\033[41m FLASH WRITE ERROR. EXIT!!! \033[0m\n"
+    else
+	beep -60
+	message "\n\033[34m\033[43m FLASH WRITE OK. GOOD LUCK! \033[0m\n"
+    fi
+
+# flash memory read
+else
+    transmit    "mc -b 100000 -B d0000000 80000^M"
+    waitfor     $prompt
+fi
+
+set config IdleGapBetweenChar 0
+set config IdleGapBetweenLine 0
+
+# vim:set ft=sh:

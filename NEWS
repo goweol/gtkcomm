@@ -1,0 +1,368 @@
+gtkcomm 0.8.1
+o   redraw the terminal after resizing (#210, iamboy93)
+o   added mbyte.h to SOURCES (#209, iamboy93)
+
+gtkcomm 0.8.0
+o   various minor bug fixed
+o   local과 remote host가 EUC-KR과 UTF-8 locale을 사용하는 각각의
+    조합에 대해 모두 동작하도록 함. 기본적으로 bookmarks 파일에서
+    remote_charset을 명시해 주어야 한다 (다른 locale은 지원안함)
+o   'bookmarks' 파일 형식 바뀜 (제공되는 sample bookmarks 파일 참고)
+o   GTK 2의 deprecated API 더이상 사용 않함
+o   drop GTK 1 support
+
+gtkcomm 0.7.5
+o   telnet: 연결이 취소된 경우 로그인 스크립트 실행 취소.
+o   script: script box에서 파일 선택시 실행되던 기능 삭제. animation icon을
+    클릭해야만 실행되도록 함.
+    이것은 gtk2에서 제대로 동작하지 않기 때문인 데, gtk1에서 동작했던 것은
+    gtk1이 이상해서 잘되는 것처럼 보였던 것임.
+o   gtk2. gtk2-2.2 이상에서 terminal의 scrollbar 동작되게 함.
+o   gtk2. accel key를 수동으로 수정가능 (~/.gtkcomm/accelrc 파일)
+o   default-build = gtk2. gtk1 = --disable-gtk20
+
+gtkcomm 0.7.4
+o   0.7.3에서 빠진 헤더파일 추가하여 release
+
+gtkcomm 0.7.3
+o   terminal에서 xterm cursor 대신 화살표 사용 (#156, locuzu)
+    gtkcommrc에 'UseXtermCursor' 옵션 추가하여 선택할 수 있게 함
+o   gtk2. ctlmenu entry에서 한글 표시 않됨 (#155, locuzu)
+o   fork() return value check fix
+o   gtk2. 도구막대 형식이 both가 아닌 경우 펭귄 잘려서 보임 (#153, iamboy93)
+o   gtk2. script로 생성된 gtk dialog에서 한글 표시 않됨 (#152, iamboy93)
+o   fix resource file install problem (ganadist@mizi.com)
+o   gtk2. dialog의 버튼들에서 stockicon 사용.
+
+gtkcomm 0.7.2
+o   gtk2. XIM에서 한글 입력시 제대로 않보이던 경우 보완
+o   gtk2. ctlmenu에서 한글 제대로 보이게 함
+o   mouse selection 문제점 수정 및 단어 선택 기능 향상
+o   에러 및 경고 메시지도 국제화(i18n)
+
+
+gtkcomm 0.7.1
+o   mouse selection 문제 수정 (#144)
+o   modem/telnet logout script가 cancel되는 문제 수정
+o   gtk+ 2.0의 XIM 문제 수정 (#142)
+o   gtk+ 2.0에서의 터미널 크기 바꾸는 문제 수정 (#143)
+o   gtk+ 2.0에서 책갈피 이름이 한글인 경우 표시않되던 문제 수정 (#141)
+o   gtk+ 2.0에서 gdk-pixbuf-0가 없는 경우 compile 에러 문제 수정 (#141)
+
+
+gtkcomm 0.7.0
+o   gtk+ 2.0 지원의 결과로 gtk+ 1.x도 i18n (menu 및 status msg등 한글화)
+o   *** porting to GTK+ 2.0 ***
+o   parser에서 SEGV fault 발생할 수 있었던 문제 fix
+o   modem history 기능 향상
+o   Mouse button swap 기능 추가
+
+
+gtkcomm 0.6.4
+o   'Stop Transfer'후 종료시 segv fault 발생 fix
+
+gtkcomm 0.6.3
+o   script: window에 frame 및 label을 추가할 수 있도록 함.
+	    filesize를 얻는 기능 추가
+
+gtkcomm 0.6.2
+o   ascii file upload 도중 취소시 file close.
+o   update LED control
+
+gtkcomm 0.6.1
+o   ascii file upload시 가끔 죽는 경우 고치려고 시도.
+    -   removed pthread library dependency
+    -   use gthread library
+    -   linestatus clean-up & use mutex
+    -   progress-bar clean-up & use mutex
+o   modem user command history clean-up
+o   file selection dialog in Upload/Download.
+o   modem close후 재연결시 에러 발생하는 문제 fix
+
+gtkcomm 0.6.0
+o   file selection dialog (capture, download/upload)에서 directory를 바꾸어
+    file을 선택한 경우 다음번에 다시 그 directory로 이동.
+o   script: 'label add/remove linestatus' 추가. 문자를 보내거나 받을 때마다
+	    control bar에 상태를 표시.
+o   script: 'waitfor'가 동시에 두개의 string을 기다릴 수 있게 함.
+	    (SCRIPT.txt 참고)
+o   script: 'beep' 명령에 소리 크기(길이?) 조절할 수 있게 함 (SCRIPT.txt 참고)
+o   Modem (SIO): user command history 기능 추가. 가령 사용자가 target board를
+		 디버깅하기 위해 입력했던 명령들을 저장했다가 history window를
+		 띄워서 mouse click만으로 이전에 입력했던 명령을 다시 입력.
+
+gtkcomm 0.5.21
+o   chat 창에서 '/set protocol' 지원.
+o   gtkcommrc: some default value changed.
+
+gtkcomm 0.5.20
+o   terminal: size 바뀔 경우 COLUMNS, LINES 환경변수 설정
+o   script: XEDITOR 환경변수를 사용하여 script file 편집 기능 제공.
+
+gtkcomm 0.5.19
+o   terminal: cursor blink 기능 추가
+o   capture: '\t'가 logging되지 않던 문제 fix
+o   script: sample script의 '$' 관련 수정
+
+gtkcomm 0.5.18
+o   script: fix. variable을 항상 다시 검사해서 variable의 값을 바꾸었을 경우
+	    바뀐 값이 사용되도록 함.
+
+
+gtkcomm 0.5.17
+o   selection fixed: word(double-click) select, selection clear
+
+
+0.5.16
+o   종료하기전에 할당된 메모리 반환
+o   :bufdo add-fold-marker-to-all-func
+o   기본적인 Terminal Color를 XTerm-color와 동일하게 함.
+    rgb.txt를 쉽게 참고하도록 "255 100 78" 같은 형식도 허용하고, '점'이 있는
+    지 여부로 형식 구분
+o   'UseISel' option 추가. 꾀돌이 마우스 기능 사용 여부
+o   :%s/RightMouseClickStr/LeftMouseClickStr/g
+    마우스 버튼 동작이 바뀐 결과임.
+o   마우스 버튼 동작 바꿈: Left = selection,  Right = 꾀돌이 마우스
+    이것은 일반 X terminal과의 호환성 유지를 위한 것임.
+
+
+0.5.15
+o   modem speed update fix (0.5.14에서 발생)
+
+
+0.5.14: 
+=============================================================================
+
+    o	login: modem/telnet 연결전에 login script 실행. 연결전에 연결중에
+	       사용될 수 있는 각종 parameter를 미리 바꿀 수 있도록 함.
+
+    o	removed compiler warning (redhat gcc 2.96)
+
+
+0.5.13: 2001-01-19
+==================
+
+    o	script: 'assign' 및 'get baudrate' change. 가령,
+		    assign userid namsh
+		    get baudrate currbaud
+		와 같이 varname에 '$'가 없다. 참조할때는 $userid와 같이
+		'$'를 붙여서 사용
+    o	script: 문자열 안에서도 variable 사용가능. 가령,
+		    message "userid is $userid, host is $host"
+
+
+0.5.12: 2000/12/10
+==================
+
+    o	script: 'assign' change. variable 지정시 '$'로 시작.
+    o	transfer: pthread lib 없이도 ASCII file send 가능하게 함
+    o	transfer: file send후 사용자가 script stop시 문제 fix
+
+
+0.5.11: 2000/11/08
+==================
+
+    o	script: 'assign' 명령도 sequential하게 처리.
+    o	script: 'if' 명령에서 assign된 문자열의 비교 가능
+    o	script: 'assign' changed (Sstring 사용)
+    o	script: add 'endwin' command.
+    o	script: fix 'assign'. 같은 variable에 assign시 이전 값에 overwrite
+    o	script: add 'get' command. 현재는 baudrate 얻는 기능만 있음
+
+
+0.5.10: 2000-07-25
+==================
+
+    o	XFree86 4.0에서 ascii file send 후 button등이 이상해 지는 현상
+    o	add RPM spec file
+
+0.5.9: 2000-06-23
+=================
+
+    -	fix. connection 시도중에 cancel시 logout script 실행되던 문제.
+
+0.5.8: no 0.5.8
+=================
+
+0.5.7: 2000-03-29
+=================
+
+    -.	title bar 설정 기능 강화 (set title "%p %v %n %h").
+	%p = package, %v = version, %n = name, %h = host addr or dial num.
+    -.  fix 채팅창 닫을 때 terminal size가 원래대로 복구않되던 문제
+    -.	DoLock's default value is TRUE now. DoLock 관련 fix.
+    -.	fix. status 출력메시지가 new-line 포함한 경우 status bar 높이가
+	늘어났던 문제.
+    -.	script: sendfile 실패시 script 종료
+    -.	MAX_SAVED_LINES was too small. Now it has 65535.
+    -.	focus를 잃은 경우 시간 출력 않함 (CPU load).
+
+0.5.6: 2000-03-12
+=================
+
+    -. fix Capture bug with 'TermStripControlChar'.
+    -. FreeBSD support by Choi JunHo
+    -. re-indenting ...
+
+0.5.5: 2000-03-03
+=================
+
+    -. several bug fixed.
+	script를 강제로 stop시 그 후 script가 제대로 수행되지 않던 문제
+	script 마지막이 waitfor인 경우 script가 끝나지 않는 문제
+	baudrate label이 초기 잘못 설정되던 문제
+	com port direct connection시 IdleGap... 사용
+	xmodem sendfile시에 stop transfter하면 죽던 문제
+	modem close후 telnet 접속시 hang 문제
+
+0.5.4: 2000/01/11
+=================
+
+    -. 모든 소스에 copyright 추가
+
+0.5.3: 2000/01/06
+=================
+
+    -. term: selection bug fixed.
+
+0.5.2: 1999-12-21
+=================
+
+    -. term: selection bug fixed.
+
+0.5.1: 1999/12/11
+=================
+
+    -. isel: fix URL selection.
+    -. log: gau의 log 기능.
+
+0.5.0: 1999/12/06
+=================
+
+    -. capture: ON 시에 "LOG" label을 상태막대에 표시.
+    -. script: 'capture on'에 'includebuf' token 추가.
+    -. config: MaxCaptureSize 추가. ScriptAnimFile 추가.
+    -. isel: fixed bug.
+
+0.4.5: 1999/11/27
+=================
+
+    -. enhanced dialog.scr (script 'win' enhanced)
+    -. fix. SChat->chat->w 대신 SChat->chat을 사용하는 경우가 있었음.
+    -. add 'TermForce16Color' config option (see gtkcommrc).
+	기타 color 관련 Term code 약간 수정
+    -. doc/USAGE: vt100과 MC,VIM
+
+0.4.4: 1999/11/26
+=================
+
+    -. fix bugs in isel. URL selection
+    -. 몇몇 default color를 약간 밝게 조정
+
+0.4.3: 1999-11-25
+=================
+
+    -. fix bugs in isel. 특정한 pattern의 경우 화면에 선택되어 보이는
+	문자열이 아닌 다른 문자열이 보내지는 경우.
+    -. script: script 실행중에 다른 script를 실행할 일이 생기면
+	에러출력 대신 새로운 script를 실행한 후 이전 script를 계속 실행.
+    -. fix bugs in script (script를 잘못 만든 경우 죽는 case들, window
+	title, ...)
+
+0.4.2: 1999/11/23
+=================
+
+    -. fix various bugs.
+    -. gcc2가 아닌 경우에도 compile될 수 있도록 수정 (이론적으로).
+    -. gau의 바둑 꾀돌이 마우스 기능 추가.
+    -. 새로운 혼잣말 명령군: win ... (res/script/dialog.scr 참고)
+
+0.4.1: 1999/11/20
+=================
+
+    -. 새로운 혼잣말 명령: run  (아직 쓸만한 sample 없음. WIP)
+    -. fix script-string parser.
+    -. drop gau script compatible mode
+    -. button/autores/ctlmenu/bookmark: 'sfile' token 지원
+
+0.4.0: 1999/11/18
+=================
+
+    -. logout script 지원
+    -. Sound. sound!
+    -. 새로운 혼잣말 명령: if, fi. 현재는 이전 스크립트 명령의 결과
+	확인 기능만 지원.
+    -. 16color 지원
+    -. chatting 기능 추가. 한줄짜리 창이며, prefix, suffix 기능을 제공한다.
+	chatting창에서 '/set config'를 이용하여 config variable을 바꿀
+	수 있는 기능. 가령, /set config chatprefix "namsh: "
+	key-binding은 더욱 자유롭게 할 수 있음 (사용할 수 있는 대부분의
+	key를 할당할 수 있을 것임)
+    -. menu hotkey: 가령 ALT-C는 chatting 창을 열거나 닫는다.
+
+0.3.5: 1999/11/16
+=================
+
+    -. ctlmenu add 추가. add하면 disconnect시 removed.
+    -. new script command: label [add/gadd] [baudrate/emulate/protocol]
+    -. modem dialing 기능. 한번에 하나만 되며, 아직 테스트되지 않음.
+
+0.3.4: 1999/11/15
+=================
+
+    -. script 실행되는 동안 펭귄 animation...
+    -. fix down/up button control while transfer
+    -. toolbar: ~/.gtkcomm/pixmap 대신 pkgdatadir/pixmap/*.xpm 사용
+    -. file check 기능 강화.
+
+0.3.3: 1999/11/14
+=================
+
+    -. fix terminal 창 이외의 input dialog에서의 한글 입력.
+
+0.3.2: 1999/11/14
+=================
+
+    -. fix X/Y/Zmodem transfer 도중 stop이 잘 않되던 문제.
+
+0.3.1: 1999/11/14
+=================
+
+    -. PROGRESS-BAR 추가 (ascii, X/Y/Zmodem transfer)
+    -. Exit button은 exit만. trx stop 기능은 tools menu에.
+    -. telnet connect시 잠깐 시간이 잘못 출력되던 문제 fix
+    -. 'ctlmenu add'를 'ctlmenu gadd'로 바꿈. global add가 의미가 맞다.
+    -. 사용자 option에 의해 control-bar에 trx_protocol, emulate mode, baudrate
+	status를 보여주는 label을 추가할 수 있게 하고, 관련 tools menu 삭제.
+    -. network 문제등에 의해 telnet 접속이 제대로 않될 때 상태 꼬이는 문제
+	fix. 가령 tool-bar control이 제대로 않되고, 그냥 종료시 telnet process가
+	남아있는 문제가 있었음.
+
+0.3.0: 1999/11/11
+=================
+
+    -. 새로운 script command 추가: message, set config, ctlmenu, set protocol
+    -. control-bar에서 quick change 기능 삭제 (ctlmenu로 대체)
+    -. 'set enter/idletime/pstring' removed. (set config로 대체)
+    -. internal script 설명 문서 추가 (doc/script.txt)
+    -. startup script 추가
+    -. global bookmark/button 추가 (disconnect되어도 보존됨)
+    -. auto-response도 bookmark/button처럼 수정 (global autores file removed).
+
+0.2.3: 1999/11/10
+=================
+
+    황치덕님의 gau를 바탕으로 다음과 같은 작업.
+
+    -. 완전하게 새로 코드를 입력.
+    -. 기존의 control 버튼들을 없애고, 표준 메뉴바와 툴바를 지원.
+    -. emul/baud/prot quick change 기능
+    -. enhanced script language
+    -. Ascii 및 Xmodem/Ymodem transfer 기능
+    -. 여러가지 가우의 여러가지 기능들에 대한 기능 확장/축소.
+
+    가우에서 빠진 기능
+    -. chatting 기능
+    -. sound
+    -. 태극기
+

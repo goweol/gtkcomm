@@ -1,0 +1,17 @@
+src/pcAutoRes.c
+src/pcChat.c
+src/pcCompat.c
+src/pcCompat.h
+src/pcConfig.c
+src/pcCtrl.c
+src/pcISel.c
+src/pcMain.c
+src/pcModem.c
+src/pcPTY.c
+src/pcScript.c
+src/pcSignal.c
+src/pcStatus.c
+src/pcTRx.c
+src/pcTelnet.c
+src/pcTerm.c
+src/pcUtil.c

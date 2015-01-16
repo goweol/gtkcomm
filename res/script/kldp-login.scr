@@ -1,0 +1,63 @@
+# KLDP (Korean Linux Documentation Project) login script sample
+# http://kldp.org/
+# KLDP는 'ssh'로 login해야 한다. 이 스크립트는 telnet이 아닌 다른 프로그램으로
+# 로그인하는 예를 보여준다.
+#
+
+clear
+
+# 주의: password를 여기에서 사용할 경우에는 이 파일의 허용값을 바꾸어
+#       주어야 합니다. chmod 0600 thisfile
+# $userid = user id
+# $passwd = password
+assign userid   "UserId"
+assign passwd   "Password"
+
+# 'telnet' 대신 'ssh'를 사용한다.
+# zmodem이나 vi 등을 사용하려면 '-e none'과 같이 escape sequence를 사용하지
+# 않도록 해야 한다.
+set config TelnetCommand "ssh -l $userid -e none"
+assign skiplogin "1"
+
+set protocol zmodem
+set config AutoRunZmodem TRUE
+set config RX_InfoStr ""
+set config TX_InfoStr ""
+
+# crlf = CR
+set config EnterConvert 1
+
+# ID
+if "$skiplogin" != "1"
+    waitfor "login:"
+    transmit "$userid\n"
+fi
+
+# PASSWORD
+waitfor "password:" 2
+if $? == -1
+    transmit "\n"
+    waitfor "password:" 4
+    if $? == -1
+	message "\n\033[35mCannot wait login: Please type ENTER \
+		 and login manually\033[0m\n"
+	transmit "\n"
+	goto next
+    fi
+fi
+
+# password가 제대로 기다려졌으면...
+transmit "$passwd\n"
+
+next:
+
+set title "KLDP"
+set config TermRow 30
+
+# mouse 왼쪽 버튼 클릭시 아무 짓도 하지마라.
+set config LeftMouseClickStr ""
+
+waitfor "\$"
+transmit "export TERM=vt100\n"
+
+# vim:set ft=sh:

@@ -1,0 +1,19 @@
+# chat key-binding resource file
+
+# mod = CTRL, SHIFT, ALT, 혹은 underbar를 이용한 이들의 조합
+# key = hexa value in gdkkeysyms.h
+#       gdkkeysyms.h는 가령 /usr/include/gdk/ directory에서 찾을 수
+#       있습니다. RPM이라면 gtk devel. package가 깔려있을 때...
+#       (예: F1 - F12: 0xffbe - 0xffc9)
+#
+# mod          key    send-string
+NONE           0xffbe "이제 저 나갈랍니다.\r"         # f1
+NONE           0xffbf "누구 재밌는 얘기좀 해봐요.\r"  # f2
+CTRL           0xffbe "안녕하시옵니까?\r"             # ctrl-f1
+SHIFT          0xffc9 "오랜만입니다!\r"               # shift-f12
+ALT            0xff50 ":)\r"                          # alt-home
+CTRL_SHIFT     0xff50 "^_^\r"                         # ctrl-shift-home
+SHIFT_CTRL     0xffc2 "하하하!\r"                     # ctrl-shift-f5
+ALT_SHIFT      0xffc0 "8-)\r"                         # shift-alt-f3
+SHIFT_ALT      0xffc1 "좋아요!\r"                     # shift-alt-f4
+

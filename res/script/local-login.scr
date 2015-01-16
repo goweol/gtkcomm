@@ -1,0 +1,91 @@
+# localhost login script
+
+clear
+
+assign userid   "USERID"
+assign passwd   "PASSWORD"
+assign skiplogin "0"
+
+# enable debugging stuff
+# set debug 2
+
+# secure shell로 login
+# set config TelnetCommand "ssh -l $userid"
+# assign skiplogin "1"
+
+set protocol zmodem
+set config AutoRunZmodem TRUE
+set config RX_InfoStr ""
+set config TX_InfoStr ""
+
+# crlf = CR
+set config EnterConvert 1
+
+# localhost인 경우 telnet을 띄우고, input handler를 등록하기 전에
+# 이미 응답이 날라오는 경우가 많아서 waitfor 'login:' 을 놓치는
+# 경우가 많이 발생한다. 2초후면 무조건 login: prompt가 떴다고 가정하고
+# ID를 보내고, password를 기다린다.
+
+# ID
+if "$skiplogin" == "0"
+    waitfor "login:" 6
+    if $? == -1
+       transmit "\n"
+       waitfor "login:" 4
+       if $? == -1
+	  message "\n\033[35mCannot login properly. login manually!\n\033[0m\n"
+	  transmit "\n"
+	  goto next
+       fi
+    fi
+    transmit "$userid\n"
+fi
+
+# PASSWORD
+waitfor "Password:" 2
+if $? != -1
+   # 어떤 이유로 인해 password가 화면에 그대로 출력되고, login이 않될 때가
+   # 있다.
+   pause 1
+
+   # password가 제대로 기다려졌으면...
+   transmit "$passwd\n"
+else
+   message "\n\033[35mCannot login properly. login manually!\n\033[0m\n"
+   transmit "\n"
+   goto next
+fi
+
+next:
+
+bookmark add "바로가기"		       string "<BRANCH>"
+bookmark add "바로가기/리눅스 동호회"  string "go linux\n"
+bookmark add "바로가기/유머"	       string "go humor\n"
+bookmark add "바로가기/자료실"	       string "go gl\n"
+bookmark add "바로가기/OS 동호회"      string "go osc\n"
+bookmark add "바로가기/토론의 광장"    string "go conf\n"
+bookmark add "토론의 광장"	       string "go conf\n"
+bookmark add "토론의 광장 한번 더"     string "go conf\n"
+
+button add "맨위"	string "t\n"
+button add "내려받기"	string "dn\n"
+button add "상위메뉴"	string "m\n"
+
+autores add "[ENTER] 를 누르십시오."   string "\r"
+
+autores add "* 끝내시려면 \'Y\' 를 누르고 엔터키를 누르십시오 ->" \
+            string "y\n"
+
+autores add "접속을 종료하시겠습니까 (Y/n)" script \
+				'transmit "y\n"; pause 1; transmit "\n"'
+
+set title "남성현"
+set config TermRow 30
+
+# mouse 왼쪽 버튼 클릭시 아무 짓도 하지마라.
+set config LeftMouseClickStr ""
+
+waitfor "\$"
+transmit "export TERM=vt100\n"
+
+# vim:set ft=sh:

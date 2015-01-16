@@ -1,0 +1,111 @@
+# sample bookmark file
+
+begin modem
+    name = COM1
+
+# direct connect인 경우 number는 의미가 없습니다.
+# 그렇지 않은 경우에는 전화번호
+    number = COM1
+    direct_connection = 1
+
+# speed = 4800, 9600, 19200, 38400, 57600, 115200
+    speed = 38400
+
+# parity  = NO, EVEN, ODD
+    parity = NO
+
+# bits    = 5, 6, 7, 8
+    bits = 8
+
+# software flow control = 0 (false), 1 (true)
+    soft_flow_control = 0
+
+# hardware flow control = 0 (false), 1 (true)
+    hard_flow_control = 0
+
+    login_script = com-login.scr
+    logout_script = com-logout.scr
+    device = /dev/ttyS0
+    init_string = ""
+
+# 원격지 character set: EUC-KR or UTF-8.
+    remote_charset = EUC-KR
+
+end
+
+# 2nd modem entry
+begin modem
+    name = COM2
+    number = COM2
+    direct_connection = 1
+    speed = 38400
+    parity = NO
+    bits = 8
+    soft_flow_control = 0
+    hard_flow_control = 0
+    login_script = com-login.scr
+    logout_script = com-logout.scr
+    device = /dev/ttyS1
+    init_string = ""
+    remote_charset = EUC-KR
+end
+
+begin modem
+    name = 하이텔
+    number = 01411
+    direct_connection = 0
+    speed = 115200
+    parity = NO
+    bits = 8
+    soft_flow_control = 0
+    hard_flow_control = 0
+    login_script = hitel-login.scr
+#   logout_script = NONE
+    device = /dev/modem
+    init_string = "atz\r"
+    remote_charset = EUC-KR
+end
+
+begin modem
+    name = 천리안
+    number = 01421
+    direct_connection = 0
+    speed = 115200
+    parity = NO
+    bits = 8
+    soft_flow_control = 0
+    hard_flow_control = 0
+    login_script = NONE
+#   logout_script = NONE
+    device = /dev/modem
+    init_string = "atz\r"
+    remote_charset = EUC-KR
+end
+
+begin telnet
+    name = LOCAL
+    hostname = localhost
+    port = 0	# 0 = default
+    login_script = local-login.scr
+    logout_script = local-logout.scr
+    remote_charset = EUC-KR
+end
+
+begin telnet
+    name = 하이텔
+    hostname = home.hitel.net
+    port = 0
+    login_script = hitel-login.scr
+    logout_script = NONE
+    remote_charset = EUC-KR
+end
+
+begin telnet
+    name = 천리안
+    hostname = chollian.net
+    port = 0
+    login_script = chol-login.scr
+    logout_script = chol-logout.scr
+    remote_charset = EUC-KR
+end
+

@@ -1,0 +1,63 @@
+#
+# Note that this is NOT a relocatable package
+#
+%define name	 @PACKAGE@
+%define ver      @VERSION@
+%define rel      1
+
+Name: %name
+Summary: gtk+ communication program
+Version: %ver
+Release: %rel
+License: GPL
+Group: Applications/Productivity
+Source: http://gtkcomm.kldp.net/gtkcomm-%{ver}.tar.gz
+BuildRoot: /var/tmp/gtkcomm
+Packager: Nam SungHyun <namsh@kldp.org>
+URL: http://gtkcomm.kldp.net/
+Prereq: /sbin/install-info
+#Requires: gtk+ >= 1.2.3
+#Requires: Imlib >= 1.9
+
+%description
+gtk+ communication program
+
+%changelog
+* Sat Jul 01 2000 Sung-Hyun Nam <namsh@kldp.org>
+- Created the .spec file
+
+%prep
+%setup
+
+%build
+# Needed for snapshot releases.
+if [ ! -f configure ]; then
+  CFLAGS="$RPM_OPT_FLAGS" ./autogen.sh --prefix=%{_prefix}
+else
+  CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{_prefix}
+fi
+
+if [ "$SMP" != "" ]; then
+  (make "MAKE=make -k -j $SMP"; exit 0)
+  make
+else
+  make
+fi
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make prefix=$RPM_BUILD_ROOT%{_prefix} install
+
+%find_lang %{name}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files -f %{name}.lang
+%doc AUTHORS COPYING ChangeLog NEWS README TODO doc/FAQ doc/USAGE
+%defattr(2755, root, lock)
+%{_prefix}/bin/gtkcomm_lock
+%defattr(-, root, root)
+%{_prefix}/bin/gtkcomm
+%{_prefix}/share/gtkcomm
+

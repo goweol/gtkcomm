@@ -1,0 +1,5 @@
+# chollian logout script
+
+set config TermRow 24
+
+# vim:set ft=sh:

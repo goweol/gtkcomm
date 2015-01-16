@@ -1,0 +1,91 @@
+# COM direct connect 로그인 script for target board debug.
+
+clear
+
+set config IdleGapBetweenChar 0
+set config IdleGapBetweenLine 0
+set config IdleGuardString ""
+set config UseISel FALSE
+
+set config ModemMaxHistory	40
+set config ModemHistoryBufSize	80
+
+# transfer protocol = xmodem, and will never use zmodem.
+set protocol xmodem
+set config AutoRunZmodem FALSE
+set config RX_InfoStr ""
+set config TX_InfoStr ""
+
+# %p = package, %v = version, %n = name, %h = host name or dial number
+set title "%p: %n"
+
+# crlf = lf
+set config EnterConvert 2
+
+# baudrate를 target board의 default speed로
+set baudrate 9600
+
+# mouse 왼쪽 버튼 클릭시 아무짓도 하지 마세요.
+set config LeftMouseClickStr ""
+
+# add baudrate change menu to control-bar
+ctlmenu add Baudrate 115200 script "set baudrate 115200"
+ctlmenu add Baudrate 57600 script "set baudrate 57600"
+ctlmenu add Baudrate 38400 script "set baudrate 38400"
+ctlmenu add Baudrate 19200 script "set baudrate 19200"
+ctlmenu add Baudrate 9600 script "set baudrate 9600"
+#ctlmenu add Baudrate 4800 script "set baudrate 4800"
+#ctlmenu add Baudrate 2400 script "set baudrate 2400"
+#ctlmenu add Baudrate 1200 script "set baudrate 1200"
+#ctlmenu add Baudrate 600 script "set baudrate 600"
+#ctlmenu add Baudrate 300 script "set baudrate 300"
+
+# add terminal emulation mode change menu to control-bar
+#ctlmenu gadd Emulate VT100 script "emulate vt100"
+#ctlmenu gadd Emulate ANSI script "emulate ansi"
+
+# add protocol change menu to control-bar
+ctlmenu add Protocol ASCII script "set protocol ascii"
+ctlmenu add Protocol RAW-ASCII script "set protocol raw-ascii"
+#NOT YET SUPPORTED ctlmenu add Protocol KERMIT script "set protocol kermit"
+ctlmenu add Protocol XMODEM script "set protocol xmodem"
+ctlmenu add Protocol YMODEM script "set protocol ymodem"
+ctlmenu add Protocol ZMODEM script "set protocol zmodem"
+
+label add baudrate
+label add protocol
+label add linestatus
+
+# target board에서 download command를 입력한 경우 upload file 대화상자를
+# 연다.
+#
+# FIXME: autores에 의해 sendfile 대화상자가 열려서 loading하는 경우
+# loading을 stop 시키면 대화상자가 다시 열린다. autores가 다시 수행되는
+# 것으로 보인다. 수동으로 처리하면 그런 현상이 않생김.
+#autores add "Waiting a Motorola S-record or Intel Hex." \
+#	    script "sendfile ascii \"?\""
+#autores add "Waiting a binary file..." script "sendfile xmodem \"?\""
+
+# baudrate를 바꾸는 example
+button add "115200" script 'transmit "pf -b 115200\r"; \
+			  waitfor "ENTER.."; \
+			  set baudrate 115200; \
+			  transmit "\r"; \
+			  waitfor "\$" 1; \
+			  transmit "\r"'
+
+button add "38400" script 'transmit "pf -b 38400\r"; \
+			  waitfor "ENTER.."; \
+			  set baudrate 38400; \
+			  transmit "\r"; \
+			  waitfor "\$" 1; \
+			  transmit "\r"'
+
+button add "9600" script 'transmit "pf -b 9600\r"; \
+			  waitfor "ENTER.."; \
+			  set baudrate 9600; \
+			  transmit "\r"; \
+			  waitfor "\$" 1; \
+			  transmit "\r"'
+
+# vim:set ft=sh:

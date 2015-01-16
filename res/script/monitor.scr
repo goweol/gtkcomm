@@ -1,0 +1,63 @@
+# ==========================================================================
+#  xmodem을 이용한 DEBUG MONITOR upload script sample
+# ==========================================================================
+
+set config IdleGapBetweenChar 1000
+set config IdleGapBetweenLine 0
+
+# monitor prompt
+assign      prompt   "\$"
+
+# downloading filename
+assign      txfile   "test.mx"
+
+emulate     VT100
+clear
+kflush
+rflush
+
+# monitor prompt 상태를 확인
+transmit    "^M"
+waitfor     $prompt      2
+
+# baudrate change to get fast speed
+get baudrate baud
+if $baud != "115200"
+    transmit "pf -b115200^M"
+    waitfor "ENTER..."
+    set baudrate 115200
+    transmit "^M"
+    waitfor $prompt 1
+    transmit "^M"
+fi
+
+# send download command and upload the file using XMODEM
+transmit    "dl -fe^M"
+waitfor     "ASCII"
+
+set config IdleGapBetweenChar 0
+
+pause       1
+sendfile    raw-ascii $txfile
+
+# wait monitor prompt
+waitfor     $prompt
+
+set config IdleGapBetweenChar 1000
+
+# restore original baudrate.
+get baudrate currbaud
+if $currbaud != $baud
+    transmit "pf -b"
+    transmit $baud
+    transmit "^M"
+    waitfor "ENTER"
+    set baudrate $baud
+    transmit "^M"
+    waitfor $prompt 1
+    transmit "^M"
+fi
+
+set config IdleGapBetweenChar 0
+
+# vim:set ft=sh:

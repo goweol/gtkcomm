@@ -1,0 +1,42 @@
+# download script
+
+emulate     vt100
+clear
+kflush
+rflush
+
+# 'win begin'은 window creation 시작
+win begin "Download"
+
+win vbox win vbox0 5
+
+win button vbox0 "Project-A loader (prj-a.mx)" \
+		    script 'endwin; assign txfile prj-a.mx; \
+			    assign dl_opt "-ft -s ffe00000"; \
+			    include down.ascii'
+win button vbox0 "Project-B loader (prj-b.mx)" \
+		    script 'endwin; assign txfile prj-b.mx; \
+			    assign dl_opt "-ft -s eff00000"; \
+			    include down.ascii'
+
+win button vbox0 "FLASH write and verify" \
+		    script 'assign fl_opt "wr"; include flash.scr'
+win button vbox0 "FLASH read" \
+		    script 'assign fl_opt "rd"; include flash.scr'
+
+win button vbox0 "   Project-A app (115200)   " \
+		    script 'endwin; \
+			    assign txfile ~/work/prj-a/app; \
+			    assign newbaud 115200; \
+			    include down.xdm'
+win button vbox0 "Project-B app" \
+		    script 'endwin; \
+			assign txfile ~/work/prj-b/app; \
+			include down.xdm'
+
+win hsep vbox0
+win button vbox0 "창 닫기" quit "quit"
+
+win end
+
+# vim:set ft=sh:

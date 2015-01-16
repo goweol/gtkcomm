@@ -1,0 +1,62 @@
+
+이 프로그램은 황치덕님(hwang@kldp.org)의 '가우 0.4.x'를 토대로
+개발한 것입니다. 이 프로그램이 당신에게 유용하게 사용된다면 모든 공을
+황치덕님께 돌리는 바입니다.
+
+-. COPYING
+
+    Copyright (C) 2000-2003, Nam SungHyun and various contributors
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+
+-. NOTE
+
+    이 프로그램은 Unix(특히 Linux)에서 RS-232C (SIO) interface를
+    이용하여 H/W를 조작하기 쉽도록 하기 위해 만든 것입니다. 기존의
+    '가우'는 모뎀/텔넷을 이용하여 하이텔, 천리안 등에 접속하여
+    작업하기에 좋도록 만들어져 있어서 제가 필요한 작업을 하기에는 맞지
+    않아서 '가우'를 토대로 이 프로그램을 만들게 되었습니다.
+
+    COM port를 사용하여 H/W 조작을 하실 일이 있는 분은 이제야
+    쓸만한 프로그램을 찾으셨을 것이라 확신합니다.
+    현재 리눅스에서 사용할 수 있는 pcomm, minicom 등 보다 낫다고
+    생각합니다. 그렇지 않은 부분이 있다면 지금 즉시 알려주십시요.
+    최선을 다하겠사옵니다.
+
+    이 프로그램이 마음에 드신다면 bug report, patch, idea등을
+    보내주십시요. 가능하면 더 좋게 만들기 위해 노력하겠습니다.
+
+
+-. COMPILE
+
+    요구되는 system/library는 다음과 같습니다.
+
+    glib/gtk+ 2.0.6 이상
+    util library (linux의 경우 glibc2 안에 있음)
+       --> util library가 없는 경우 gnomesupport library를 link시도.
+
+    컴파일 및 인스톨은
+	./configure --prefix=/usr/local
+	make
+	su -c 'make install'
+
+    실행은
+	/usr/local/bin/gtkcomm
+
+    한번 실행하면 ~/.gtkcomm 이란 directory가 생기는 데, 그 디렉토리에
+    있는 파일들을 전부 editor로 한번쯤 살펴보시기를 권합니다.
+
+
+-. 가우와 다른 기능들
+
+    FAQ 참고.
+

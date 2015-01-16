@@ -1,0 +1,63 @@
+# hitel login script sample
+
+clear
+
+# 주의: password를 여기에서 사용할 경우에는 이 파일의 허용값을 바꾸어
+#       주어야 합니다. 가령 'chmod 0600 hitel-login.scr'.
+# $userid = user id
+# $passwd = password
+assign userid   "ID\r"
+assign passwd   "PASSWORD\r"
+
+# ID
+waitfor "이용자ID :"
+transmit $userid
+
+# PASSWORD
+waitfor "비밀번호 :"
+# 어떤 이유로 인해 password가 화면에 그대로 출력되고, login이 않될 때가
+# 있다. 따라서, 1초를 기다려봄.
+pause 1
+transmit $passwd
+
+# %p = package, %v = version, %n = name, %h = host name or dial number
+set title "%p: %n"
+
+set protocol zmodem
+set config TermRow 26
+set config RX_InfoStr "Bytes received:"
+set config TX_InfoStr "Bytes Sent:"
+
+# mouse 왼쪽 버튼 클릭시 "p\r" 을 보냄
+set config LeftMouseClickStr "p\r"
+
+# bookmark add TITLE [string|script] "string or script"
+bookmark add "리눅스 동호회"	 string "go linux\r"
+bookmark add "유머"		 string "go humor\r"
+bookmark add "자료실"		 string "go gl\r"
+bookmark add "OS 동호회"	 string "go osc\r"
+bookmark add "토론의 광장"	 string "go conf\r"
+
+ctlmenu add 바로가기 "리눅스 동호회"	 string "go linux\r"
+ctlmenu add 바로가기 "유머"		 string "go humor\r"
+ctlmenu add 바로가기 "자료실"		 string "go gl\r"
+ctlmenu add 바로가기 "OS 동호회"	 string "go osc\r"
+ctlmenu add 바로가기 "토론의 광장"	 string "go conf\r"
+
+# button add TITLE [string|script] "string or script"
+button add "맨위"	string "t\r"
+button add "내려받기"	script 'transmit "dn\r"; waitfor ">>"; transmit "1\r"'
+button add "상위메뉴"	string "m\r"
+button add "앞단계"	string "p\r"
+button add "다음게시물" string "a\r"
+button add "이전게시물" string "n\r"
+button add "뒤로"	string "b\r"
+button add "앞으로"	string "\r"
+
+# 하이텔 초기화면 및 'go linux' 등등등...
+#autores add "[ENTER] 를 누르십시오"	string "\r"
+
+# 하이텔 빠져나올 때
+autores add "* 끝내시려면 \'Y\' 를 누르고 엔터키를 누르십시오" string "y\r"
+
+# vim:set ft=sh:

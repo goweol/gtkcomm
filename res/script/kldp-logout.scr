@@ -1,0 +1,6 @@
+# KLDP logout script
+
+set config TermRow 24
+set config TelnetCommand "telnet -8 -e ''"
+
+# # vim:set ft=sh:

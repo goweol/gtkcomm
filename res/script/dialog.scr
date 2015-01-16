@@ -1,0 +1,126 @@
+# window script sample
+#
+# 이것은 gtk+ programming을 C 대신 script로 하는 것과 같습니다.
+# 따라서, gtk+ programming과 유사하게 진행됩니다.
+
+message "\n이제 여러개의 데모 창을 띄울 것입니다.\n"
+message "QUIT 버튼을 누르시면 또 다른 창이 뜰 수도 있습니다.\n"
+message "기타 자세한 사항은 ~/.gtkcomm/script/dialog.scr\n"
+message "파일을 참고하십시요!\n"
+pause 1
+message "Wait.."
+pause 1
+message ".."
+pause 1
+message ".. OK\n"
+pause 1
+
+# *************************** FIRST WINDOW DEMO ****************************
+
+# 'win begin'은 window creation 시작
+win begin "SAMPLE DIALOG"
+
+# hbox를 여러개 만들기 위해서는 vbox가 있어야 된다.
+# 'win'을 사용하고, 이름은 vbox1, spacing=3
+win vbox win vbox1 3
+
+# entry 와 XMODEM, ASCII button을 수평으로 위치시키기 위해서 hbox를 생성
+# 'vbox1'을 사용하고, 이름은 hbox1, spacing=3
+win hbox vbox1 hbox1 3
+
+# entry 추가. 사용자가 문자열 입력후 엔터키를 치면 "echo 1" button을
+# activate시킨다.
+# NOTE: 현재 entry는 최대 2개 까지만 만들 수 있다. src/pcScript.c에서
+#       갯수를 늘릴 수 있다 (MAX_ENTRY_NUM). 경험상 2개면 충분... :)
+win entry hbox1 $FILE act "echo 1"
+
+# 위의 entry에서 사용자가 입력한 문자열을 파일명으로 하여 XMODEM으로 upload
+win button hbox1 "XMODEM" script "sendfile xmodem $FILE"
+win button hbox1 "ASCII" script "sendfile ascii $FILE"
+
+# 수평선을 긋자 (vbox가 있어야 됨)
+win hsep vbox1
+
+# vbox에 새로운 hbox를 생성하고 entry와 WAIT,헤헤 button 추가.
+# vbox1에 새로운 hbox2를 추가하고 spacing=3
+win hbox vbox1 hbox2 3
+win entry hbox2 $WAIT
+win button hbox2 "WAIT" script "waitfor $WAIT"
+win button hbox2 "헤헤" script "transmit '\n'; waitfor '\$'; transmit $WAIT; \
+			  waitfor '\$'; transmit '\n'"
+
+# 또 다른 hbox3
+win hsep vbox1
+win hbox vbox1 hbox3 3
+
+# button 들을 추가
+win button hbox3 "echo 1" script "message $FILE"
+win button hbox3 "echo 2" script "message $WAIT"
+win button hbox3 "HWLOCK" script "transmit 'mb 8600000\n'; waitfor ':'; \
+			    transmit '00\n'; transmit 'mb 860005a\n'; \
+			    waitfor ':'; transmit '5a\n'"
+win button hbox3 "MTEST & QUIT" script "\
+			    message 'mtest -p -b -l 100 8701000 1\n'; \
+			    endwin"
+
+# 또 다른 hbox4
+win hbox vbox1 hbox4 3
+win button hbox4 "19200" script "changebaud 19200"
+win button hbox4 "test" script "sendfile xmodem test"
+
+# button string/script 대신 quit 이면 특별한 의미를 갖는다. '종료'
+win button vbox1 "QUIT" quit "quit"
+
+# 창 생성을 끝내고, window가 종료할 때까지 현재 스크립트 중단.
+# NOTE: wait 대신 'end'를 사용할 수 있다.
+#       end가 사용되면 window가 생성된 후 밑의 script를 계속 수행한다.
+win wait
+#win end
+
+# ************************** SECOND DEMO WINDOW ****************************
+message "\n\n하하하! 하이텔 관련 데모 창을 띄울 차례입니다!\n"
+message "실제로 이제 하이텔에 접속해서 버튼들을 눌러보세요\n"
+message "비밀인데요? 기가막히게 잘 될 겁니다. 흐으~~~\n"
+pause 1
+message "Wait.."
+pause 1
+message ".."
+pause 1
+message ".. OK\n"
+pause 1
+
+win begin "하이텔"
+win vbox win vbox0 5
+win button vbox0 "하이텔 메뉴 창 데모"	string ""
+win hsep vbox0
+
+win hbox vbox0 hbox1 2
+win frame hbox1 frame-move "움직임 명령"
+win vbox frame-move vbox1 3
+win button vbox1 "맨위"	string "t\r"
+win button vbox1 "내려받기"	script 'transmit "dn\r"; waitfor ">>"; transmit "1\r"'
+win button vbox1 "상위메뉴"	string "m\r"
+win button vbox1 "앞단계"	string "p\r"
+win button vbox1 "다음 게시물" string "a\r"
+win button vbox1 "이전 게시물" string "n\r"
+win button vbox1 "뒤로"	string "b\r"
+win button vbox1 "앞으로"	string "\r"
+
+win frame hbox1 frame-circle "동호회/자료실"
+win vbox frame-circle vbox2 3
+win label vbox2 "요건 레이블"
+win button vbox2 "리눅스 동호회"	 string "go linux\r"
+win button vbox2 "유머"		 string "go humor\r"
+win button vbox2 "자료실"		 string "go gl\r"
+win button vbox2 "OS 동호회"	 string "go osc\r"
+win button vbox2 "토론의 광장"	 string "go conf\r"
+
+win hsep vbox0
+win button vbox0 "종료" quit "quit"
+
+win end
+
+message "\n\n여기까지 입니다. 잘 모르시는 게 있으시면 연락주시기를...\n"
+message "즐거운 하루 보내세요!!!\n"
+
+# vim:set ft=sh:

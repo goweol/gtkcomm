@@ -1,0 +1,19 @@
+# gtkcomm startup script
+
+# welcome to gtkcomm world!
+message "\n\033[46;30m***************************************************************\n"
+message "*                                                             *\n"
+message "*             Welcome to \033[35mgtkcomm\033[30m world! hahaha!!!             *\n"
+message "*                                                             *\n"
+message "***************************************************************\n\033[0m"
+message "\n이 풀그림을 처음 띄우셨다고요?\n"
+message "그렇다면 이제 ~/.gtkcomm 디렉토리로 가셔서 여러가지 rc file들을\n\
+	 한 번 열어보시기 바랍니다. 그 다음에는 script directory로 이동\n\
+	 하셔서 startup.scr에서 현재 보시고 있는 내용을 지우시고요!\n\
+	 그리고 나서는 hitel이나 천리안, 나우누리등을 사용하시는 경우\n\
+	 해당 login, logout script 파일들을 손 보시고요... 특히 login\n\
+	 파일의 ID 및 PASSWORD는 필히 바꾸어주셔야 겠지요?\n\
+	 시간나시면 SCRIPT.txt 파일과 dialog.scr file도 한번 보시고요...\n\
+	 doc directory 밑에 있는 여러가지 파일들도 반드시 보시고요...\n\
+	 넉넉한 하루 보내시기를...\n"
+

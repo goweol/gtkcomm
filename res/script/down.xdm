@@ -1,0 +1,57 @@
+# ==========================================================================
+#  xmodem을 이용한 download
+#
+#  이 파일 download.scr에 의해 불려진다.
+# ==========================================================================
+
+set config IdleGapBetweenChar 1000
+set config IdleGapBetweenLine 0
+
+# monitor prompt
+assign      prompt   "]#"
+
+message	    "\ngtkcomm: I will send this file: \033[36m$txfile\033[0m\n"
+pause	    2
+
+# monitor prompt 상태를 확인
+transmit    "^M"
+waitfor     $prompt
+
+# baudrate change
+get	    baudrate baud
+if $newbaud != ''
+    if $newbaud != $baud
+	transmit "pf -b $newbaud^M"
+	waitfor "..."
+	set baudrate $newbaud
+	transmit "^M"
+    fi
+fi
+
+# send download command and upload the file using XMODEM
+transmit    "dl -fr -a d00000^M"
+waitfor     "XMODEM"
+pause       1
+sendfile    xmodem $txfile
+
+# wait monitor prompt
+waitfor     $prompt
+
+# parse
+pause 1
+transmit    "parse -fe d00000^M"
+waitfor     $prompt
+
+# baudrate change
+get	    baudrate currbaud
+if $currbaud != $baud
+    transmit    "pf -b $baud^M"
+    waitfor	"..."
+    set		baudrate $baud
+    transmit    "^M"
+fi
+
+set config IdleGapBetweenChar 0
+set config IdleGapBetweenLine 0
+
+# vim:set ft=sh:

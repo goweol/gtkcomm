@@ -1,0 +1,70 @@
+# ==========================================================================
+#  S-record file loading
+#
+#  이 파일 download.scr의 일부로 사용된다
+# ==========================================================================
+
+set config IdleGapBetweenChar 1000
+set config IdleGapBetweenLine 0
+
+# prompt = BOARD_NAME [history_number]$
+assign      prompt   "]\$"
+
+emulate     VT100
+clear
+kflush
+rflush
+
+message	    "\ngtkcomm: I will send this file: \033[36m$txfile\033[0m\n"
+pause	    2
+
+# monitor prompt 상태를 확인
+transmit    "^M"
+waitfor     $prompt
+
+# baudrate change
+get baudrate baud
+if $baud != "38400"
+    transmit "pf -b 38400^M"
+    waitfor "..."
+    set baudrate 38400
+    transmit "^M"
+fi
+
+# fill the memory
+transmit    "mf 100000 180000 ffffffff^M"
+waitfor     $prompt
+
+# send download command and upload the file using RAW-ASCII
+transmit    "dl $dl_opt^M"
+waitfor     "Hex"
+
+# speed-up upload speed
+set config IdleGapBetweenChar 0
+
+pause       1
+sendfile    raw-ascii $txfile
+
+waitfor     $prompt
+
+set config IdleGapBetweenChar 1000
+
+# baudrate change
+get baudrate currbaud
+if $currbaud != $baud
+    transmit    "pf -b $baud\n"
+    waitfor	"..."
+    set		baudrate $baud
+    transmit    "^M"
+fi
+
+pause 1
+
+# write data to EEPROM
+assign fl_opt "wr"
+include flash.scr
+
+set config IdleGapBetweenChar 0
+set config IdleGapBetweenLine 0
+
+# vim:set ft=sh:

@@ -1,0 +1,6 @@
+xchat에서 가져온 그림들임.
+
+red.xpm:    xchat/src/pixmaps/admin.xpm
+green.xpm:  xchat/src/pixmaps/hop.xpm
+yellow.xpm: xchat/src/pixmaps/voice.xpm
+

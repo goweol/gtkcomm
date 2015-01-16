@@ -1,0 +1,1595 @@
+2005-10-14  SungHyun Nam <namsh@wimo.co.kr>
+
+	* src/pcTelnet.c:
+	* src/pcConfig.c: TelnetConnectByHostname()에 bookmark의 이름을
+	인자로 넘기도록 함. bookmark에 없는 경우에는 host name을 여전히
+	사용할 수 있다. 하나의 host에 대해 여러개의 bookmark를 사용할
+	수 있도록 하기 위한 수정.
+
+2005-09-05  SungHyun Nam <goweol@gmail.com>
+
+	* src/pcMain.c: 
+	* src/pcMain.h: 
+	* src/pcModem.c: modem lock/unlock에 flock() 사용
+
+2005-02-24  SungHyun Nam
+
+	* src/pcScript.c: 'tohex' 및 'todec' 명령 추가. 십진수를 십육진수로
+	바꾸거나 십육진수를 십진수로 변환한다.
+
+2005-01-25  SungHyun Nam
+
+	* src/pcModem.c (ModemWrite): fix typo
+
+2004-12-28  SungHyun Nam  <namsh@kldp.org>
+
+	* po/ko.po: auto-updated.
+
+	* src/gtkutil.c: 
+	* src/pcAutoRes.c: 
+	* src/pcChat.c: 
+	* src/pcChat.h: 
+	* src/pcCtrl.c: 
+	* src/pcISel.c: 
+	* src/pcMain.h: 
+	* src/pcModem.c: 
+	* src/pcScript.c: 
+	* src/pcTRx.c: 
+	* src/pcTelnet.c: 
+	* src/pcTerm.c: 
+	* src/pcTerm.h: 
+	* src/pcUtil.c: fix compiler warnings and removed strlen() from
+	remoteWrite()/localWrite().
+
+2004-12-28  SungHyun Nam  <namsh@kldp.org>
+
+	* src/pcMain.c (main): Don't print error message if startup script not
+	found.
+
+2004-12-28  SungHyun Nam  <namsh@kldp.org>
+
+	* src/pcMain.c (caughtSignal): unlock the modem.
+	(main): catch KILL/QUIT/TERM/INT signal.
+
+2004-07-26  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c (TermSelectMotion): 마우스가 창 밖에서 움직이고 있는
+	경우에 대한 고려.
+
+	* res/gtkcommrc, src/pcConfig.c, src/pcMain.h, src/pcScript.c: make
+	run icon (penguin) size configurable.
+
+2004-07-22  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcCtrl.c (CaptureStart): fix capture bug with 'includebuf'.
+
+2004-07-20  Nam SungHyun  <namsh@kldp.org>
+
+	* src/gtkcomm_lock.c, src/pcModem.c: lock path hard-coded into
+	gtkcomm_lock.
+
+2004-07-19  Nam SungHyun  <namsh@kldp.org>
+
+	* gtkcomm.spec.in, src/Makefile.am, src/gtkcomm_lock.c, src/pcConfig.c,
+	src/pcMain.c, src/pcModem.c: Use gtkcomm_lock helper program to
+	lock/unlock modem device
+
+2003-09-22  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcStatus.c (StatusShowTime): focus에 따라 sensitive 조정
+
+	* src/pcModem.c, src/pcTelnet.c: file transfer 중이거나 script running
+	중일 때는 idle gap string 보내지 않음.
+	* src/pcTRx.c (TRxSendFile): TRxRunning을 항상 TRX_UPLOAD로 설정
+
+2003-05-12  Nam SungHyun  <namsh@kldp.org>
+
+	- Released 0.8.1
+
+2003-05-02  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c (_termSetSize): redraw the terminal (#210, iamboy93).
+
+2003-05-01  Kang Jeong-Hee  <Keizi@mail.co.kr>
+
+	* src/Makefile.am: mbyte.h added to gtkcomm_SOURCES like other *.h.
+
+2003-04-29  Nam SungHyun  <namsh@kldp.org>
+
+	- Released 0.8.0
+
+2003-03-28  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcCompat.c (PC_IconvStr): use g_utf8_validate().
+
+2003-03-27  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcCompat.c, src/pcCompat.h, src/pcISel.c, src/pcModem.c,
+	src/pcTelnet.c, src/pcTerm.c, src/pcTerm.h: clean-up EUCKR <-> UTF8
+	conversion
+
+2003-03-27  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c (TermConvOpen): if iconv open failed, exit.
+	(TermGdkDrawText): If conversion failed, don't call gu_draw_string.
+	If not, pango will abort.
+
+	* src/pcModem.c (ModemWrite): fix typo and return value
+
+	* TODO, src/pcISel.c, src/pcMain.c, src/pcModem.c, src/pcTelnet.c,
+	src/pcTerm.c, src/pcTerm.h: local과 remote가 EUC-KR과 UTF-8 locale을
+	사용하는 각각의 조합에 대해 모두 동작하도록 함.
+
+2003-03-26  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c (TermInputHandler): make buffer NUL terminated.
+	if last char is first multibyte, store and prepend it to buffer later.
+
+	* src/pcCompat.c (PC_IconvStr): fromlen이 0보다 작으면 strlen().
+	(PC_IconvOpen, PC_IconvClose): new. 항상 EUC-KR을 UTF-8로 변환
+	(PC_IconvStr): TermConv대신 PC_IconvOpen()에 의해 초기화되는
+	ConvEUCKR2UTF8 사용.
+
+	* src/pcCompat.h (PC_IconvOpen, PC_IconvClose): declare
+
+	* src/pcConfig.c, src/pcCtrl.c, src/pcMain.c, src/pcModem.c,
+	src/pcScript.c, src/pcTerm.c: PC_IconvStr() 부를 때 -1 사용.
+
+2003-03-26  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c (TermInputHandler): increase buffer size to 1024.
+
+	* src/pcCompat.c, src/pcISel.c, src/pcTerm.c: Do not use
+	buggy(or imperfect) g_utf8_validate().
+
+2003-03-25  Nam SungHyun  <namsh@kldp.org>
+
+	* res/bookmarks, src/pcConfig.c, src/pcMain.h, src/pcModem.c:
+	modem bookmark에 'direct_connection' 옵션 추가. 'DIRECT'라는
+	이름과 상관없이 이 옵션에 의해 직접 연결을 사용할 것인 지 결정
+
+2003-03-05  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c (termIConvStr): backing out previous change
+
+2003-03-05  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcISel.c (I_SelShow): use 'TermConv'.
+
+2003-03-05  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcISel.c, src/pcTerm.c, src/pcTerm.h: use new draw functions
+	provided by gtkutil.
+
+	* src/Makefile.am: added new files.
+	* src/gtkutil.c, src/gtkutil.h: new.
+
+	* src/mbyte.c, src/mbyte.h (utf_ptr2char): Added "const" to the p
+	param.
+
+2003-02-28  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcModem.c (ModemConnectByName): info->number free fix
+
+	* src/pcConfig.c (AddBookmarkMenus): bits/initString 초기화 fix
+
+	* src/pcTerm.c (is_cjk_font, TermNew): 신정식님의 vim-GTK2에 대한
+	patch를 똑같이 적용.
+
+	* NEWS: updated
+
+	* src/Makefile.am: add -DXXX_DISABLE_DEPRECATED.
+
+2003-02-28  Nam SungHyun  <namsh@kldp.org>
+
+	* res/gtkcommrc (RemoteCharset): global remote charset option.
+
+	* res/bookmarks: bookmark 형식 바꿈
+
+	* src/pcConfig.c: 새 bookmark 형식 지원 (예전 형식은 지원않함).
+	remote charset option 추가
+
+	* src/pcMain.h, src/pcModem.c, src/pcSetting.h, src/pcTelnet.c,
+	src/pcTerm.c, src/pcTerm.h: remote charset option에 의해 conversion.
+
+2003-02-27  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c (TermNew): 사용자가 지정한 글꼴에 문제가 있는 경우
+	DEFAULT_FONT 사용 시도
+
+	* res/gtkcommrc, src/pcSetting.h: use "monospace 11" for default font
+
+2003-02-27  Nam SungHyun  <namsh@kldp.org>
+
+	- merge from pango-branch
+
+	* src/pcTerm.c (TermGdkDrawText): vim-GTK2의 gui_gtk2_draw_string()의
+	코드 사용
+	(TermNew): term->fontWidth 더 정확하게 계산
+
+	* src/Makefile.am: added mbyte.[ch]
+	* src/mbyte.c, src/mbyte.h: new file. stolen from vim.
+
+2003-02-27  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c: 'TermFontName'으로 'Gulimche 11' 사용시 깨끗하게 나옴.
+
+2003-02-25  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcCompat.c, src/pcTerm.c, src/pcTerm.h: resource file등에
+	대해서는 항상 utf8이 아닌 경우 utf8로 변환해 주어야 함.
+
+2003-02-24  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcCompat.c, src/pcTerm.c: user가 UTF-8 locale을 사용하는 경우에
+	대한 고려.
+
+2003-02-19  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcStatus.c (ProgressBarUpdate): 이전처럼 percent 문자열 표시
+
+2003-02-18  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcConfig.c, src/pcModem.c, src/pcScript.c, src/pcTRx.c,
+	src/pcTelnet.c, src/pcTerm.c, src/pcTerm.h: gdk_input_[add/remove]를
+	IO channel로 바꿈
+
+2003-02-18  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcMain.c, src/pcModem.c, src/pcScript.c, src/pcStatus.c,
+	src/pcTRx.c, src/pcTelnet.c, src/pcTerm.c, src/pcUtil.c: clean-ups
+	(deprecated API usage)
+
+2003-02-18  Kang Jeong-Hee <Keizi@mail.co.kr>
+
+	* src/*.[ch]: vim style 포함.
+	* src/pcMain.c: connect 창 버튼에 mnemonic 적용.
+	* src/pcConfig.c, src/pcScript.c: EUC-KR로 된 주석이
+	ko.po에 들어가 다른 UTF-8와 문제를 일으키기에,
+	주석 위치를 바꿔서 ko.po에 들어가지 않게 했음.
+	# po/ko.po: pcMain.c의 mnemonic에 번역 적용.
+
+2003-02-17  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcScript.c: dialog script 동작문제 fix
+
+	* src/pcConfig.c, src/pcISel.c, src/pcMain.c, src/pcMain.h,
+	src/pcModem.c, src/pcTerm.c: s/ARYSIZ/G_N_ELEMENTS/g
+	(patch #40, by keizie)
+
+2003-02-17  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcMain.c, src/pcScript.c: s/g_basename/g_path_get_basename/g
+
+2003-02-17  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcAutoRes.c, src/pcChat.c, src/pcConfig.c, src/pcCtrl.c,
+	src/pcISel.c, src/pcMain.c, src/pcModem.c, src/pcScript.c,
+	src/pcTRx.c: g_str[n]casecmp 대신 g_ascii_str[n]casecmp 사용.
+
+2003-02-17  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcModem.c: deprecated 'GtkCList' 대신 GtkTreeView 사용.
+
+2003-02-17  Nam SungHyun  <namsh@kldp.org>
+
+	* configure.in: apply patch #39 (by keizie).
+
+2003-02-13  Nam SungHyun  <namsh@kldp.org>
+
+	* configure.in: CFLAGS에서 -Wshadow 삭제.
+
+	* po/ko.po: UTF-8.
+
+	* src/pcAutoRes.c, src/pcChat.c, src/pcCtrl.c, src/pcMain.c,
+	src/pcMain.h, src/pcModem.c, src/pcScript.c, src/pcStatus.c,
+	src/pcTRx.c, src/pcTerm.c, src/pcUtil.c: gtk_signal_XXXs are
+	deprecated.
+
+2003-02-12  Nam SungHyun  <namsh@kldp.org>
+
+	* Makefile.am, autogen.sh, configure.in, po/.cvsignore, src/Makefile.am,
+	src/pcAutoRes.c, src/pcChat.c, src/pcCompat.c, src/pcCompat.h,
+	src/pcMain.c, src/pcMain.h, src/pcScript.c, src/pcTerm.c,
+	src/pcTerm.h, src/pcUtil.c: cvs trunk에서는 gtk1 더이상 지원않함
+
+2003-02-07  Nam SungHyun  <namsh@kldp.org>
+
+	- Released 0.7.5
+
+2003-02-04  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTelnet.c (TelnetDone): 연결이 취소된 경우 login script 취소
+
+2003-01-30  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcScript.c (CreateScriptFileList): gtk2. gtk1에서는 button
+	press하는 순간 combo entry가 바뀌었었지만 gtk2에서는 release후에
+	바뀌므로 entry가 바뀌는 경우와 상관없이 animation icon을 클릭할 때만
+	entry의 script 실행.
+
+	* src/pcMain.c (TB_Script): script box의 entry가 비어있을 수는
+	없으므로 필요없는 코드 삭제
+
+2002-12-05  Nam SungHyun  <namsh@kldp.org>
+
+	* acinclude.m4, configure.in: Add 3rd argument to AC_DEFINES.
+	so we can get rid of acconfig.h (from glib2)
+
+	* acconfig.h: Removed
+
+2002-12-04  Nam SungHyun  <namsh@kldp.org>
+
+	- gtk2 trunk에서 terminal의 scrollbar 동작않하는 문제 fix
+
+	* src/pcCompat.c (marshal_VOID__OBJECT_OBJECT): gtk2. terminal의
+	scrollbar 관련해서 사용.
+	* src/pcCompat.h (marshal_VOID__OBJECT_OBJECT): gtk2. declare it.
+	gtk1. define it to gtk_marshal_NONE__POINTER_POINTER
+	* src/pcTerm.c (TermClassInit): use marshal_VOID__OBJECT_OBJECT.
+
+2002-11-14  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcMain.c: gtk2. accel key 수정가능하게 함 (~/.gtkcomm/accelrc
+	파일을 수동으로 수정)
+
+	* src/pcConfig.c, src/pcCtrl.c, src/pcISel.c, src/pcMain.c,
+	src/pcSetting.h, src/pcUtil.c: ExpandPath()에서 alloc된 string return
+
+2002-11-12  Nam SungHyun  <namsh@kldp.org>
+
+	* configure.in: default-build = gtk2. gtk1 = --disable-gtk20
+
+	* gtkcomm.spec.in: clean-ups
+
+	* src/pcUtil.c: use g_memmove().
+
+2002-11-08  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcAutoRes.c, src/pcChat.c, src/pcConfig.c, src/pcCtrl.c,
+	src/pcISel.c, src/pcMain.c, src/pcModem.c, src/pcScript.c,
+	src/pcTRx.c: s/snprintf/g_snprintf/, s/strcasecmp/g_strcasecmp/,
+	s/strncasecmp/g_strncasecmp/
+
+2002-11-06  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcChat.c (MenuChat): TermSetSize() 부르지 않음.
+	* src/pcMain.c (CreateMainWindow): ScriptBox 너비를 여기에서 설정
+	* src/pcScript.c (CreateScriptFileList): ScriptBox 너비 설정 코드 삭제
+	* src/pcTerm.c: clean-up
+
+2002-11-05  Nam SungHyun  <namsh@kldp.org>
+
+	- Released 0.7.4
+
+	* src/Makefile.am: 'make dist'에 pcCompat.h 포함
+
+2002-11-04  Nam SungHyun  <namsh@kldp.org>
+
+	- Released 0.7.3
+
+2002-10-31  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcSetting.h: removed unused defs.
+
+2002-10-31  Nam SungHyun  <namsh@kldp.org>
+
+	* res/gtkcommrc, src/pcCompat.c, src/pcCompat.h, src/pcConfig.c,
+	src/pcMain.c, src/pcMain.h, src/pcTerm.c, src/pcUtil.c: use
+	g_locale_(to|from)_utf8() instead of using iconv directly.
+
+2002-10-30  Nam SungHyun  <namsh@kldp.org>
+
+	* Makefile.am, autogen.sh, configure.in: fix autoconf/automake error
+
+	* res/gtkcommrc, src/pcConfig.c, src/pcMain.c, src/pcMain.h: added
+	'UseXtermCursor' option (default=TRUE). (#156, locuzu)
+
+	* src/pcCtrl.c (CtrlMenuAddEntry): gtk2. ctlmenu entry에서 한글 표시
+	않됨 (#155, locuzu)
+
+	* src/pcMain.c: g_thread_init()을 gtk_init()보다 먼저.
+
+	* src/pcMain.h, src/pcPTY.c, src/pcScript.c, src/pcUtil.c: string
+	iconv 관련 clean-ups.
+
+	* src/pcISel.c, src/pcScript.c, src/pcTRx.c: fork() return value check
+
+2002-10-22  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcScript.c (ScriptCreateWindow): gtk2. sample dialog에서 한글
+	표시 않됨 (#152, iamboy93)
+	(ScriptRunAnimInit): gtk2. 도구막대 형식이 ICON이거나 TEXT인 경우 펭귄
+	짤려서 보임 (#153, iamboy93)
+
+	* src/pcISel.c (I_SelFindMatchPattern): avoid compiler warning
+
+2002-10-14  Nam SungHyun  <namsh@kldp.org>
+
+	* res/Makefile.am: DESTDIR을 더함 (submitted by ganadist@mizi.com)
+
+	* src/pcTerm.c: clean-up
+
+2002-09-26  Nam SungHyun  <namsh@kldp.org>
+
+	* po/ko.po, res/gtkrc.in: updated
+
+	* src/Makefile.am, src/pcCompat.c, src/pcCompat.h, po/POTFILES.in: gtk
+	1.x와 2.x간의 호환성 지원을 위해 추가
+
+	* src/pcUtil.c, src/pcMain.h: gtk1과 gtk2간의 호환성 지원 코드
+	pcCompat.*로 옮김
+
+	* src/pcMain.c, src/pcModem.c, src/pcScript.c, src/pcTRx.c,
+	src/pcUtil.c: gtk2. Close/Ok/Quit/Cancel 등의 버튼에서 stockicon 사용
+
+2002-09-25  Nam SungHyun  <namsh@wimo.co.kr>
+
+	- Released 0.7.2
+
+2002-09-25  Nam SungHyun  <namsh@wimo.co.kr>
+
+	* intl, po/Makefile.in.in: removed
+
+	* res/Makefile.am: pixmap file 관련
+
+	* res/pixmap/tb_capture.xpm: capture icon
+	* src/pcMain.c: use tb_capture.xpm for capture icon
+
+2002-09-23  Nam SungHyun  <namsh@wimo.co.kr>
+
+	* res/pixmap/tb_close.xpm, res/pixmap/tb_down.xpm,
+	res/pixmap/tb_exit.xpm, res/pixmap/tb_open.xpm,
+	res/pixmap/tb_save.xpm, res/pixmap/tb_up.xpm: new toolbar icons from
+	gtk2 stock icons
+
+	* res/pixmap/tb_macro.xpm, res/pixmap/bg.xpm, res/pixmap/tux-anim.xpm:
+	removed
+
+	* src/pcMain.c, src/pcScript.c: clean-ups
+
+2002-09-23  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c: gtk2. 한글 초성이 않보이는 경우 보완
+	* src/pcUtil.c: fixed memory leak
+
+2002-09-23  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcCtrl.c: gtk2. ctlmenu 한글 제대로 보이게 함
+
+2002-09-19  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c: gtk2. 한글 입력시 깨져보이는 현상 보완.
+
+2002-09-18  Nam SungHyun  <namsh@kldp.org>
+
+	* README: gtk+-2.x에 대한 내용 추가
+	* src/pcMain.c (CreateMainWindow): gtk2. removed unnecessary code
+	* src/pcScript.c (ScriptFinish): fix compiler warning
+
+2002-09-13  Nam SungHyun  <namsh@wimo.co.kr>
+
+	* configure.in: 0.7.2pre
+
+	* po/ko.po, src/pcAutoRes.c, src/pcChat.c, src/pcConfig.c, src/pcCtrl.c,
+	src/pcISel.c, src/pcMain.c, src/pcMain.h, src/pcModem.c,
+	src/pcScript.c, src/pcSetting.h, src/pcTRx.c, src/pcTelnet.c,
+	src/pcTerm.c, src/pcTerm.h, src/pcUtil.c: 에러 및 경고 메시지 i18n
+
+	* res/gtkcommrc, res/gtkrc.in: 터미널 배경 관련 설명/예제 보완
+
+2002-09-13  Nam SungHyun  <namsh@kldp.org>
+
+	* res/gtkcommrc, src/pcConfig.c, src/pcSetting.h, src/pcTerm.c,
+	src/pcTerm.h: 단어 선택 모드에서 'TermWordSeperator'에 의해 단어구분
+
+2002-09-12  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c: 문자 선택 모드를 vim에서와 같게 수정. xterm과 다르다는
+	의미인 데, 선택 방향을 좌우로 바꾸더라도 최초에 선택했던 문자는 항상
+	포함되게 함. 선택되는 영역 표시를 vim과 같게 했기 때문에 선택과 관련된
+	기능은 vim과 동일하게 맞추도록 함.
+
+	* src/pcTerm.c: gtkcomm에서 선택이 있는 상태에서 다른 창에서 선택시
+	다른 창에서 처음에 선택되지 않는 문제 수정
+
+	* src/pcTerm.c (TermSelectionGet): gtkcomm에서 hanterm으로 한글복사
+	제대로 되게
+
+	* src/pcTerm.c: fix. 라인 끝에 공백이 있는 경우 그 공백도 선택되게 함.
+	라인 끝 이후에서 double click시 라인의 마지막 단어가 선택되도록 함
+
+	* src/pcMain.c (main): glib thread support check
+
+2002-09-12  Nam SungHyun  <namsh@wimo.co.kr>
+
+	- Released 0.7.1
+
+2002-09-11  Nam SungHyun  <namsh@kldp.org>
+
+	* res/script/kldp-logout.scr: 'TelnetCommand' 기본값으로 설정
+
+	* src/pcTerm.c: popup menu 관련 code clean-up (NOT PART OF THE BUILD)
+
+	* src/pcTerm.c: #144 selection bug fixed.
+
+2002-09-10  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c: selection 기능 향상. 아직 word 및 line selection
+	기능쪽은 버그가 있지만 이전과 비교하면 쓸만해짐
+
+2002-09-10  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcModem.c, src/pcTelnet.c: logout script cancel되는 현상 정말로
+	fix
+
+2002-09-09  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTelnet.c (TelnetDone): logout script가 cancel되는 현상 fix
+
+	* res/gtkrc.in: overwrite theme's default pixmap
+
+	* TODO, res/script/chol-logout.scr, res/script/kldp-logout.scr,
+	res/script/local-login.scr, res/script/local-logout.scr: updated
+
+2002-09-09  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcMain.c, src/pcScript.c, src/pcTerm.c, src/pcTerm.h: gtk+ 2.0.
+	terminal size 원하는 크기로 항상 유지되도록 함... bad, bad, bad!
+
+2002-09-09  Nam SungHyun  <namsh@kldp.org>
+
+	- #142 fix gtk+ 2.0 XIM 문제
+
+	* src/pcTerm.c (TermPreeditChangedCB): preedit string 출력.
+	(TermCommitCB): preedit string 삭제
+	(TermRetrieveSurroundingCB, TermDeleteSurroundingCB): removed
+
+2002-09-09  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c (TermSetSize): #143. gtk-2.0에서 window resize 문제 fix
+
+2002-09-07  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcMain.c (CreateMainWindow): geometry setting removed.
+	gtk+ 1.x에서는 mouse든 'set config termrow xx'든 제대로 동작.
+	gtk+ 2.x에서는 mouse로 화면 크기 마음대로 바꿀 수 있음
+
+2002-09-07  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcModem.c (ModemHangup): logout script가 cancel 되는 현상 fix
+	* src/pcTerm.c (TermSetSize): test code 원래대로.
+
+2002-09-06  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcConfig.c (AddBookmarkMenus): GTK+2.0, bookmark 이름이 한글인
+	경우 고려 (#141, reported by iamboy93)
+
+2002-09-06  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcScript.c, src/pcMain.c, src/pcMain.h: GTK+2.0, fix compile
+	error (#141, reported by iamboy93)
+
+2002-09-04  Nam SungHyun  <namsh@kldp.org>
+
+	- Released 0.7.0
+
+2002-08-23  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcMain.c, src/pcMain.h, src/pcTerm.c, src/pcUtil.c: 종료시 iconv
+	fd close. some clean-ups.
+
+2002-08-23  Nam SungHyun  <namsh@kldp.org>
+
+	- gtk+ 2.0에서 XIM 기능 동작하지만 많은 시험이 되지는 않은 상태이며,
+	  현재는 한글 글자마다 입력하는 동안에는 않보임
+
+	* res/gtkcommrc, src/pcConfig.c, src/pcCtrl.c, src/pcMain.c,
+	src/pcMain.h, src/pcScript.c, src/pcSetting.h, src/pcTerm.c,
+	src/pcTerm.h, src/pcUtil.c: gtk+ 2.0에서 XIM 기능 구현.
+	script에서 button이나 bookmark 등을 추가하는 경우 UTF-8 <-> EUC-KR
+	처리.
+
+2002-08-21  Nam SungHyun  <namsh@kldp.org>
+
+	- porting to gtk+ 2.0 (except XIM).
+
+	* src/pcMain.c, src/pcTerm.c, src/pcTerm.h: gtk+ 2.0에서도 script
+	안에서 terminal 크기 조정 제대로 되게 함
+	* src/Makefile.am, src/pcSW.c: remove
+
+2002-07-22  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcUtil.c (ParseLine): fix segv.
+
+2002-07-19  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcModem.c: modem history window가 이미 열려있는 경우 입력되는
+	명령을 실시간으로 해당 창에 표시.
+
+	* src/pcConfig.c, src/pcMain.h, src/pcModem.c: login script에서 modem
+	history number 및 buffer size 조정가능하게 함
+
+2002-07-18  Nam SungHyun  <namsh@kldp.org>
+
+	* res/gtkcommrc, src/pcConfig.c, src/pcTerm.[ch]: 'MouseButtonSwap' 
+	옵션 추가. 이 플래그가 TRUE이면 좌우 마우스 버튼의 기능을 바꿈
+
+2002-07-13  Nam SungHyun  <namsh@kldp.org>
+
+	* README: clean-up
+
+2002-07-09  Nam SungHyun  <namsh@kldp.org>
+
+	- bump version to 0.6.4
+
+2002-06-11  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcSignal.c (RemoveChildSignalHandler): 'Stop Transfer' button을
+	누른 후 종료시 segv fault 발생하는 문제 고침
+
+2002-06-04  Nam SungHyun  <namsh@kldp.org>
+
+	- bump version to 0.6.3
+
+	* src/pcScript.c: windows에 frame 및 label 추가할 수 있게 함.
+	filesize를 얻는 기능 추가.
+	* res/script/SCRIPT.txt: 'GET FILE' 설명 추가.
+	* res/script/dialog.scr: 'win frame' 및 'win label' 예제 추가
+
+2002-05-30  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcMain.c: terminal mouse cursor를 xterm과 같이 설정.
+
+2001-12-06  Nam SungHyun  <namsh@kldp.org>
+
+	- bump version to 0.6.2
+
+	* src/pcCtrl.c: LED control timer remove code 삭제. timeout후에 필요한
+	경우 다시 timer를 생성하여 항상 켜져있는 대신 깜박이는 효과 생기게.
+
+2001-11-30  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTRx.c: clean-up. ascii 보내던 도중 stop시 file close않하던
+	문제 fix.
+
+2001-11-29  Nam SungHyun  <namsh@kldp.org>
+
+	- bump version to 0.6.1
+
+	* acconfig.h, configure.in, src/pcTRx.c: removed pthread library
+	dependency.
+
+2001-11-29  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTelnet.c, src/pcModem.c: modem close후 다시 연결시 에러발생
+
+2001-11-22  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcCtrl.c: clean-ups/bug-fix.
+	* src/pcModem.c: command history 창에서 'clist' 사용 (clean-up)
+
+2001-11-21  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcCtrl.c: linestatus 표시 코드에서 mutex 사용 및 timer control
+	코드 바꿈
+
+2001-11-17  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTRx.c: browse 선택시에도 항상 entry와 send button을 default로
+
+2001-11-16  Nam SungHyun  <namsh@kldp.org>
+
+	- bump version to 0.6.0
+
+	* src/pcCtrl.c, src/pcTRx.c: filesel dialog에서 file이 선택되어진 경우
+	해당 directory를 기억해서 다음 번에 그 directory에서 다시 선택가능하게
+
+	* src/pcCtrl.c, src/pcMain.h, src/pcModem.c, src/pcScript.c,
+	src/pcTerm.c, src/pixmaps/README, src/pixmaps/green.xpm,
+	src/pixmaps/red.xpm, src/pixmaps/yellow.xpm: LineStatus를 control
+	bar에 추가할 수 있게 함.
+
+2001-11-16  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcScript.c: 'elif/elseif' 및 'endif' 지원.
+
+2001-11-12  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcScript.c: 'waitfor' 명령에 세번째 argument 추가. 두개의
+	string을 동시에 wait할 수 있게 함.
+
+	* src/pcScript.c: 'beep' 명령에 bell 소리 크기 조정 arg 추가.
+
+	* src/pcScript.c, res/gtkcommrc, res/script/SCRIPT.txt,
+	res/script/flash.scr, src/pcConfig.c, src/pcMain.h, src/pcUtil.c: 새
+	config value 'BeepPercent' 추가. bell 소리 크기 조정.
+
+2001-11-11  Nam SungHyun  <namsh@kldp.org>
+
+	* res/gtkcommrc, src/pcConfig.c, src/pcMain.c, src/pcMain.h,
+	src/pcModem.c: very simple SIO 사용시 user 명령 history 기능.
+
+2001-09-14  Nam SungHyun  <namsh@kldp.org>
+
+	- bump version to 0.5.21
+
+	* src/pcChat.c: '/set protocol' 지원
+	* src/pcConfig.c, src/pcSetting.h, res/gtkcommrc, res/gtkrc.in: some
+	default value changed (DoLock, X/Y/Z modem cmd, color, ...)
+
+	* res/gtkcommrc, res/script/kldp-login.scr: some comments
+
+2001-06-01  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcMain.c (MenuOpen): grab focus.
+	* src/pcTRx.c (TRxFileQuery): button focus. grab focus
+	* src/pcUtil.c (GeneralInputQuery): button focus.
+
+	* src/pcModem.c, src/pcScript.c, src/pcStatus.c: clean-up comments
+
+2001-05-15  Nam SungHyun  <namsh@kldp.org>
+
+	- bump version to 0.5.20
+
+2001-05-11  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcMain.c, src/pcMain.h, src/pcScript.c, src/pcUtil.c:
+	GeneralInputQuery()가 contents 받아들이게 수정
+
+2001-05-11  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcMain.c, src/pcMain.h, src/pcScript.c: script file edit 기능
+	추가. XEDITOR 환경변수 사용.
+
+2001-05-04  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcMain.c, src/pcScript.c, src/pcTerm.c: s/snprintf/g_snprintf/
+
+	* src/pcTerm.c (TermSizeChanged): COLUMNS, LINES 환경변수 설정
+
+2001-05-03  Nam SungHyun  <namsh@kldp.org>
+
+	- bump version to 0.5.19
+
+	* res/gtkcommrc, src/pcConfig.c, src/pcTerm.c, src/pcTerm.h: cursor
+	blink 기능 추가.
+
+	* src/pcMain.c, src/pcMain.h, src/pcTRx.c, src/pcTerm.c, src/pcTerm.h:
+	clean-ups
+
+	* res/script/com-login.scr, res/script/dialog.scr,
+	res/script/local-login.scr: '$'를 '\$'로
+
+2001-05-01  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c (TermStateGround): '\t'가 logging되지 않는 문제 fix
+
+2001-04-23  Nam SungHyun  <namsh@kldp.org>
+
+	- bump version to 0.5.18
+
+	* src/pcScript.c: assign variable을 항상 다시 확인.
+	* src/pcMain.c (caughtSignal): xterm scrollbar on
+
+2001-04-13  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcTerm.c (TermUnselect): selection을 clear한 경우 커서를 다시
+	표시해 줌. 선택했던 영역안에 커서가 위치했었을 경우에 다시 그려주어야
+	한다.
+
+2001-04-09  Nam SungHyun  <namsh@kldp.org>
+
+	- bump version to 0.5.17
+
+	* src/pcMain.c: mkstemp() 사용.
+	* src/pcMain.h (UNUSED): ansi c style로
+	* src/pcTerm.c: selection fix
+
+2001-04-06  Nam SungHyun  <namsh@kldp.org>
+
+	- bump version to 0.5.16
+
+2001-04-03  Nam SungHyun  <namsh@kldp.org>
+
+	* res/script/kldp-{login,logout}.scr: 'ssh'를 이용한 login 예제.
+
+	* src/pcMain.c (caughtSignal): _DEBUG_면 xterm에서 gdb run
+
+	* src/pcAutoRes.c, src/pcChat.c, src/pcChat.h, src/pcConfig.c,
+	src/pcCtrl.c, src/pcISel.c, src/pcMain.c, src/pcMain.h, src/pcModem.c,
+	src/pcScript.c, src/pcSignal.c, src/pcTelnet.c, src/pcTerm.c,
+	src/pcTerm.h: 종료하기전에 alloced memory를 free.
+
+2001-04-02  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcConfig.c (OptTable): terminal color를 Xterminal color에 맞춤
+	color format을 "255 0 0" 과 같은 형식도 허용하고, 기존 format과는
+	'.'이 있는 지로 구분.
+	* res/gtkcommrc: same
+
+	* res/gtkcommrc: added 'UseISel'.
+	* src/pcConfig.c: same
+	* src/pcMain.h: same
+	* src/pcISel.c: Don't do anything if UseISel is FALSE.
+	* src/pcTerm.c: mouse button 동작 바꿈. xterminal과 같이 Left button이
+	눌리면 selection 동작.  Right button에 대해 꾀돌이마우스 기능 사용
+
+2001-03-30  Nam SungHyun  <namsh@kldp.org>
+
+	* src/pcModem.c: fix modem speed update. 0.5.14에서 잘못삭제되었었음
+	* res/gtkrc.in: background 관련.
+
+2001-03-20  Nam SungHyun  <namsh@kldp.org>
+
+	- bump version to 0.5.14
+
+	* src/pcModem.c, src/pcTelnet.c: connect 시도하기 전에 login script
+	실행
+
+	* configure.in, src/.vimrc, src/pcChat.c, src/pcScript.c,
+	src/pcSetting.h: clean-ups. remove compiler warning
+
+2001-01-17  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.5.13
+
+	* res/script/down.ascii, res/script/down.xdm, res/script/download.scr,
+	res/script/flash.scr: new 'download' script examples
+
+	* src/pcTRx.c (TRxSendCancelString): fix XMODEM cancel string
+	(TRxSendFile): call TRxSendCancelString() if error occured
+	* src/pcScript.c (ScriptAssignConvert): variable이 정의되어있지 않은
+	경우 NUL로 바꿈
+
+2001-01-16  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c (ScriptWaitFor): control char 없앤 문자열 기다림
+	(ScriptAssignConvert): string안에 여러 variable이 있는 경우 고려
+
+2001-01-14  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c (ScriptAssignConvert): assign value가 string안에
+	포함될 수 있게 함
+	* src/pcUtil.c (FindWordSeperator): new.
+
+2000-12-10  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.5.12
+
+	* src/pcScript.c (GetAssign): script variable이 '$'로 시작하도록 바꿈
+	* res/script/SCRIPT.txt, res/script/*.scr: sync
+
+2000-11-17  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- cvs tag after-revert-to-pthread
+
+	* src/pcTRx.c: PTHREAD lib이 없는 경우에도 ascii send 가능. pthread
+	lib을 사용하는 경우보다 smooth하지는 않음
+
+	- cvs tag before-revert-to-pthread
+
+2000-11-08  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.5.11
+
+2000-11-07  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c: fix assign, get도 다른 명령들과 더불어 순차적으로
+	처리하도록 구조 바꿈
+
+2000-10-31  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/Makefile.am (ins-bin-only): gtkcomm만 install
+
+	* src/pcScript.c (ScriptRunNext): sendfile에서 에러 발생시 경고 메시지
+	출력 (script debugging을 위해). StatusLine에 출력되는 메시지는 다른
+	메시지에 의해 지워진다
+	(ScriptIf): fix 문자열 비교 bug. 비교 결과에 상관없이 성공 수행
+
+2000-10-26  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c (ScriptIf): 문자열 비교 허용. 특히 assign value와
+	비교할 때 사용될 수 있다.
+
+2000-10-25  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c: assign시 S_txfile, Sprompt와 같이 대문자 S로
+	시작하면 되도록 수정. (S0, S1보다 좋다고 생각)
+	* res/script/SCRIPT.txt: 'endwin' 추가 및 assign 관련 update
+
+2000-10-23  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c: new 'endwin' command. dialog 창을 닫는 기능
+	* res/script/dialog.scr: 'echo 1'을 'echo 1 & quit'으로. 'endwin' 기능
+
+2000-08-29 22:12:32  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c (AddAssign): fix 무조건 새로 생성하던 것을 이전에
+	똑같은 var가 생성된 경우 그 var의 val을 바꾸도록 함.
+
+2000-08-25 11:10:17  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcMain.h (OptPrintf): C99 version of OptPrintf() added. not
+	tested, just stolen from the glib.h
+
+2000-08-24 13:16:56  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c (ScriptCreateItem): 'get' 기능 추가. set의 반대이며,
+	현재는 'get baudrate S?' 만 지원한다. script에서 현재의 baudrate를
+	저장후 다른 값으로 바꾸었다가 이전 baudrate로 복원하고자 할 때 사용
+	* src/pcModem.c (ModemSetSpeed): minor update
+
+2000-07-25 17:04:38  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.5.10
+
+	* src/pcTRx.c: fix XFree86 4.0.x에서 ascii file send후 button 이상해
+	지는 현상
+
+2000-07-12  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* res/script/com-login.scr: baudrate 관련 메뉴 수정
+	* src/pcMain.c (MenuResetTTY): 'Alt-U'에 의해 불리워지며, 화면을
+	지우고, ModemResetTTY() call.
+	* src/pcMain.h (ModemResetTTY): added prototype
+	* src/pcModem.c (ModemResetTTY): new. MenuResetTTY()에 의해 불리워짐
+
+	- 밑은 XFree86 4.0.x을 사용하면 발생하는 문제로 보이며, 어느 쪽
+	문제인지는 아직 밝히지 못했음. 밑의 코드가 XFree86 3.x에서 문제가
+	발생한다면 XFree86 version을 확인하는 기능을 추가해야 할 것임.
+
+	* src/pcTRx.c (RunSendAsciiThread): gtk function을 부르는 모든 코드
+	삭제. thread 안에서 gtk function을 부르는 경우 thread 종료 후 이상한
+	현상이 발생한다.
+
+2000-07-01 18:16:05  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* gtkcomm.spec.in: new. RPM spec file
+	* configure.in: generate spec file
+	* Makefile.am, doc/Makefile.am: doc install 관련 comment-out
+	* src/Makefile.am: chmod 관련 comment-out
+	* src/Makefile.in: removed from cvs
+
+2000-06-18  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.5.9
+
+	* src/pcTRx.c: cosmetic change
+
+2000-04-11  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* configure.in: thread lib을 사용하는 경우 CFLAGS에서 _REENTRANT,
+	_THREAD_SAFE 등의 define 사용
+
+2000-04-01  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- fix. segv fault when telnet logout. introduced by 2000-03-30 chg.
+
+	* src/pcTelnet.c (TelnetDone): remove logout script run
+	(TelnetTimeReport): run logout script here.
+
+2000-03-30  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- fix. connection 시도중에 cancel시 lotout script 실행되던 문제.
+
+	* src/pcMain.c (main): Login script를 ConnectFuncList에 등록않함.
+	Logout script를 DisconnectFuncList에 등록않함.
+	* src/pcScript.c (ScriptRunLoginScript,ScriptRunLogoutScript): removed.
+	* src/pcModem.c (ModemRunLoginScript,ModemRunLogoutScript): removed.
+	(ModemConnectionCheck): modem login/logout script를 여기에서 수행.
+	* src/pcTelnet.c (TelnetRunLoginScript,TelnetRunLogoutScript): removed.
+	(TelnetDone): telnet logout script를 여기에서 수행.
+	(TelnetConnectionCheck): telnet login script를 여기에서 수행.
+
+2000-03-29  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.5.7
+
+	* src/pcChat.c (ChatFlushCB): '/set title' added
+	(MenuChat): fix terminal size restore bug
+	* src/pcMain.c (SetWindowTitle): title에서 %p,%v,%n,%h 사용가능.
+	%p = package, %v = version, %n = name, %h = host
+
+2000-03-27  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/*.[ch]: change var. decl. stuff
+	* src/pcVar.c: removed.
+	* src/Makefile.am: 실행파일 group 및 mod 설정 (uucp group, 2111)
+	* src/pcConfig.c (OptTable): DoLock의 초기값을 TRUE로 바꿈
+	* src/pcModem.c (InitModem): 가장 먼저 ModemLock을 시도.
+	(ModemConnectByName): fix return value
+	* src/pcStatus.c (StatusShowMessage): print할 메시지가 '\n'을
+	포함하고 있는 경우 ' '으로 바꿈
+
+2000-03-23  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcMain.h: sync TRxSendFile() prototype
+	* src/pcTRx.c (TRxSendFile): added return value. 0=success.
+	* src/pcScript.c (ScriptRunNext): TRxSendFile() fail시 script 종료
+
+2000-03-12  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcSetting.h (MAX_SAVED_LINES): s/2048/65535/
+	* src/pcConfig.c (DoConfig): clean-up
+	* src/pcStatus.c (StatusShowTime): terminal이 focus를 가지고 있는
+	경우에만 시간 출력 (이 코드만으로 CPU load 6-8% 감소됨)
+
+2000-03-12  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.5.6
+
+	* src/pcAutoRes.c (AutoResponseCheckRun): script가 running중이라도 auto
+	response script 동작 수행
+
+2000-03-11  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcTerm.c (TermStateGround): fix Capture stuff
+
+2000-03-09  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* configure.in: A patch from CHOI Junho <cjh@wdb.co.kr> to support
+	FreeBSD.
+	* res/Makefile.am: ditto
+	* src/pcPTY.c: ditto
+
+2000-03-03  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.5.5
+
+	* src/pcModem.c (ModemHangup): TermReadInput remove. Term->fromTerm을
+	dummy terminal로 초기화. fix. Modem close후 telnet 접속시 죽는 문제
+
+2000-02-26  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c: clean-ups
+
+2000-02-17  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcTRx.c: 여러가지, 특히 ascii uploading 관련 clean-ups.
+	* src/pcSignal.c (ChildSignalHandler): fix. xmodem sendfile시에 'Stop
+	Transfer' 선택하면 죽는 문제.
+	* src/pcMain.c (CreateMainWindow): do not set window position.
+	window 위치는 사용자의 설정값에 맡기자.
+
+2000-02-16  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c: script run시 target에서의 오동작에 의해 script가
+	제대로 돌지 못해서 stop 시킨 경우, 그 후 script run이 제대로 않됨.
+	이 문제를 해결하려고 시도함.
+
+2000-02-02  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c (WaitForInputFilter,WaitForTimer): 마지막 script
+	item인 경우 ScriptFinish. fix. script 마지막 item이 waitfor 인 경우
+	script가 끝나지 않는 경우.
+
+	* src/pcModem.c (ModemWrite): fix. com port direct connect시에는
+	IdleGapBetween(Char|Line)을 사용. target에서 문자받는 속도가 느릴 경우
+	script에서 transmit하는 문자열을 잃어버릴 수 있음.
+	* res/gtkcommrc: comment out RX_InfoStr, TX_InfoStr
+	* res/script/hitel-login.scr: added [TR]X_InfoStr setting
+	* res/script/chol-login.scr: ditto
+	* res/script/monitor.scr: added 'IdleGapBetween...' setting.
+
+2000-01-20  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcCtrl.c (ControlLabelBaudControl): 115200으로 무조건 설정하는
+	대신 ModemGetSpeed() 함수 사용. 시작시 label이 잘못생성되는 현상 fix.
+	* src/pcModem.c (ModemGetSpeed): new. get current modem speed.
+	현재 속도를 얻을 수 없는 경우에는 115200을 return.
+
+2000-01-11  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.5.4
+
+	* src/pcMain.h: printf type 함수에 대해 __attribute__ 대신
+	G_GNUC_PRINTF() 사용.
+	* *.[ch]: copyright 관련 문장 추가.
+
+2000-01-06  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.5.3
+
+1999-12-22  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	* src/pcTerm.c (TermSelectEnd): fix another selection bug.
+
+1999-12-21  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.5.2
+
+	* src/pcTerm.c,src/pcUtil.c: fatal dialog의 경우 OK 대신 EXIT button.
+	* res/script/hitel-login.scr: ctlmenu를 이용하여 '바로가기' 버튼
+	예제를 추가.
+
+1999-12-13  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	* src/pcTerm.c (GetSelDirection): fix. selection
+
+1999-12-11  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	- bump version to 0.5.1
+
+	* src/pcConfig.c (ConfigVarChange): STR/PATH가 ""인 경우에는 target에
+	NULL을 대입.
+
+1999-12-10  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	* res/script/local-login.scr: enhanced
+	* src/pcISel.c (I_SelCheckURL): fix. "~-_"도 valid하게 봄.
+
+1999-12-09  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcModem.c: gau의 log 기능 추가. default는 동작하지 않으며,
+	LogFile config variable이 valid한 파일명을 가져야 됨.
+	* src/pcTelnet.c: ditto
+	* res/gtkcommrc: ditto
+	* src/pcConfig.c: ditto
+	* src/pcCtrl.c: ditto
+	* src/pcMain.h: ditto
+
+1999-12-06  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	- bump version to 0.5.0
+
+	* src/pcScript.c (ScriptCreateWindow): label 이름으로 종료버튼을
+	결정짓는 것은 잘못되었다. token으로 구별하도록 수정. 따라서, "QUIT"
+	이라는 label 대신 "종료" 등도 사용가능.
+
+1999-12-06  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* res/gtkrc: use background pixmap
+	* res/pixmap/bg.xpm: new background pixmap for gtkcomm
+	* src/pcTCP.c: minor updated (tarball에는 나중에 추가할 예정임.
+	예정대로 기능이 구현된다면...)
+
+1999-12-04  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	* src/pcScript.c (CreateScriptFileList): string width를 얻기 위해
+	ScriptBox->style->font 사용. 넓이를 결정할 위젯의 style을 사용할 것.
+	(IsSystemScript): file이 startup/login/logout script인지 검사.
+	(CreateScriptListFromPath): system script이면 script combo box에서
+	제외. system script를 잘못 선택하여 실행하는 경우 문제가 생길 소지가
+	많음.
+	(CreateScriptFileList): fix combo box가 열린 후에는 취소가 않됨. 즉,
+	마우스로 엉뚱한 데를 클릭해도 현재 아이템이 실행됨.
+
+1999-12-03  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcConfig.c: added MaxCaptureSize config variable.
+	* src/pcMain.h: ditto.
+	* src/pcCtrl.c: MaxCaptureSize에 도달하면 capture finish.
+	* src/pcSetting.h (DEFAULT_MAX_CAPTURE_SIZE): new.
+
+	* src/pcScript.c: 'capture on'에 'includebuf' token 추가. 이 token이
+	주어지면 현재 buffer의 내용도 capture file에 저장.
+	* src/pcCtrl.c (CaptureStart): includeBuf parameter 추가. 이 값이
+	TRUE면 capture file에 현재 버퍼 내용을 저장.
+
+	* src/pcStatus.c (StatusAddFrameWithLabel): new. status bar에 label을
+	가진 frame을 추가.
+	(StatusRemoveFrame): status bar에 추가된 frame을 제거.
+	* src/pcCtrl.c (CaptureStart): "LOG" label을 status bar에 삽입.
+	(CaptureFinish): status bar에서 "LOG" label 제거.
+
+1999-12-01  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* res/gtkcommrc: 'ScriptAnimFile' added. animation 그림을 바꿀 수 있음.
+	* src/pcConfig.c: ditto
+	* src/pcMain.h: ditto
+	* src/pcScript.c: ditto
+	* src/pcSetting.h (DEFAULT_SCRIPT_ANIM_FILE): 기본 animation file.
+
+1999-11-30  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	* src/pcISel.c (I_SelFindMatchPattern): fix. 가령 'http://'의 h나
+	t, / 등의 위치에서 click시 제대로 선택되지 않음. 즉, left 문자열보다
+	오른쪽을 click해야 선택되었었음.
+
+1999-11-27  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	- bump version to 0.4.5
+
+	* res/script/startup.scr: 도움말 출력
+	* res/script/dialog.scr: sync to new codes, 하이텔 예제 창 추가
+	* src/pcScript.c (ScriptCreateWindow): enhancement script window
+	feature.
+
+1999-11-26  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	* src/pcTerm.c (TermSetAttr): TermForce16Color가 TRUE이면 bold/blink
+	대신 color8 - color15 사용 (default = FALSE).
+	(TermKeyPress): fix. s/SChat->chat/SChat->chat->w/g
+	(TermClearLine,TermClear2EOL,TermClear2BOL): fix?. normal FG/BG 대신
+	current FG/BG 사용
+	(TermInsertSpaces, TermDeleteChars): 옮길때의 색 사용.
+
+	* src/pcISel.c (I_SelectEnd): network이 느릴 때, isel pattern에
+	보내졌는지를 알리기 위해 status bar에 표시.
+
+	- bump version to 0.4.4
+
+1999-11-25  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	* src/pcISel.c (I_SelFindMatchPattern): fix. URL selection.
+	* src/pcConfig.c, res/gtkcommrc: default color를 약간 조정.
+	* src/*.c: filename/path 저장에 사용하는 버퍼크기를 MAX_PATH로.
+	* src/pcSetting.h (MAX_PATH): new definition.
+	* configure.in: fix IMLIB 1.9가 깔려있는지 확인.
+
+1999-11-25  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	- bump version to 0.4.3
+
+	* src/pcISel.c (I_SelFindMatchPattern): fix. I_SelActStrBuf에
+	pattern을 저장하기 전에 check를 먼저 수행. I_SelActStrBuf[]의 내용이
+	엉뚱한 값으로 바뀔 수가 있었음 (check가 실패한 경우).
+
+1999-11-24  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c: fix. 잘못된 script에 대한 checking 기능 강화.
+	* src/*.[ch]: Script를 제외한 모든 GList를 GSList로 바꿈.
+
+1999-11-23  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	- bump version to 0.4.2
+
+	* src/pcScript.c: new command series 'win ...'. window를 생성하고,
+	button, entry등을 추가하고, button들에 script-string을 할당.
+	* src/pcChat.c (ChatFlushCB): '/set script' 추가. string script.
+
+1999-11-22  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcISel.c: Pre/Post 함수 search 기능 추가. PreSearchTable에
+	baduk search 추가.
+
+1999-11-20  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	* configure.in,acconfig.h: __FUNCTION__, __FILE__, __LINE__
+	definition에 대한 check (from dosemu).
+	* src/pcUtil.c (OptPrintf): new. gcc2가 아닌 경우에 대한 고려.
+	* src/*.h: INIT()을 하나의 인자만 사용.
+
+	* configure.in: enable debug시 '-Wstrict-prototypes -Wparentheses'
+	compile 옵션 추가.
+	* src/[pcChat.c, pcConfig.c, pcMain.c, pcScript.c]: atol()대신 에러
+	확인이 가능한 sscanf() 사용.
+	* src/pcScript.c (ScriptRun): file이 실행가능한 지 확인
+	* src/pcConfig.c (ConfigChangeApply): check underflow of TermCol and
+	TermRow.
+	(AddBookmarkMenus): 각 파라미터의 범위 확인 및 경고 알림말.
+
+1999-11-20  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	- bump version to 0.4.1
+
+	* configure.in: drop gau script support. 100% 호환성을 유지하지 못하고
+	있기 때문에 의미가 없다.
+	* doc/script.txt: sync to new script.
+	* src/pcTRx.c (TRxInputHandler): sscanf() return value check 및 경고
+	알림말 출력.
+	* src/pcScript.c (ScriptRun): new. 'run' script command. gau의
+	run command와 같다. 외부 실행파일을 이용하여 internal script 명령으로
+	할 수 없는 다양한 작업을 수행하기 위한 준비.
+	(ScriptBookmark): 'sfile' token 추가.
+	(ScriptButton): ditto
+	* src/pcAutoRes.c (AutoResponseAdd): 'sfile' token 추가.
+	* src/pcCtrl.c (ControlBarAddMenu): ditto
+
+1999-11-19  Sung-Hyun Nam  <namsh@lgic.co.kr>
+
+	* src/pcMain.c (FatalExit): do not return. 어차피 종료할 것이므로
+	return해서 계속 오동작할 이유가 없지요!
+	* src/pcScript.c: 'else' 추가. 이제 if/else/fi가 가능하다.
+	(ScriptMakeListFromString): fix. string parsing bug. 문장의 마지막이
+	'나 "로 끝나는 경우 그 뒤의 NUL을 건너뛰고 계속 parsing함.
+
+1999-11-18  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/Makefile.am: VIM 사용자를 위해 .vimrc 추가.
+	* src/.vimrc: VIM 사용자를 위한 여러가지 comment.
+
+1999-11-18  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.4.0
+
+	* res/bookmarks: logout-script field 추가.
+	* res/script/chol-logout.scr: new.
+	* src/pcConfig.c (ConfigChangeApply): config variable들이 바뀌었을 때,
+	바뀐 값이 자동으로 적용되지 않는 것들에 대한 고려.
+	* src/pcMain.c (main): Disconnected func list에
+	ScriptRunLogoutScript() 추가.
+	* src/pcModem.c (ModemRunLogoutScript): new.
+	* src/pcTelnet.c (TelnetRunLogoutScript): new.
+	* src/pcScript.c (ScriptRunLogoutScript): new. logout script 실행
+	* src/pcSetting.h: fix default telnet command
+	* src/pcTerm.h: TermType에서 config var를 그대로 복사해서 사용하는
+	member들 삭제.
+	* src/pcTerm.c: sync to new TermType.
+
+1999-11-18  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcUtil.c (SoundPlay): sound support.
+	* src/pcConfig.c: sound file 설정
+	* src/pcMain.h: sound file 선언 및 SoundPlay prototype
+	* src/[pcModem.c,pcTelnet.c,pcTRx.c,pcMain.c,pcCtrl.c,pcScript.c]:
+	call SoundPlay().
+
+1999-11-17  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c: new command added. 'if', 'fi'. 현재는 이전 script
+	명령의 결과를 확인하는 기능만 있음.
+	* src/pcTerm.c, src/pcConfig.c: 16color 지원.
+
+	* src/pcChat.c (ChatFlushCB): '/set config'가 입력되면 config
+	variable들을 바꿈. 원래 의도는 chatting중에 prefix, suffix를 마음대로
+	바꿀 수 있도록 하기 위해서임.
+
+	* src/pcChat.c: 가우와는 비교도 않되는 간단한 chatting 기능 추가
+	음! key-binding은 기능이 확장되었다고 믿어 의심치 않음.
+	* src/pcTerm.c: chatting창으로 grab 옮기는 code
+	* src/pcMain.c: chat menu 추가. 여러 menu entry에 alt와의 조합
+	단축글쇠 설정.
+
+	* src/pcMain.c: fix gtk_entry_get_text return value check
+	* src/pcStatus.c: ditto
+	* src/pcTRx.c: ditto
+	* src/pcUtil.c: ditto
+
+1999-11-16  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.3.5
+
+	* src/pcTerm.c (AnsiTermScrollUp): fix typo
+	* src/pcMain.c: fix control/toolbar show/hide, menu active/inactive
+	(ControlBarFix): menu 추가에 의해 control-bar가 자동으로 보여진 경우
+	flag가 hide이면 다시 감춘다.
+	* src/pcScript.c: control bar에 button을 추가한 경우에
+	ControlBarFix() call.
+
+	* src/pcScript.c: add 'label [add/gadd] [baudrate/emulate/protocol]'
+	script command. add시 ControlLabel[Baud/Emul/Prot]Control()을 call.
+	add된 경우에는 disconnect시 자동으로 remove가 된다. gadd는 않지워짐.
+	* src/pcCtrl.c (CreateControlLabel): removed.
+	(ControlLabel[Baud/Emul/Prot]Control): added.
+	* src/pcMain.c: remove CreateControlLabel() call.
+
+	* src/pcScript.c (ScriptRunNext): fix. atol() does not touch errno.
+	* src/pcConfig.c (ConfigVarChange): ditto.
+
+	* src/pcModem.c: add 'modem dialing' function. 현재는 한번에 하나.
+	* src/pcUtil.c (PC_Sleep): sleep milisec function.
+	* src/pcMain.h: add PC_Sleep() prototype
+
+1999-11-15  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.3.4
+
+	* src/pcScript.c: Script run시 animation 기능 (현재는 펭귄).
+	* src/pcMain.c: toolbar 생성시 script는 animation으로
+
+1999-11-15  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcUtil.c (GetRealFilename): use ExpandPath() before stat.
+	* src/pcMain.c (CreateNewPixmap): Use GetRealFilename() and PKGDATADIR
+	to get pixmap file.
+	* src/pcConfig.c (ResourceCheckInstall): remove pixmap file check
+
+1999-11-14  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcAutoRes.c: use GetRealFilename()
+	* src/pcConfig.c: ditto
+	* src/pcScript.c: ditto
+	* src/pcTRx.c: ditto
+	* src/pcMain.h: added GetRealFilename() prototype.
+	* src/pcUtil.c (GetRealFilename): file 혹은 path/file이 regular
+	file이고 access 가능한지를 확인하여 access 가능할 file명을 넘기거나
+	NULL을 return.
+
+1999-11-14  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcMain.c (MenuOpen): hseparator added
+	* src/pcUtil.c (GeneralInputQuery): ditto
+	* src/pcTRx.c (TRxFileQuery): hseparator에 5 spacing.
+
+1999-11-14  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.3.3
+
+	* TODO: remove ONE item (여러 input entry에서의 한글 입력 불가 항목)
+		4, 3번 항목 모두 사라짐. 음하하!
+	* src/pcMain.c: fix. open dialog에서의 한글 입력
+	* src/pcTRx.c: ditto
+	* src/pcTerm.c: ditto. XIM 초기화 routine을 pcUtil.c로.
+	* src/pcUtil.c: ditto
+
+1999-11-14  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.3.2
+
+	* TODO: remove ONE item (stop이 잘 않되는 문제).
+	* src/pcTRx.c (TRxStop): RemoveChildSignalHandler()를 call.
+	waitpid() option을 (WNOHANG|WUNTRACED)로.
+	* src/pcMain.h: SignalType, RemoveChildSignalHandler() prototype.
+	* src/pcSignal.c (RemoveChildSignalHandler): new.
+	(AddChildSignalHandler): return type을 void에서 SignalType *로.
+
+1999-11-14  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.3.1
+
+1999-11-13  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcTRx.c: transfer시 ProgressBarControl을 이용하여 progress
+	상태를 표시. (X/Y/Zmodem의 경우 RX_InfoStr, TX_InfoStr이 NULL이 아닌
+	경우에 동작하며 ascii send는 항상 동작)
+	* src/pcStatus.c (ProgressBarControl,ProgressBarUpdate): progress-bar
+	create/update 기능.
+	* TODO: add item.
+	* res/gtkcommrc: add new config var (RX_InfoStr, TX_InfoStr)
+	* src/pcConfig.c: ditto
+	* src/pcMain.h: ditto.
+	* src/pcAutoRes.c (FindSubString): pcUtil.c로 옮김.
+	* src/pcUtil.c (FindSubString): pcAutoRes.c에서 가져오고, return
+	type을 char *로.
+	* src/pcMain.c (CreateToolbar,TB_Exit): 'Exit' button은 Exit만.
+	(CreateMainWindow,MenuStopTRx): transfer stop menu를 Tools에 추가.
+
+1999-11-12  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcTelnet.c: fix. network 상태가 좋지 않아서 연결이 되지 않고
+	있는 경우 여러가지 상태가 꼬이는 문제. 가령 exit시 telnet process가
+	계속 남아있게 된다.
+
+	* src/*.[ch]: trx_protocol/emul_mode/baudrate 관련 code 수정. menu에서
+	없애고, 대신 control-bar에 현재 상태를 나타내는 기능을 추가하고
+	사용자가 기능을 사용할 것인지를 rc에서 설정할 수 있도록 함.
+
+	* doc/script.txt: ctlmenu에 대한 도움말
+	* res/script/startup.scr: s/ctlmenu add/ctlmenu gadd/g
+	* src/pcScript.c (ScriptControlMenu): 'ctlmenu'의 add를 gadd로 바꿈.
+	현재는 disconnect되어도 유지되기 때문이다.
+	* src/pcTelnet.c (TelnetTimeReport): connect time display fix
+	* src/pcTRx.c (RunSendAscii): check the pthread_create() return value.
+
+1999-11-11  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.3.0
+
+	* src/pcScript.c: add new script command. 'ctlmenu' and 'set protocol'
+	ctlmenu command를 만나면 control-bar에 menu를 만듦.
+	* src/pcCtrl.c: control-bar에 radio menu를 추가하던 code를 삭제하고,
+	general한 menu 추가 함수 만듦. 음하하하!
+	* src/pcConfig.c: control-bar에 quick item 만들것인지의 config var
+	삭제.
+	* src/pcMain.h: ditto.
+	* src/pcModem.c: removed control-bar quick menu control code
+	* src/pcTRx.c: ditto
+	* src/pcTerm.c: ditto
+	* res/gtkcommrc: quick menu 관련 config var removed.
+	* res/script/startup.scr: added ctlmenu sample.
+
+1999-11-11  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcAutoRes.c (AutoResponseCheckRun): AutoResCheckEnabled가
+	false면 그냥 리턴.
+	* src/pcMain.c (MenuOptionControl): toggle menu item들 관리를 제대로
+	함. auto-response enable/disable 기능 추가.
+	(MenuOptions): auto-response enable/disable 기능 추가.
+	* src/pcMain.h: new global var 'AutoResCheckEnabled' added.
+
+1999-11-11  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* src/pcScript.c (ScriptAutoRes): sync to new auto-response code
+	(ScriptRemoveBookmark,ScriptRunButton): added g_list_remove call.
+	* src/pcMain.h: auto response 관련 함수 prototype removed/modified
+	* src/pcSetting.h (PC_AUTORES_FILE): definition removed.
+	* src/pcAutoRes.c: script에 의해서만 add되도록 구조를 바꿈. 더 이상
+	global resource file을 사용하지 않음.
+	(AutoResponseCheckRun): pattern이 찾아져서 action을 수행한 경우 break
+
+	* configure.in: generate doc/Makefile
+	* Makefile.am: add doc to SUBDIRS
+	* doc/Makefile.am: ..
+	* doc/HISTORY: version 간의 changelog summary
+	* doc/script.txt: new. internal script language 사용 설명서
+
+	* src/pcScript.c: 'set config' token 추가. ConfigVarChange() routine을
+	이용하여 gtkcommrc file에서 설정가능한 모든 변수들을 바꿀 수 있다.
+	bookmark 및 button 명령에 gadd 기능 추가. gadd로 add된 item은
+	disconnect되어도 지워지지 않는다.
+	* src/pcMain.h (ConfigVarChange): added prototyes
+	* src/pcConfig.c (ConfigVarChange): DoConfig()에서 분리.
+	* src/pcTRx.c (ZmodemInputFilter): AutoRunRZ, AutoRunSZ을
+	AutoRunZmodem 하나로 통일하고 AutoRunZmodem이 false인 경우 그냥
+	return.
+	* res/script/startup.scr: added sample startup script.
+	* src/pcMain.c (main): call startup script.
+	* src/pcSetting.h (DEFAULT_STARTUP_SCRIPT): startup script filename
+	* src/pcStatus.c (CreateStatusBar): status label 바꿈.
+	'Welcome to package-version'.
+	* src/pcTelnet.c (TCP_Write): add auto-response enable code.
+	* src/pcTerm.c (DummyFromTerm): remove auto-response enable code.
+	* src/pcScript.c (ScriptGenListFromFile): script list에서 확장자를
+	없앴으므로 여기에서는 확장자가 없는 것 같은 경우 기본 확장자들을
+	붙여서 파일을 찾는다.
+	(CreateScriptFileList,CreateScriptListFromPath): pcCtrl.c에서 옮겨옴.
+	(ScriptRunNext): SCR_MESSAGE 처리. script에 'message' 라는 token 추가.
+	(ScriptRunNext): 너무 긴 routine들을 함수로 분리 ScriptAutoRes,
+	ScritBookmark, ScriptButton.
+	* src/pcCtrl.c (CreateScriptListFromPath): script 목록 생성시 파일
+	확장자를 제거. 음! 훨씬 보기 좋군..
+	(CreateScriptFileList,CreateScriptListFromPath): pcScript.c로 옮김.
+
+1999-11-10  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* TODO: remove ONE item. combo box에서 file 선택시 자동 실행 항목.
+	* src/pcMain.c (CreateToolbar): TB_Script()를 CreateScriptFileList()의
+	runCB로 넘김.
+	* src/pcCtrl.c (CreateScriptFileList): parameter로 runCB를 받아
+	combo box의 popwin의 button_press_event에 연결.
+
+	* src/pcMain.c (MenuOptions): parameter로 menu name을 받아서 table로
+	부터 name을 search하여 index를 얻어옴.
+	(CreateMainWindow): option menu creation시 name을 인자로 넘김.
+	* src/pcTerm.c (AnsiTermShowCursor): fix. icAttr의 background를
+	colorTable과만 비교.
+
+1999-11-10  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- cvs tag: gtkcomm-0_2_3
+	- bump version to 0.2.3
+
+	* src/pcMain.c (TB_Script): ScriptRunFromFile()을 call하기 전에
+	focus를 terminal으로 돌려놓음 (remove ONE todo entry)
+	* src/pcTelnet.c (TelnetConnectByHostname): do not touch EnterConvert.
+
+	* src/pcISel.c (I_SelectEnd): I_SelFound가 false인 경우 mouse가
+	움직이지 않았을 때만 \r을 송신
+	(I_SelFindMatchPattern): fix various match string find problem.
+	* src/pcScript.c (ScriptRunNext): fix pause, waitfor
+	* src/pcUtil.c (ParseLine): fix possible memory corruption.
+	(FindWhiteSpace): '*s == 0' 인 경우 NULL return. NUL은 공백이 아니라고
+	생각.
+	(ParseLine): FindWhiteSpace()의 return 값을 나중에 검사. NUL인 경우
+	NULL이 return되기 때문.
+
+1999-11-10  Sung-Hyun Nam  <namsh@kldp.org>
+
+	* res/gtkcommrc: sync to new codes.
+	* res/script/chol-login.scr: ditto
+	* res/script/com-login.scr: ditto
+	* res/script/hitel-login.scr: ditto
+	* src/pcScript.c (ScriptRunFromFile,ScriptRunFromString): script가
+	running중이면 cancel 대신 status message 출력.
+	(ScriptRunNext,ScriptRunBookmark,ScriptRunButton): bookmark 및
+	button에서 script 사용가능하도록 수정.
+	* src/pcAutoRes.c (AutoResponseAdd): pattern 문자열 assign시에
+	ConvertCtrlChar() 사용.
+	* src/pcConfig.c: use GetLines() to allow multiple lines in rc file.
+	* src/pcTerm.c (AnsiTermKeyPress): file transfer 중이면 입력 key 무시.
+
+1999-11-10  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.2.2
+
+	- cvs tag: gtkcomm-0_2_1
+
+	* *:기타 자잘자잘한 많은 수정들.
+	* src/pcMain.c,src/pcCtrl.c: cancel button과 관계된 typo fixed.
+	* src/pcCtrl.c: 3개의 quick control button을 개별적으로 on/off
+	가능하게 수정.
+	* src/pcTRx.c: ASCII file upload 기능 완성 (pthread library 이용).
+	* res/bookmarks,res/script/com-login.scr: COM port direct connect에
+	대한 sample login script.
+	* res/gtkcommrc: 모든 설정을 comment처리하고 comment된 값들과 default
+	값들을 맞춤.
+	* configure.in: util lib이 없는 경우 gnomesupport lib을 사용.
+	pthread library check.
+
+1999-11-09  Sung-Hyun Nam  <namsh@kldp.org>
+
+	- bump version to 0.2
+	- 원래 예상했던 기능들을 모두 구현.
+
