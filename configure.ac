@@ -1,7 +1,8 @@
 dnl Process this file with autoconf to produce a configure script
 
-AC_INIT(src/pcSetting.h)
-AM_INIT_AUTOMAKE(gtkcomm, 0.8.1)
+AC_INIT([gtkcomm], [0.8.1])
+AC_CONFIG_SRCDIR([src/pcSetting.h])
+AM_INIT_AUTOMAKE
 AM_CONFIG_HEADER(config.h)
 AM_MAINTAINER_MODE
 
@@ -136,7 +137,7 @@ AC_SUBST(UTIL_LIBS)
 
 ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 
-PKGDATADIR="${datadir}/${PACKAGE}"
+PKGDATADIR="${datarootdir}/${PACKAGE}"
 BISON_DEFINE_FILE(PKGDATADIR, PKGDATADIR)
 
 AC_SUBST(PACKAGE)

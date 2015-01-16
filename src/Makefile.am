@@ -3,7 +3,7 @@
 #
 
 localedir = $(datadir)/locale
-INCLUDES = \
+AM_CPPFLAGS = \
 	$(GTK_CFLAGS) $(GTHREAD_CFLAGS)			\
 	-DLOCALE_DIR=\"$(localedir)\"			\
 	-DG_DISABLE_DEPRECATED				\
@@ -12,7 +12,7 @@ INCLUDES = \
 #	-DGTK_DISABLE_DEPRECATED
 
 
-bin_PROGRAMS = gtkcomm gtkcomm_lock
+bin_PROGRAMS = gtkcomm
 gtkcomm_LDADD = $(GTK_LIBS) $(GTHREAD_LIBS) $(GDK_IMLIB_LIBS) \
 		$(UTIL_LIBS) $(GLIB_LIBS) -lX11
 
@@ -43,16 +43,9 @@ gtkcomm_SOURCES = \
 	mbyte.c		\
 	mbyte.h
 
-gtkcomm_lock_LDADD =
-gtkcomm_lock_SOURCES = gtkcomm_lock.c
-
 EXTRA_DIST = test/Makefile test/test.c test/gtkscript.c \
 	     pixmaps/README pixmaps/red.xpm pixmaps/green.xpm \
 	     pixmaps/yellow.xpm
-
-install-exec-hook:
-	-chgrp lock $(DESTDIR)$(bindir)/gtkcomm_lock
-	-chmod 2755 $(DESTDIR)$(bindir)/gtkcomm_lock
 
 # For vi[m] users
 ctags:
