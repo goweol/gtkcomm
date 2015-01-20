@@ -124,7 +124,7 @@ CreateStatusBar(GtkWidget *w)
     gtk_misc_set_alignment(GTK_MISC(StatusLabel), 0.0, 0.5);
     gtk_widget_show(StatusLabel);
 
-    /* ½Ã°£ ·¹ÀÌºí */
+    /* ì‹œê°„ ë ˆì´ë¸” */
     frame = gtk_frame_new(NULL);
     gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_ETCHED_OUT);
     gtk_container_set_border_width(GTK_CONTAINER(frame), 0);
@@ -140,6 +140,7 @@ CreateStatusBar(GtkWidget *w)
 void
 StatusShowMessage(const gchar *format, ...)
 {
+    int i, j, len;
     va_list args;
     gchar *buf, *p;
 
@@ -147,9 +148,22 @@ StatusShowMessage(const gchar *format, ...)
     buf = g_strdup_vprintf(format, args);
     va_end(args);
 
-    /* FIXME: status areaÀÇ ±æÀÌ¸¦ ¾ò¾î¿Í¼­ Ã³¸® */
-    if (strlen(buf) > 60)
+    /* FIXME: status areaì˜ ê¸¸ì´ë¥¼ ì–»ì–´ì™€ì„œ ì²˜ë¦¬ */
+    if ((len = strlen(buf)) > 60)
+    {
 	buf[60] = '\0';
+	/* avoid multibyte corruption */
+	for (i = 59; i > 0; --i)
+	{
+	    if (isspace(buf[i]))
+	    {
+		for (j = 0; i < len && j < 3; ++j)
+		    buf[i++] = '.';
+		buf[i] = '\0';
+		break;
+	    }
+	}
+    }
     /* change '\n' to space */
     for (p = buf; (p = strchr(p, '\n')) != NULL; p++)
 	*p = ' ';
