@@ -189,11 +189,11 @@ ControlLabelProtCtrl(gboolean create)
 
 #define LED_ON_INTERVAL 100
 
-static GtkWidget *ctrlLineSts = NULL;
+static GtkWidget *ctrlLineSts;
 static GtkWidget *ctrlRxBox, *ctrlTxBox;
 static GtkWidget *ctrlRxOffWid, *ctrlTxOffWid, *ctrlTxWid, *ctrlRxWid;
 static int ctrlRxTid, ctrlTxTid;
-static GMutex *ctrlMutex = NULL;
+static GMutex *ctrlMutex;
 
 /* ControlLabelLineStsCtrl() {{{1 */
 int
@@ -203,7 +203,12 @@ ControlLabelLineStsCtrl(gboolean create)
     GdkPixbuf *pixYellow, *pixRed, *pixGreen;
 
     if (ctrlMutex == NULL)
-	ctrlMutex = g_mutex_new();
+    {
+	static GMutex mtx;
+
+	g_mutex_init(&mtx);
+	ctrlMutex = &mtx;
+    }
 
     if (ctrlLineSts)
     {
@@ -535,6 +540,18 @@ static guint32 CurrCaptureSize = 0;
 static GtkWidget *CaptureFrame = NULL;
 static gchar *oldCapPath = NULL;
 
+/* capture_data_write() {{{1 */
+static int
+capture_data_write(const char *s, int len)
+{
+    int r;
+
+    if ((r = write(CaptureFD, s, len)) != len)
+	g_warning("Cannot save capture data (%d)\n", len);
+
+    return r;
+}
+
 /* CaptureInputFilter() {{{1 */
 int
 CaptureInputFilter(const char *s, int len)
@@ -563,14 +580,14 @@ CaptureInputFilter(const char *s, int len)
 	    {
 		if (s[i] != '\r')
 		{
-		    write(CaptureFD, s + i, 1);
+		    capture_data_write(s + i, 1);
 		    ++CurrCaptureSize;
 		}
 	    }
 	}
 	else
 	{
-	    write(CaptureFD, s, len);
+	    capture_data_write(s, len);
 	    CurrCaptureSize += len;
 	}
 	if (CurrCaptureSize >= MaxCaptureSize)
@@ -712,8 +729,8 @@ CaptureStart(const char *filename, gboolean includeCurrBuf)
 	    {
 		int len = strlen((char*) Term->buf + i * Term->col);
 		if (len)
-		    write(CaptureFD, Term->buf + i * Term->col, len);
-		write(CaptureFD, "\n", 1);
+		    capture_data_write(Term->buf + i * Term->col, len);
+		capture_data_write("\n", 1);
 		CurrCaptureSize += len + 1;
 	    }
 	}

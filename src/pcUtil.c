@@ -42,6 +42,25 @@ char *SoundBeepFile;
 static GtkWidget *GeneralInputWin;
 static GtkWidget *GeneralInputEntry;
 
+/* pc_system() {{{1 */
+int
+pc_system(const char *fmt, ...)
+{
+    int r;
+    va_list args;
+    gchar *buf;
+
+    va_start(args, fmt);
+    buf = g_strdup_vprintf(fmt, args);
+    va_end(args);
+
+    if ((r = system(buf)) != 0)
+	g_warning("external cmd '%s' run error (%d)\n", buf, r);
+
+    g_free(buf);
+    return r;
+}
+
 /* ExpandPath() {{{1 */
 char *
 ExpandPath(const char *str)

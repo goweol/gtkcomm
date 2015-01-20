@@ -242,10 +242,17 @@ RunRZ(void)
     if (RX_InfoStr)
 	ProgressBarControl(TRUE);	/* start progress-bar */
 
-    pipe(TRxPipeFD);
+    if (pipe(TRxPipeFD) != 0)
+    {
+	g_warning("pipe() failed");
+	return -1;
+    }
+
     if ((TRxPid = fork()) < 0)
     {
 	g_warning("fork() failed");
+	close(TRxPipeFD[0]);
+	close(TRxPipeFD[1]);
 	return -1;
     }
 
@@ -273,13 +280,15 @@ RunRZ(void)
     }
 
     /* I'm child */
-    chdir(DownloadPath);
-    dup2(ReadFD, 0);
-    dup2(ReadFD, 1);
-    close(ReadFD);
-    close(TRxPipeFD[0]);
-    dup2(TRxPipeFD[1], 2);
-    execlp("sh", "sh", "-c", RZ_Command, NULL);
+    if (chdir(DownloadPath) == 0)
+    {
+	dup2(ReadFD, 0);
+	dup2(ReadFD, 1);
+	close(ReadFD);
+	close(TRxPipeFD[0]);
+	dup2(TRxPipeFD[1], 2);
+	execlp("sh", "sh", "-c", RZ_Command, NULL);
+    }
 
     /* should never reach */
     StatusShowMessage(_("fail to run '%s'"), RZ_Command);
@@ -375,7 +384,7 @@ trxDelay(unsigned long l)
 static int
 sendAsciiFile(FILE *fp)
 {
-    int ci;
+    int ci, r = 1;
     char c;
     static unsigned long sent = 0;
 
@@ -397,7 +406,9 @@ sendAsciiFile(FILE *fp)
     if (c == '\n' || c == '\r')
     {
 	if (TRxProtocol == TRX_PROT_RAW_ASCII)
-	    write(ReadFD, &c, 1);
+	{
+	    r = write(ReadFD, &c, 1);
+	}
 	else
 	{
 	    if (EnterConvert == ENTER_CR)
@@ -407,10 +418,10 @@ sendAsciiFile(FILE *fp)
 	    else if (EnterConvert == ENTER_CRLF)
 	    {
 		c = '\r';
-		write(ReadFD, &c, 1);
+		r = write(ReadFD, &c, 1);
 		c = '\n';
 	    }
-	    write(ReadFD, &c, 1);
+	    r = write(ReadFD, &c, 1);
 	}
 	if (IdleGapBetweenLine)
 	    /* usleep (or select/nanosleep) 사용시 속도가 너무 느리다. */
@@ -418,10 +429,13 @@ sendAsciiFile(FILE *fp)
     }
     else
     {
-	write(ReadFD, &c, 1);
+	r = write(ReadFD, &c, 1);
 	if (IdleGapBetweenChar)
 	    trxDelay(IdleGapBetweenChar);
     }
+
+    if (r != 1)
+	g_warning("ascii file send error\n");
 
     ControlLabelLineStsToggle('t');
     return TRUE;
@@ -470,10 +484,17 @@ RunSZ(const char *cmd, const char *filename)
     buf[0] = '\n';
     Term->localWrite(Term, (guchar*) buf, 1);
 
-    pipe(TRxPipeFD);
+    if (pipe(TRxPipeFD) != 0)
+    {
+	g_warning("pipe() failed");
+	return -1;
+    }
+
     if ((TRxPid = fork()) < 0)
     {
 	g_warning("fork() failed");
+	close(TRxPipeFD[0]);
+	close(TRxPipeFD[1]);
 	return -1;
     }
 

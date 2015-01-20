@@ -409,7 +409,11 @@ ModemWrite(const guchar *s, int len)
 
 	for (i = 0; i < new_len; i++, p++)
 	{
-	    write(ReadFD, p, 1);
+	    if (write(ReadFD, p, 1) != 1)
+	    {
+		new_len = i;
+		break;
+	    }
 	    if (IdleGapBetweenLine && (*p == '\n' || *p == '\r'))
 		g_usleep(IdleGapBetweenLine);
 	    if (IdleGapBetweenChar)

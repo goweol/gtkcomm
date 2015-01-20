@@ -16,6 +16,7 @@
  */
 #include "config.h"
 #include <signal.h> /* SIGSEGV */
+
 #include "pcMain.h"
 #include "pcTerm.h" /* TermType */
 #include "pcChat.h"
@@ -410,7 +411,6 @@ MenuRunScript(void)
 static void
 MenuRunEditor(const char *file)
 {
-    char buf[MAX_PATH + 10];
     char *xeditor;
 
     if (file && *file)
@@ -418,8 +418,7 @@ MenuRunEditor(const char *file)
 	xeditor = getenv("XEDITOR");
 	if (xeditor == NULL || *xeditor == '\0')
 	    xeditor = "gvim";
-	g_snprintf(buf, sizeof(buf), "%s %s", xeditor, file);
-	system(buf);
+	pc_system("%s %s", xeditor, file);
     }
 }
 

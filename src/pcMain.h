@@ -324,6 +324,7 @@ extern void RemoveChildSignalHandler(SignalType *handler);
 extern void ChildSignalHandlerExit(void);
 
 /* utility {{{1 */
+int pc_system(const char *fmt, ...);
 extern gboolean IsFirstMB(const char *buf, int x);
 extern gboolean IsSecondMB(const char *buf, int x);
 extern char *ExpandPath(const char *str);

@@ -157,7 +157,7 @@ ConfigChangeApply(char *target)
 {
     if (target == (char *) &ControlBarShow)
 	ControlBarFix();
-    else if (target == (char *) &ToolBarType || target == (char *) ToolBarShow)
+    else if (target == (char *) &ToolBarType || target == (char *) &ToolBarShow)
 	StatusShowMessage(_("Use menu instead!"));
     else if (Term)
     {
@@ -182,8 +182,8 @@ ConfigChangeApply(char *target)
 		MouseRightButtonNum = 3;
 	    }
 	}
-	else if (target == (char *) ModemMaxHistory
-		 || target == (char *) ModemHistoryBufSize)
+	else if (target == (char *) &ModemMaxHistory
+		 || target == (char *) &ModemHistoryBufSize)
 	    ModemHistoryNew();
     }
 }
@@ -362,7 +362,6 @@ ResourceCheckInstall(void)
 {
     char *fname, *rcDir, *rc;
     struct stat st;
-    char buf[MAX_PATH];
 
     fname = ExpandPath(PC_RC_BASE);
     rcDir = g_strdup(fname);
@@ -378,10 +377,7 @@ ResourceCheckInstall(void)
 		  rcDir, PKGDATADIR);
 	/* PC_RC_BASE directory를 만들고, pkgdatadir의 모든 것을 복사해온다 */
 	if (mkdir(rcDir, 0755) == 0)
-	{
-	    g_snprintf(buf, sizeof(buf), "cp -R %s/* %s", PKGDATADIR, rcDir);
-	    system(buf);
-	}
+	    pc_system("cp -R %s/* %s", PKGDATADIR, rcDir);
 	else
 	    g_warning(_("Unable to create '%s'"), rcDir);
     }
