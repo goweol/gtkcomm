@@ -523,7 +523,7 @@ ScriptWaitFor(ScriptType *script, float seconds)
 
     StatusShowMessage(_("Waiting '%s'..."), WaitForString);
 
-    if (seconds >= 0.1)
+    if ((long) (seconds * 10.0f) >= 1L)
 	WaitForTimeoutTag = gtk_timeout_add((guint32) (seconds * 1000UL),
 					    WaitForTimer, NULL);
 }
