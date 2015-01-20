@@ -882,7 +882,7 @@ ModemOpenHistoryWin(void)
     GtkTreeIter iter;
     GtkTreeViewColumn *column;
     GtkCellRenderer *renderer;
-    uint i, last;
+    uint i, last, win_width = 400;
 
     if (modemHistWin == NULL)
     {
@@ -898,7 +898,9 @@ ModemOpenHistoryWin(void)
 
 	swin = gtk_scrolled_window_new(NULL, NULL);
 	gtk_container_set_border_width(GTK_CONTAINER(swin), 5);
-	gtk_widget_set_size_request(swin, -1, 200);
+	if (Term && Term->fontWidth)
+	    win_width = Term->fontWidth * 60;
+	gtk_widget_set_size_request(swin, win_width, 200);
 	gtk_box_pack_start(GTK_BOX(vbox), swin, TRUE, TRUE, 0);
 	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(swin),
 				       GTK_POLICY_AUTOMATIC,
