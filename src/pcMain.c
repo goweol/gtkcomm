@@ -64,6 +64,7 @@ static GtkWidget *HandleBox = NULL;
 static GtkWidget *MenuOpenWin = NULL;
 
 static char *MyFullName = NULL;
+static char *clipboard_text;
 
 /* caughtSignal() {{{1 */
 static RETSIGTYPE
@@ -328,6 +329,49 @@ static void
 MenuQuit(void)
 {
     DoExit(0);
+}
+
+/* clipboard_owner_change() {{{1 */
+static void
+clipboard_owner_change(GtkClipboard *clipboard, GdkEvent *event,
+		    gpointer data)
+{
+    char *text;
+
+    // Avoid 'unused arg' warnings.
+    (void)event;
+    (void)data;
+
+    // Get the selected text from the clipboard; note that we could
+    // get back NULL if the clipboard is empty or does not contain
+    // text.
+    if ((text = gtk_clipboard_wait_for_text(clipboard)) != NULL)
+    {
+	if (clipboard_text)
+	    g_free(clipboard_text);
+	clipboard_text = g_strdup(text);
+    }
+}
+
+/* MenuEditCopy() {{{1 */
+static void
+MenuEditCopy(gpointer cb_data, guint cb_action, GtkWidget *w)
+{
+    if (clipboard_text)
+    {
+	GtkClipboard *clipboard = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);
+
+	gtk_clipboard_set_text(clipboard, clipboard_text,
+			       strlen(clipboard_text));
+    }
+}
+
+/* MenuEditPaste() {{{1 */
+static void
+MenuEditPaste(gpointer cb_data, guint cb_action, GtkWidget *w)
+{
+    if (gtk_widget_has_focus(GTK_WIDGET(Term)) && clipboard_text)
+	TERM(Term)->remoteWrite(clipboard_text, strlen(clipboard_text));
 }
 
 /* MenuResetTTY() {{{1 */
@@ -800,6 +844,13 @@ CreateMainWindow(void)
 	{N_("/_File/_Close"), NULL, MenuClose, 0, "<StockItem>", GTK_STOCK_CLOSE},
 	{("/_File/---"), NULL, 0, 0, "<Separator>", NULL},
 	{N_("/_File/_Exit"), "<alt>x", MenuQuit, 0, "<StockItem>", GTK_STOCK_QUIT},
+	{N_("/_Edit"), NULL, 0, 0, "<Branch>", NULL},
+	{N_("/_Edit/_Copy"), "<control><shift>c",
+	    (GtkItemFactoryCallback) MenuEditCopy, 0,
+	    "<StockItem>", GTK_STOCK_COPY},
+	{N_("/_Edit/_Paste"), "<control><shift>v",
+	    (GtkItemFactoryCallback) MenuEditPaste, 0,
+	    "<StockItem>", GTK_STOCK_PASTE},
 	{N_("/_Tools"), NULL, 0, 0, "<Branch>", NULL},
 	{N_("/_Tools/_Options"), NULL, 0, 0, "<Branch>", NULL},
 	{N_("/_Tools/_Options/Controlbar"), NULL, 0, 0, "<Branch>", NULL},
@@ -829,6 +880,13 @@ CreateMainWindow(void)
 	{N_("/_Help"), NULL, 0, 0, "<LastBranch>", NULL},
 	{N_("/_Help/_About..."), NULL, aboutDialog, 0, "<StockItem>", GTK_STOCK_HELP}
     };
+
+    GtkClipboard *clipboard = gtk_clipboard_get(GDK_SELECTION_PRIMARY);
+
+    // Connect to the "owner-change" signal which means that ownership
+    // of the X clipboard has changed.
+    g_signal_connect(clipboard, "owner-change",
+                     G_CALLBACK(clipboard_owner_change), NULL);
 
     MainWin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     g_signal_connect(G_OBJECT(MainWin), "destroy", G_CALLBACK(MenuQuit), NULL);
