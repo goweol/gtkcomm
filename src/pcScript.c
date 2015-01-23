@@ -59,6 +59,7 @@ enum {
     SCR_RUN,		/* external command execute */
     SCR_PAUSE,		/* pause seconds */
     SCR_RFLUSH,		/* rx buffer flush */
+    SCR_STSMSG,		/* status bar에 메시지 출력 */
     SCR_TODEC,		/* hex-decimal to decimal */
     SCR_TOHEX,		/* decimal to hexa-decimal */
     SCR_TRANSMIT,	/* transmit string */
@@ -182,6 +183,7 @@ static const ScriptTableType ScriptMainTable[] = {
     {SCR_GET, "get", 1, ScriptGetTable}, 	/* get ??? */
     {SCR_PAUSE, "pause", 1, NULL},	/* pause secs */
     {SCR_RFLUSH, "rflush", 0, NULL},	/* rflush */
+    {SCR_STSMSG, "stsmsg", 1, NULL},	/* stsmsg "string" */
     {SCR_TODEC, "todec", 2, NULL}, /* todec $hexnum decnum */
     {SCR_TOHEX, "tohex", 2, NULL}, /* tohex $decnum hexnum */
     {SCR_TRANSMIT, "transmit", 1, NULL},	/* transmit "string" */
@@ -1990,6 +1992,12 @@ ScriptRunNext(void)
 	case SCR_RUN:
 	    ScriptResult = ScriptRun(script);
 	    doInstallNext = FALSE;
+	    break;
+	case SCR_STSMSG:
+	    p = ConvertCtrlChar(script->argv[0]);
+	    StatusShowMessage("%s", p);
+	    g_free(p);
+	    ScriptResult = 0;
 	    break;
 	case SCR_TODEC:
 	    ScriptResult = ScriptToDec(script);
