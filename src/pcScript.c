@@ -523,11 +523,17 @@ ScriptWaitFor(ScriptType *script, float seconds)
 
     InputFilterList = g_slist_append(InputFilterList, WaitForInputFilter);
 
-    StatusShowMessage(_("Waiting '%s'..."), WaitForString);
-
     if ((long) (seconds * 10.0f) >= 1L)
+    {
+	StatusShowMessage(_("Waiting '%s' (%.1f secs)..."), WaitForString,
+			  seconds);
 	WaitForTimeoutTag = gtk_timeout_add((guint32) (seconds * 1000UL),
 					    WaitForTimer, NULL);
+    }
+    else
+    {
+	StatusShowMessage(_("Waiting '%s' (endless)..."), WaitForString);
+    }
 }
 
 /* ScriptGetBaudrate() {{{1 */
