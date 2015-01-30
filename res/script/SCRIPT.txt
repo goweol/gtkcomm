@@ -66,14 +66,12 @@ COMMAND LIST
 	  button add "SLOW" sfile 'slow.scr'
  
 -.  CAPTURE
-    사용: capture [on/off] <filename> <includebuf>
+    사용: capture [on/off] <filename> <excludebuf>
     설명: capture file을 열거나 닫는다. 'capture on' 시에는 반드시 filename이
-	  주어져야 하며, 'includebuf' keyword가 주어지면 capture를 시작할 때의
-	  terminal buffer의 내용을 capture file에 포함한다. 'includebuf' 기능은
-	  특정 문자열을 waitfor한 후 현재 화면의 내용을 capture할 때 유용하다고
-	  하겠다.
-    예제: capture on "today.cap" includebuf
-	  capture on "today.cap"
+	  주어져야 하며, 'excludebuf' keyword가 없는 경우 현재 terminal
+	  buffer의 내용을 capture file에 포함한다.
+    예제: capture on "today.log" excludebuf
+	  capture on "today.log"
 	  capture off
  
 -.  CLEAR

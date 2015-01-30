@@ -16,9 +16,8 @@
     혹슨 'gtkcomm --telnet HITEL' 과 같이 사용하면 됨.
 
 2   capture button에서 현재 buffer를 포함할 것인지에 대한 선택 가능하게
-    ==> work-around: <Alt-C> 후에
-	    /set script capture on filename includebuf;
-	명령을 입력하면 'filename'에 현재 buffer의 내용이 저장됨.
+    ==> 기본적으로 현재 buffer를 포함하며, 불필요한 부분은 logging 종료 후
+	편집하면 됨.
 
 1   autores에 의해 sendfile 대화상자가 열리는 경우 loading을 stop시키면
     대화상자가 다시 열린다. 으... 골치아픈 autores... 이것도 일단은 어쩔 수

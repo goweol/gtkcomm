@@ -1880,9 +1880,10 @@ ScriptRunNext(void)
 
 		    ScriptCaptureActive = TRUE;
 		    if (script->argc == 3)
-			includeBuf = !g_ascii_strcasecmp(script->argv[2], "includebuf");
+			includeBuf = g_ascii_strcasecmp(script->argv[2],
+							"excludebuf");
 		    else
-			includeBuf = FALSE;
+			includeBuf = TRUE;
 		    ScriptResult = CaptureStart(script->argv[1], includeBuf);
 		    break;
 		}
