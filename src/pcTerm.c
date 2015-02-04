@@ -62,8 +62,6 @@ gint32 TermNormFG;
 gint32 TermNormBG;
 gboolean TermSilent;
 gboolean TermAutoLineFeed;
-gboolean TermStripLineFeed; /* when capture */
-gboolean TermStripControlChar; /* when capture */
 guint32 TermReadHack;
 gboolean TermCanBlock;
 gboolean TermUseBold;
@@ -1500,14 +1498,10 @@ TermStateGround(TermType *term, guchar c)
 	    if (term->currX)
 		TERM_LINE_CHANGING(term);
 	    TermNewLine(term);
-	    if (TermStripControlChar)
-		CaptureInputFilter((char*) &c, 1);
 	    break;
 	case '\r':
 	    TERM_LINE_CHANGING(term);
 	    term->currX = 0;
-	    if (TermStripControlChar)
-		CaptureInputFilter((char*) &c, 1);
 	    break;
 	case 7:	/* bell */
 	    if (!TermSilent)
@@ -1540,8 +1534,6 @@ TermStateGround(TermType *term, guchar c)
 		}
 		TERM_UPDATE_MAX_REACHED(term);
 	    }
-	    if (TermStripControlChar)
-		CaptureInputFilter((char*) &c, 1);
 	    break;
 	case 0:
 	    /* NOTE: from gau: fixme */
@@ -1568,9 +1560,6 @@ TermStateGround(TermType *term, guchar c)
 		    c |= 0x80;
 		CURR_BYTE(term) = c;
 	    }
-
-	    if (TermStripControlChar)
-		CaptureInputFilter((char*) CURR_BYTE_POS(term), 1);
 
 	    CURR_COLOR(term) = COLOR(term->currFG, term->currBG);
 	    TermExposeLine(term, term->currY, term->currX, term->currX);
@@ -2465,9 +2454,6 @@ TermReceiveString(TermType *term, const guchar *buf, int len)
 		       term->currAttr, i);
 		TermExposeLine(term, term->currY, term->currX,
 			       term->currX + i - 1);
-
-		if (TermStripControlChar)
-		    CaptureInputFilter(p, i);
 
 		term->currX += i;
 		buf += i;

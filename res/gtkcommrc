@@ -111,12 +111,6 @@
 # idle_guard 기능을 쓸때 어떤 키를 보낼것인지를 정해준다.
 #IdleGuardString        " \b"
 
-# 갈무리할 때 ^M ('\r')을 없앨 것인지를 결정
-#TermStripLineFeed      TRUE
-
-# 갈무리할 때 Escape sequence를 없앨 것인지 결정
-#TermStripControlChar   TRUE
-
 # 혼자말 파일들이 있는 디렉토리 이름
 #ScriptPath             "~/.gtkcomm/script"
 #ScriptAnimFile         "tux-anim.png"

@@ -356,8 +356,14 @@ extern void TRxStop(void);
 extern gint TRxProtocolSetFromString(const char *);
 
 /* capture {{{1 */
+enum log_flags {
+    LOG_FLAGS_APPEND   		= 1 << 0,
+    LOG_FLAGS_TIMESTAMP		= 1 << 1,
+    LOG_FLAGS_PLAIN_TEXT	= 1 << 2,
+    LOG_FLAGS_INCLUDE_BUFFER    = 1 << 3
+};
+extern int CaptureStart(const char *filename, unsigned int flags);
 extern void CaptureControl(void);
-extern int CaptureStart(const char *filename, gboolean includeCurrBuf);
 extern void CaptureFinish(void);
 extern int CaptureInputFilter(const char *s, int len);
 extern GtkWidget *CreateScriptFileList(GtkWidget *w, GCallback runCB);

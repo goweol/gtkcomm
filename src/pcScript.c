@@ -1876,15 +1876,13 @@ ScriptRunNext(void)
 	    {
 		if (script->argc >= 2)
 		{
-		    gboolean includeBuf;
+		    unsigned int flags = 0;
 
 		    ScriptCaptureActive = TRUE;
 		    if (script->argc == 3)
-			includeBuf = g_ascii_strcasecmp(script->argv[2],
-							"excludebuf");
-		    else
-			includeBuf = TRUE;
-		    ScriptResult = CaptureStart(script->argv[1], includeBuf);
+			flags = (unsigned int) strtoul(script->argv[2],
+						       NULL, 0);
+		    ScriptResult = CaptureStart(script->argv[1], flags);
 		    break;
 		}
 	    }

@@ -15,6 +15,7 @@
  * GNU General Public License for more details.
  */
 #include "config.h"
+#include <ctype.h>
 #include <time.h>	/* time(), localtime() */
 #include <fcntl.h>	/* open() */
 
@@ -538,7 +539,9 @@ out:
 static int CaptureFD = -1;
 static guint32 CurrCaptureSize = 0;
 static GtkWidget *CaptureFrame = NULL;
-static gchar *oldCapPath = NULL;
+static gchar *new_log_dir = NULL;
+static unsigned int log_flags;
+static gboolean log_start_of_line;
 
 /* capture_data_write() {{{1 */
 static int
@@ -556,43 +559,45 @@ capture_data_write(const char *s, int len)
 int
 CaptureInputFilter(const char *s, int len)
 {
-    register int i;
+    register int i, n;
+    char c;
 
-    /* download/upload 등이 수행중이면 capture하지 말아라 */
     if (CaptureFD != -1 && !TRxRunning)
     {
-	if (CurrCaptureSize > MaxCaptureSize - len)
-	{
-	    if (MaxCaptureSize > CurrCaptureSize)
-		len = MaxCaptureSize - CurrCaptureSize;
-	    else
-	    {
-		g_warning("BUG: MaxCaptureSize=%lu, CurrCaptureSize=%lu",
-			  (unsigned long) MaxCaptureSize,
-			  (unsigned long) CurrCaptureSize);
-		len = 1;
-	    }
-	}
-
-	if (TermStripLineFeed)
-	{
-	    for (i = 0; i < len; i++)
-	    {
-		if (s[i] != '\r')
-		{
-		    capture_data_write(s + i, 1);
-		    ++CurrCaptureSize;
-		}
-	    }
-	}
-	else
-	{
-	    capture_data_write(s, len);
-	    CurrCaptureSize += len;
-	}
 	if (CurrCaptureSize >= MaxCaptureSize)
-	    CaptureFinish();
+	    return;
+
+	for (i = 0; i < len; i++)
+	{
+	    c = s[i];
+	    if ((log_flags & LOG_FLAGS_PLAIN_TEXT) != 0
+		&& !isprint((int) c) && !isspace((int) c))
+		continue;
+
+	    if ((log_flags & LOG_FLAGS_TIMESTAMP) != 0 && log_start_of_line)
+	    {
+		time_t tim;
+		struct tm *lt;
+		char buf[128];
+
+		tim = time(NULL);
+		lt = localtime(&tim);
+		n = strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S ", lt);
+		if (n > 0)
+		    capture_data_write(buf, n);
+	    }
+	    log_start_of_line = (int) (c == '\n');
+
+	    capture_data_write(&c, 1);
+	    ++CurrCaptureSize;
+	    if (CurrCaptureSize >= MaxCaptureSize)
+	    {
+		CaptureFinish();
+		break;
+	    }
+	}
     }
+
     return len;
 }
 
@@ -602,9 +607,7 @@ CaptureFinish(void)
 {
     if (CaptureFD != -1)
     {
-	if (!TermStripControlChar)
-	    InputFilterList =
-		g_slist_remove(InputFilterList, CaptureInputFilter);
+	InputFilterList = g_slist_remove(InputFilterList, CaptureInputFilter);
 	close(CaptureFD);
 	CaptureFD = -1;
 	CurrCaptureSize = 0UL;
@@ -619,53 +622,75 @@ CaptureFinish(void)
 
 /* CaptureFileSelectOk() {{{1 */
 static void
-CaptureFileSelectOk(GtkWidget *w, GtkWidget *win)
+CaptureFileSelectOk(GtkWidget *w, unsigned int flags)
 {
-    const char *p, *filename;
+    char *p, *filename;
 
-    UNUSED(w);
-
-    filename = gtk_file_selection_get_filename(GTK_FILE_SELECTION(win));
+    filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(w));
     if ((p = strrchr(filename, '/')) != NULL)
     {
-	if (oldCapPath)
-	    g_free(oldCapPath);
-	oldCapPath = g_strdup(filename);
-	oldCapPath[(int)(p - filename + 1)] = 0;
+	if (new_log_dir)
+	    g_free(new_log_dir);
+	new_log_dir = g_strdup(filename);
+	new_log_dir[(int) (p - filename)] = '\0';
     }
-    CaptureStart(filename, FALSE);
-    gtk_widget_destroy(win);
+    CaptureStart(filename, flags);
+    g_free(filename);
 }
 
 /* CaptureFileQuery() {{{1 */
 static void
 CaptureFileQuery(void)
 {
-    GtkWidget *fs;
-    char *file;
+    GtkWidget *w, *hbox;
+    GtkWidget *b_append, *b_incbuf, *b_text, *b_timestamp;
+    unsigned int flags;
+    const char *folder = new_log_dir? new_log_dir: CapturePath;
 
-    fs = gtk_file_selection_new("Capture File");
-    gtk_file_selection_hide_fileop_buttons(GTK_FILE_SELECTION(fs));
-    file = g_strconcat(CapturePath, "/", NULL);
-    gtk_file_selection_set_filename(GTK_FILE_SELECTION(fs), file);
-    g_free(file);
-    gtk_window_set_position(GTK_WINDOW(fs), GTK_WIN_POS_MOUSE);
-    g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fs)->ok_button),
-		     "clicked", G_CALLBACK(CaptureFileSelectOk), fs);
-    g_signal_connect_object(G_OBJECT(GTK_FILE_SELECTION(fs)->cancel_button),
-			    "clicked", G_CALLBACK(gtk_widget_destroy),
-			    G_OBJECT(fs), G_CONNECT_SWAPPED);
-    gtk_widget_show(fs);
-    if (oldCapPath)
-	gtk_file_selection_set_filename(GTK_FILE_SELECTION(fs), oldCapPath);
+    w = gtk_file_chooser_dialog_new(_("Log File"),
+				    GTK_WINDOW(MainWin),
+				    GTK_FILE_CHOOSER_ACTION_SAVE,
+				    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+				    GTK_STOCK_OK, GTK_RESPONSE_ACCEPT,
+				    NULL);
+    gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(w), folder);
+    gtk_file_chooser_set_current_name(GTK_FILE_CHOOSER(w), "");
+
+    hbox = gtk_hbox_new(FALSE, 5);
+    b_timestamp = gtk_check_button_new_with_label(_("Timestamp"));
+    gtk_box_pack_end(GTK_BOX(hbox), b_timestamp, FALSE, FALSE, 5);
+    b_text = gtk_check_button_new_with_label(_("Plain text"));
+    gtk_box_pack_end(GTK_BOX(hbox), b_text, FALSE, FALSE, 5);
+    b_incbuf = gtk_check_button_new_with_label(_("Include Buffer"));
+    gtk_box_pack_end(GTK_BOX(hbox), b_incbuf, FALSE, FALSE, 5);
+    b_append = gtk_check_button_new_with_label(_("Append"));
+    gtk_box_pack_end(GTK_BOX(hbox), b_append, FALSE, FALSE, 5);
+    gtk_widget_show_all(hbox);
+    gtk_file_chooser_set_extra_widget(GTK_FILE_CHOOSER(w), hbox);
+
+    if (gtk_dialog_run(GTK_DIALOG(w)) == GTK_RESPONSE_ACCEPT)
+    {
+	flags = 0;
+	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(b_append)))
+	    flags |= LOG_FLAGS_APPEND;
+	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(b_timestamp)))
+	    flags |= LOG_FLAGS_TIMESTAMP;
+	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(b_text)))
+	    flags |= LOG_FLAGS_PLAIN_TEXT;
+	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(b_incbuf)))
+	    flags |= LOG_FLAGS_INCLUDE_BUFFER;
+	CaptureFileSelectOk(w, flags);
+    }
+    gtk_widget_destroy(w);
 }
 
 /* CaptureStart() {{{1 */
 int
-CaptureStart(const char *filename, gboolean includeCurrBuf)
+CaptureStart(const char *filename, unsigned int flags)
 {
     int i;
     char buf[MAX_PATH];
+    int append = (flags & LOG_FLAGS_APPEND)? O_APPEND: 0;
 
     /* script의 경우 event (가령 auto-response)에 의해 capture를 ON하는 경우 이
      * 함수가 여러번 불려질 수 있다. 이미 capture하고 있는 경우에는 성공을
@@ -674,6 +699,7 @@ CaptureStart(const char *filename, gboolean includeCurrBuf)
     if (CaptureFD != -1)
 	return 0;
 
+    log_flags = flags;
     CurrCaptureSize = 0UL;
 
     if (!filename || !filename[0])
@@ -684,9 +710,11 @@ CaptureStart(const char *filename, gboolean includeCurrBuf)
 
 	ti = time(NULL);
 	lt = localtime(&ti);
-	g_snprintf(buf, sizeof(buf), "%s/%02d%02d%02d.cap",
+	g_snprintf(buf, sizeof(buf), "%s/%02d%02d%02d.log",
 		   CapturePath, lt->tm_year, lt->tm_mon + 1, lt->tm_mday);
-	CaptureFD = open(buf, O_WRONLY | O_CREAT | O_APPEND, 0660);
+	if (append == 0)
+	    (void) unlink(buf);
+	CaptureFD = open(buf, O_WRONLY | O_CREAT | append, 0660);
     }
     else if (filename[0] == '?')
     {
@@ -699,7 +727,9 @@ CaptureStart(const char *filename, gboolean includeCurrBuf)
 	    strncpy(buf, filename, sizeof(buf) - 1);
 	else
 	    g_snprintf(buf, sizeof(buf), "%s/%s", CapturePath, filename);
-	CaptureFD = open(buf, O_WRONLY | O_CREAT | O_APPEND, 0660);
+	if (append == 0)
+	    (void) unlink(buf);
+	CaptureFD = open(buf, O_WRONLY | O_CREAT | append, 0660);
     }
 
     if (CaptureFD == -1)
@@ -709,13 +739,11 @@ CaptureStart(const char *filename, gboolean includeCurrBuf)
     }
     else
     {
-	if (!TermStripControlChar)
-	    InputFilterList =
-		g_slist_append(InputFilterList, CaptureInputFilter);
+	InputFilterList = g_slist_append(InputFilterList, CaptureInputFilter);
 
 	StatusShowMessage(_("Capture starts to '%s'."), buf);
 
-	if (includeCurrBuf)
+	if ((log_flags & LOG_FLAGS_INCLUDE_BUFFER) != 0)
 	{
 	    int maxLine;
 	    TermType *term = Term;
@@ -738,6 +766,7 @@ CaptureStart(const char *filename, gboolean includeCurrBuf)
 	if (!CaptureFrame)
 	    CaptureFrame = StatusAddFrameWithLabel(" LOG ");
 
+	log_start_of_line = TRUE;
 	return 0;
     }
 }
@@ -749,8 +778,9 @@ CaptureControl(void)
     if (CaptureFD != -1)
 	CaptureFinish();
     else
-	CaptureStart(CaptureFile, FALSE);
+	CaptureFileQuery();
 }
+
 /* }}} */
 
 /****************************************************************************

@@ -133,8 +133,6 @@ static const struct _OptTable OptTable[] = {
     {"TermSavedLines", (guchar **) &TermSavedLines, OPT_32BIT,
 	DEFAULT_SAVED_LINES_STR},
     {"TermSilent", (guchar **) &TermSilent, OPT_BOOL, "FALSE"},
-    {"TermStripControlChar", (guchar **) &TermStripControlChar, OPT_BOOL, "TRUE"},
-    {"TermStripLineFeed", (guchar **) &TermStripLineFeed, OPT_BOOL, "TRUE"},
     {"TermUseBold", (guchar **) &TermUseBold, OPT_BOOL, "TRUE"},
     {"TermUseUnder", (guchar **) &TermUseUnder, OPT_BOOL, "TRUE"},
     {"TermWordSeperator", (guchar **) &TermWordSeperator, OPT_STR,

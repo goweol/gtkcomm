@@ -133,8 +133,6 @@ extern gint32 TermNormFG;
 extern gint32 TermNormBG;
 extern gboolean TermSilent;
 extern gboolean TermAutoLineFeed;
-extern gboolean TermStripLineFeed;	/* when capture */
-extern gboolean TermStripControlChar;	/* when capture */
 extern guint32 TermReadHack;
 extern gboolean TermCanBlock;
 extern gboolean TermUseBold;
