@@ -2613,8 +2613,6 @@ CreateScriptListFromPath(char *fullpath, GList *list)
 }
 
 /* CreateScriptFileList() {{{1 */
-/* 여기에서는 GList 를 사용하는 데, combo에서는 GList를 사용해야 되기 때문임.
- */
 GtkWidget *
 CreateScriptFileList(GtkWidget *w, GCallback runCB)
 {
@@ -2624,11 +2622,15 @@ CreateScriptFileList(GtkWidget *w, GCallback runCB)
 
     UNUSED(w);
 
-    /* current directory에 있는 script file들 */
-    g_snprintf(buf, sizeof(buf), "./*" DEFAULT_SCRIPT_EXT);
-    list = CreateScriptListFromPath(buf, list);
+    /* append script files in current directory */
+    if (getcwd(buf, sizeof(buf)) == NULL
+	|| strcmp(buf, ScriptPath) != 0)
+    {
+	g_snprintf(buf, sizeof(buf), "./*" DEFAULT_SCRIPT_EXT);
+	list = CreateScriptListFromPath(buf, list);
+    }
 
-    /* ScriptPath에 있는 script file들 */
+    /* append script files in ScriptPath */
     g_snprintf(buf, sizeof(buf), "%s/*" DEFAULT_SCRIPT_EXT, ScriptPath);
     list = CreateScriptListFromPath(buf, list);
 
