@@ -1,4 +1,4 @@
-# COM direct connect ·Î±×ÀÎ script for target board debug.
+# COM direct connect ë¡œê·¸ì¸ script for target board debug.
 
 clear
 
@@ -22,10 +22,10 @@ set title "%p: %n"
 # crlf = lf
 set config EnterConvert 2
 
-# baudrate¸¦ target boardÀÇ default speed·Î
+# baudrateë¥¼ target boardì˜ default speedë¡œ
 set baudrate 9600
 
-# mouse ¿ŞÂÊ ¹öÆ° Å¬¸¯½Ã ¾Æ¹«Áşµµ ÇÏÁö ¸¶¼¼¿ä.
+# mouse ì™¼ìª½ ë²„íŠ¼ í´ë¦­ì‹œ ì•„ë¬´ì§“ë„ í•˜ì§€ ë§ˆì„¸ìš”.
 set config LeftMouseClickStr ""
 
 # add baudrate change menu to control-bar
@@ -56,17 +56,17 @@ label add baudrate
 label add protocol
 label add linestatus
 
-# target board¿¡¼­ download command¸¦ ÀÔ·ÂÇÑ °æ¿ì upload file ´ëÈ­»óÀÚ¸¦
-# ¿¬´Ù.
+# target boardì—ì„œ download commandë¥¼ ì…ë ¥í•œ ê²½ìš° upload file ëŒ€í™”ìƒìë¥¼
+# ì—°ë‹¤.
 #
-# FIXME: autores¿¡ ÀÇÇØ sendfile ´ëÈ­»óÀÚ°¡ ¿­·Á¼­ loadingÇÏ´Â °æ¿ì
-# loadingÀ» stop ½ÃÅ°¸é ´ëÈ­»óÀÚ°¡ ´Ù½Ã ¿­¸°´Ù. autores°¡ ´Ù½Ã ¼öÇàµÇ´Â
-# °ÍÀ¸·Î º¸ÀÎ´Ù. ¼öµ¿À¸·Î Ã³¸®ÇÏ¸é ±×·± Çö»óÀÌ ¾Ê»ı±è.
+# FIXME: autoresì— ì˜í•´ sendfile ëŒ€í™”ìƒìê°€ ì—´ë ¤ì„œ loadingí•˜ëŠ” ê²½ìš°
+# loadingì„ stop ì‹œí‚¤ë©´ ëŒ€í™”ìƒìê°€ ë‹¤ì‹œ ì—´ë¦°ë‹¤. autoresê°€ ë‹¤ì‹œ ìˆ˜í–‰ë˜ëŠ”
+# ê²ƒìœ¼ë¡œ ë³´ì¸ë‹¤. ìˆ˜ë™ìœ¼ë¡œ ì²˜ë¦¬í•˜ë©´ ê·¸ëŸ° í˜„ìƒì´ ì•Šìƒê¹€.
 #autores add "Waiting a Motorola S-record or Intel Hex." \
 #	    script "sendfile ascii \"?\""
 #autores add "Waiting a binary file..." script "sendfile xmodem \"?\""
 
-# baudrate¸¦ ¹Ù²Ù´Â example
+# baudrateë¥¼ ë°”ê¾¸ëŠ” example
 button add "115200" script 'transmit "pf -b 115200\r"; \
 			  waitfor "ENTER.."; \
 			  set baudrate 115200; \

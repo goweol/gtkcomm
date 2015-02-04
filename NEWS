@@ -4,109 +4,109 @@ o   added mbyte.h to SOURCES (#209, iamboy93)
 
 gtkcomm 0.8.0
 o   various minor bug fixed
-o   local°ú remote host°¡ EUC-KR°ú UTF-8 localeÀ» »ç¿ëÇÏ´Â °¢°¢ÀÇ
-    Á¶ÇÕ¿¡ ´ëÇØ ¸ğµÎ µ¿ÀÛÇÏµµ·Ï ÇÔ. ±âº»ÀûÀ¸·Î bookmarks ÆÄÀÏ¿¡¼­
-    remote_charsetÀ» ¸í½ÃÇØ ÁÖ¾î¾ß ÇÑ´Ù (´Ù¸¥ localeÀº Áö¿ø¾ÈÇÔ)
-o   'bookmarks' ÆÄÀÏ Çü½Ä ¹Ù²ñ (Á¦°øµÇ´Â sample bookmarks ÆÄÀÏ Âü°í)
-o   GTK 2ÀÇ deprecated API ´õÀÌ»ó »ç¿ë ¾ÊÇÔ
+o   localê³¼ remote hostê°€ EUC-KRê³¼ UTF-8 localeì„ ì‚¬ìš©í•˜ëŠ” ê°ê°ì˜
+    ì¡°í•©ì— ëŒ€í•´ ëª¨ë‘ ë™ì‘í•˜ë„ë¡ í•¨. ê¸°ë³¸ì ìœ¼ë¡œ bookmarks íŒŒì¼ì—ì„œ
+    remote_charsetì„ ëª…ì‹œí•´ ì£¼ì–´ì•¼ í•œë‹¤ (ë‹¤ë¥¸ localeì€ ì§€ì›ì•ˆí•¨)
+o   'bookmarks' íŒŒì¼ í˜•ì‹ ë°”ë€œ (ì œê³µë˜ëŠ” sample bookmarks íŒŒì¼ ì°¸ê³ )
+o   GTK 2ì˜ deprecated API ë”ì´ìƒ ì‚¬ìš© ì•Ší•¨
 o   drop GTK 1 support
 
 gtkcomm 0.7.5
-o   telnet: ¿¬°áÀÌ Ãë¼ÒµÈ °æ¿ì ·Î±×ÀÎ ½ºÅ©¸³Æ® ½ÇÇà Ãë¼Ò.
-o   script: script box¿¡¼­ ÆÄÀÏ ¼±ÅÃ½Ã ½ÇÇàµÇ´ø ±â´É »èÁ¦. animation iconÀ»
-    Å¬¸¯ÇØ¾ß¸¸ ½ÇÇàµÇµµ·Ï ÇÔ.
-    ÀÌ°ÍÀº gtk2¿¡¼­ Á¦´ë·Î µ¿ÀÛÇÏÁö ¾Ê±â ¶§¹®ÀÎ µ¥, gtk1¿¡¼­ µ¿ÀÛÇß´ø °ÍÀº
-    gtk1ÀÌ ÀÌ»óÇØ¼­ ÀßµÇ´Â °ÍÃ³·³ º¸¿´´ø °ÍÀÓ.
-o   gtk2. gtk2-2.2 ÀÌ»ó¿¡¼­ terminalÀÇ scrollbar µ¿ÀÛµÇ°Ô ÇÔ.
-o   gtk2. accel key¸¦ ¼öµ¿À¸·Î ¼öÁ¤°¡´É (~/.gtkcomm/accelrc ÆÄÀÏ)
+o   telnet: ì—°ê²°ì´ ì·¨ì†Œëœ ê²½ìš° ë¡œê·¸ì¸ ìŠ¤í¬ë¦½íŠ¸ ì‹¤í–‰ ì·¨ì†Œ.
+o   script: script boxì—ì„œ íŒŒì¼ ì„ íƒì‹œ ì‹¤í–‰ë˜ë˜ ê¸°ëŠ¥ ì‚­ì œ. animation iconì„
+    í´ë¦­í•´ì•¼ë§Œ ì‹¤í–‰ë˜ë„ë¡ í•¨.
+    ì´ê²ƒì€ gtk2ì—ì„œ ì œëŒ€ë¡œ ë™ì‘í•˜ì§€ ì•Šê¸° ë•Œë¬¸ì¸ ë°, gtk1ì—ì„œ ë™ì‘í–ˆë˜ ê²ƒì€
+    gtk1ì´ ì´ìƒí•´ì„œ ì˜ë˜ëŠ” ê²ƒì²˜ëŸ¼ ë³´ì˜€ë˜ ê²ƒì„.
+o   gtk2. gtk2-2.2 ì´ìƒì—ì„œ terminalì˜ scrollbar ë™ì‘ë˜ê²Œ í•¨.
+o   gtk2. accel keyë¥¼ ìˆ˜ë™ìœ¼ë¡œ ìˆ˜ì •ê°€ëŠ¥ (~/.gtkcomm/accelrc íŒŒì¼)
 o   default-build = gtk2. gtk1 = --disable-gtk20
 
 gtkcomm 0.7.4
-o   0.7.3¿¡¼­ ºüÁø Çì´õÆÄÀÏ Ãß°¡ÇÏ¿© release
+o   0.7.3ì—ì„œ ë¹ ì§„ í—¤ë”íŒŒì¼ ì¶”ê°€í•˜ì—¬ release
 
 gtkcomm 0.7.3
-o   terminal¿¡¼­ xterm cursor ´ë½Å È­»ìÇ¥ »ç¿ë (#156, locuzu)
-    gtkcommrc¿¡ 'UseXtermCursor' ¿É¼Ç Ãß°¡ÇÏ¿© ¼±ÅÃÇÒ ¼ö ÀÖ°Ô ÇÔ
-o   gtk2. ctlmenu entry¿¡¼­ ÇÑ±Û Ç¥½Ã ¾ÊµÊ (#155, locuzu)
+o   terminalì—ì„œ xterm cursor ëŒ€ì‹  í™”ì‚´í‘œ ì‚¬ìš© (#156, locuzu)
+    gtkcommrcì— 'UseXtermCursor' ì˜µì…˜ ì¶”ê°€í•˜ì—¬ ì„ íƒí•  ìˆ˜ ìˆê²Œ í•¨
+o   gtk2. ctlmenu entryì—ì„œ í•œê¸€ í‘œì‹œ ì•Šë¨ (#155, locuzu)
 o   fork() return value check fix
-o   gtk2. µµ±¸¸·´ë Çü½ÄÀÌ both°¡ ¾Æ´Ñ °æ¿ì Æë±Ï Àß·Á¼­ º¸ÀÓ (#153, iamboy93)
-o   gtk2. script·Î »ı¼ºµÈ gtk dialog¿¡¼­ ÇÑ±Û Ç¥½Ã ¾ÊµÊ (#152, iamboy93)
+o   gtk2. ë„êµ¬ë§‰ëŒ€ í˜•ì‹ì´ bothê°€ ì•„ë‹Œ ê²½ìš° í­ê·„ ì˜ë ¤ì„œ ë³´ì„ (#153, iamboy93)
+o   gtk2. scriptë¡œ ìƒì„±ëœ gtk dialogì—ì„œ í•œê¸€ í‘œì‹œ ì•Šë¨ (#152, iamboy93)
 o   fix resource file install problem (ganadist@mizi.com)
-o   gtk2. dialogÀÇ ¹öÆ°µé¿¡¼­ stockicon »ç¿ë.
+o   gtk2. dialogì˜ ë²„íŠ¼ë“¤ì—ì„œ stockicon ì‚¬ìš©.
 
 gtkcomm 0.7.2
-o   gtk2. XIM¿¡¼­ ÇÑ±Û ÀÔ·Â½Ã Á¦´ë·Î ¾Êº¸ÀÌ´ø °æ¿ì º¸¿Ï
-o   gtk2. ctlmenu¿¡¼­ ÇÑ±Û Á¦´ë·Î º¸ÀÌ°Ô ÇÔ
-o   mouse selection ¹®Á¦Á¡ ¼öÁ¤ ¹× ´Ü¾î ¼±ÅÃ ±â´É Çâ»ó
-o   ¿¡·¯ ¹× °æ°í ¸Ş½ÃÁöµµ ±¹Á¦È­(i18n)
+o   gtk2. XIMì—ì„œ í•œê¸€ ì…ë ¥ì‹œ ì œëŒ€ë¡œ ì•Šë³´ì´ë˜ ê²½ìš° ë³´ì™„
+o   gtk2. ctlmenuì—ì„œ í•œê¸€ ì œëŒ€ë¡œ ë³´ì´ê²Œ í•¨
+o   mouse selection ë¬¸ì œì  ìˆ˜ì • ë° ë‹¨ì–´ ì„ íƒ ê¸°ëŠ¥ í–¥ìƒ
+o   ì—ëŸ¬ ë° ê²½ê³  ë©”ì‹œì§€ë„ êµ­ì œí™”(i18n)
 
 
 gtkcomm 0.7.1
-o   mouse selection ¹®Á¦ ¼öÁ¤ (#144)
-o   modem/telnet logout script°¡ cancelµÇ´Â ¹®Á¦ ¼öÁ¤
-o   gtk+ 2.0ÀÇ XIM ¹®Á¦ ¼öÁ¤ (#142)
-o   gtk+ 2.0¿¡¼­ÀÇ ÅÍ¹Ì³Î Å©±â ¹Ù²Ù´Â ¹®Á¦ ¼öÁ¤ (#143)
-o   gtk+ 2.0¿¡¼­ Ã¥°¥ÇÇ ÀÌ¸§ÀÌ ÇÑ±ÛÀÎ °æ¿ì Ç¥½Ã¾ÊµÇ´ø ¹®Á¦ ¼öÁ¤ (#141)
-o   gtk+ 2.0¿¡¼­ gdk-pixbuf-0°¡ ¾ø´Â °æ¿ì compile ¿¡·¯ ¹®Á¦ ¼öÁ¤ (#141)
+o   mouse selection ë¬¸ì œ ìˆ˜ì • (#144)
+o   modem/telnet logout scriptê°€ cancelë˜ëŠ” ë¬¸ì œ ìˆ˜ì •
+o   gtk+ 2.0ì˜ XIM ë¬¸ì œ ìˆ˜ì • (#142)
+o   gtk+ 2.0ì—ì„œì˜ í„°ë¯¸ë„ í¬ê¸° ë°”ê¾¸ëŠ” ë¬¸ì œ ìˆ˜ì • (#143)
+o   gtk+ 2.0ì—ì„œ ì±…ê°ˆí”¼ ì´ë¦„ì´ í•œê¸€ì¸ ê²½ìš° í‘œì‹œì•Šë˜ë˜ ë¬¸ì œ ìˆ˜ì • (#141)
+o   gtk+ 2.0ì—ì„œ gdk-pixbuf-0ê°€ ì—†ëŠ” ê²½ìš° compile ì—ëŸ¬ ë¬¸ì œ ìˆ˜ì • (#141)
 
 
 gtkcomm 0.7.0
-o   gtk+ 2.0 Áö¿øÀÇ °á°ú·Î gtk+ 1.xµµ i18n (menu ¹× status msgµî ÇÑ±ÛÈ­)
+o   gtk+ 2.0 ì§€ì›ì˜ ê²°ê³¼ë¡œ gtk+ 1.xë„ i18n (menu ë° status msgë“± í•œê¸€í™”)
 o   *** porting to GTK+ 2.0 ***
-o   parser¿¡¼­ SEGV fault ¹ß»ıÇÒ ¼ö ÀÖ¾ú´ø ¹®Á¦ fix
-o   modem history ±â´É Çâ»ó
-o   Mouse button swap ±â´É Ãß°¡
+o   parserì—ì„œ SEGV fault ë°œìƒí•  ìˆ˜ ìˆì—ˆë˜ ë¬¸ì œ fix
+o   modem history ê¸°ëŠ¥ í–¥ìƒ
+o   Mouse button swap ê¸°ëŠ¥ ì¶”ê°€
 
 
 gtkcomm 0.6.4
-o   'Stop Transfer'ÈÄ Á¾·á½Ã segv fault ¹ß»ı fix
+o   'Stop Transfer'í›„ ì¢…ë£Œì‹œ segv fault ë°œìƒ fix
 
 gtkcomm 0.6.3
-o   script: window¿¡ frame ¹× labelÀ» Ãß°¡ÇÒ ¼ö ÀÖµµ·Ï ÇÔ.
-	    filesize¸¦ ¾ò´Â ±â´É Ãß°¡
+o   script: windowì— frame ë° labelì„ ì¶”ê°€í•  ìˆ˜ ìˆë„ë¡ í•¨.
+	    filesizeë¥¼ ì–»ëŠ” ê¸°ëŠ¥ ì¶”ê°€
 
 gtkcomm 0.6.2
-o   ascii file upload µµÁß Ãë¼Ò½Ã file close.
+o   ascii file upload ë„ì¤‘ ì·¨ì†Œì‹œ file close.
 o   update LED control
 
 gtkcomm 0.6.1
-o   ascii file upload½Ã °¡²û Á×´Â °æ¿ì °íÄ¡·Á°í ½Ãµµ.
+o   ascii file uploadì‹œ ê°€ë” ì£½ëŠ” ê²½ìš° ê³ ì¹˜ë ¤ê³  ì‹œë„.
     -   removed pthread library dependency
     -   use gthread library
     -   linestatus clean-up & use mutex
     -   progress-bar clean-up & use mutex
 o   modem user command history clean-up
 o   file selection dialog in Upload/Download.
-o   modem closeÈÄ Àç¿¬°á½Ã ¿¡·¯ ¹ß»ıÇÏ´Â ¹®Á¦ fix
+o   modem closeí›„ ì¬ì—°ê²°ì‹œ ì—ëŸ¬ ë°œìƒí•˜ëŠ” ë¬¸ì œ fix
 
 gtkcomm 0.6.0
-o   file selection dialog (capture, download/upload)¿¡¼­ directory¸¦ ¹Ù²Ù¾î
-    fileÀ» ¼±ÅÃÇÑ °æ¿ì ´ÙÀ½¹ø¿¡ ´Ù½Ã ±× directory·Î ÀÌµ¿.
-o   script: 'label add/remove linestatus' Ãß°¡. ¹®ÀÚ¸¦ º¸³»°Å³ª ¹ŞÀ» ¶§¸¶´Ù
-	    control bar¿¡ »óÅÂ¸¦ Ç¥½Ã.
-o   script: 'waitfor'°¡ µ¿½Ã¿¡ µÎ°³ÀÇ stringÀ» ±â´Ù¸± ¼ö ÀÖ°Ô ÇÔ.
-	    (SCRIPT.txt Âü°í)
-o   script: 'beep' ¸í·É¿¡ ¼Ò¸® Å©±â(±æÀÌ?) Á¶ÀıÇÒ ¼ö ÀÖ°Ô ÇÔ (SCRIPT.txt Âü°í)
-o   Modem (SIO): user command history ±â´É Ãß°¡. °¡·É »ç¿ëÀÚ°¡ target board¸¦
-		 µğ¹ö±ëÇÏ±â À§ÇØ ÀÔ·ÂÇß´ø ¸í·ÉµéÀ» ÀúÀåÇß´Ù°¡ history window¸¦
-		 ¶ç¿ö¼­ mouse click¸¸À¸·Î ÀÌÀü¿¡ ÀÔ·ÂÇß´ø ¸í·ÉÀ» ´Ù½Ã ÀÔ·Â.
+o   file selection dialog (capture, download/upload)ì—ì„œ directoryë¥¼ ë°”ê¾¸ì–´
+    fileì„ ì„ íƒí•œ ê²½ìš° ë‹¤ìŒë²ˆì— ë‹¤ì‹œ ê·¸ directoryë¡œ ì´ë™.
+o   script: 'label add/remove linestatus' ì¶”ê°€. ë¬¸ìë¥¼ ë³´ë‚´ê±°ë‚˜ ë°›ì„ ë•Œë§ˆë‹¤
+	    control barì— ìƒíƒœë¥¼ í‘œì‹œ.
+o   script: 'waitfor'ê°€ ë™ì‹œì— ë‘ê°œì˜ stringì„ ê¸°ë‹¤ë¦´ ìˆ˜ ìˆê²Œ í•¨.
+	    (SCRIPT.txt ì°¸ê³ )
+o   script: 'beep' ëª…ë ¹ì— ì†Œë¦¬ í¬ê¸°(ê¸¸ì´?) ì¡°ì ˆí•  ìˆ˜ ìˆê²Œ í•¨ (SCRIPT.txt ì°¸ê³ )
+o   Modem (SIO): user command history ê¸°ëŠ¥ ì¶”ê°€. ê°€ë ¹ ì‚¬ìš©ìê°€ target boardë¥¼
+		 ë””ë²„ê¹…í•˜ê¸° ìœ„í•´ ì…ë ¥í–ˆë˜ ëª…ë ¹ë“¤ì„ ì €ì¥í–ˆë‹¤ê°€ history windowë¥¼
+		 ë„ì›Œì„œ mouse clickë§Œìœ¼ë¡œ ì´ì „ì— ì…ë ¥í–ˆë˜ ëª…ë ¹ì„ ë‹¤ì‹œ ì…ë ¥.
 
 gtkcomm 0.5.21
-o   chat Ã¢¿¡¼­ '/set protocol' Áö¿ø.
+o   chat ì°½ì—ì„œ '/set protocol' ì§€ì›.
 o   gtkcommrc: some default value changed.
 
 gtkcomm 0.5.20
-o   terminal: size ¹Ù²ğ °æ¿ì COLUMNS, LINES È¯°æº¯¼ö ¼³Á¤
-o   script: XEDITOR È¯°æº¯¼ö¸¦ »ç¿ëÇÏ¿© script file ÆíÁı ±â´É Á¦°ø.
+o   terminal: size ë°”ë€” ê²½ìš° COLUMNS, LINES í™˜ê²½ë³€ìˆ˜ ì„¤ì •
+o   script: XEDITOR í™˜ê²½ë³€ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì—¬ script file í¸ì§‘ ê¸°ëŠ¥ ì œê³µ.
 
 gtkcomm 0.5.19
-o   terminal: cursor blink ±â´É Ãß°¡
-o   capture: '\t'°¡ loggingµÇÁö ¾Ê´ø ¹®Á¦ fix
-o   script: sample scriptÀÇ '$' °ü·Ã ¼öÁ¤
+o   terminal: cursor blink ê¸°ëŠ¥ ì¶”ê°€
+o   capture: '\t'ê°€ loggingë˜ì§€ ì•Šë˜ ë¬¸ì œ fix
+o   script: sample scriptì˜ '$' ê´€ë ¨ ìˆ˜ì •
 
 gtkcomm 0.5.18
-o   script: fix. variableÀ» Ç×»ó ´Ù½Ã °Ë»çÇØ¼­ variableÀÇ °ªÀ» ¹Ù²Ù¾úÀ» °æ¿ì
-	    ¹Ù²ï °ªÀÌ »ç¿ëµÇµµ·Ï ÇÔ.
+o   script: fix. variableì„ í•­ìƒ ë‹¤ì‹œ ê²€ì‚¬í•´ì„œ variableì˜ ê°’ì„ ë°”ê¾¸ì—ˆì„ ê²½ìš°
+	    ë°”ë€ ê°’ì´ ì‚¬ìš©ë˜ë„ë¡ í•¨.
 
 
 gtkcomm 0.5.17
@@ -114,27 +114,27 @@ o   selection fixed: word(double-click) select, selection clear
 
 
 0.5.16
-o   Á¾·áÇÏ±âÀü¿¡ ÇÒ´çµÈ ¸Ş¸ğ¸® ¹İÈ¯
+o   ì¢…ë£Œí•˜ê¸°ì „ì— í• ë‹¹ëœ ë©”ëª¨ë¦¬ ë°˜í™˜
 o   :bufdo add-fold-marker-to-all-func
-o   ±âº»ÀûÀÎ Terminal Color¸¦ XTerm-color¿Í µ¿ÀÏÇÏ°Ô ÇÔ.
-    rgb.txt¸¦ ½±°Ô Âü°íÇÏµµ·Ï "255 100 78" °°Àº Çü½Äµµ Çã¿ëÇÏ°í, 'Á¡'ÀÌ ÀÖ´Â
-    Áö ¿©ºÎ·Î Çü½Ä ±¸ºĞ
-o   'UseISel' option Ãß°¡. ²Òµ¹ÀÌ ¸¶¿ì½º ±â´É »ç¿ë ¿©ºÎ
+o   ê¸°ë³¸ì ì¸ Terminal Colorë¥¼ XTerm-colorì™€ ë™ì¼í•˜ê²Œ í•¨.
+    rgb.txtë¥¼ ì‰½ê²Œ ì°¸ê³ í•˜ë„ë¡ "255 100 78" ê°™ì€ í˜•ì‹ë„ í—ˆìš©í•˜ê³ , 'ì 'ì´ ìˆëŠ”
+    ì§€ ì—¬ë¶€ë¡œ í˜•ì‹ êµ¬ë¶„
+o   'UseISel' option ì¶”ê°€. ê¾€ëŒì´ ë§ˆìš°ìŠ¤ ê¸°ëŠ¥ ì‚¬ìš© ì—¬ë¶€
 o   :%s/RightMouseClickStr/LeftMouseClickStr/g
-    ¸¶¿ì½º ¹öÆ° µ¿ÀÛÀÌ ¹Ù²ï °á°úÀÓ.
-o   ¸¶¿ì½º ¹öÆ° µ¿ÀÛ ¹Ù²Ş: Left = selection,  Right = ²Òµ¹ÀÌ ¸¶¿ì½º
-    ÀÌ°ÍÀº ÀÏ¹İ X terminal°úÀÇ È£È¯¼º À¯Áö¸¦ À§ÇÑ °ÍÀÓ.
+    ë§ˆìš°ìŠ¤ ë²„íŠ¼ ë™ì‘ì´ ë°”ë€ ê²°ê³¼ì„.
+o   ë§ˆìš°ìŠ¤ ë²„íŠ¼ ë™ì‘ ë°”ê¿ˆ: Left = selection,  Right = ê¾€ëŒì´ ë§ˆìš°ìŠ¤
+    ì´ê²ƒì€ ì¼ë°˜ X terminalê³¼ì˜ í˜¸í™˜ì„± ìœ ì§€ë¥¼ ìœ„í•œ ê²ƒì„.
 
 
 0.5.15
-o   modem speed update fix (0.5.14¿¡¼­ ¹ß»ı)
+o   modem speed update fix (0.5.14ì—ì„œ ë°œìƒ)
 
 
 0.5.14: 
 =============================================================================
 
-    o	login: modem/telnet ¿¬°áÀü¿¡ login script ½ÇÇà. ¿¬°áÀü¿¡ ¿¬°áÁß¿¡
-	       »ç¿ëµÉ ¼ö ÀÖ´Â °¢Á¾ parameter¸¦ ¹Ì¸® ¹Ù²Ü ¼ö ÀÖµµ·Ï ÇÔ.
+    o	login: modem/telnet ì—°ê²°ì „ì— login script ì‹¤í–‰. ì—°ê²°ì „ì— ì—°ê²°ì¤‘ì—
+	       ì‚¬ìš©ë  ìˆ˜ ìˆëŠ” ê°ì¢… parameterë¥¼ ë¯¸ë¦¬ ë°”ê¿€ ìˆ˜ ìˆë„ë¡ í•¨.
 
     o	removed compiler warning (redhat gcc 2.96)
 
@@ -142,44 +142,44 @@ o   modem speed update fix (0.5.14¿¡¼­ ¹ß»ı)
 0.5.13: 2001-01-19
 ==================
 
-    o	script: 'assign' ¹× 'get baudrate' change. °¡·É,
+    o	script: 'assign' ë° 'get baudrate' change. ê°€ë ¹,
 		    assign userid namsh
 		    get baudrate currbaud
-		¿Í °°ÀÌ varname¿¡ '$'°¡ ¾ø´Ù. ÂüÁ¶ÇÒ¶§´Â $userid¿Í °°ÀÌ
-		'$'¸¦ ºÙ¿©¼­ »ç¿ë
-    o	script: ¹®ÀÚ¿­ ¾È¿¡¼­µµ variable »ç¿ë°¡´É. °¡·É,
+		ì™€ ê°™ì´ varnameì— '$'ê°€ ì—†ë‹¤. ì°¸ì¡°í• ë•ŒëŠ” $useridì™€ ê°™ì´
+		'$'ë¥¼ ë¶™ì—¬ì„œ ì‚¬ìš©
+    o	script: ë¬¸ìì—´ ì•ˆì—ì„œë„ variable ì‚¬ìš©ê°€ëŠ¥. ê°€ë ¹,
 		    message "userid is $userid, host is $host"
 
 
 0.5.12: 2000/12/10
 ==================
 
-    o	script: 'assign' change. variable ÁöÁ¤½Ã '$'·Î ½ÃÀÛ.
-    o	transfer: pthread lib ¾øÀÌµµ ASCII file send °¡´ÉÇÏ°Ô ÇÔ
-    o	transfer: file sendÈÄ »ç¿ëÀÚ°¡ script stop½Ã ¹®Á¦ fix
+    o	script: 'assign' change. variable ì§€ì •ì‹œ '$'ë¡œ ì‹œì‘.
+    o	transfer: pthread lib ì—†ì´ë„ ASCII file send ê°€ëŠ¥í•˜ê²Œ í•¨
+    o	transfer: file sendí›„ ì‚¬ìš©ìê°€ script stopì‹œ ë¬¸ì œ fix
 
 
 0.5.11: 2000/11/08
 ==================
 
-    o	script: 'assign' ¸í·Éµµ sequentialÇÏ°Ô Ã³¸®.
-    o	script: 'if' ¸í·É¿¡¼­ assignµÈ ¹®ÀÚ¿­ÀÇ ºñ±³ °¡´É
-    o	script: 'assign' changed (Sstring »ç¿ë)
+    o	script: 'assign' ëª…ë ¹ë„ sequentialí•˜ê²Œ ì²˜ë¦¬.
+    o	script: 'if' ëª…ë ¹ì—ì„œ assignëœ ë¬¸ìì—´ì˜ ë¹„êµ ê°€ëŠ¥
+    o	script: 'assign' changed (Sstring ì‚¬ìš©)
     o	script: add 'endwin' command.
-    o	script: fix 'assign'. °°Àº variable¿¡ assign½Ã ÀÌÀü °ª¿¡ overwrite
-    o	script: add 'get' command. ÇöÀç´Â baudrate ¾ò´Â ±â´É¸¸ ÀÖÀ½
+    o	script: fix 'assign'. ê°™ì€ variableì— assignì‹œ ì´ì „ ê°’ì— overwrite
+    o	script: add 'get' command. í˜„ì¬ëŠ” baudrate ì–»ëŠ” ê¸°ëŠ¥ë§Œ ìˆìŒ
 
 
 0.5.10: 2000-07-25
 ==================
 
-    o	XFree86 4.0¿¡¼­ ascii file send ÈÄ buttonµîÀÌ ÀÌ»óÇØ Áö´Â Çö»ó
+    o	XFree86 4.0ì—ì„œ ascii file send í›„ buttonë“±ì´ ì´ìƒí•´ ì§€ëŠ” í˜„ìƒ
     o	add RPM spec file
 
 0.5.9: 2000-06-23
 =================
 
-    -	fix. connection ½ÃµµÁß¿¡ cancel½Ã logout script ½ÇÇàµÇ´ø ¹®Á¦.
+    -	fix. connection ì‹œë„ì¤‘ì— cancelì‹œ logout script ì‹¤í–‰ë˜ë˜ ë¬¸ì œ.
 
 0.5.8: no 0.5.8
 =================
@@ -187,15 +187,15 @@ o   modem speed update fix (0.5.14¿¡¼­ ¹ß»ı)
 0.5.7: 2000-03-29
 =================
 
-    -.	title bar ¼³Á¤ ±â´É °­È­ (set title "%p %v %n %h").
+    -.	title bar ì„¤ì • ê¸°ëŠ¥ ê°•í™” (set title "%p %v %n %h").
 	%p = package, %v = version, %n = name, %h = host addr or dial num.
-    -.  fix Ã¤ÆÃÃ¢ ´İÀ» ¶§ terminal size°¡ ¿ø·¡´ë·Î º¹±¸¾ÊµÇ´ø ¹®Á¦
-    -.	DoLock's default value is TRUE now. DoLock °ü·Ã fix.
-    -.	fix. status Ãâ·Â¸Ş½ÃÁö°¡ new-line Æ÷ÇÔÇÑ °æ¿ì status bar ³ôÀÌ°¡
-	´Ã¾î³µ´ø ¹®Á¦.
-    -.	script: sendfile ½ÇÆĞ½Ã script Á¾·á
+    -.  fix ì±„íŒ…ì°½ ë‹«ì„ ë•Œ terminal sizeê°€ ì›ë˜ëŒ€ë¡œ ë³µêµ¬ì•Šë˜ë˜ ë¬¸ì œ
+    -.	DoLock's default value is TRUE now. DoLock ê´€ë ¨ fix.
+    -.	fix. status ì¶œë ¥ë©”ì‹œì§€ê°€ new-line í¬í•¨í•œ ê²½ìš° status bar ë†’ì´ê°€
+	ëŠ˜ì–´ë‚¬ë˜ ë¬¸ì œ.
+    -.	script: sendfile ì‹¤íŒ¨ì‹œ script ì¢…ë£Œ
     -.	MAX_SAVED_LINES was too small. Now it has 65535.
-    -.	focus¸¦ ÀÒÀº °æ¿ì ½Ã°£ Ãâ·Â ¾ÊÇÔ (CPU load).
+    -.	focusë¥¼ ìƒì€ ê²½ìš° ì‹œê°„ ì¶œë ¥ ì•Ší•¨ (CPU load).
 
 0.5.6: 2000-03-12
 =================
@@ -208,17 +208,17 @@ o   modem speed update fix (0.5.14¿¡¼­ ¹ß»ı)
 =================
 
     -. several bug fixed.
-	script¸¦ °­Á¦·Î stop½Ã ±× ÈÄ script°¡ Á¦´ë·Î ¼öÇàµÇÁö ¾Ê´ø ¹®Á¦
-	script ¸¶Áö¸·ÀÌ waitforÀÎ °æ¿ì script°¡ ³¡³ªÁö ¾Ê´Â ¹®Á¦
-	baudrate labelÀÌ ÃÊ±â Àß¸ø ¼³Á¤µÇ´ø ¹®Á¦
-	com port direct connection½Ã IdleGap... »ç¿ë
-	xmodem sendfile½Ã¿¡ stop transfterÇÏ¸é Á×´ø ¹®Á¦
-	modem closeÈÄ telnet Á¢¼Ó½Ã hang ¹®Á¦
+	scriptë¥¼ ê°•ì œë¡œ stopì‹œ ê·¸ í›„ scriptê°€ ì œëŒ€ë¡œ ìˆ˜í–‰ë˜ì§€ ì•Šë˜ ë¬¸ì œ
+	script ë§ˆì§€ë§‰ì´ waitforì¸ ê²½ìš° scriptê°€ ëë‚˜ì§€ ì•ŠëŠ” ë¬¸ì œ
+	baudrate labelì´ ì´ˆê¸° ì˜ëª» ì„¤ì •ë˜ë˜ ë¬¸ì œ
+	com port direct connectionì‹œ IdleGap... ì‚¬ìš©
+	xmodem sendfileì‹œì— stop transfterí•˜ë©´ ì£½ë˜ ë¬¸ì œ
+	modem closeí›„ telnet ì ‘ì†ì‹œ hang ë¬¸ì œ
 
 0.5.4: 2000/01/11
 =================
 
-    -. ¸ğµç ¼Ò½º¿¡ copyright Ãß°¡
+    -. ëª¨ë“  ì†ŒìŠ¤ì— copyright ì¶”ê°€
 
 0.5.3: 2000/01/06
 =================
@@ -234,135 +234,135 @@ o   modem speed update fix (0.5.14¿¡¼­ ¹ß»ı)
 =================
 
     -. isel: fix URL selection.
-    -. log: gauÀÇ log ±â´É.
+    -. log: gauì˜ log ê¸°ëŠ¥.
 
 0.5.0: 1999/12/06
 =================
 
-    -. capture: ON ½Ã¿¡ "LOG" labelÀ» »óÅÂ¸·´ë¿¡ Ç¥½Ã.
-    -. script: 'capture on'¿¡ 'includebuf' token Ãß°¡.
-    -. config: MaxCaptureSize Ãß°¡. ScriptAnimFile Ãß°¡.
+    -. capture: ON ì‹œì— "LOG" labelì„ ìƒíƒœë§‰ëŒ€ì— í‘œì‹œ.
+    -. script: 'capture on'ì— 'includebuf' token ì¶”ê°€.
+    -. config: MaxCaptureSize ì¶”ê°€. ScriptAnimFile ì¶”ê°€.
     -. isel: fixed bug.
 
 0.4.5: 1999/11/27
 =================
 
     -. enhanced dialog.scr (script 'win' enhanced)
-    -. fix. SChat->chat->w ´ë½Å SChat->chatÀ» »ç¿ëÇÏ´Â °æ¿ì°¡ ÀÖ¾úÀ½.
+    -. fix. SChat->chat->w ëŒ€ì‹  SChat->chatì„ ì‚¬ìš©í•˜ëŠ” ê²½ìš°ê°€ ìˆì—ˆìŒ.
     -. add 'TermForce16Color' config option (see gtkcommrc).
-	±âÅ¸ color °ü·Ã Term code ¾à°£ ¼öÁ¤
-    -. doc/USAGE: vt100°ú MC,VIM
+	ê¸°íƒ€ color ê´€ë ¨ Term code ì•½ê°„ ìˆ˜ì •
+    -. doc/USAGE: vt100ê³¼ MC,VIM
 
 0.4.4: 1999/11/26
 =================
 
     -. fix bugs in isel. URL selection
-    -. ¸î¸î default color¸¦ ¾à°£ ¹à°Ô Á¶Á¤
+    -. ëª‡ëª‡ default colorë¥¼ ì•½ê°„ ë°ê²Œ ì¡°ì •
 
 0.4.3: 1999-11-25
 =================
 
-    -. fix bugs in isel. Æ¯Á¤ÇÑ patternÀÇ °æ¿ì È­¸é¿¡ ¼±ÅÃµÇ¾î º¸ÀÌ´Â
-	¹®ÀÚ¿­ÀÌ ¾Æ´Ñ ´Ù¸¥ ¹®ÀÚ¿­ÀÌ º¸³»Áö´Â °æ¿ì.
-    -. script: script ½ÇÇàÁß¿¡ ´Ù¸¥ script¸¦ ½ÇÇàÇÒ ÀÏÀÌ »ı±â¸é
-	¿¡·¯Ãâ·Â ´ë½Å »õ·Î¿î script¸¦ ½ÇÇàÇÑ ÈÄ ÀÌÀü script¸¦ °è¼Ó ½ÇÇà.
-    -. fix bugs in script (script¸¦ Àß¸ø ¸¸µç °æ¿ì Á×´Â caseµé, window
+    -. fix bugs in isel. íŠ¹ì •í•œ patternì˜ ê²½ìš° í™”ë©´ì— ì„ íƒë˜ì–´ ë³´ì´ëŠ”
+	ë¬¸ìì—´ì´ ì•„ë‹Œ ë‹¤ë¥¸ ë¬¸ìì—´ì´ ë³´ë‚´ì§€ëŠ” ê²½ìš°.
+    -. script: script ì‹¤í–‰ì¤‘ì— ë‹¤ë¥¸ scriptë¥¼ ì‹¤í–‰í•  ì¼ì´ ìƒê¸°ë©´
+	ì—ëŸ¬ì¶œë ¥ ëŒ€ì‹  ìƒˆë¡œìš´ scriptë¥¼ ì‹¤í–‰í•œ í›„ ì´ì „ scriptë¥¼ ê³„ì† ì‹¤í–‰.
+    -. fix bugs in script (scriptë¥¼ ì˜ëª» ë§Œë“  ê²½ìš° ì£½ëŠ” caseë“¤, window
 	title, ...)
 
 0.4.2: 1999/11/23
 =================
 
     -. fix various bugs.
-    -. gcc2°¡ ¾Æ´Ñ °æ¿ì¿¡µµ compileµÉ ¼ö ÀÖµµ·Ï ¼öÁ¤ (ÀÌ·ĞÀûÀ¸·Î).
-    -. gauÀÇ ¹ÙµÏ ²Òµ¹ÀÌ ¸¶¿ì½º ±â´É Ãß°¡.
-    -. »õ·Î¿î È¥Àã¸» ¸í·É±º: win ... (res/script/dialog.scr Âü°í)
+    -. gcc2ê°€ ì•„ë‹Œ ê²½ìš°ì—ë„ compileë  ìˆ˜ ìˆë„ë¡ ìˆ˜ì • (ì´ë¡ ì ìœ¼ë¡œ).
+    -. gauì˜ ë°”ë‘‘ ê¾€ëŒì´ ë§ˆìš°ìŠ¤ ê¸°ëŠ¥ ì¶”ê°€.
+    -. ìƒˆë¡œìš´ í˜¼ì£ë§ ëª…ë ¹êµ°: win ... (res/script/dialog.scr ì°¸ê³ )
 
 0.4.1: 1999/11/20
 =================
 
-    -. »õ·Î¿î È¥Àã¸» ¸í·É: run  (¾ÆÁ÷ ¾µ¸¸ÇÑ sample ¾øÀ½. WIP)
+    -. ìƒˆë¡œìš´ í˜¼ì£ë§ ëª…ë ¹: run  (ì•„ì§ ì“¸ë§Œí•œ sample ì—†ìŒ. WIP)
     -. fix script-string parser.
     -. drop gau script compatible mode
-    -. button/autores/ctlmenu/bookmark: 'sfile' token Áö¿ø
+    -. button/autores/ctlmenu/bookmark: 'sfile' token ì§€ì›
 
 0.4.0: 1999/11/18
 =================
 
-    -. logout script Áö¿ø
+    -. logout script ì§€ì›
     -. Sound. sound!
-    -. »õ·Î¿î È¥Àã¸» ¸í·É: if, fi. ÇöÀç´Â ÀÌÀü ½ºÅ©¸³Æ® ¸í·ÉÀÇ °á°ú
-	È®ÀÎ ±â´É¸¸ Áö¿ø.
-    -. 16color Áö¿ø
-    -. chatting ±â´É Ãß°¡. ÇÑÁÙÂ¥¸® Ã¢ÀÌ¸ç, prefix, suffix ±â´ÉÀ» Á¦°øÇÑ´Ù.
-	chattingÃ¢¿¡¼­ '/set config'¸¦ ÀÌ¿ëÇÏ¿© config variableÀ» ¹Ù²Ü
-	¼ö ÀÖ´Â ±â´É. °¡·É, /set config chatprefix "namsh: "
-	key-bindingÀº ´õ¿í ÀÚÀ¯·Ó°Ô ÇÒ ¼ö ÀÖÀ½ (»ç¿ëÇÒ ¼ö ÀÖ´Â ´ëºÎºĞÀÇ
-	key¸¦ ÇÒ´çÇÒ ¼ö ÀÖÀ» °ÍÀÓ)
-    -. menu hotkey: °¡·É ALT-C´Â chatting Ã¢À» ¿­°Å³ª ´İ´Â´Ù.
+    -. ìƒˆë¡œìš´ í˜¼ì£ë§ ëª…ë ¹: if, fi. í˜„ì¬ëŠ” ì´ì „ ìŠ¤í¬ë¦½íŠ¸ ëª…ë ¹ì˜ ê²°ê³¼
+	í™•ì¸ ê¸°ëŠ¥ë§Œ ì§€ì›.
+    -. 16color ì§€ì›
+    -. chatting ê¸°ëŠ¥ ì¶”ê°€. í•œì¤„ì§œë¦¬ ì°½ì´ë©°, prefix, suffix ê¸°ëŠ¥ì„ ì œê³µí•œë‹¤.
+	chattingì°½ì—ì„œ '/set config'ë¥¼ ì´ìš©í•˜ì—¬ config variableì„ ë°”ê¿€
+	ìˆ˜ ìˆëŠ” ê¸°ëŠ¥. ê°€ë ¹, /set config chatprefix "namsh: "
+	key-bindingì€ ë”ìš± ììœ ë¡­ê²Œ í•  ìˆ˜ ìˆìŒ (ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ëŒ€ë¶€ë¶„ì˜
+	keyë¥¼ í• ë‹¹í•  ìˆ˜ ìˆì„ ê²ƒì„)
+    -. menu hotkey: ê°€ë ¹ ALT-CëŠ” chatting ì°½ì„ ì—´ê±°ë‚˜ ë‹«ëŠ”ë‹¤.
 
 0.3.5: 1999/11/16
 =================
 
-    -. ctlmenu add Ãß°¡. addÇÏ¸é disconnect½Ã removed.
+    -. ctlmenu add ì¶”ê°€. addí•˜ë©´ disconnectì‹œ removed.
     -. new script command: label [add/gadd] [baudrate/emulate/protocol]
-    -. modem dialing ±â´É. ÇÑ¹ø¿¡ ÇÏ³ª¸¸ µÇ¸ç, ¾ÆÁ÷ Å×½ºÆ®µÇÁö ¾ÊÀ½.
+    -. modem dialing ê¸°ëŠ¥. í•œë²ˆì— í•˜ë‚˜ë§Œ ë˜ë©°, ì•„ì§ í…ŒìŠ¤íŠ¸ë˜ì§€ ì•ŠìŒ.
 
 0.3.4: 1999/11/15
 =================
 
-    -. script ½ÇÇàµÇ´Â µ¿¾È Æë±Ï animation...
+    -. script ì‹¤í–‰ë˜ëŠ” ë™ì•ˆ í­ê·„ animation...
     -. fix down/up button control while transfer
-    -. toolbar: ~/.gtkcomm/pixmap ´ë½Å pkgdatadir/pixmap/*.xpm »ç¿ë
-    -. file check ±â´É °­È­.
+    -. toolbar: ~/.gtkcomm/pixmap ëŒ€ì‹  pkgdatadir/pixmap/*.xpm ì‚¬ìš©
+    -. file check ê¸°ëŠ¥ ê°•í™”.
 
 0.3.3: 1999/11/14
 =================
 
-    -. fix terminal Ã¢ ÀÌ¿ÜÀÇ input dialog¿¡¼­ÀÇ ÇÑ±Û ÀÔ·Â.
+    -. fix terminal ì°½ ì´ì™¸ì˜ input dialogì—ì„œì˜ í•œê¸€ ì…ë ¥.
 
 0.3.2: 1999/11/14
 =================
 
-    -. fix X/Y/Zmodem transfer µµÁß stopÀÌ Àß ¾ÊµÇ´ø ¹®Á¦.
+    -. fix X/Y/Zmodem transfer ë„ì¤‘ stopì´ ì˜ ì•Šë˜ë˜ ë¬¸ì œ.
 
 0.3.1: 1999/11/14
 =================
 
-    -. PROGRESS-BAR Ãß°¡ (ascii, X/Y/Zmodem transfer)
-    -. Exit buttonÀº exit¸¸. trx stop ±â´ÉÀº tools menu¿¡.
-    -. telnet connect½Ã Àá±ñ ½Ã°£ÀÌ Àß¸ø Ãâ·ÂµÇ´ø ¹®Á¦ fix
-    -. 'ctlmenu add'¸¦ 'ctlmenu gadd'·Î ¹Ù²Ş. global add°¡ ÀÇ¹Ì°¡ ¸Â´Ù.
-    -. »ç¿ëÀÚ option¿¡ ÀÇÇØ control-bar¿¡ trx_protocol, emulate mode, baudrate
-	status¸¦ º¸¿©ÁÖ´Â labelÀ» Ãß°¡ÇÒ ¼ö ÀÖ°Ô ÇÏ°í, °ü·Ã tools menu »èÁ¦.
-    -. network ¹®Á¦µî¿¡ ÀÇÇØ telnet Á¢¼ÓÀÌ Á¦´ë·Î ¾ÊµÉ ¶§ »óÅÂ ²¿ÀÌ´Â ¹®Á¦
-	fix. °¡·É tool-bar controlÀÌ Á¦´ë·Î ¾ÊµÇ°í, ±×³É Á¾·á½Ã telnet process°¡
-	³²¾ÆÀÖ´Â ¹®Á¦°¡ ÀÖ¾úÀ½.
+    -. PROGRESS-BAR ì¶”ê°€ (ascii, X/Y/Zmodem transfer)
+    -. Exit buttonì€ exitë§Œ. trx stop ê¸°ëŠ¥ì€ tools menuì—.
+    -. telnet connectì‹œ ì ê¹ ì‹œê°„ì´ ì˜ëª» ì¶œë ¥ë˜ë˜ ë¬¸ì œ fix
+    -. 'ctlmenu add'ë¥¼ 'ctlmenu gadd'ë¡œ ë°”ê¿ˆ. global addê°€ ì˜ë¯¸ê°€ ë§ë‹¤.
+    -. ì‚¬ìš©ì optionì— ì˜í•´ control-barì— trx_protocol, emulate mode, baudrate
+	statusë¥¼ ë³´ì—¬ì£¼ëŠ” labelì„ ì¶”ê°€í•  ìˆ˜ ìˆê²Œ í•˜ê³ , ê´€ë ¨ tools menu ì‚­ì œ.
+    -. network ë¬¸ì œë“±ì— ì˜í•´ telnet ì ‘ì†ì´ ì œëŒ€ë¡œ ì•Šë  ë•Œ ìƒíƒœ ê¼¬ì´ëŠ” ë¬¸ì œ
+	fix. ê°€ë ¹ tool-bar controlì´ ì œëŒ€ë¡œ ì•Šë˜ê³ , ê·¸ëƒ¥ ì¢…ë£Œì‹œ telnet processê°€
+	ë‚¨ì•„ìˆëŠ” ë¬¸ì œê°€ ìˆì—ˆìŒ.
 
 0.3.0: 1999/11/11
 =================
 
-    -. »õ·Î¿î script command Ãß°¡: message, set config, ctlmenu, set protocol
-    -. control-bar¿¡¼­ quick change ±â´É »èÁ¦ (ctlmenu·Î ´ëÃ¼)
-    -. 'set enter/idletime/pstring' removed. (set config·Î ´ëÃ¼)
-    -. internal script ¼³¸í ¹®¼­ Ãß°¡ (doc/script.txt)
-    -. startup script Ãß°¡
-    -. global bookmark/button Ãß°¡ (disconnectµÇ¾îµµ º¸Á¸µÊ)
-    -. auto-responseµµ bookmark/buttonÃ³·³ ¼öÁ¤ (global autores file removed).
+    -. ìƒˆë¡œìš´ script command ì¶”ê°€: message, set config, ctlmenu, set protocol
+    -. control-barì—ì„œ quick change ê¸°ëŠ¥ ì‚­ì œ (ctlmenuë¡œ ëŒ€ì²´)
+    -. 'set enter/idletime/pstring' removed. (set configë¡œ ëŒ€ì²´)
+    -. internal script ì„¤ëª… ë¬¸ì„œ ì¶”ê°€ (doc/script.txt)
+    -. startup script ì¶”ê°€
+    -. global bookmark/button ì¶”ê°€ (disconnectë˜ì–´ë„ ë³´ì¡´ë¨)
+    -. auto-responseë„ bookmark/buttonì²˜ëŸ¼ ìˆ˜ì • (global autores file removed).
 
 0.2.3: 1999/11/10
 =================
 
-    È²Ä¡´ö´ÔÀÇ gau¸¦ ¹ÙÅÁÀ¸·Î ´ÙÀ½°ú °°Àº ÀÛ¾÷.
+    í™©ì¹˜ë•ë‹˜ì˜ gauë¥¼ ë°”íƒ•ìœ¼ë¡œ ë‹¤ìŒê³¼ ê°™ì€ ì‘ì—….
 
-    -. ¿ÏÀüÇÏ°Ô »õ·Î ÄÚµå¸¦ ÀÔ·Â.
-    -. ±âÁ¸ÀÇ control ¹öÆ°µéÀ» ¾ø¾Ö°í, Ç¥ÁØ ¸Ş´º¹Ù¿Í Åø¹Ù¸¦ Áö¿ø.
-    -. emul/baud/prot quick change ±â´É
+    -. ì™„ì „í•˜ê²Œ ìƒˆë¡œ ì½”ë“œë¥¼ ì…ë ¥.
+    -. ê¸°ì¡´ì˜ control ë²„íŠ¼ë“¤ì„ ì—†ì• ê³ , í‘œì¤€ ë©”ë‰´ë°”ì™€ íˆ´ë°”ë¥¼ ì§€ì›.
+    -. emul/baud/prot quick change ê¸°ëŠ¥
     -. enhanced script language
-    -. Ascii ¹× Xmodem/Ymodem transfer ±â´É
-    -. ¿©·¯°¡Áö °¡¿ìÀÇ ¿©·¯°¡Áö ±â´Éµé¿¡ ´ëÇÑ ±â´É È®Àå/Ãà¼Ò.
+    -. Ascii ë° Xmodem/Ymodem transfer ê¸°ëŠ¥
+    -. ì—¬ëŸ¬ê°€ì§€ ê°€ìš°ì˜ ì—¬ëŸ¬ê°€ì§€ ê¸°ëŠ¥ë“¤ì— ëŒ€í•œ ê¸°ëŠ¥ í™•ì¥/ì¶•ì†Œ.
 
-    °¡¿ì¿¡¼­ ºüÁø ±â´É
-    -. chatting ±â´É
+    ê°€ìš°ì—ì„œ ë¹ ì§„ ê¸°ëŠ¥
+    -. chatting ê¸°ëŠ¥
     -. sound
-    -. ÅÂ±Ø±â
+    -. íƒœê·¹ê¸°
 

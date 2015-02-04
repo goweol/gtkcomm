@@ -9,7 +9,7 @@ assign skiplogin "0"
 # enable debugging stuff
 # set debug 2
 
-# secure shell·Î login
+# secure shellë¡œ login
 # set config TelnetCommand "ssh -l $userid"
 # assign skiplogin "1"
 
@@ -21,10 +21,10 @@ set config TX_InfoStr ""
 # crlf = CR
 set config EnterConvert 1
 
-# localhostÀÎ °æ¿ì telnetÀ» ¶ç¿ì°í, input handler¸¦ µî·ÏÇÏ±â Àü¿¡
-# ÀÌ¹Ì ÀÀ´äÀÌ ³¯¶ó¿À´Â °æ¿ì°¡ ¸¹¾Æ¼­ waitfor 'login:' À» ³õÄ¡´Â
-# °æ¿ì°¡ ¸¹ÀÌ ¹ß»ıÇÑ´Ù. 2ÃÊÈÄ¸é ¹«Á¶°Ç login: prompt°¡ ¶¹´Ù°í °¡Á¤ÇÏ°í
-# ID¸¦ º¸³»°í, password¸¦ ±â´Ù¸°´Ù.
+# localhostì¸ ê²½ìš° telnetì„ ë„ìš°ê³ , input handlerë¥¼ ë“±ë¡í•˜ê¸° ì „ì—
+# ì´ë¯¸ ì‘ë‹µì´ ë‚ ë¼ì˜¤ëŠ” ê²½ìš°ê°€ ë§ì•„ì„œ waitfor 'login:' ì„ ë†“ì¹˜ëŠ”
+# ê²½ìš°ê°€ ë§ì´ ë°œìƒí•œë‹¤. 2ì´ˆí›„ë©´ ë¬´ì¡°ê±´ login: promptê°€ ë–´ë‹¤ê³  ê°€ì •í•˜ê³ 
+# IDë¥¼ ë³´ë‚´ê³ , passwordë¥¼ ê¸°ë‹¤ë¦°ë‹¤.
 
 # ID
 if "$skiplogin" == "0"
@@ -44,11 +44,11 @@ fi
 # PASSWORD
 waitfor "Password:" 2
 if $? != -1
-   # ¾î¶² ÀÌÀ¯·Î ÀÎÇØ password°¡ È­¸é¿¡ ±×´ë·Î Ãâ·ÂµÇ°í, loginÀÌ ¾ÊµÉ ¶§°¡
-   # ÀÖ´Ù.
+   # ì–´ë–¤ ì´ìœ ë¡œ ì¸í•´ passwordê°€ í™”ë©´ì— ê·¸ëŒ€ë¡œ ì¶œë ¥ë˜ê³ , loginì´ ì•Šë  ë•Œê°€
+   # ìˆë‹¤.
    pause 1
 
-   # password°¡ Á¦´ë·Î ±â´Ù·ÁÁ³À¸¸é...
+   # passwordê°€ ì œëŒ€ë¡œ ê¸°ë‹¤ë ¤ì¡Œìœ¼ë©´...
    transmit "$passwd\n"
 else
    message "\n\033[35mCannot login properly. login manually!\n\033[0m\n"
@@ -58,31 +58,31 @@ fi
 
 next:
 
-bookmark add "¹Ù·Î°¡±â"		       string "<BRANCH>"
-bookmark add "¹Ù·Î°¡±â/¸®´ª½º µ¿È£È¸"  string "go linux\n"
-bookmark add "¹Ù·Î°¡±â/À¯¸Ó"	       string "go humor\n"
-bookmark add "¹Ù·Î°¡±â/ÀÚ·á½Ç"	       string "go gl\n"
-bookmark add "¹Ù·Î°¡±â/OS µ¿È£È¸"      string "go osc\n"
-bookmark add "¹Ù·Î°¡±â/Åä·ĞÀÇ ±¤Àå"    string "go conf\n"
-bookmark add "Åä·ĞÀÇ ±¤Àå"	       string "go conf\n"
-bookmark add "Åä·ĞÀÇ ±¤Àå ÇÑ¹ø ´õ"     string "go conf\n"
+bookmark add "ë°”ë¡œê°€ê¸°"		       string "<BRANCH>"
+bookmark add "ë°”ë¡œê°€ê¸°/ë¦¬ëˆ…ìŠ¤ ë™í˜¸íšŒ"  string "go linux\n"
+bookmark add "ë°”ë¡œê°€ê¸°/ìœ ë¨¸"	       string "go humor\n"
+bookmark add "ë°”ë¡œê°€ê¸°/ìë£Œì‹¤"	       string "go gl\n"
+bookmark add "ë°”ë¡œê°€ê¸°/OS ë™í˜¸íšŒ"      string "go osc\n"
+bookmark add "ë°”ë¡œê°€ê¸°/í† ë¡ ì˜ ê´‘ì¥"    string "go conf\n"
+bookmark add "í† ë¡ ì˜ ê´‘ì¥"	       string "go conf\n"
+bookmark add "í† ë¡ ì˜ ê´‘ì¥ í•œë²ˆ ë”"     string "go conf\n"
 
-button add "¸ÇÀ§"	string "t\n"
-button add "³»·Á¹Ş±â"	string "dn\n"
-button add "»óÀ§¸Ş´º"	string "m\n"
+button add "ë§¨ìœ„"	string "t\n"
+button add "ë‚´ë ¤ë°›ê¸°"	string "dn\n"
+button add "ìƒìœ„ë©”ë‰´"	string "m\n"
 
-autores add "[ENTER] ¸¦ ´©¸£½Ê½Ã¿À."   string "\r"
+autores add "[ENTER] ë¥¼ ëˆ„ë¥´ì‹­ì‹œì˜¤."   string "\r"
 
-autores add "* ³¡³»½Ã·Á¸é \'Y\' ¸¦ ´©¸£°í ¿£ÅÍÅ°¸¦ ´©¸£½Ê½Ã¿À ->" \
+autores add "* ëë‚´ì‹œë ¤ë©´ \'Y\' ë¥¼ ëˆ„ë¥´ê³  ì—”í„°í‚¤ë¥¼ ëˆ„ë¥´ì‹­ì‹œì˜¤ ->" \
             string "y\n"
 
-autores add "Á¢¼ÓÀ» Á¾·áÇÏ½Ã°Ú½À´Ï±î (Y/n)" script \
+autores add "ì ‘ì†ì„ ì¢…ë£Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ (Y/n)" script \
 				'transmit "y\n"; pause 1; transmit "\n"'
 
-set title "³²¼ºÇö"
+set title "ë‚¨ì„±í˜„"
 set config TermRow 30
 
-# mouse ¿ŞÂÊ ¹öÆ° Å¬¸¯½Ã ¾Æ¹« Áşµµ ÇÏÁö¸¶¶ó.
+# mouse ì™¼ìª½ ë²„íŠ¼ í´ë¦­ì‹œ ì•„ë¬´ ì§“ë„ í•˜ì§€ë§ˆë¼.
 set config LeftMouseClickStr ""
 
 waitfor "\$"

@@ -4,61 +4,61 @@ SCRIPT language
 NOTE
 ----
 
-    "string": ¹®ÀÚ¿­. '\n'ÀÌ³ª '\008'°ú °°Àº control character¸¦ Æ÷ÇÔÇÒ ¼ö
-	     ÀÖ´Ù.
-    #       : '#' ÀÌÈÄ´Â comment·Î °£ÁÖµÈ´Ù. stringÀÌ #À» Æ÷ÇÔÇÒ °æ¿ì¿¡´Â
-	     ¹İµå½Ã stringÀ» ' ³ª " ·Î ¹­¾îÁÖ¾î¾ß ÇÑ´Ù.
+    "string": ë¬¸ìì—´. '\n'ì´ë‚˜ '\008'ê³¼ ê°™ì€ control characterë¥¼ í¬í•¨í•  ìˆ˜
+	     ìˆë‹¤.
+    #       : '#' ì´í›„ëŠ” commentë¡œ ê°„ì£¼ëœë‹¤. stringì´ #ì„ í¬í•¨í•  ê²½ìš°ì—ëŠ”
+	     ë°˜ë“œì‹œ stringì„ ' ë‚˜ " ë¡œ ë¬¶ì–´ì£¼ì–´ì•¼ í•œë‹¤.
 
 
 COMMAND LIST
 ------------
 
 -.  ASSIGN
-    »ç¿ë: assign varname "string"
-    ¼³¸í: »õ·Î¿î º¯¼ö¸¦ »ı¼ºÇÑ´Ù. ÀÌÈÄ ´Ù¸¥ µ¥¼­
-         ÀÌ º¯¼ö¸¦ '$'¸¦ ºÙ¿©¼­ Âü°íÇÒ ¼ö ÀÖ´Ù.
-    ¿¹Á¦: assign prompt "\$"
+    ì‚¬ìš©: assign varname "string"
+    ì„¤ëª…: ìƒˆë¡œìš´ ë³€ìˆ˜ë¥¼ ìƒì„±í•œë‹¤. ì´í›„ ë‹¤ë¥¸ ë°ì„œ
+         ì´ ë³€ìˆ˜ë¥¼ '$'ë¥¼ ë¶™ì—¬ì„œ ì°¸ê³ í•  ìˆ˜ ìˆë‹¤.
+    ì˜ˆì œ: assign prompt "\$"
 	  assign filename "~/somewhere/upload/filename.ext"
 
 	  transmit $filename	# filename send
 	  waitfor $prompt	# wait prompt
 
 -.  AUTORES
-    »ç¿ë: autores [add/gadd] "wait-string" [string/script/sfile]
+    ì‚¬ìš©: autores [add/gadd] "wait-string" [string/script/sfile]
 			     "string-script-file"
-    ¼³¸í: auto response ¸ñ·Ï¿¡ Ãß°¡. remote¿¡¼­ wait-stringÀ» ¹ŞÀ¸¸é
-	  ±× µÚ parameter°¡ stringÀÌ¸é stringÀ» transmitÇÏ°í, scriptÀÌ¸é
-	  script¸¦ ½ÇÇàÇÑ´Ù. 'add' »ç¿ë½Ã¿¡´Â disconnect½Ã¿¡ removeµÈ´Ù.
-	  gaddÇÑ °æ¿ì¿¡´Â gtkcommÀ» Á¾·áÇÒ ¶§±îÁö À¯ÁöµÈ´Ù.
-    ¿¹Á¦: autores gadd "[ENTER]¸¦ ÀÔ·ÂÇÏ¼¼¿ä" string "\r"
+    ì„¤ëª…: auto response ëª©ë¡ì— ì¶”ê°€. remoteì—ì„œ wait-stringì„ ë°›ìœ¼ë©´
+	  ê·¸ ë’¤ parameterê°€ stringì´ë©´ stringì„ transmití•˜ê³ , scriptì´ë©´
+	  scriptë¥¼ ì‹¤í–‰í•œë‹¤. 'add' ì‚¬ìš©ì‹œì—ëŠ” disconnectì‹œì— removeëœë‹¤.
+	  gaddí•œ ê²½ìš°ì—ëŠ” gtkcommì„ ì¢…ë£Œí•  ë•Œê¹Œì§€ ìœ ì§€ëœë‹¤.
+    ì˜ˆì œ: autores gadd "[ENTER]ë¥¼ ì…ë ¥í•˜ì„¸ìš”" string "\r"
 	  autores add "Send file with zmodem" script 'sendfile zmodem "?"'
 	  autores add "Send file with zmodem" sfile 'sendfile.scr'
 
 -.  BEEP
-    »ç¿ë: beep <percent>
-    ¼³¸í: »à ¼Ò¸®¸¦ ³½´Ù. 'percent'°¡ ¾ø´Â °æ¿ì configÀÇ BeepPercent °ªÀÌ
-	  »ç¿ëµÈ´Ù. 'percent'ÀÇ ¹üÀ§´Â -100 ~ 100.
-    ¿¹Á¦: beep
+    ì‚¬ìš©: beep <percent>
+    ì„¤ëª…: ì‚‘ ì†Œë¦¬ë¥¼ ë‚¸ë‹¤. 'percent'ê°€ ì—†ëŠ” ê²½ìš° configì˜ BeepPercent ê°’ì´
+	  ì‚¬ìš©ëœë‹¤. 'percent'ì˜ ë²”ìœ„ëŠ” -100 ~ 100.
+    ì˜ˆì œ: beep
 	  beep 50
 	  beep -50
 
 -.  BOOKMARK
-    »ç¿ë: bookmark [add/gadd] "bookmark-name" [string/script/sfile]
+    ì‚¬ìš©: bookmark [add/gadd] "bookmark-name" [string/script/sfile]
 			      "string-script-file"
-    ¼³¸í: Bookmark menu¿¡ »õ·Î¿î menu itemÀ» Ãß°¡ÇÑ´Ù.
-	  gadd´Â global addÀÇ ¾àÀÚ·Î¼­ disconnectµÇ¾îµµ »èÁ¦µÇÁö ¾Ê´Â´Ù.
-	  add¸¦ »ç¿ëÇÑ °æ¿ì disconnectµÉ ¶§ bookmark entry¿¡¼­ »èÁ¦µÈ´Ù.
-    ¿¹Á¦: bookmark add "¹Ù·Î°¡±â/¸®´ª½ºµ¿È£È¸" string "go linux\r"
-	  bookmark add "¹Ù·Î°¡±â/¸®´ª½ºµ¿È£È¸" script "transmit 'go linux\n'"
-	  bookmark add "¸®´ª½ºµ¿È£È¸" sfile "golinux.scr"
+    ì„¤ëª…: Bookmark menuì— ìƒˆë¡œìš´ menu itemì„ ì¶”ê°€í•œë‹¤.
+	  gaddëŠ” global addì˜ ì•½ìë¡œì„œ disconnectë˜ì–´ë„ ì‚­ì œë˜ì§€ ì•ŠëŠ”ë‹¤.
+	  addë¥¼ ì‚¬ìš©í•œ ê²½ìš° disconnectë  ë•Œ bookmark entryì—ì„œ ì‚­ì œëœë‹¤.
+    ì˜ˆì œ: bookmark add "ë°”ë¡œê°€ê¸°/ë¦¬ëˆ…ìŠ¤ë™í˜¸íšŒ" string "go linux\r"
+	  bookmark add "ë°”ë¡œê°€ê¸°/ë¦¬ëˆ…ìŠ¤ë™í˜¸íšŒ" script "transmit 'go linux\n'"
+	  bookmark add "ë¦¬ëˆ…ìŠ¤ë™í˜¸íšŒ" sfile "golinux.scr"
  
 -.  BUTTON
-    »ç¿ë: button [add/gadd] "button-name" [string/script/sfile]
+    ì‚¬ìš©: button [add/gadd] "button-name" [string/script/sfile]
 			   "string-script-file"
-    ¼³¸í: control-bar¿¡ »õ·Î¿î buttonÀ» Ãß°¡ÇÑ´Ù.
-	  gadd´Â global addÀÇ ¾àÀÚ·Î¼­ disconnectµÇ¾îµµ »èÁ¦µÇÁö ¾Ê´Â´Ù.
-	  add¸¦ »ç¿ëÇÑ °æ¿ì disconnectµÉ ¶§ buttonÀÌ »èÁ¦µÈ´Ù.
-    ¿¹Á¦: button add "TOP" string "t\r"
+    ì„¤ëª…: control-barì— ìƒˆë¡œìš´ buttonì„ ì¶”ê°€í•œë‹¤.
+	  gaddëŠ” global addì˜ ì•½ìë¡œì„œ disconnectë˜ì–´ë„ ì‚­ì œë˜ì§€ ì•ŠëŠ”ë‹¤.
+	  addë¥¼ ì‚¬ìš©í•œ ê²½ìš° disconnectë  ë•Œ buttonì´ ì‚­ì œëœë‹¤.
+    ì˜ˆì œ: button add "TOP" string "t\r"
 	  button gadd "FAST" script 'transmit "chgbaud 115200\r"; \
 	                             waitfor "Change baud to 115200"; \
 				     set baudrate 115200; \
@@ -66,50 +66,50 @@ COMMAND LIST
 	  button add "SLOW" sfile 'slow.scr'
  
 -.  CAPTURE
-    »ç¿ë: capture [on/off] <filename> <excludebuf>
-    ¼³¸í: capture fileÀ» ¿­°Å³ª ´İ´Â´Ù. 'capture on' ½Ã¿¡´Â ¹İµå½Ã filenameÀÌ
-	  ÁÖ¾îÁ®¾ß ÇÏ¸ç, 'excludebuf' keyword°¡ ¾ø´Â °æ¿ì ÇöÀç terminal
-	  bufferÀÇ ³»¿ëÀ» capture file¿¡ Æ÷ÇÔÇÑ´Ù.
-    ¿¹Á¦: capture on "today.log" excludebuf
+    ì‚¬ìš©: capture [on/off] <filename> <excludebuf>
+    ì„¤ëª…: capture fileì„ ì—´ê±°ë‚˜ ë‹«ëŠ”ë‹¤. 'capture on' ì‹œì—ëŠ” ë°˜ë“œì‹œ filenameì´
+	  ì£¼ì–´ì ¸ì•¼ í•˜ë©°, 'excludebuf' keywordê°€ ì—†ëŠ” ê²½ìš° í˜„ì¬ terminal
+	  bufferì˜ ë‚´ìš©ì„ capture fileì— í¬í•¨í•œë‹¤.
+    ì˜ˆì œ: capture on "today.log" excludebuf
 	  capture on "today.log"
 	  capture off
  
 -.  CLEAR
-    »ç¿ë: clear
-    ¼³¸í: È­¸éÀ» Áö¿î´Ù.
-    ¿¹Á¦: clear
+    ì‚¬ìš©: clear
+    ì„¤ëª…: í™”ë©´ì„ ì§€ìš´ë‹¤.
+    ì˜ˆì œ: clear
  
 -.  CTLMENU
-    »ç¿ë: ctlmenu [add/gadd] title itemname [string/script/sfile]
+    ì‚¬ìš©: ctlmenu [add/gadd] title itemname [string/script/sfile]
 				"string-script-file"
-    ¼³¸í: control-bar¿¡ »ç¿ëÀÚ ¸Ş´º¸¦ Ãß°¡ÇÑ´Ù. add »ç¿ë½Ã¿¡´Â disconnect½Ã
-	  ÀÚµ¿À¸·Î »èÁ¦µÈ´Ù.
-    ¿¹Á¦: ctlmenu gadd Baudrate 9600 script 'set baudrate 9600'
+    ì„¤ëª…: control-barì— ì‚¬ìš©ì ë©”ë‰´ë¥¼ ì¶”ê°€í•œë‹¤. add ì‚¬ìš©ì‹œì—ëŠ” disconnectì‹œ
+	  ìë™ìœ¼ë¡œ ì‚­ì œëœë‹¤.
+    ì˜ˆì œ: ctlmenu gadd Baudrate 9600 script 'set baudrate 9600'
 	  ctlmenu gadd Baudrate 4800 script 'set baudrate 4800'
 	  ctlmenu gadd Baudrate 2400 script 'set baudrate 2400'
 	  ctlmenu add Download FAST sfile 'fastdown.scr'
 	  ctlmenu add Download SLOW sfile 'slowdown.scr'
 
 -.  DISCONNECT
-    »ç¿ë: disconnect
-    ¼³¸í: ¿¬°áÀ» ²÷´Â´Ù.
-    ¿¹Á¦: disconnect
+    ì‚¬ìš©: disconnect
+    ì„¤ëª…: ì—°ê²°ì„ ëŠëŠ”ë‹¤.
+    ì˜ˆì œ: disconnect
  
 -.  DOWNLOAD
-    »ç¿ë: receivefile zmodem
-    ¼³¸í: fileÀ» downloadÇÑ´Ù.
-    ¿¹Á¦: receivefile zmodem
+    ì‚¬ìš©: receivefile zmodem
+    ì„¤ëª…: fileì„ downloadí•œë‹¤.
+    ì˜ˆì œ: receivefile zmodem
  
 -.  EMULATE
-    »ç¿ë: emulate [vt100 | ansi]
-    ¼³¸í: terminal emulation mode¸¦ ¼³Á¤.
-    ¿¹Á¦: emulate vt100
+    ì‚¬ìš©: emulate [vt100 | ansi]
+    ì„¤ëª…: terminal emulation modeë¥¼ ì„¤ì •.
+    ì˜ˆì œ: emulate vt100
 	  emulate ansi
  
 -.  END
-    »ç¿ë: end
-    ¼³¸í: script finish. goto¿Í ¿¬°üµÇ¾î »ç¿ëµÉ ¼ö ÀÖ´Ù.
-    ¿¹Á¦: goto next
+    ì‚¬ìš©: end
+    ì„¤ëª…: script finish. gotoì™€ ì—°ê´€ë˜ì–´ ì‚¬ìš©ë  ìˆ˜ ìˆë‹¤.
+    ì˜ˆì œ: goto next
 	  here:
 	    message "works are done"
 	    end
@@ -118,41 +118,41 @@ COMMAND LIST
 	    goto here
 
 -.  ENDWIN
-    »ç¿ë: endwin
-    ¼³¸í: ÇöÀç ¿­¸° dialog Ã¢ÀÌ ÀÖÀ¸¸é ±× Ã¢À» ´İÀ½.
+    ì‚¬ìš©: endwin
+    ì„¤ëª…: í˜„ì¬ ì—´ë¦° dialog ì°½ì´ ìˆìœ¼ë©´ ê·¸ ì°½ì„ ë‹«ìŒ.
 
 -.  GET BAUDRATE
-    »ç¿ë: get baudrate currbaud
-    ¼³¸í: ÇöÀç baudrate¸¦ 'currbaud' º¯¼ö·Î ¾ò¾î¿Â´Ù.
-    ¿¹Á¦: get baudrate currbaud
+    ì‚¬ìš©: get baudrate currbaud
+    ì„¤ëª…: í˜„ì¬ baudrateë¥¼ 'currbaud' ë³€ìˆ˜ë¡œ ì–»ì–´ì˜¨ë‹¤.
+    ì˜ˆì œ: get baudrate currbaud
 	  if $currbaud != '115200'
 	    set baudrate 115200
 	  fi
 
 -.  GET FILE
-    »ç¿ë: get file filename size filesize
-    ¼³¸í: 'filename'ÀÇ size¸¦ 'filesize' º¯¼ö·Î ¾ò¾î¿Â´Ù.
-    ¿¹Á¦: assign filename "~/upload/file.tar.gz"
+    ì‚¬ìš©: get file filename size filesize
+    ì„¤ëª…: 'filename'ì˜ sizeë¥¼ 'filesize' ë³€ìˆ˜ë¡œ ì–»ì–´ì˜¨ë‹¤.
+    ì˜ˆì œ: assign filename "~/upload/file.tar.gz"
 	  get file $filename size filesize
 	  message "The size of the $filename is $filesize"
 
 -.  GOTO
-    »ç¿ë: goto label
-    ¼³¸í: label·Î Á¡ÇÁ
-    ¿¹Á¦: goto next
+    ì‚¬ìš©: goto label
+    ì„¤ëª…: labelë¡œ ì í”„
+    ì˜ˆì œ: goto next
 	    transmit "skip transmit\r"
 	  next:
 	    transmit "do transmit\r"
 
 -.  IF/ELSE/ELSEIF/ELIF/FI/ENDIF
-    »ç¿ë: if $? [==/!=] #num
-    ¼³¸í: if Á¶°Ç¹®. ÀÌÀü ¸í·ÉÀÇ ½ÇÇà°á°ú¸¦ È®ÀÎÇÏ´Â ±â´ÉÀ¸·Î¼­
-	  ÇöÀç´Â ÁÖ·Î waitfor¿Í ¹°·Á¼­ »ç¿ëµÉ ¼ö ÀÖ´Ù. ¸ğµç Script
-	  ¸í·ÉÀÇ ½ÇÇà °á°ú´Â ¼º°øÀÌ¸é 0, ½ÇÆĞ¸é -1 °ªÀ» °®´Â´Ù.
+    ì‚¬ìš©: if $? [==/!=] #num
+    ì„¤ëª…: if ì¡°ê±´ë¬¸. ì´ì „ ëª…ë ¹ì˜ ì‹¤í–‰ê²°ê³¼ë¥¼ í™•ì¸í•˜ëŠ” ê¸°ëŠ¥ìœ¼ë¡œì„œ
+	  í˜„ì¬ëŠ” ì£¼ë¡œ waitforì™€ ë¬¼ë ¤ì„œ ì‚¬ìš©ë  ìˆ˜ ìˆë‹¤. ëª¨ë“  Script
+	  ëª…ë ¹ì˜ ì‹¤í–‰ ê²°ê³¼ëŠ” ì„±ê³µì´ë©´ 0, ì‹¤íŒ¨ë©´ -1 ê°’ì„ ê°–ëŠ”ë‹¤.
 
-	  elseif¿Í elif´Â µ¿ÀÏÇÏ¸ç, ¸¶Âù°¡Áö·Î fi¿Í endif´Â µ¿ÀÏÇÏ´Ù.
+	  elseifì™€ elifëŠ” ë™ì¼í•˜ë©°, ë§ˆì°¬ê°€ì§€ë¡œ fiì™€ endifëŠ” ë™ì¼í•˜ë‹¤.
 
-    ¿¹Á¦: waitfor "login:" 2
+    ì˜ˆì œ: waitfor "login:" 2
 	  if $? == 0
 	    transmit myID
 	    waitfor "Password:" 2
@@ -163,106 +163,106 @@ COMMAND LIST
 	    message "\n'login:' wait timeout. Login manually!\n"
 	  fi
 
-    ¿¹Á¦: if "$variable" == "value"
+    ì˜ˆì œ: if "$variable" == "value"
 	    message "value\n"
 	  elseif "$variable" == "other_val"
 	    message "other_val\n"
 	  endif
 
 -.  INCLUDE
-    »ç¿ë: include "script-filename"
-    ¼³¸í: ´Ù¸¥ script fileÀ» include
-    ¿¹Á¦: include "my-local.scr"
+    ì‚¬ìš©: include "script-filename"
+    ì„¤ëª…: ë‹¤ë¥¸ script fileì„ include
+    ì˜ˆì œ: include "my-local.scr"
  
 -.  KFLUSH
-    »ç¿ë: kflush 
-    ¼³¸í: key buffer flush?  ÇöÀç´Â ¾Æ¹« µ¿ÀÛµµ ¼öÇàÇÏÁö ¾Ê´Â´Ù.
-    ¿¹Á¦: kflush
+    ì‚¬ìš©: kflush 
+    ì„¤ëª…: key buffer flush?  í˜„ì¬ëŠ” ì•„ë¬´ ë™ì‘ë„ ìˆ˜í–‰í•˜ì§€ ì•ŠëŠ”ë‹¤.
+    ì˜ˆì œ: kflush
  
 -.  LABEL
-    »ç¿ë: label [add/gadd] [baudrate/emulate/protocol/linestatus]
-    ¼³¸í: control-bar¿¡ baudrate, emulate, protocolÀÇ »óÅÂ labelÀ» Ãß°¡ÇÑ´Ù.
-	  'linestatus'ÀÇ °æ¿ì control-bar¿¡ line status¸¦ º¸¿©ÁÖ´Â toggle
-	  button °°Àº °ÍÀ» Ãß°¡.
-    ¿¹Á¦: label add baudrate
+    ì‚¬ìš©: label [add/gadd] [baudrate/emulate/protocol/linestatus]
+    ì„¤ëª…: control-barì— baudrate, emulate, protocolì˜ ìƒíƒœ labelì„ ì¶”ê°€í•œë‹¤.
+	  'linestatus'ì˜ ê²½ìš° control-barì— line statusë¥¼ ë³´ì—¬ì£¼ëŠ” toggle
+	  button ê°™ì€ ê²ƒì„ ì¶”ê°€.
+    ì˜ˆì œ: label add baudrate
 
 -.  MESSAGE
-    »ç¿ë: message "string"
-    ¼³¸í: È­¸é¿¡ stringÀ» ÇÁ¸°Æ®. transmitÃ³·³ remote·Î sendÇÏÁö´Â ¾Ê´Â´Ù.
-    ¿¹Á¦: message "Hello, world!!!"
+    ì‚¬ìš©: message "string"
+    ì„¤ëª…: í™”ë©´ì— stringì„ í”„ë¦°íŠ¸. transmitì²˜ëŸ¼ remoteë¡œ sendí•˜ì§€ëŠ” ì•ŠëŠ”ë‹¤.
+    ì˜ˆì œ: message "Hello, world!!!"
  
 -.  RUN
-    »ç¿ë: run 'filename'
-    ¼³¸í: 'filename' fileÀ» ½ÇÇà.
-    ¿¹Á¦: run 'download.sh'
+    ì‚¬ìš©: run 'filename'
+    ì„¤ëª…: 'filename' fileì„ ì‹¤í–‰.
+    ì˜ˆì œ: run 'download.sh'
  
 -.  SET BAUDRATE
-    »ç¿ë: set baudrate [300/600/1200/2400/4800/9600/19200/38400/57600/115200]
-    ¼³¸í: modemÀÇ baudrate¸¦ ¹Ù²Û´Ù. ÀÏ¹İÀûÀ¸·Î COM port direct connection
-	  È¯°æ¿¡¼­ À¯¿ëÇÏ°Ô »ç¿ëµÈ´Ù.
-    ¿¹Á¦: set baudrate 19200
+    ì‚¬ìš©: set baudrate [300/600/1200/2400/4800/9600/19200/38400/57600/115200]
+    ì„¤ëª…: modemì˜ baudrateë¥¼ ë°”ê¾¼ë‹¤. ì¼ë°˜ì ìœ¼ë¡œ COM port direct connection
+	  í™˜ê²½ì—ì„œ ìœ ìš©í•˜ê²Œ ì‚¬ìš©ëœë‹¤.
+    ì˜ˆì œ: set baudrate 19200
  
 -.  SET CONFIG
-    »ç¿ë: set config [variable-name] [value]
-    ¼³¸í: gtkcommrc fileÀÇ ¸ğµç variableµéÀÇ °ªÀ» ¹Ù²Ü ¼ö ÀÖ´Ù.
-	  (ÁÖÀÇ: TermFont, DoLock°ú °°Àº º¯¼ö´Â ÀÌ¹Ì ÃÊ±âÈ­°¡ ³¡³­
-		 °æ¿ì¿¡´Â µ¿ÀÛ¿¡ ¿µÇâÀ» ¹ŞÁö ¾Ê´Â´Ù. ±×·± º¯¼öµéÀÌ ¿©·µ ÀÖ´Ù)
-    ¿¹Á¦: set config LeftMouseClickStr	  "p\r"
+    ì‚¬ìš©: set config [variable-name] [value]
+    ì„¤ëª…: gtkcommrc fileì˜ ëª¨ë“  variableë“¤ì˜ ê°’ì„ ë°”ê¿€ ìˆ˜ ìˆë‹¤.
+	  (ì£¼ì˜: TermFont, DoLockê³¼ ê°™ì€ ë³€ìˆ˜ëŠ” ì´ë¯¸ ì´ˆê¸°í™”ê°€ ëë‚œ
+		 ê²½ìš°ì—ëŠ” ë™ì‘ì— ì˜í–¥ì„ ë°›ì§€ ì•ŠëŠ”ë‹¤. ê·¸ëŸ° ë³€ìˆ˜ë“¤ì´ ì—¬ëŸ¿ ìˆë‹¤)
+    ì˜ˆì œ: set config LeftMouseClickStr	  "p\r"
 	  set config UseBeep		  TRUE
 	  set config ColorCyan	          "0.0 0.6 0.6"
 	  set config IdleGuardInverval	  240
  
 -.  SET TITLE
-    »ç¿ë: set title "title-string"
-    ¼³¸í: Ã¢ÀÇ Á¦¸ñÀ» ¹Ù²Û´Ù.
-    ¿¹Á¦: set title "ÇÏÀÌÅÚ"
+    ì‚¬ìš©: set title "title-string"
+    ì„¤ëª…: ì°½ì˜ ì œëª©ì„ ë°”ê¾¼ë‹¤.
+    ì˜ˆì œ: set title "í•˜ì´í…”"
  
 -.  STSMSG
-    »ç¿ë: stsmsg "string"
-    ¼³¸í: status bar¿¡ stringÀ» ÇÁ¸°Æ®.
-    ¿¹Á¦: stsmsg "Hello, world!!!"
+    ì‚¬ìš©: stsmsg "string"
+    ì„¤ëª…: status barì— stringì„ í”„ë¦°íŠ¸.
+    ì˜ˆì œ: stsmsg "Hello, world!!!"
  
 -.  PAUSE
-    »ç¿ë: pause [secs]
-    ¼³¸í: 'secs' ÃÊ µ¿¾È sleep. 'secs'´Â ½Ç¼ö(float) ´ÜÀ§ÀÌ°í, 0.1ÃÊ ÀÌ»ó.
-    ¿¹Á¦: pause 3
+    ì‚¬ìš©: pause [secs]
+    ì„¤ëª…: 'secs' ì´ˆ ë™ì•ˆ sleep. 'secs'ëŠ” ì‹¤ìˆ˜(float) ë‹¨ìœ„ì´ê³ , 0.1ì´ˆ ì´ìƒ.
+    ì˜ˆì œ: pause 3
 	  pause 0.5
  
 -.  RFLUSH
-    »ç¿ë: rflush
-    ¼³¸í: rx buffer flush? ÇöÀç´Â ¾Æ¹« µ¿ÀÛµµ ¼öÇàÇÏÁö ¾Ê´Â´Ù.
-    ¿¹Á¦: rflush
+    ì‚¬ìš©: rflush
+    ì„¤ëª…: rx buffer flush? í˜„ì¬ëŠ” ì•„ë¬´ ë™ì‘ë„ ìˆ˜í–‰í•˜ì§€ ì•ŠëŠ”ë‹¤.
+    ì˜ˆì œ: rflush
  
 -.  TRANSMIT
-    »ç¿ë: transmit "string"
-    ¼³¸í: ¹®ÀÚ¿­À» remote·Î º¸³½´Ù.
-    ¿¹Á¦: transmit "go linux\r"
+    ì‚¬ìš©: transmit "string"
+    ì„¤ëª…: ë¬¸ìì—´ì„ remoteë¡œ ë³´ë‚¸ë‹¤.
+    ì˜ˆì œ: transmit "go linux\r"
  
 -.  UPLOAD
-    »ç¿ë: sendfile [ascii/raw-ascii/xmodem/ymodem/zmodem] filename
-    ¼³¸í: fileÀ» ÁÖ¾îÁø ÇÁ·ÎÅäÄİÀ» ÀÌ¿ëÇÏ¿© ¼Û½ÅÇÑ´Ù.
-    ¿¹Á¦: sendfile xmodem "test.lod"
-	  sendfile zmodem "?"	       # "?"¸é file browse Ã¢ÀÌ ¿­¸°´Ù.
+    ì‚¬ìš©: sendfile [ascii/raw-ascii/xmodem/ymodem/zmodem] filename
+    ì„¤ëª…: fileì„ ì£¼ì–´ì§„ í”„ë¡œí† ì½œì„ ì´ìš©í•˜ì—¬ ì†¡ì‹ í•œë‹¤.
+    ì˜ˆì œ: sendfile xmodem "test.lod"
+	  sendfile zmodem "?"	       # "?"ë©´ file browse ì°½ì´ ì—´ë¦°ë‹¤.
  
 -.  WAITFOR
-    »ç¿ë: waitfor "string" <secs> <"string2">
-    ¼³¸í: ¹®ÀÚ¿­À» ±â´Ù¸°´Ù. 'secs'°¡ ÁÖ¾îÁø °æ¿ì¿¡´Â ÁÖ¾îÁø ½Ã°£(ÃÊ) µ¿¾È¸¸
-	  ±â´Ù¸°´Ù. 'secs'°¡ ¾ø°Å³ª 0ÀÎ °æ¿ì¿¡´Â ¹«ÇÑÈ÷ ±â´Ù¸°´Ù.
-	  'secs'°¡ ÀÖ´Â °æ¿ì µÎ¹øÂ° "string2"¸¦ Ãß°¡ÇÒ ¼ö ÀÖ°í, ÀÌ °æ¿ì
-	  "string"°ú "string2" µÑÁß ÇÏ³ª¸¦ ¸¸³ª¸é waitfor´Â Á¾·áÇÏ¸ç,
-	  "string"À» ¸¸³ª¸é result´Â 0, "string2"¸¦ ¸¸³ª¸é result´Â 1ÀÌ´Ù.
-    ¿¹Á¦: waitfor "$"
+    ì‚¬ìš©: waitfor "string" <secs> <"string2">
+    ì„¤ëª…: ë¬¸ìì—´ì„ ê¸°ë‹¤ë¦°ë‹¤. 'secs'ê°€ ì£¼ì–´ì§„ ê²½ìš°ì—ëŠ” ì£¼ì–´ì§„ ì‹œê°„(ì´ˆ) ë™ì•ˆë§Œ
+	  ê¸°ë‹¤ë¦°ë‹¤. 'secs'ê°€ ì—†ê±°ë‚˜ 0ì¸ ê²½ìš°ì—ëŠ” ë¬´í•œíˆ ê¸°ë‹¤ë¦°ë‹¤.
+	  'secs'ê°€ ìˆëŠ” ê²½ìš° ë‘ë²ˆì§¸ "string2"ë¥¼ ì¶”ê°€í•  ìˆ˜ ìˆê³ , ì´ ê²½ìš°
+	  "string"ê³¼ "string2" ë‘˜ì¤‘ í•˜ë‚˜ë¥¼ ë§Œë‚˜ë©´ waitforëŠ” ì¢…ë£Œí•˜ë©°,
+	  "string"ì„ ë§Œë‚˜ë©´ resultëŠ” 0, "string2"ë¥¼ ë§Œë‚˜ë©´ resultëŠ” 1ì´ë‹¤.
+    ì˜ˆì œ: waitfor "$"
 	  waitfor "XYZ" 3
 
-    ¿¹Á¦2:
+    ì˜ˆì œ2:
 	  waitfor "ABC" 5.5 "DEF"
 	  if $? == 1
 	    message "met DEF"
 	  fi
 
 -.  WIN
-    »ç¿ë: win begin "title"
+    ì‚¬ìš©: win begin "title"
 	  win ...
-    ¼³¸í: ´ëÈ­»óÀÚ Ã¢À» »ı¼ºÇÏ°í, buttonÀ» ¸¸µé°í...
-    ¿¹Á¦: ÀÚ¼¼ÇÑ »çÇ×Àº res/script/dialog.scr Âü°í.
+    ì„¤ëª…: ëŒ€í™”ìƒì ì°½ì„ ìƒì„±í•˜ê³ , buttonì„ ë§Œë“¤ê³ ...
+    ì˜ˆì œ: ìì„¸í•œ ì‚¬í•­ì€ res/script/dialog.scr ì°¸ê³ .
 

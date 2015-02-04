@@ -1,12 +1,12 @@
 # window script sample
 #
-# ÀÌ°ÍÀº gtk+ programmingÀ» C ´ë½Å script·Î ÇÏ´Â °Í°ú °°½À´Ï´Ù.
-# µû¶ó¼­, gtk+ programming°ú À¯»çÇÏ°Ô ÁøÇàµË´Ï´Ù.
+# ì´ê²ƒì€ gtk+ programmingì„ C ëŒ€ì‹  scriptë¡œ í•˜ëŠ” ê²ƒê³¼ ê°™ìŠµë‹ˆë‹¤.
+# ë”°ë¼ì„œ, gtk+ programmingê³¼ ìœ ì‚¬í•˜ê²Œ ì§„í–‰ë©ë‹ˆë‹¤.
 
-message "\nÀÌÁ¦ ¿©·¯°³ÀÇ µ¥¸ğ Ã¢À» ¶ç¿ï °ÍÀÔ´Ï´Ù.\n"
-message "QUIT ¹öÆ°À» ´©¸£½Ã¸é ¶Ç ´Ù¸¥ Ã¢ÀÌ ¶ã ¼öµµ ÀÖ½À´Ï´Ù.\n"
-message "±âÅ¸ ÀÚ¼¼ÇÑ »çÇ×Àº ~/.gtkcomm/script/dialog.scr\n"
-message "ÆÄÀÏÀ» Âü°íÇÏ½Ê½Ã¿ä!\n"
+message "\nì´ì œ ì—¬ëŸ¬ê°œì˜ ë°ëª¨ ì°½ì„ ë„ìš¸ ê²ƒì…ë‹ˆë‹¤.\n"
+message "QUIT ë²„íŠ¼ì„ ëˆ„ë¥´ì‹œë©´ ë˜ ë‹¤ë¥¸ ì°½ì´ ëœ° ìˆ˜ë„ ìˆìŠµë‹ˆë‹¤.\n"
+message "ê¸°íƒ€ ìì„¸í•œ ì‚¬í•­ì€ ~/.gtkcomm/script/dialog.scr\n"
+message "íŒŒì¼ì„ ì°¸ê³ í•˜ì‹­ì‹œìš”!\n"
 pause 1
 message "Wait.."
 pause 1
@@ -17,43 +17,43 @@ pause 1
 
 # *************************** FIRST WINDOW DEMO ****************************
 
-# 'win begin'Àº window creation ½ÃÀÛ
+# 'win begin'ì€ window creation ì‹œì‘
 win begin "SAMPLE DIALOG"
 
-# hbox¸¦ ¿©·¯°³ ¸¸µé±â À§ÇØ¼­´Â vbox°¡ ÀÖ¾î¾ß µÈ´Ù.
-# 'win'À» »ç¿ëÇÏ°í, ÀÌ¸§Àº vbox1, spacing=3
+# hboxë¥¼ ì—¬ëŸ¬ê°œ ë§Œë“¤ê¸° ìœ„í•´ì„œëŠ” vboxê°€ ìˆì–´ì•¼ ëœë‹¤.
+# 'win'ì„ ì‚¬ìš©í•˜ê³ , ì´ë¦„ì€ vbox1, spacing=3
 win vbox win vbox1 3
 
-# entry ¿Í XMODEM, ASCII buttonÀ» ¼öÆòÀ¸·Î À§Ä¡½ÃÅ°±â À§ÇØ¼­ hbox¸¦ »ı¼º
-# 'vbox1'À» »ç¿ëÇÏ°í, ÀÌ¸§Àº hbox1, spacing=3
+# entry ì™€ XMODEM, ASCII buttonì„ ìˆ˜í‰ìœ¼ë¡œ ìœ„ì¹˜ì‹œí‚¤ê¸° ìœ„í•´ì„œ hboxë¥¼ ìƒì„±
+# 'vbox1'ì„ ì‚¬ìš©í•˜ê³ , ì´ë¦„ì€ hbox1, spacing=3
 win hbox vbox1 hbox1 3
 
-# entry Ãß°¡. »ç¿ëÀÚ°¡ ¹®ÀÚ¿­ ÀÔ·ÂÈÄ ¿£ÅÍÅ°¸¦ Ä¡¸é "echo 1" buttonÀ»
-# activate½ÃÅ²´Ù.
-# NOTE: ÇöÀç entry´Â ÃÖ´ë 2°³ ±îÁö¸¸ ¸¸µé ¼ö ÀÖ´Ù. src/pcScript.c¿¡¼­
-#       °¹¼ö¸¦ ´Ã¸± ¼ö ÀÖ´Ù (MAX_ENTRY_NUM). °æÇè»ó 2°³¸é ÃæºĞ... :)
+# entry ì¶”ê°€. ì‚¬ìš©ìê°€ ë¬¸ìì—´ ì…ë ¥í›„ ì—”í„°í‚¤ë¥¼ ì¹˜ë©´ "echo 1" buttonì„
+# activateì‹œí‚¨ë‹¤.
+# NOTE: í˜„ì¬ entryëŠ” ìµœëŒ€ 2ê°œ ê¹Œì§€ë§Œ ë§Œë“¤ ìˆ˜ ìˆë‹¤. src/pcScript.cì—ì„œ
+#       ê°¯ìˆ˜ë¥¼ ëŠ˜ë¦´ ìˆ˜ ìˆë‹¤ (MAX_ENTRY_NUM). ê²½í—˜ìƒ 2ê°œë©´ ì¶©ë¶„... :)
 win entry hbox1 $FILE act "echo 1"
 
-# À§ÀÇ entry¿¡¼­ »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ¹®ÀÚ¿­À» ÆÄÀÏ¸íÀ¸·Î ÇÏ¿© XMODEMÀ¸·Î upload
+# ìœ„ì˜ entryì—ì„œ ì‚¬ìš©ìê°€ ì…ë ¥í•œ ë¬¸ìì—´ì„ íŒŒì¼ëª…ìœ¼ë¡œ í•˜ì—¬ XMODEMìœ¼ë¡œ upload
 win button hbox1 "XMODEM" script "sendfile xmodem $FILE"
 win button hbox1 "ASCII" script "sendfile ascii $FILE"
 
-# ¼öÆò¼±À» ±ßÀÚ (vbox°¡ ÀÖ¾î¾ß µÊ)
+# ìˆ˜í‰ì„ ì„ ê¸‹ì (vboxê°€ ìˆì–´ì•¼ ë¨)
 win hsep vbox1
 
-# vbox¿¡ »õ·Î¿î hbox¸¦ »ı¼ºÇÏ°í entry¿Í WAIT,ÇìÇì button Ãß°¡.
-# vbox1¿¡ »õ·Î¿î hbox2¸¦ Ãß°¡ÇÏ°í spacing=3
+# vboxì— ìƒˆë¡œìš´ hboxë¥¼ ìƒì„±í•˜ê³  entryì™€ WAIT,í—¤í—¤ button ì¶”ê°€.
+# vbox1ì— ìƒˆë¡œìš´ hbox2ë¥¼ ì¶”ê°€í•˜ê³  spacing=3
 win hbox vbox1 hbox2 3
 win entry hbox2 $WAIT
 win button hbox2 "WAIT" script "waitfor $WAIT"
-win button hbox2 "ÇìÇì" script "transmit '\n'; waitfor '\$'; transmit $WAIT; \
+win button hbox2 "í—¤í—¤" script "transmit '\n'; waitfor '\$'; transmit $WAIT; \
 			  waitfor '\$'; transmit '\n'"
 
-# ¶Ç ´Ù¸¥ hbox3
+# ë˜ ë‹¤ë¥¸ hbox3
 win hsep vbox1
 win hbox vbox1 hbox3 3
 
-# button µéÀ» Ãß°¡
+# button ë“¤ì„ ì¶”ê°€
 win button hbox3 "echo 1" script "message $FILE"
 win button hbox3 "echo 2" script "message $WAIT"
 win button hbox3 "HWLOCK" script "transmit 'mb 8600000\n'; waitfor ':'; \
@@ -63,24 +63,24 @@ win button hbox3 "MTEST & QUIT" script "\
 			    message 'mtest -p -b -l 100 8701000 1\n'; \
 			    endwin"
 
-# ¶Ç ´Ù¸¥ hbox4
+# ë˜ ë‹¤ë¥¸ hbox4
 win hbox vbox1 hbox4 3
 win button hbox4 "19200" script "changebaud 19200"
 win button hbox4 "test" script "sendfile xmodem test"
 
-# button string/script ´ë½Å quit ÀÌ¸é Æ¯º°ÇÑ ÀÇ¹Ì¸¦ °®´Â´Ù. 'Á¾·á'
+# button string/script ëŒ€ì‹  quit ì´ë©´ íŠ¹ë³„í•œ ì˜ë¯¸ë¥¼ ê°–ëŠ”ë‹¤. 'ì¢…ë£Œ'
 win button vbox1 "QUIT" quit "quit"
 
-# Ã¢ »ı¼ºÀ» ³¡³»°í, window°¡ Á¾·áÇÒ ¶§±îÁö ÇöÀç ½ºÅ©¸³Æ® Áß´Ü.
-# NOTE: wait ´ë½Å 'end'¸¦ »ç¿ëÇÒ ¼ö ÀÖ´Ù.
-#       end°¡ »ç¿ëµÇ¸é window°¡ »ı¼ºµÈ ÈÄ ¹ØÀÇ script¸¦ °è¼Ó ¼öÇàÇÑ´Ù.
+# ì°½ ìƒì„±ì„ ëë‚´ê³ , windowê°€ ì¢…ë£Œí•  ë•Œê¹Œì§€ í˜„ì¬ ìŠ¤í¬ë¦½íŠ¸ ì¤‘ë‹¨.
+# NOTE: wait ëŒ€ì‹  'end'ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤.
+#       endê°€ ì‚¬ìš©ë˜ë©´ windowê°€ ìƒì„±ëœ í›„ ë°‘ì˜ scriptë¥¼ ê³„ì† ìˆ˜í–‰í•œë‹¤.
 win wait
 #win end
 
 # ************************** SECOND DEMO WINDOW ****************************
-message "\n\nÇÏÇÏÇÏ! ÇÏÀÌÅÚ °ü·Ã µ¥¸ğ Ã¢À» ¶ç¿ï Â÷·ÊÀÔ´Ï´Ù!\n"
-message "½ÇÁ¦·Î ÀÌÁ¦ ÇÏÀÌÅÚ¿¡ Á¢¼ÓÇØ¼­ ¹öÆ°µéÀ» ´­·¯º¸¼¼¿ä\n"
-message "ºñ¹ĞÀÎµ¥¿ä? ±â°¡¸·È÷°Ô Àß µÉ °Ì´Ï´Ù. ÈåÀ¸~~~\n"
+message "\n\ní•˜í•˜í•˜! í•˜ì´í…” ê´€ë ¨ ë°ëª¨ ì°½ì„ ë„ìš¸ ì°¨ë¡€ì…ë‹ˆë‹¤!\n"
+message "ì‹¤ì œë¡œ ì´ì œ í•˜ì´í…”ì— ì ‘ì†í•´ì„œ ë²„íŠ¼ë“¤ì„ ëˆŒëŸ¬ë³´ì„¸ìš”\n"
+message "ë¹„ë°€ì¸ë°ìš”? ê¸°ê°€ë§‰íˆê²Œ ì˜ ë  ê²ë‹ˆë‹¤. íìœ¼~~~\n"
 pause 1
 message "Wait.."
 pause 1
@@ -89,38 +89,38 @@ pause 1
 message ".. OK\n"
 pause 1
 
-win begin "ÇÏÀÌÅÚ"
+win begin "í•˜ì´í…”"
 win vbox win vbox0 5
-win button vbox0 "ÇÏÀÌÅÚ ¸Ş´º Ã¢ µ¥¸ğ"	string ""
+win button vbox0 "í•˜ì´í…” ë©”ë‰´ ì°½ ë°ëª¨"	string ""
 win hsep vbox0
 
 win hbox vbox0 hbox1 2
-win frame hbox1 frame-move "¿òÁ÷ÀÓ ¸í·É"
+win frame hbox1 frame-move "ì›€ì§ì„ ëª…ë ¹"
 win vbox frame-move vbox1 3
-win button vbox1 "¸ÇÀ§"	string "t\r"
-win button vbox1 "³»·Á¹Ş±â"	script 'transmit "dn\r"; waitfor ">>"; transmit "1\r"'
-win button vbox1 "»óÀ§¸Ş´º"	string "m\r"
-win button vbox1 "¾Õ´Ü°è"	string "p\r"
-win button vbox1 "´ÙÀ½ °Ô½Ã¹°" string "a\r"
-win button vbox1 "ÀÌÀü °Ô½Ã¹°" string "n\r"
-win button vbox1 "µÚ·Î"	string "b\r"
-win button vbox1 "¾ÕÀ¸·Î"	string "\r"
+win button vbox1 "ë§¨ìœ„"	string "t\r"
+win button vbox1 "ë‚´ë ¤ë°›ê¸°"	script 'transmit "dn\r"; waitfor ">>"; transmit "1\r"'
+win button vbox1 "ìƒìœ„ë©”ë‰´"	string "m\r"
+win button vbox1 "ì•ë‹¨ê³„"	string "p\r"
+win button vbox1 "ë‹¤ìŒ ê²Œì‹œë¬¼" string "a\r"
+win button vbox1 "ì´ì „ ê²Œì‹œë¬¼" string "n\r"
+win button vbox1 "ë’¤ë¡œ"	string "b\r"
+win button vbox1 "ì•ìœ¼ë¡œ"	string "\r"
 
-win frame hbox1 frame-circle "µ¿È£È¸/ÀÚ·á½Ç"
+win frame hbox1 frame-circle "ë™í˜¸íšŒ/ìë£Œì‹¤"
 win vbox frame-circle vbox2 3
-win label vbox2 "¿ä°Ç ·¹ÀÌºí"
-win button vbox2 "¸®´ª½º µ¿È£È¸"	 string "go linux\r"
-win button vbox2 "À¯¸Ó"		 string "go humor\r"
-win button vbox2 "ÀÚ·á½Ç"		 string "go gl\r"
-win button vbox2 "OS µ¿È£È¸"	 string "go osc\r"
-win button vbox2 "Åä·ĞÀÇ ±¤Àå"	 string "go conf\r"
+win label vbox2 "ìš”ê±´ ë ˆì´ë¸”"
+win button vbox2 "ë¦¬ëˆ…ìŠ¤ ë™í˜¸íšŒ"	 string "go linux\r"
+win button vbox2 "ìœ ë¨¸"		 string "go humor\r"
+win button vbox2 "ìë£Œì‹¤"		 string "go gl\r"
+win button vbox2 "OS ë™í˜¸íšŒ"	 string "go osc\r"
+win button vbox2 "í† ë¡ ì˜ ê´‘ì¥"	 string "go conf\r"
 
 win hsep vbox0
-win button vbox0 "Á¾·á" quit "quit"
+win button vbox0 "ì¢…ë£Œ" quit "quit"
 
 win end
 
-message "\n\n¿©±â±îÁö ÀÔ´Ï´Ù. Àß ¸ğ¸£½Ã´Â °Ô ÀÖÀ¸½Ã¸é ¿¬¶ôÁÖ½Ã±â¸¦...\n"
-message "Áñ°Å¿î ÇÏ·ç º¸³»¼¼¿ä!!!\n"
+message "\n\nì—¬ê¸°ê¹Œì§€ ì…ë‹ˆë‹¤. ì˜ ëª¨ë¥´ì‹œëŠ” ê²Œ ìˆìœ¼ì‹œë©´ ì—°ë½ì£¼ì‹œê¸°ë¥¼...\n"
+message "ì¦ê±°ìš´ í•˜ë£¨ ë³´ë‚´ì„¸ìš”!!!\n"
 
 # vim:set ft=sh:

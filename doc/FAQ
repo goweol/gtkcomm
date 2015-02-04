@@ -2,60 +2,60 @@
 				   FAQ
 				   ===
 
--. gtkcommÀÌ¶õ?
+-. gtkcommì´ëž€?
 
-    È²Ä¡´ö´ÔÀÇ 'gau' programÀÇ GUI ¹× ±â´ÉÀ» ÁÖ·Î RS-232C (SIO, COM
-    port)¸¦ ÀÌ¿ëÇÏ¿© H/W debuggingÀ» ÆíÇÏ°Ô ÇÒ ¼ö ÀÖµµ·Ï ¼öÁ¤ÇÑ °ÍÀÔ´Ï´Ù.
-    Á¦°¡ H/W debuggingÀ» ÆíÇÏ°Ô ÇÏ±â À§ÇØ Æ¯È÷ ½Å°æ¾´ ºÎºÐÀº GUI,
-    script ±â´É °­È­, ±×¸®°í, ²Òµ¹ÀÌ ¸¶¿ì½ºÂÊ ÀÔ´Ï´Ù. Á¦°¡ ÀÌÀü¿¡ ´Ù¸¥
-    ÇÁ·Î±×·¥µé ¾²¸é¼­ Á¦ÀÏ ¾Æ½¬¿ü´ø ±â´ÉµéÀ» 'gau'´Â ½±°Ô ¼öÁ¤ÇØ¼­ »ç¿ëÇÒ
-    ¼ö ÀÖÀ» Á¤µµ·Î °ÅÀÇ ´Ù Æ÷ÇÔÇÏ°í ÀÖ¾ú½À´Ï´Ù. Ä¡´ö´Ô²² °¨»ç!
-    Áö±Ý¿¡ ¿Í¼­´Â ÁÁ°í ³ª»ÝÀÇ Â÷ÀÌ°¡ ÀÖ°ÚÁö¸¸ °¡¿ìÀÇ ¸¹Àº ±â´ÉµéÀ» Æ÷ÇÔÇÏ°Ô
-    µÇ¾ú½À´Ï´Ù. ±âÅ¸ ÀÚ¼¼ÇÑ »çÇ×Àº ¾Æ·¡ ¹× README ÆÄÀÏÀ» Âü°íÇÏ½Ã±â
-    ¹Ù¶ø´Ï´Ù.
-
-
--. ¿Ö gau¸¦ patchÇÏÁö ¾Ê°í »õ·Î¿î package·Î ¸¸µé¾ú´Â°¡?
-
-    Å« ÀÌÀ¯´Â gauÀÇ interface°¡ ÇÏÀÌÅÚÀÌ³ª Ãµ¸®¾È¿¡ Á¢¼Ó ¹× »ç¿ëÀ»
-    ÆíÇÏ°Ô ÇÒ ¸ñÀûÀ¸·Î ¸¸µé¾îÁ³´Ù´Â µ¥ ÀÖ½À´Ï´Ù. ÀÌ°ÍÀº SIO¸¦ ÀÌ¿ëÇÑ
-    H/W debuggingÇÏ´Â µ¥ ºÒÇÊ¿äÇÑ ¿ä¼ÒÀÌ¸ç, »õ·Î¿î ±â´É - °¡·É,
-    control-bar¿¡¼­ÀÇ ºü¸¥ baudrate change - À» Áý¾î³Ö´Â µ¥, Àå¾Ö°¡
-    µÇ¾ú±â ¶§¹®ÀÔ´Ï´Ù. ±×¸®°í, gtk+ ¹× *nix¿¡¼­ÀÇ programming °øºÎ¸¦
-    À§ÇÑ °Íµµ ÇÑ ÀÌÀ¯°¡ µÇ°Ú°í, gauÀÇ interface¸¦ Á¦ ÀÔ¸À¿¡ ¸Â°Ô
-    ¹Ù²Ù°í ½Í¾ú´ø °Íµµ ÇÑ ÀÌÀ¯°¡ µÇ°Ú½À´Ï´Ù.
-    º¸½Ã¸é ¾Æ½Ã°ÚÁö¸¸ gau¿Í GUI°¡ ¿ÏÀüÈ÷ ´Ù¸¨´Ï´Ù.
+    í™©ì¹˜ë•ë‹˜ì˜ 'gau' programì˜ GUI ë° ê¸°ëŠ¥ì„ ì£¼ë¡œ RS-232C (SIO, COM
+    port)ë¥¼ ì´ìš©í•˜ì—¬ H/W debuggingì„ íŽ¸í•˜ê²Œ í•  ìˆ˜ ìžˆë„ë¡ ìˆ˜ì •í•œ ê²ƒìž…ë‹ˆë‹¤.
+    ì œê°€ H/W debuggingì„ íŽ¸í•˜ê²Œ í•˜ê¸° ìœ„í•´ íŠ¹ížˆ ì‹ ê²½ì“´ ë¶€ë¶„ì€ GUI,
+    script ê¸°ëŠ¥ ê°•í™”, ê·¸ë¦¬ê³ , ê¾€ëŒì´ ë§ˆìš°ìŠ¤ìª½ ìž…ë‹ˆë‹¤. ì œê°€ ì´ì „ì— ë‹¤ë¥¸
+    í”„ë¡œê·¸ëž¨ë“¤ ì“°ë©´ì„œ ì œì¼ ì•„ì‰¬ì› ë˜ ê¸°ëŠ¥ë“¤ì„ 'gau'ëŠ” ì‰½ê²Œ ìˆ˜ì •í•´ì„œ ì‚¬ìš©í• 
+    ìˆ˜ ìžˆì„ ì •ë„ë¡œ ê±°ì˜ ë‹¤ í¬í•¨í•˜ê³  ìžˆì—ˆìŠµë‹ˆë‹¤. ì¹˜ë•ë‹˜ê»˜ ê°ì‚¬!
+    ì§€ê¸ˆì— ì™€ì„œëŠ” ì¢‹ê³  ë‚˜ì¨ì˜ ì°¨ì´ê°€ ìžˆê² ì§€ë§Œ ê°€ìš°ì˜ ë§Žì€ ê¸°ëŠ¥ë“¤ì„ í¬í•¨í•˜ê²Œ
+    ë˜ì—ˆìŠµë‹ˆë‹¤. ê¸°íƒ€ ìžì„¸í•œ ì‚¬í•­ì€ ì•„ëž˜ ë° README íŒŒì¼ì„ ì°¸ê³ í•˜ì‹œê¸°
+    ë°”ëžë‹ˆë‹¤.
 
 
--. ÀÌ ÇÁ·Î±×·¥À» gau ´ë½Å »ç¿ëÇÒ ¼ö ÀÖ´Â°¡?
+-. ì™œ gauë¥¼ patchí•˜ì§€ ì•Šê³  ìƒˆë¡œìš´ packageë¡œ ë§Œë“¤ì—ˆëŠ”ê°€?
 
-    ¾î´À Á¤µµ gauÀÇ ±â´ÉÀ» »ç¿ëÇÏ´Â°¡¿¡ ´Þ·ÁÀÖ½À´Ï´Ù.
-    ´ÙÀ½°ú °°ÀÌ ´Ù¸£´Ï Âü°íÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.
+    í° ì´ìœ ëŠ” gauì˜ interfaceê°€ í•˜ì´í…”ì´ë‚˜ ì²œë¦¬ì•ˆì— ì ‘ì† ë° ì‚¬ìš©ì„
+    íŽ¸í•˜ê²Œ í•  ëª©ì ìœ¼ë¡œ ë§Œë“¤ì–´ì¡Œë‹¤ëŠ” ë° ìžˆìŠµë‹ˆë‹¤. ì´ê²ƒì€ SIOë¥¼ ì´ìš©í•œ
+    H/W debuggingí•˜ëŠ” ë° ë¶ˆí•„ìš”í•œ ìš”ì†Œì´ë©°, ìƒˆë¡œìš´ ê¸°ëŠ¥ - ê°€ë ¹,
+    control-barì—ì„œì˜ ë¹ ë¥¸ baudrate change - ì„ ì§‘ì–´ë„£ëŠ” ë°, ìž¥ì• ê°€
+    ë˜ì—ˆê¸° ë•Œë¬¸ìž…ë‹ˆë‹¤. ê·¸ë¦¬ê³ , gtk+ ë° *nixì—ì„œì˜ programming ê³µë¶€ë¥¼
+    ìœ„í•œ ê²ƒë„ í•œ ì´ìœ ê°€ ë˜ê² ê³ , gauì˜ interfaceë¥¼ ì œ ìž…ë§›ì— ë§žê²Œ
+    ë°”ê¾¸ê³  ì‹¶ì—ˆë˜ ê²ƒë„ í•œ ì´ìœ ê°€ ë˜ê² ìŠµë‹ˆë‹¤.
+    ë³´ì‹œë©´ ì•„ì‹œê² ì§€ë§Œ gauì™€ GUIê°€ ì™„ì „ížˆ ë‹¤ë¦…ë‹ˆë‹¤.
 
-    ÀÌ ÇÁ·Î±×·¥ÀÌ °¡¿ì¿Í ´Ù¸¥ Á¡µé:
-	-. ´Ù¸¥ GUI (Ç¥ÁØ ¸Þ´º/Åø¹Ù/...)
-	-. modem/telnetÀ» µ¿½Ã¿¡ Áö¿ø (gaui °°Àº °Ô ¾øÀ½).
-	-. COM (serial) port direct connection ±â´É (for H/W test via SIO)
-	-. control-bar¿¡ »ç¿ëÀÚ°¡ user menu/buttonÀ» Ãß°¡ÇÒ ¼ö ÀÖ½À´Ï´Ù.
-	  user menu ¹× button¿¡´Â string È¤Àº script¸¦ ÇÒ´çÇÒ ¼ö ÀÖ½À´Ï´Ù.
-	-. menu-bar¿¡ bookmark ±â´É.
-	-. script ±â´É È®Àå (»õ·Î¿î script ¸í·É¾îµé, logout script)
-	-. ASCII/XMODEM/YMODEM/ZMODEM down/up ±â´É.
-	  (KERMITÀº ÇâÈÄ¿¡. Á¦°¡ kermitÀ» ¾ÆÁ÷ ±òÁö ¾Ê¾Æ¼­...).
-	-. file transfer½Ã progress-bar Ç¥½Ã
-	-. ²Òµ¹ÀÌ ¸¶¿ì½º ±â´É. pattern¿¡ ÀÇÇØ µ¿ÀÛÇÏ¸ç »ç¿ëÀÚ°¡ ÆÐÅÏÀ»
-	  ¸¶À½´ë·Î ¹Ù²Ü ¼ö ÀÖÀ½ (iselrc).
-	-. ´Ü¼øÇÑ chatting ±â´É (key-bindingÀº È®Àå)
-	-. ±âÅ¸ gau¿¡ ¾ø´Â ¸¹Àº ¹ö±×µé. :)
 
-    ÀÌ ÇÁ·Î±×·¥ÀÌ ÇöÀç Áö¿øÇÏÁö ¾Ê´Â °¡¿ìÀÇ ±â´ÉÀº ´ÙÀ½°ú °°½À´Ï´Ù.
-	-. modem ¿©·¯ ÀüÈ­¹øÈ£ dialing ±â´É
-	-. chatting°ú °ü·ÃµÈ ´Ù¾çÇÑ GUI interface
-	-. grimview package ³»ÀåÇÏÁö ¾ÊÀ½ (gauÀÇ °ÍÀ» ±×´ë·Î ¾µ¼öÀÖÀ½)
-	-. ±âÅ¸ º»ÀÎÀÌ ÀÚÀßÇÏ´Ù°í »ý°¢ÇÏ´Â ±â´Éµé (±Û¾²±â? µîµî)...
-	-. ±âÅ¸ gauÀÇ ¹ö±×µé. ^_^
+-. ì´ í”„ë¡œê·¸ëž¨ì„ gau ëŒ€ì‹  ì‚¬ìš©í•  ìˆ˜ ìžˆëŠ”ê°€?
 
--. ÀÌ ÇÁ·Î±×·¥Àº °øÂ¥ (freeware)ÀÎ°¡?
-    °øÂ¥ÀÔ´Ï´Ù. ÀÚ¼¼ÇÑ »çÇ×Àº READMEÀÇ COPYING part ¹× COPYING fileÀ»
-    Âü°íÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.
+    ì–´ëŠ ì •ë„ gauì˜ ê¸°ëŠ¥ì„ ì‚¬ìš©í•˜ëŠ”ê°€ì— ë‹¬ë ¤ìžˆìŠµë‹ˆë‹¤.
+    ë‹¤ìŒê³¼ ê°™ì´ ë‹¤ë¥´ë‹ˆ ì°¸ê³ í•˜ì‹œê¸° ë°”ëžë‹ˆë‹¤.
+
+    ì´ í”„ë¡œê·¸ëž¨ì´ ê°€ìš°ì™€ ë‹¤ë¥¸ ì ë“¤:
+	-. ë‹¤ë¥¸ GUI (í‘œì¤€ ë©”ë‰´/íˆ´ë°”/...)
+	-. modem/telnetì„ ë™ì‹œì— ì§€ì› (gaui ê°™ì€ ê²Œ ì—†ìŒ).
+	-. COM (serial) port direct connection ê¸°ëŠ¥ (for H/W test via SIO)
+	-. control-barì— ì‚¬ìš©ìžê°€ user menu/buttonì„ ì¶”ê°€í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+	  user menu ë° buttonì—ëŠ” string í˜¹ì€ scriptë¥¼ í• ë‹¹í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+	-. menu-barì— bookmark ê¸°ëŠ¥.
+	-. script ê¸°ëŠ¥ í™•ìž¥ (ìƒˆë¡œìš´ script ëª…ë ¹ì–´ë“¤, logout script)
+	-. ASCII/XMODEM/YMODEM/ZMODEM down/up ê¸°ëŠ¥.
+	  (KERMITì€ í–¥í›„ì—. ì œê°€ kermitì„ ì•„ì§ ê¹”ì§€ ì•Šì•„ì„œ...).
+	-. file transferì‹œ progress-bar í‘œì‹œ
+	-. ê¾€ëŒì´ ë§ˆìš°ìŠ¤ ê¸°ëŠ¥. patternì— ì˜í•´ ë™ìž‘í•˜ë©° ì‚¬ìš©ìžê°€ íŒ¨í„´ì„
+	  ë§ˆìŒëŒ€ë¡œ ë°”ê¿€ ìˆ˜ ìžˆìŒ (iselrc).
+	-. ë‹¨ìˆœí•œ chatting ê¸°ëŠ¥ (key-bindingì€ í™•ìž¥)
+	-. ê¸°íƒ€ gauì— ì—†ëŠ” ë§Žì€ ë²„ê·¸ë“¤. :)
+
+    ì´ í”„ë¡œê·¸ëž¨ì´ í˜„ìž¬ ì§€ì›í•˜ì§€ ì•ŠëŠ” ê°€ìš°ì˜ ê¸°ëŠ¥ì€ ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.
+	-. modem ì—¬ëŸ¬ ì „í™”ë²ˆí˜¸ dialing ê¸°ëŠ¥
+	-. chattingê³¼ ê´€ë ¨ëœ ë‹¤ì–‘í•œ GUI interface
+	-. grimview package ë‚´ìž¥í•˜ì§€ ì•ŠìŒ (gauì˜ ê²ƒì„ ê·¸ëŒ€ë¡œ ì“¸ìˆ˜ìžˆìŒ)
+	-. ê¸°íƒ€ ë³¸ì¸ì´ ìžìž˜í•˜ë‹¤ê³  ìƒê°í•˜ëŠ” ê¸°ëŠ¥ë“¤ (ê¸€ì“°ê¸°? ë“±ë“±)...
+	-. ê¸°íƒ€ gauì˜ ë²„ê·¸ë“¤. ^_^
+
+-. ì´ í”„ë¡œê·¸ëž¨ì€ ê³µì§œ (freeware)ì¸ê°€?
+    ê³µì§œìž…ë‹ˆë‹¤. ìžì„¸í•œ ì‚¬í•­ì€ READMEì˜ COPYING part ë° COPYING fileì„
+    ì°¸ê³ í•˜ì‹œê¸° ë°”ëžë‹ˆë‹¤.
 

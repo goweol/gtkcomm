@@ -20,7 +20,7 @@ retry:
     transmit    "ep -w d0000000 100000 80000^M"
     waitfor     $prompt 20 "protected"
     if $? == 1
-	# "protected" message°¡ Ãâ·ÂµÇ¾ú´Ù¸é...
+	# "protected" messageê°€ ì¶œë ¥ë˜ì—ˆë‹¤ë©´...
 	beep 100
 	message "\n\033[35m\033[47m FLASH PROTECTED. USE ROM WRITER TO UNPROTECT!!! \033[0m\n"
 	end

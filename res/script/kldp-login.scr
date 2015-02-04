@@ -1,21 +1,21 @@
 # KLDP (Korean Linux Documentation Project) login script sample
 # http://kldp.org/
-# KLDP´Â 'ssh'·Î loginÇØ¾ß ÇÑ´Ù. ÀÌ ½ºÅ©¸³Æ®´Â telnetÀÌ ¾Æ´Ñ ´Ù¸¥ ÇÁ·Î±×·¥À¸·Î
-# ·Î±×ÀÎÇÏ´Â ¿¹¸¦ º¸¿©ÁØ´Ù.
+# KLDPëŠ” 'ssh'ë¡œ loginí•´ì•¼ í•œë‹¤. ì´ ìŠ¤í¬ë¦½íŠ¸ëŠ” telnetì´ ì•„ë‹Œ ë‹¤ë¥¸ í”„ë¡œê·¸ë¨ìœ¼ë¡œ
+# ë¡œê·¸ì¸í•˜ëŠ” ì˜ˆë¥¼ ë³´ì—¬ì¤€ë‹¤.
 #
 
 clear
 
-# ÁÖÀÇ: password¸¦ ¿©±â¿¡¼­ »ç¿ëÇÒ °æ¿ì¿¡´Â ÀÌ ÆÄÀÏÀÇ Çã¿ë°ªÀ» ¹Ù²Ù¾î
-#       ÁÖ¾î¾ß ÇÕ´Ï´Ù. chmod 0600 thisfile
+# ì£¼ì˜: passwordë¥¼ ì—¬ê¸°ì—ì„œ ì‚¬ìš©í•  ê²½ìš°ì—ëŠ” ì´ íŒŒì¼ì˜ í—ˆìš©ê°’ì„ ë°”ê¾¸ì–´
+#       ì£¼ì–´ì•¼ í•©ë‹ˆë‹¤. chmod 0600 thisfile
 # $userid = user id
 # $passwd = password
 assign userid   "UserId"
 assign passwd   "Password"
 
-# 'telnet' ´ë½Å 'ssh'¸¦ »ç¿ëÇÑ´Ù.
-# zmodemÀÌ³ª vi µîÀ» »ç¿ëÇÏ·Á¸é '-e none'°ú °°ÀÌ escape sequence¸¦ »ç¿ëÇÏÁö
-# ¾Êµµ·Ï ÇØ¾ß ÇÑ´Ù.
+# 'telnet' ëŒ€ì‹  'ssh'ë¥¼ ì‚¬ìš©í•œë‹¤.
+# zmodemì´ë‚˜ vi ë“±ì„ ì‚¬ìš©í•˜ë ¤ë©´ '-e none'ê³¼ ê°™ì´ escape sequenceë¥¼ ì‚¬ìš©í•˜ì§€
+# ì•Šë„ë¡ í•´ì•¼ í•œë‹¤.
 set config TelnetCommand "ssh -l $userid -e none"
 assign skiplogin "1"
 
@@ -46,7 +46,7 @@ if $? == -1
     fi
 fi
 
-# password°¡ Á¦´ë·Î ±â´Ù·ÁÁ³À¸¸é...
+# passwordê°€ ì œëŒ€ë¡œ ê¸°ë‹¤ë ¤ì¡Œìœ¼ë©´...
 transmit "$passwd\n"
 
 next:
@@ -54,7 +54,7 @@ next:
 set title "KLDP"
 set config TermRow 30
 
-# mouse ¿ŞÂÊ ¹öÆ° Å¬¸¯½Ã ¾Æ¹« Áşµµ ÇÏÁö¸¶¶ó.
+# mouse ì™¼ìª½ ë²„íŠ¼ í´ë¦­ì‹œ ì•„ë¬´ ì§“ë„ í•˜ì§€ë§ˆë¼.
 set config LeftMouseClickStr ""
 
 waitfor "\$"

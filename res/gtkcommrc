@@ -1,65 +1,65 @@
 # gtkcomm resourse file
 #
-# commentµÇ¾î ÀÖ´Â ¸ğµç °ªµéÀÌ default valueÀÔ´Ï´Ù.
+# commentë˜ì–´ ìˆëŠ” ëª¨ë“  ê°’ë“¤ì´ default valueì…ë‹ˆë‹¤.
 #
-# gtkcommÀÌ µ¹°í ÀÖ´Â »óÅÂ¿¡¼­ ´ÙÀ½ °ªµéÀ» ¹Ù²Ù°íÀÚ ÇÒ ¶§´Â
-# Ã¤ÆÃÃ¢À» ÀÌ¿ëÇÏ½Ã¸é µË´Ï´Ù. °¡·É 'ALT-C' ÀÔ·ÂÇÏ°Å³ª ¸Ş´º¿¡¼­
-# Chat menu¸¦ ¼±ÅÃÇÏ½Å ÈÄ chat input box¿¡¼­
+# gtkcommì´ ëŒê³  ìˆëŠ” ìƒíƒœì—ì„œ ë‹¤ìŒ ê°’ë“¤ì„ ë°”ê¾¸ê³ ì í•  ë•ŒëŠ”
+# ì±„íŒ…ì°½ì„ ì´ìš©í•˜ì‹œë©´ ë©ë‹ˆë‹¤. ê°€ë ¹ 'ALT-C' ì…ë ¥í•˜ê±°ë‚˜ ë©”ë‰´ì—ì„œ
+# Chat menuë¥¼ ì„ íƒí•˜ì‹  í›„ chat input boxì—ì„œ
 #       /set config variable_name value
-# Ã³·³ ÇÏ½Ã¸é µË´Ï´Ù. ¿¹¸¦ µé¸é,
+# ì²˜ëŸ¼ í•˜ì‹œë©´ ë©ë‹ˆë‹¤. ì˜ˆë¥¼ ë“¤ë©´,
 #       /set config useztelnet true
 #       /set config termsilent true
 #       /set config termcolor0 "0.0 0.0 0.0"
 #       /set config termstripcontrolchar false
 #
 
-# lockÇÏ·Á¸é ½ÇÇà ÆÄÀÏ¿¡ ÀûÀıÇÑ permissionÀ» ÁÖ¾î¾ß ÇÑ´Ù.
-# °¡·É supervisor »óÅÂ¿¡¼­
+# lockí•˜ë ¤ë©´ ì‹¤í–‰ íŒŒì¼ì— ì ì ˆí•œ permissionì„ ì£¼ì–´ì•¼ í•œë‹¤.
+# ê°€ë ¹ supervisor ìƒíƒœì—ì„œ
 #   chown root gtkcomm; chgrp uucp gtkcomm; chmod 2755 gtkcomm
-# ¹°·Ğ /var/lock directoryÀÇ permissionµµ ÀûÀıÇÏ°Ô ¼³Á¤µÇ¾î ÀÖ¾î¾ß
-# ÇÕ´Ï´Ù.
+# ë¬¼ë¡  /var/lock directoryì˜ permissionë„ ì ì ˆí•˜ê²Œ ì„¤ì •ë˜ì–´ ìˆì–´ì•¼
+# í•©ë‹ˆë‹¤.
 #
-# gtk°¡ suid, sgid µîÀ» Çã¿ëÇÏÁö ¾Ê±â ¶§¹®¿¡ default·Î false.
+# gtkê°€ suid, sgid ë“±ì„ í—ˆìš©í•˜ì§€ ì•Šê¸° ë•Œë¬¸ì— defaultë¡œ false.
 #DoLock                 FALSE
 
-# telnet ¸í·É¾î
+# telnet ëª…ë ¹ì–´
 #
-# escape sequence¸¦ ¸·¾Æ¾ß zmodem transfer ¹× vi µîÀ» ½±°Ô »ç¿ëÇÒ ¼ö ÀÖ´Ù.
+# escape sequenceë¥¼ ë§‰ì•„ì•¼ zmodem transfer ë° vi ë“±ì„ ì‰½ê²Œ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤.
 #TelnetCommand          "telnet -8 -e ''"
-#UseZtelnet             FALSE   # À§ÀÇ telnetÀÌ ztelnetÀÎ °æ¿ì
+#UseZtelnet             FALSE   # ìœ„ì˜ telnetì´ ztelnetì¸ ê²½ìš°
 
 # terminal size
 #TermCol                80
 #TermRow                24
 
-#Áö³­ È­¸é º¸±â¸¦ À§ÇØ ¾ó¸¶¸¸Å­ÀÇ ¶óÀÎÀ» ÀúÀåÇÒ°ÍÀÎÁö¸¦ °áÁ¤.
+#ì§€ë‚œ í™”ë©´ ë³´ê¸°ë¥¼ ìœ„í•´ ì–¼ë§ˆë§Œí¼ì˜ ë¼ì¸ì„ ì €ì¥í• ê²ƒì¸ì§€ë¥¼ ê²°ì •.
 #TermSavedLines         512
 
-# ÅÍ¹Ì³¯¿¡¼­ ¾²ÀÏ ÆùÆ®¸¦ ¼³Á¤ÇÕ´Ï´Ù.
-# ¹öÆ°µî¿¡ ¾²ÀÌ´Â ÆùÆ®´Â gtkrcÆÄÀÏ¿¡¼­ ¼³Á¤ÇØÁÖ½Ê½Ã¿ä.
+# í„°ë¯¸ë‚ ì—ì„œ ì“°ì¼ í°íŠ¸ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
+# ë²„íŠ¼ë“±ì— ì“°ì´ëŠ” í°íŠ¸ëŠ” gtkrcíŒŒì¼ì—ì„œ ì„¤ì •í•´ì£¼ì‹­ì‹œìš”.
 #TermFontName "monospace 11"
 
-# Remote hostÀÇ character set. ÀüÃ¼ÀûÀ¸·Î Àû¿ëµÇ´Â °ªÀÌ¸ç, Ã¥°¥ÇÇ ÆÄÀÏ¿¡¼­
-# °¢ È£½ºÆ®º°·Î µû·Î ÁöÁ¤ÇØ ÁÙ ¼ö ÀÖ´Ù. EUC-KR, UTF-8, EUC-JP, ...
+# Remote hostì˜ character set. ì „ì²´ì ìœ¼ë¡œ ì ìš©ë˜ëŠ” ê°’ì´ë©°, ì±…ê°ˆí”¼ íŒŒì¼ì—ì„œ
+# ê° í˜¸ìŠ¤íŠ¸ë³„ë¡œ ë”°ë¡œ ì§€ì •í•´ ì¤„ ìˆ˜ ìˆë‹¤. EUC-KR, UTF-8, EUC-JP, ...
 #RemoteCharset "EUC-KR"
 
 # prevent ^G -> beep translation
 # if you want really silent environment,
 #TermSilent             FALSE
 
-# word selection½Ã ´Ü¾î±¸ºĞ (°ø¹éÀº Ç×»ó ´Ü¾î±¸ºĞ)
+# word selectionì‹œ ë‹¨ì–´êµ¬ë¶„ (ê³µë°±ì€ í•­ìƒ ë‹¨ì–´êµ¬ë¶„)
 #TermWordSeperator ";,-/\\()[]{}*+<>|!@#$%&:'\".?`~\^"
 
 # color setup
 #
-# 16 color´Â Eterm°ú °°Àº escape sequence¸¦ Áö¿øÇÕ´Ï´Ù. µû¶ó¼­,
-# Eterm¿¡¼­ 16color¸¦ º¼ ¼ö ÀÖ´Ù¸é gtkcomm¿¡¼­µµ 16color¸¦ º¼ ¼ö
-# ÀÖ½À´Ï´Ù.
-# ¿©±âÀÖ´Â »ö (Color0-Color15)Àº XTerm-color resource file¿¡ ¸ÂÃá °ÍÀÔ´Ï´Ù.
+# 16 colorëŠ” Etermê³¼ ê°™ì€ escape sequenceë¥¼ ì§€ì›í•©ë‹ˆë‹¤. ë”°ë¼ì„œ,
+# Etermì—ì„œ 16colorë¥¼ ë³¼ ìˆ˜ ìˆë‹¤ë©´ gtkcommì—ì„œë„ 16colorë¥¼ ë³¼ ìˆ˜
+# ìˆìŠµë‹ˆë‹¤.
+# ì—¬ê¸°ìˆëŠ” ìƒ‰ (Color0-Color15)ì€ XTerm-color resource fileì— ë§ì¶˜ ê²ƒì…ë‹ˆë‹¤.
 #
-# ÀÌ ÆÄÀÏÀÇ ¸¶Áö¸·¿¡ Á¦°¡ Áñ°Ü»ç¿ëÇÏ´Â »ö ¼³Á¤°ªÀÌ ÀÖ½À´Ï´Ù.
+# ì´ íŒŒì¼ì˜ ë§ˆì§€ë§‰ì— ì œê°€ ì¦ê²¨ì‚¬ìš©í•˜ëŠ” ìƒ‰ ì„¤ì •ê°’ì´ ìˆìŠµë‹ˆë‹¤.
 #
-# name                   Àû  ³ì  Ã» (valid value = 0 - 255)
+# name                   ì   ë…¹  ì²­ (valid value = 0 - 255)
 #TermColor0             "0   0   0  "   # black
 #TermColor1             "205 0   0  "   # red3
 #TermColor2             "0   205 0  "   # green3
@@ -80,93 +80,93 @@
 #TermCursorBG           "255 0   0  "   # cursor background (red)
 #TermISelFG             "230 127 178"   # iselect foreground
 
-# terminal normal foreground/background. ¿©±âÀÇ »öÀ» ¹Ù²Ü·Á¸é gtkrc ÆÄÀÏµµ
-# ¶È°°ÀÌ ¹Ù²Ù¾î ÁÖ¾î¾ß ÇÕ´Ï´Ù ('~/.gtkcomm/gtkrc'ÀÇ style "term" Âü°í).
+# terminal normal foreground/background. ì—¬ê¸°ì˜ ìƒ‰ì„ ë°”ê¿€ë ¤ë©´ gtkrc íŒŒì¼ë„
+# ë˜‘ê°™ì´ ë°”ê¾¸ì–´ ì£¼ì–´ì•¼ í•©ë‹ˆë‹¤ ('~/.gtkcomm/gtkrc'ì˜ style "term" ì°¸ê³ ).
 #TermNormFG             0
 #TermNormBG             7
 
-# Ä¿¼­ blink
+# ì»¤ì„œ blink
 #TermCursorBlink	TRUE
 #TermCursorOnTime	500
 #TermCursorOffTime	300
 
-# ±½Àº ¹®ÀÚ ¼Ó¼º »ç¿ë?
+# êµµì€ ë¬¸ì ì†ì„± ì‚¬ìš©?
 #TermUseBold            TRUE
 
-# ¹ØÁÙ ¹®ÀÚ ¼Ó¼º »ç¿ë?
+# ë°‘ì¤„ ë¬¸ì ì†ì„± ì‚¬ìš©?
 #TermUseUnder           TRUE
 
-# gtkcommÀº ^[[fg;1m  ^[[bg;5m °ú °°ÀÌ fg, bgµÚ¿¡ 1 È¤Àº 5°¡ ¿À¸é
-# ±×°ÍÀ» Bold/Blink´ë½Å fg/bg style·Î »ı°¢ÇÏ°í 9 - 15 color¸¦ »ç¿ëÇÑ´Ù.
-# ´ÙÀ½ flag°¡ TRUEÀÌ¸é ^[[1;fgm  ^[[5;bgm °ú °°ÀÌ 1ÀÌ³ª 5°¡ ¾Õ¿¡ ¿À´Â
-# °æ¿ì¿¡µµ Bold/Blink ´ë½Å 9 - 15 color¸¦ »ç¿ë.
-# NOTE: ÀÌ °ªÀÌ TRUEÀÌ¸é À§ÀÇ TermUseBoldÀÇ °ªÀº ÀÇ¹Ì°¡ ¾ø¾îÁø´Ù.
+# gtkcommì€ ^[[fg;1m  ^[[bg;5m ê³¼ ê°™ì´ fg, bgë’¤ì— 1 í˜¹ì€ 5ê°€ ì˜¤ë©´
+# ê·¸ê²ƒì„ Bold/BlinkëŒ€ì‹  fg/bg styleë¡œ ìƒê°í•˜ê³  9 - 15 colorë¥¼ ì‚¬ìš©í•œë‹¤.
+# ë‹¤ìŒ flagê°€ TRUEì´ë©´ ^[[1;fgm  ^[[5;bgm ê³¼ ê°™ì´ 1ì´ë‚˜ 5ê°€ ì•ì— ì˜¤ëŠ”
+# ê²½ìš°ì—ë„ Bold/Blink ëŒ€ì‹  9 - 15 colorë¥¼ ì‚¬ìš©.
+# NOTE: ì´ ê°’ì´ TRUEì´ë©´ ìœ„ì˜ TermUseBoldì˜ ê°’ì€ ì˜ë¯¸ê°€ ì—†ì–´ì§„ë‹¤.
 #TermForce16Color       FALSE
 
-# ÅÍ¹Ì³¯·ÎºÎÅÍÀÇ ÀÔ·ÂÀÌ ÀÏÁ¤½Ã°£µ¿¾È ¾øÀ¸¸é space + backspaceÀÇ Á¶ÇÕÀ»
-# È£½ºÆ®¿¡ º¸³»¼­ ÀÚµ¿À¸·Î Á¾·á¸¦ ½ÃÅ°Áö ¸øÇÏµµ·Ï ÇÏ´Â ±â´É.
-# ÃÊ´ÜÀ§.
+# í„°ë¯¸ë‚ ë¡œë¶€í„°ì˜ ì…ë ¥ì´ ì¼ì •ì‹œê°„ë™ì•ˆ ì—†ìœ¼ë©´ space + backspaceì˜ ì¡°í•©ì„
+# í˜¸ìŠ¤íŠ¸ì— ë³´ë‚´ì„œ ìë™ìœ¼ë¡œ ì¢…ë£Œë¥¼ ì‹œí‚¤ì§€ ëª»í•˜ë„ë¡ í•˜ëŠ” ê¸°ëŠ¥.
+# ì´ˆë‹¨ìœ„.
 #IdleGuardInterval      180
 
-# idle_guard ±â´ÉÀ» ¾µ¶§ ¾î¶² Å°¸¦ º¸³¾°ÍÀÎÁö¸¦ Á¤ÇØÁØ´Ù.
+# idle_guard ê¸°ëŠ¥ì„ ì“¸ë•Œ ì–´ë–¤ í‚¤ë¥¼ ë³´ë‚¼ê²ƒì¸ì§€ë¥¼ ì •í•´ì¤€ë‹¤.
 #IdleGuardString        " \b"
 
-# °¥¹«¸®ÇÒ ¶§ ^M ('\r')À» ¾ø¾Ù °ÍÀÎÁö¸¦ °áÁ¤
+# ê°ˆë¬´ë¦¬í•  ë•Œ ^M ('\r')ì„ ì—†ì•¨ ê²ƒì¸ì§€ë¥¼ ê²°ì •
 #TermStripLineFeed      TRUE
 
-# °¥¹«¸®ÇÒ ¶§ Escape sequence¸¦ ¾ø¾Ù °ÍÀÎÁö °áÁ¤
+# ê°ˆë¬´ë¦¬í•  ë•Œ Escape sequenceë¥¼ ì—†ì•¨ ê²ƒì¸ì§€ ê²°ì •
 #TermStripControlChar   TRUE
 
-# È¥ÀÚ¸» ÆÄÀÏµéÀÌ ÀÖ´Â µğ·ºÅä¸® ÀÌ¸§
+# í˜¼ìë§ íŒŒì¼ë“¤ì´ ìˆëŠ” ë””ë ‰í† ë¦¬ ì´ë¦„
 #ScriptPath             "~/.gtkcomm/script"
 #ScriptAnimFile         "tux-anim.png"
 
 #DownloadPath           "~/.gtkcomm/down"
 #UploadPath             "~/.gtkcomm/up"
 
-# °¥¹«¸®ÆÄÀÏÀÌ ³õÀÏ µğ·ºÅä¸® ÀÌ¸§ ¼³Á¤
+# ê°ˆë¬´ë¦¬íŒŒì¼ì´ ë†“ì¼ ë””ë ‰í† ë¦¬ ì´ë¦„ ì„¤ì •
 #CapturePath            "~/.gtkcomm/capture"
 #MaxCaptureSize         10000000
 
-# Modem (SIO) »ç¿ë½Ã »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ¸í·É history ±â´É
-# ModemMaxHistory°¡ 0ÀÌ¸é buffer size´Â ¹«½ÃµÊ. 0ÀÌ ¾Æ´Ñ °æ¿ì ÃÖ¼Ò°ªÀº
-# »ç¿ëÀÚ°¡ ÀÔ·ÂÇÒ ¸í·ÉÀÇ ÃÖ´ë ±æÀÌ + 1.
+# Modem (SIO) ì‚¬ìš©ì‹œ ì‚¬ìš©ìê°€ ì…ë ¥í•œ ëª…ë ¹ history ê¸°ëŠ¥
+# ModemMaxHistoryê°€ 0ì´ë©´ buffer sizeëŠ” ë¬´ì‹œë¨. 0ì´ ì•„ë‹Œ ê²½ìš° ìµœì†Œê°’ì€
+# ì‚¬ìš©ìê°€ ì…ë ¥í•  ëª…ë ¹ì˜ ìµœëŒ€ ê¸¸ì´ + 1.
 #ModemMaxHistory	0
 #ModemHistoryBufSize	80
 
-# °¥¹«¸®ÆÄÀÏÀÌ¸§À» ¼³Á¤
-# "?"ÀÌ¸é °¥¹«¸®½ÃÀÛ½Ã ÆÄÀÏ¸íÀ» ¹¯´Â´Ù.
-# "" ÀÌ¸é ³¯Â¥¿¡ µû¶ó ÆÄÀÏ¸íÀ» Á¶ÇÕÇÑ´Ù.
-# À§ µÎ °æ¿ì°¡ ¾Æ´Ï¸é ÆÄÀÏ¸íÀ¸·Î ÀÎ½Ä.
+# ê°ˆë¬´ë¦¬íŒŒì¼ì´ë¦„ì„ ì„¤ì •
+# "?"ì´ë©´ ê°ˆë¬´ë¦¬ì‹œì‘ì‹œ íŒŒì¼ëª…ì„ ë¬»ëŠ”ë‹¤.
+# "" ì´ë©´ ë‚ ì§œì— ë”°ë¼ íŒŒì¼ëª…ì„ ì¡°í•©í•œë‹¤.
+# ìœ„ ë‘ ê²½ìš°ê°€ ì•„ë‹ˆë©´ íŒŒì¼ëª…ìœ¼ë¡œ ì¸ì‹.
 #CaptureFile            "?"
 
-# log file (¿¬°á,½Ã°£ Á¤º¸), default=off
+# log file (ì—°ê²°,ì‹œê°„ ì •ë³´), default=off
 #LogFile                ""
 
-# Áö³­ È­¸éº¸±â¸¦ ÇÏ´Â µµÁß È­¸é¿¡ Ãâ·ÂÀÌ µé¾î¿Ã¶§ Áö³­È­¸éº¸±â¸¦
-# ³¡¸¶Ä¡°í È­¸éÃâ·ÂÀ» ÇÒ °ÍÀÎÁö ¾Æ´Ï¸é Ãâ·ÂÀ» ¹Ì·ê°ÍÀÎÁö¸¦ Á¤ÇØÁØ´Ù.
-# trueÀÌ¸é Ãâ·ÂÀ» ¹Ì·ç¾î ³õ´Â´Ù. (±âº»°ª: true)
+# ì§€ë‚œ í™”ë©´ë³´ê¸°ë¥¼ í•˜ëŠ” ë„ì¤‘ í™”ë©´ì— ì¶œë ¥ì´ ë“¤ì–´ì˜¬ë•Œ ì§€ë‚œí™”ë©´ë³´ê¸°ë¥¼
+# ëë§ˆì¹˜ê³  í™”ë©´ì¶œë ¥ì„ í•  ê²ƒì¸ì§€ ì•„ë‹ˆë©´ ì¶œë ¥ì„ ë¯¸ë£°ê²ƒì¸ì§€ë¥¼ ì •í•´ì¤€ë‹¤.
+# trueì´ë©´ ì¶œë ¥ì„ ë¯¸ë£¨ì–´ ë†“ëŠ”ë‹¤. (ê¸°ë³¸ê°’: true)
 #TermCanBlock           TRUE
 
-# Left button¿¡ ´ëÇÑ µ¿ÀÛÀ» Right ButtonÀ¸·Î, Right Button¿¡ ´ëÇÑ µ¿ÀÛÀ»
-# Left buttonÀ¸·Î ¹Ù²ß´Ï´Ù.
+# Left buttonì— ëŒ€í•œ ë™ì‘ì„ Right Buttonìœ¼ë¡œ, Right Buttonì— ëŒ€í•œ ë™ì‘ì„
+# Left buttonìœ¼ë¡œ ë°”ê¿‰ë‹ˆë‹¤.
 #MouseButtonSwap	FALSE
 
-# ¿ŞÂÊ ¸¶¿ì½º¸¦ ´ÜÁö Å©¸¯ÇßÀ»¶§ º¸³¾ ¸í·É¾î¸¦ Á¤ÇØÁİ´Ï´Ù.
-# ¸¶¿ì½º¸¦ ´©¸¥ »óÅÂ¿¡¼­ ÀÌµ¿À» ÇÏ¸é xtermµî¿¡¼­ ¿ŞÂÊ ¹öÆ°À» ´©¸¥ »ıÅÂ¿¡¼­
-# ÀÌµ¿ÇÒ¶§¿Í ºñ½ÁÇÏ°Ô selectionÀ» ÇÏ°ÔµË´Ï´Ù.
+# ì™¼ìª½ ë§ˆìš°ìŠ¤ë¥¼ ë‹¨ì§€ í¬ë¦­í–ˆì„ë•Œ ë³´ë‚¼ ëª…ë ¹ì–´ë¥¼ ì •í•´ì¤ë‹ˆë‹¤.
+# ë§ˆìš°ìŠ¤ë¥¼ ëˆ„ë¥¸ ìƒíƒœì—ì„œ ì´ë™ì„ í•˜ë©´ xtermë“±ì—ì„œ ì™¼ìª½ ë²„íŠ¼ì„ ëˆ„ë¥¸ ìƒíƒœì—ì„œ
+# ì´ë™í• ë•Œì™€ ë¹„ìŠ·í•˜ê²Œ selectionì„ í•˜ê²Œë©ë‹ˆë‹¤.
 #LeftMouseClickStr   ""
 
 #DoLocalEcho            FALSE
 #DoRemoteEcho           FALSE
 #TermAutoLineFeed       TRUE
-#TermReadHack           50      # ºü¸¥ term read usleep time. 0=disable
+#TermReadHack           50      # ë¹ ë¥¸ term read usleep time. 0=disable
 
-# VT100 mode¿¡¼­µµ backspace°¡ È­¸éÀÇ ±ÛÀÚ¸¦ Áö¿ï °ÍÀÎÁö¸¦ °áÁ¤ÇÕ´Ï´Ù.
-# ANSI mode¿¡¼­´Â Ç×»ó TRUE·Î µ¿ÀÛÇÕ´Ï´Ù.
+# VT100 modeì—ì„œë„ backspaceê°€ í™”ë©´ì˜ ê¸€ìë¥¼ ì§€ìš¸ ê²ƒì¸ì§€ë¥¼ ê²°ì •í•©ë‹ˆë‹¤.
+# ANSI modeì—ì„œëŠ” í•­ìƒ TRUEë¡œ ë™ì‘í•©ë‹ˆë‹¤.
 #BackspaceDeleteChar    FALSE
 
-# '\n'ÀÌ³ª '\r'À» ¾î¶»°Ô º¯È¯ÇÒ °ÍÀÎ°¡?
+# '\n'ì´ë‚˜ '\r'ì„ ì–´ë–»ê²Œ ë³€í™˜í•  ê²ƒì¸ê°€?
 #EnterConvert           1             # 0=none, 1 = cr, 2 = lf, 3 = crlf
 
 #AutoRunZmodem          TRUE
@@ -177,43 +177,43 @@
 #RZ_Command             "rz -O -b -r -vv"
 #SZ_Command             "sz -O -b -r -vv"
 
-# X/Y/Z modem »ç¿ë½Ã transfer Á¤º¸¸¦ Ã£¾Æ¼­ progress-bar·Î ÁøÇà»óÈ² Ç¥½Ã
-# ÁÖÀÇ:
-#    receive formatÀº:  RX_InfoStr rx_cnt/total_cnt
-#    send formatÀº   :  TX_InfoStr tx_cnt
-# ÀÌ¾î¾ß ÇÑ´Ù. µû¶ó¼­, lrzszÀ» »ç¿ëÇÏÁö ¾Ê´Â °æ¿ì¿¡´Â
-# commentÃ³¸®ÇÏ´Â °ÍÀÌ ÁÁÀ» °ÍÀÔ´Ï´Ù. lrzszÀ» »ç¿ëÇÏ´Â °æ¿ì
+# X/Y/Z modem ì‚¬ìš©ì‹œ transfer ì •ë³´ë¥¼ ì°¾ì•„ì„œ progress-barë¡œ ì§„í–‰ìƒí™© í‘œì‹œ
+# ì£¼ì˜:
+#    receive formatì€:  RX_InfoStr rx_cnt/total_cnt
+#    send formatì€   :  TX_InfoStr tx_cnt
+# ì´ì–´ì•¼ í•œë‹¤. ë”°ë¼ì„œ, lrzszì„ ì‚¬ìš©í•˜ì§€ ì•ŠëŠ” ê²½ìš°ì—ëŠ”
+# commentì²˜ë¦¬í•˜ëŠ” ê²ƒì´ ì¢‹ì„ ê²ƒì…ë‹ˆë‹¤. lrzszì„ ì‚¬ìš©í•˜ëŠ” ê²½ìš°
 #	RX_InfoStr              "Bytes received:"
 #	TX_InfoStr              "Bytes Sent:"
-# À§¿Í °°ÀÌ ¼³Á¤ÇÏ¸é µË´Ï´Ù.
+# ìœ„ì™€ ê°™ì´ ì„¤ì •í•˜ë©´ ë©ë‹ˆë‹¤.
 #RX_InfoStr              ""
 #TX_InfoStr              ""
 
 # valid type = ICONS, TEXT, BOTH
 #ToolBarType            BOTH
 #ToolBarShow            TRUE
-#UseHandleBox           FALSE       # toolbar¿¡¼­ handle »ç¿ë?
+#UseHandleBox           FALSE       # toolbarì—ì„œ handle ì‚¬ìš©?
 #ControlBarShow         TRUE
 
-# Æë±Ï ±×¸² Å©±â (ToolBarType: BOTH=large, ICONS=small)
+# í­ê·„ ê·¸ë¦¼ í¬ê¸° (ToolBarType: BOTH=large, ICONS=small)
 #RunIconLargeSize	32
 #RunIconSmallSize	16
 
-# ASCII transfer ½Ã ¹®ÀÚ°£ È¤Àº ¶óÀÎ°£ÀÇ gap time (micro-seconds)
+# ASCII transfer ì‹œ ë¬¸ìê°„ í˜¹ì€ ë¼ì¸ê°„ì˜ gap time (micro-seconds)
 #IdleGapBetweenChar     0
 #IdleGapBetweenLine     0
 
-# Right-Mouse-ButtonÀ» ´©¸£¸é ²Òµ¹ÀÌ ¸¶¿ì½º ±â´É »ç¿ë
+# Right-Mouse-Buttonì„ ëˆ„ë¥´ë©´ ê¾€ëŒì´ ë§ˆìš°ìŠ¤ ê¸°ëŠ¥ ì‚¬ìš©
 #UseISel		TRUE
 #ISel_HTTP_Command      "netscape"
 #ISel_FTP_Command       "netscape"
 #ISel_TELNET_Command    "gtkcomm --telnet"
 
-# ¼Ò¸® ¼³Á¤: ¿©±â¿¡ ÀÖ´Â »ùÇÃÆÄÀÏµéÀº gnomeÀÇ °ÍµéÀÌ¹Ç·Î gnomeÀÌ
-# ±ò·ÁÀÖ´Â ºĞµéÀº ¾Æ¸¶µµ ±×´ë·Î »ç¿ëÇÏ½Ç ¼öµµ ÀÖÀ» °Ì´Ï´Ù.
+# ì†Œë¦¬ ì„¤ì •: ì—¬ê¸°ì— ìˆëŠ” ìƒ˜í”ŒíŒŒì¼ë“¤ì€ gnomeì˜ ê²ƒë“¤ì´ë¯€ë¡œ gnomeì´
+# ê¹”ë ¤ìˆëŠ” ë¶„ë“¤ì€ ì•„ë§ˆë„ ê·¸ëŒ€ë¡œ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ë„ ìˆì„ ê²ë‹ˆë‹¤.
 #
 #UseBeep                FALSE
-#BeepPercent		100	# º§¼Ò¸®Å©±â (-100 ~ 100)
+#BeepPercent		100	# ë²¨ì†Œë¦¬í¬ê¸° (-100 ~ 100)
 #UseSound               TRUE
 #SoundPlayCommand       "esdplay"
 #SoundPath              "/usr/share/sounds"
@@ -228,10 +228,10 @@
 #ChatPrefix             ""
 #ChatSuffix             ""
 
-# terminal¿¡¼­ xterm cursor ¸ğ¾ç »ç¿ë? (default = TRUE)
+# terminalì—ì„œ xterm cursor ëª¨ì–‘ ì‚¬ìš©? (default = TRUE)
 #UseXtermCursor		FALSE
 
-# Èò»ö ¹è°æ¿¡¼­ Á¦°¡ »ç¿ëÇÏ´Â ¼³Á¤°ª
+# í°ìƒ‰ ë°°ê²½ì—ì„œ ì œê°€ ì‚¬ìš©í•˜ëŠ” ì„¤ì •ê°’
 #TermColor0             "0   0   0  "   # black
 #TermColor1             "205 0   0  "   # red3
 #TermColor2             "0   139 0  "   # green4

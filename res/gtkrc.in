@@ -1,39 +1,39 @@
 # pcomm gtkrc
 #
-# ¹öÆ°µéÀÇ »öÀ» °áÁ¤ÇØÁÝ´Ï´Ù.
-# NORMALÀ» ¸¶¿ì½º°¡ ±× ¹öÆ°À§¿¡ ÀÖÁö¾ÊÀ»¶§ÀÇ »öÀ» Á¤ÇØÁÖ°í
-# PRELIGHT´Â ±× ¹öÆ°À§·Î ¸¶¿ì½º°¡ ÀÌµ¿À» ÇßÀ»¶§ÀÇ »öÀ» Á¤ÇØÁÝ´Ï´Ù.
+# ë²„íŠ¼ë“¤ì˜ ìƒ‰ì„ ê²°ì •í•´ì¤ë‹ˆë‹¤.
+# NORMALì„ ë§ˆìš°ìŠ¤ê°€ ê·¸ ë²„íŠ¼ìœ„ì— ìžˆì§€ì•Šì„ë•Œì˜ ìƒ‰ì„ ì •í•´ì£¼ê³ 
+# PRELIGHTëŠ” ê·¸ ë²„íŠ¼ìœ„ë¡œ ë§ˆìš°ìŠ¤ê°€ ì´ë™ì„ í–ˆì„ë•Œì˜ ìƒ‰ì„ ì •í•´ì¤ë‹ˆë‹¤.
 
-# background µî¿¡ pixmapÀ» »ç¿ëÇÏ°íÀÚ ÇÒ °æ¿ì¿¡´Â pixmap_path¸¦
-# ÀûÀýÇÏ°Ô ¼³Á¤ÇØ ÁÖ¼Å¾ß ÇÕ´Ï´Ù.
+# background ë“±ì— pixmapì„ ì‚¬ìš©í•˜ê³ ìž í•  ê²½ìš°ì—ëŠ” pixmap_pathë¥¼
+# ì ì ˆí•˜ê²Œ ì„¤ì •í•´ ì£¼ì…”ì•¼ í•©ë‹ˆë‹¤.
 pixmap_path "/usr/share/pixmaps:@prefix@/share/@PACKAGE@/pixmap"
 
-# ÅÍ¹Ì³ÎÀÇ ¹è°æÀ» ¼³Á¤ÇØÁÝ´Ï´Ù.
+# í„°ë¯¸ë„ì˜ ë°°ê²½ì„ ì„¤ì •í•´ì¤ë‹ˆë‹¤.
 style "term"
 {
-# Èò ¹è°æ¿¡ °ËÁ¤ ±ÛÀÚ»ö
+# í° ë°°ê²½ì— ê²€ì • ê¸€ìžìƒ‰
 #	TermNormFG             0
 #	TermNormBG             15
     bg_pixmap[NORMAL] = ""
     bg[NORMAL] = "#ffffff"
 
-# ¾îµÎ¿î ¹è°æ¿¡ Èò»ö ±ÛÀÚ»ö
+# ì–´ë‘ìš´ ë°°ê²½ì— í°ìƒ‰ ê¸€ìžìƒ‰
 #	TermNormFG             7
 #	TermNormBG             4
-# ¿Í °°ÀÌ ¹Ù²Ù¼¼¿ä.
+# ì™€ ê°™ì´ ë°”ê¾¸ì„¸ìš”.
 #    bg_pixmap[NORMAL] = "bg.xpm"
 #    bg[NORMAL] = "#000000"
 }
 widget "*.Term" style "term"
 
-# ¹öÆ°ÀÌ³ª ÅÍ¹Ì³ÎÀ» Á¦¿ÜÇÑ ºÎºÐÀÇ »ö»óÀÌ³ª ¹è°æÀ» Á¤ÇØÁÝ´Ï´Ù.
+# ë²„íŠ¼ì´ë‚˜ í„°ë¯¸ë„ì„ ì œì™¸í•œ ë¶€ë¶„ì˜ ìƒ‰ìƒì´ë‚˜ ë°°ê²½ì„ ì •í•´ì¤ë‹ˆë‹¤.
 style "normal"
 {
    bg[NORMAL] = {0.6, 0.7, 0.75}
 }
 widget "*.gtkcomm" style "normal"
 
-# gtk themeÀ» »ç¿ëÇÏ´Â °æ¿ì¿¡´Â commentÃ³¸®ÇÏ´Â °Ô ³´´Ù.
+# gtk themeì„ ì‚¬ìš©í•˜ëŠ” ê²½ìš°ì—ëŠ” commentì²˜ë¦¬í•˜ëŠ” ê²Œ ë‚«ë‹¤.
 #style "button"
 #{
 #    bg[NORMAL] = "#a6afbf"

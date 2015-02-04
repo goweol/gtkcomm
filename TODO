@@ -8,34 +8,34 @@
 
 ===================== Known bugs and current work ====================
 
-2   Script ½ÇÇà½Ã animation transparentÇÏ°Ô...
+2   Script ì‹¤í–‰ì‹œ animation transparentí•˜ê²Œ...
    
-2   script: connect ¸í·É, Ç×»ó °°Àº Á¢¼Ó¸¸ »ç¿ëÇÏ´Â °æ¿ì startup script¿¡¼­
-    connect ¸í·ÉÀ» »ç¿ëÇÒ ¼ö ÀÖµµ·Ï...
-    ==> work-around: shell script³ª alias¸¦ ÀÌ¿ëÇØ¼­ 'gtkcomm --modem COM1'
-    È¤½¼ 'gtkcomm --telnet HITEL' °ú °°ÀÌ »ç¿ëÇÏ¸é µÊ.
+2   script: connect ëª…ë ¹, í•­ìƒ ê°™ì€ ì ‘ì†ë§Œ ì‚¬ìš©í•˜ëŠ” ê²½ìš° startup scriptì—ì„œ
+    connect ëª…ë ¹ì„ ì‚¬ìš©í•  ìˆ˜ ìžˆë„ë¡...
+    ==> work-around: shell scriptë‚˜ aliasë¥¼ ì´ìš©í•´ì„œ 'gtkcomm --modem COM1'
+    í˜¹ìŠ¨ 'gtkcomm --telnet HITEL' ê³¼ ê°™ì´ ì‚¬ìš©í•˜ë©´ ë¨.
 
-2   capture button¿¡¼­ ÇöÀç buffer¸¦ Æ÷ÇÔÇÒ °ÍÀÎÁö¿¡ ´ëÇÑ ¼±ÅÃ °¡´ÉÇÏ°Ô
-    ==> ±âº»ÀûÀ¸·Î ÇöÀç buffer¸¦ Æ÷ÇÔÇÏ¸ç, ºÒÇÊ¿äÇÑ ºÎºÐÀº logging Á¾·á ÈÄ
-	ÆíÁýÇÏ¸é µÊ.
+2   capture buttonì—ì„œ í˜„ìž¬ bufferë¥¼ í¬í•¨í•  ê²ƒì¸ì§€ì— ëŒ€í•œ ì„ íƒ ê°€ëŠ¥í•˜ê²Œ
+    ==> ê¸°ë³¸ì ìœ¼ë¡œ í˜„ìž¬ bufferë¥¼ í¬í•¨í•˜ë©°, ë¶ˆí•„ìš”í•œ ë¶€ë¶„ì€ logging ì¢…ë£Œ í›„
+	íŽ¸ì§‘í•˜ë©´ ë¨.
 
-1   autores¿¡ ÀÇÇØ sendfile ´ëÈ­»óÀÚ°¡ ¿­¸®´Â °æ¿ì loadingÀ» stop½ÃÅ°¸é
-    ´ëÈ­»óÀÚ°¡ ´Ù½Ã ¿­¸°´Ù. À¸... °ñÄ¡¾ÆÇÂ autores... ÀÌ°Íµµ ÀÏ´ÜÀº ¾îÂ¿ ¼ö
-    ¾ø´Â Çö»óÀ¸·Î Áö·¹ ÁüÀÛÇÏ°í ÀÖÁö¸¸ ½Ã°£³ª¸é ÇÑ¹ø ´õ Â°·Áº¼ »ý°¢ÀÓ.
-1   Control-Box¿¡ menu¸¦ ³Ê¹« ¸¹ÀÌ Ãß°¡ÇÏ´Â °æ¿ì Ã¢ Å©±â°¡ ´Ã¾î³ªÁö
-    ¾Ê°í scroll ±â´ÉÀ» ³Ö´Â ¹æ¾È...
-    ==> work-around: ³Ê¹« ¸¹Àº °æ¿ì¿¡´Â control-menu¸¦ »ç¿ëÇÒ °Í.
-1   baudrate¸¦ ¹Ù²Ù°í ¾à 2ÃÊ ÀÌ³»¿¡ transmitÀ» ÇÏ´Â °æ¿ì ±× ¹®ÀÚ¿­ÀÌ Á¦´ë·Î
-    ³¯¶ó°¡Áö ¾Ê´Â´Ù. ¾Æ¸¶µµ linux systemÀÇ ¹®Á¦¶ó°í »ý°¢...
-    ==> work-around: script¿¡¼­ baudrate¸¦ ÀÚµ¿À¸·Î ¹Ù²Ù´Â °æ¿ì¿¡´Â 2.5sec ÀÚµ¿
-    sleep (pcScript.c¿¡¼­ hard-coding).
-1   localhost·Î telnet Á¢¼Ó½Ã login: prompt waitfor¿¡¼­ timeoutÀÌ ÀÚÁÖ ¹ß»ý.
-    ==> work-around: ºü¸¥ host¿¡ Á¢¼Ó½Ã¿¡´Â local-login.scrÀ» Âü°íÇÏ¿© login
-    script¸¦ ÀÛ¼º
-1   VIMÀ¸·Î ¿­Àº file¿¡ auto-response patternÀÌ ÀÖ°í, ±× patternÀÇ
-    ¸¶Áö¸· ºÎºÐ¿¡ Ä¿¼­°¡ À§Ä¡ÇÏ¸é autores°¡ °è¼Ó ¼öÇàµÇ´Â °æ¿ì°¡ ÀÖÀ½.
-    ==> cannot be fixed. autores actionÀÌ VIM¿¡ ÀüÇØÁö°í, ±× actionÀÌ VIMÀÇ
-    ¸í·ÉÀ¸·Î µ¿ÀÛÇÏ¿© VIM¿¡¼­ È­¸é update°¡ ÀÏ¾î³ª°í, ±×·¯¸é ´Ù½Ã autores
-    actionÀÌ ¹ß»ýÇÏ°í... ÀÌ·¸°Ô ¹«ÇÑÈ÷ ¹ß»ýÇÒ ¼ö ÀÖ´Â ÀÏÀÌ¹Ç·Î ¾îÂ¿ ¼ö ¾ø´Ù°í
-    »ý°¢µÊ
+1   autoresì— ì˜í•´ sendfile ëŒ€í™”ìƒìžê°€ ì—´ë¦¬ëŠ” ê²½ìš° loadingì„ stopì‹œí‚¤ë©´
+    ëŒ€í™”ìƒìžê°€ ë‹¤ì‹œ ì—´ë¦°ë‹¤. ìœ¼... ê³¨ì¹˜ì•„í”ˆ autores... ì´ê²ƒë„ ì¼ë‹¨ì€ ì–´ì©” ìˆ˜
+    ì—†ëŠ” í˜„ìƒìœ¼ë¡œ ì§€ë ˆ ì§ìž‘í•˜ê³  ìžˆì§€ë§Œ ì‹œê°„ë‚˜ë©´ í•œë²ˆ ë” ì§¸ë ¤ë³¼ ìƒê°ìž„.
+1   Control-Boxì— menuë¥¼ ë„ˆë¬´ ë§Žì´ ì¶”ê°€í•˜ëŠ” ê²½ìš° ì°½ í¬ê¸°ê°€ ëŠ˜ì–´ë‚˜ì§€
+    ì•Šê³  scroll ê¸°ëŠ¥ì„ ë„£ëŠ” ë°©ì•ˆ...
+    ==> work-around: ë„ˆë¬´ ë§Žì€ ê²½ìš°ì—ëŠ” control-menuë¥¼ ì‚¬ìš©í•  ê²ƒ.
+1   baudrateë¥¼ ë°”ê¾¸ê³  ì•½ 2ì´ˆ ì´ë‚´ì— transmitì„ í•˜ëŠ” ê²½ìš° ê·¸ ë¬¸ìžì—´ì´ ì œëŒ€ë¡œ
+    ë‚ ë¼ê°€ì§€ ì•ŠëŠ”ë‹¤. ì•„ë§ˆë„ linux systemì˜ ë¬¸ì œë¼ê³  ìƒê°...
+    ==> work-around: scriptì—ì„œ baudrateë¥¼ ìžë™ìœ¼ë¡œ ë°”ê¾¸ëŠ” ê²½ìš°ì—ëŠ” 2.5sec ìžë™
+    sleep (pcScript.cì—ì„œ hard-coding).
+1   localhostë¡œ telnet ì ‘ì†ì‹œ login: prompt waitforì—ì„œ timeoutì´ ìžì£¼ ë°œìƒ.
+    ==> work-around: ë¹ ë¥¸ hostì— ì ‘ì†ì‹œì—ëŠ” local-login.scrì„ ì°¸ê³ í•˜ì—¬ login
+    scriptë¥¼ ìž‘ì„±
+1   VIMìœ¼ë¡œ ì—´ì€ fileì— auto-response patternì´ ìžˆê³ , ê·¸ patternì˜
+    ë§ˆì§€ë§‰ ë¶€ë¶„ì— ì»¤ì„œê°€ ìœ„ì¹˜í•˜ë©´ autoresê°€ ê³„ì† ìˆ˜í–‰ë˜ëŠ” ê²½ìš°ê°€ ìžˆìŒ.
+    ==> cannot be fixed. autores actionì´ VIMì— ì „í•´ì§€ê³ , ê·¸ actionì´ VIMì˜
+    ëª…ë ¹ìœ¼ë¡œ ë™ìž‘í•˜ì—¬ VIMì—ì„œ í™”ë©´ updateê°€ ì¼ì–´ë‚˜ê³ , ê·¸ëŸ¬ë©´ ë‹¤ì‹œ autores
+    actionì´ ë°œìƒí•˜ê³ ... ì´ë ‡ê²Œ ë¬´í•œížˆ ë°œìƒí•  ìˆ˜ ìžˆëŠ” ì¼ì´ë¯€ë¡œ ì–´ì©” ìˆ˜ ì—†ë‹¤ê³ 
+    ìƒê°ë¨
 

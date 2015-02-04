@@ -1,7 +1,7 @@
 # ==========================================================================
 #  S-record file loading
 #
-#  ÀÌ ÆÄÀÏ download.scrÀÇ ÀÏºÎ·Î »ç¿ëµÈ´Ù
+#  ì´ íŒŒì¼ download.scrì˜ ì¼ë¶€ë¡œ ì‚¬ìš©ëœë‹¤
 # ==========================================================================
 
 set config IdleGapBetweenChar 1000
@@ -18,7 +18,7 @@ rflush
 message	    "\ngtkcomm: I will send this file: \033[36m$txfile\033[0m\n"
 pause	    2
 
-# monitor prompt »óÅÂ¸¦ È®ÀÎ
+# monitor prompt ìƒíƒœë¥¼ í™•ì¸
 transmit    "^M"
 waitfor     $prompt
 

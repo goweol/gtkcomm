@@ -2,21 +2,21 @@
 
 clear
 
-# ÁÖÀÇ: password¸¦ ¿©±â¿¡¼­ »ç¿ëÇÒ °æ¿ì¿¡´Â ÀÌ ÆÄÀÏÀÇ Çã¿ë°ªÀ» ¹Ù²Ù¾î
-#       ÁÖ¾î¾ß ÇÕ´Ï´Ù. °¡·É 'chmod 0600 hitel-login.scr'.
+# ì£¼ì˜: passwordë¥¼ ì—¬ê¸°ì—ì„œ ì‚¬ìš©í•  ê²½ìš°ì—ëŠ” ì´ íŒŒì¼ì˜ í—ˆìš©ê°’ì„ ë°”ê¾¸ì–´
+#       ì£¼ì–´ì•¼ í•©ë‹ˆë‹¤. ê°€ë ¹ 'chmod 0600 hitel-login.scr'.
 # $userid = user id
 # $passwd = password
 assign userid   "ID\r"
 assign passwd   "PASSWORD\r"
 
 # ID
-waitfor "ÀÌ¿ëÀÚID :"
+waitfor "ì´ìš©ìID :"
 transmit $userid
 
 # PASSWORD
-waitfor "ºñ¹Ğ¹øÈ£ :"
-# ¾î¶² ÀÌÀ¯·Î ÀÎÇØ password°¡ È­¸é¿¡ ±×´ë·Î Ãâ·ÂµÇ°í, loginÀÌ ¾ÊµÉ ¶§°¡
-# ÀÖ´Ù. µû¶ó¼­, 1ÃÊ¸¦ ±â´Ù·Áº½.
+waitfor "ë¹„ë°€ë²ˆí˜¸ :"
+# ì–´ë–¤ ì´ìœ ë¡œ ì¸í•´ passwordê°€ í™”ë©´ì— ê·¸ëŒ€ë¡œ ì¶œë ¥ë˜ê³ , loginì´ ì•Šë  ë•Œê°€
+# ìˆë‹¤. ë”°ë¼ì„œ, 1ì´ˆë¥¼ ê¸°ë‹¤ë ¤ë´„.
 pause 1
 transmit $passwd
 
@@ -28,36 +28,36 @@ set config TermRow 26
 set config RX_InfoStr "Bytes received:"
 set config TX_InfoStr "Bytes Sent:"
 
-# mouse ¿ŞÂÊ ¹öÆ° Å¬¸¯½Ã "p\r" À» º¸³¿
+# mouse ì™¼ìª½ ë²„íŠ¼ í´ë¦­ì‹œ "p\r" ì„ ë³´ëƒ„
 set config LeftMouseClickStr "p\r"
 
 # bookmark add TITLE [string|script] "string or script"
-bookmark add "¸®´ª½º µ¿È£È¸"	 string "go linux\r"
-bookmark add "À¯¸Ó"		 string "go humor\r"
-bookmark add "ÀÚ·á½Ç"		 string "go gl\r"
-bookmark add "OS µ¿È£È¸"	 string "go osc\r"
-bookmark add "Åä·ĞÀÇ ±¤Àå"	 string "go conf\r"
+bookmark add "ë¦¬ëˆ…ìŠ¤ ë™í˜¸íšŒ"	 string "go linux\r"
+bookmark add "ìœ ë¨¸"		 string "go humor\r"
+bookmark add "ìë£Œì‹¤"		 string "go gl\r"
+bookmark add "OS ë™í˜¸íšŒ"	 string "go osc\r"
+bookmark add "í† ë¡ ì˜ ê´‘ì¥"	 string "go conf\r"
 
-ctlmenu add ¹Ù·Î°¡±â "¸®´ª½º µ¿È£È¸"	 string "go linux\r"
-ctlmenu add ¹Ù·Î°¡±â "À¯¸Ó"		 string "go humor\r"
-ctlmenu add ¹Ù·Î°¡±â "ÀÚ·á½Ç"		 string "go gl\r"
-ctlmenu add ¹Ù·Î°¡±â "OS µ¿È£È¸"	 string "go osc\r"
-ctlmenu add ¹Ù·Î°¡±â "Åä·ĞÀÇ ±¤Àå"	 string "go conf\r"
+ctlmenu add ë°”ë¡œê°€ê¸° "ë¦¬ëˆ…ìŠ¤ ë™í˜¸íšŒ"	 string "go linux\r"
+ctlmenu add ë°”ë¡œê°€ê¸° "ìœ ë¨¸"		 string "go humor\r"
+ctlmenu add ë°”ë¡œê°€ê¸° "ìë£Œì‹¤"		 string "go gl\r"
+ctlmenu add ë°”ë¡œê°€ê¸° "OS ë™í˜¸íšŒ"	 string "go osc\r"
+ctlmenu add ë°”ë¡œê°€ê¸° "í† ë¡ ì˜ ê´‘ì¥"	 string "go conf\r"
 
 # button add TITLE [string|script] "string or script"
-button add "¸ÇÀ§"	string "t\r"
-button add "³»·Á¹Ş±â"	script 'transmit "dn\r"; waitfor ">>"; transmit "1\r"'
-button add "»óÀ§¸Ş´º"	string "m\r"
-button add "¾Õ´Ü°è"	string "p\r"
-button add "´ÙÀ½°Ô½Ã¹°" string "a\r"
-button add "ÀÌÀü°Ô½Ã¹°" string "n\r"
-button add "µÚ·Î"	string "b\r"
-button add "¾ÕÀ¸·Î"	string "\r"
+button add "ë§¨ìœ„"	string "t\r"
+button add "ë‚´ë ¤ë°›ê¸°"	script 'transmit "dn\r"; waitfor ">>"; transmit "1\r"'
+button add "ìƒìœ„ë©”ë‰´"	string "m\r"
+button add "ì•ë‹¨ê³„"	string "p\r"
+button add "ë‹¤ìŒê²Œì‹œë¬¼" string "a\r"
+button add "ì´ì „ê²Œì‹œë¬¼" string "n\r"
+button add "ë’¤ë¡œ"	string "b\r"
+button add "ì•ìœ¼ë¡œ"	string "\r"
 
-# ÇÏÀÌÅÚ ÃÊ±âÈ­¸é ¹× 'go linux' µîµîµî...
-#autores add "[ENTER] ¸¦ ´©¸£½Ê½Ã¿À"	string "\r"
+# í•˜ì´í…” ì´ˆê¸°í™”ë©´ ë° 'go linux' ë“±ë“±ë“±...
+#autores add "[ENTER] ë¥¼ ëˆ„ë¥´ì‹­ì‹œì˜¤"	string "\r"
 
-# ÇÏÀÌÅÚ ºüÁ®³ª¿Ã ¶§
-autores add "* ³¡³»½Ã·Á¸é \'Y\' ¸¦ ´©¸£°í ¿£ÅÍÅ°¸¦ ´©¸£½Ê½Ã¿À" string "y\r"
+# í•˜ì´í…” ë¹ ì ¸ë‚˜ì˜¬ ë•Œ
+autores add "* ëë‚´ì‹œë ¤ë©´ \'Y\' ë¥¼ ëˆ„ë¥´ê³  ì—”í„°í‚¤ë¥¼ ëˆ„ë¥´ì‹­ì‹œì˜¤" string "y\r"
 
 # vim:set ft=sh:

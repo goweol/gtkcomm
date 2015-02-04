@@ -1,7 +1,7 @@
 # ==========================================================================
-#  xmodemÀ» ÀÌ¿ëÇÑ download
+#  xmodemì„ ì´ìš©í•œ download
 #
-#  ÀÌ ÆÄÀÏ download.scr¿¡ ÀÇÇØ ºÒ·ÁÁø´Ù.
+#  ì´ íŒŒì¼ download.scrì— ì˜í•´ ë¶ˆë ¤ì§„ë‹¤.
 # ==========================================================================
 
 set config IdleGapBetweenChar 1000
@@ -13,7 +13,7 @@ assign      prompt   "]#"
 message	    "\ngtkcomm: I will send this file: \033[36m$txfile\033[0m\n"
 pause	    2
 
-# monitor prompt »óÅÂ¸¦ È®ÀÎ
+# monitor prompt ìƒíƒœë¥¼ í™•ì¸
 transmit    "^M"
 waitfor     $prompt
 

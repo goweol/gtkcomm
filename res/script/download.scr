@@ -5,7 +5,7 @@ clear
 kflush
 rflush
 
-# 'win begin'Àº window creation ½ÃÀÛ
+# 'win begin'ì€ window creation ì‹œì‘
 win begin "Download"
 
 win vbox win vbox0 5
@@ -35,7 +35,7 @@ win button vbox0 "Project-B app" \
 			include down.xdm'
 
 win hsep vbox0
-win button vbox0 "Ã¢ ´İ±â" quit "quit"
+win button vbox0 "ì°½ ë‹«ê¸°" quit "quit"
 
 win end
 

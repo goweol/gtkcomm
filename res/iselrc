@@ -1,22 +1,22 @@
-# ²Òµ¹ÀÌ ¸¶¿ì½º Ã£±â pattern
+# ê¾€ëŒì´ ë§ˆìš°ìŠ¤ ì°¾ê¸° pattern
 
-# left	 : ¸¶¿ì½º·Î Å¬¸¯ÇÑ °÷¿¡¼­ ¿ÞÂÊÀ¸·Î Ã£À» ÆÐÅÏ
-# right	 : ¸¶¿ì½º·Î Å¬¸¯ÇÑ °÷¿¡¼­ ¿À¸¥ÂÊÀ¸·Î Ã£À» ÆÐÅÏ
-# guard  : ¿ÞÂÊ/¿À¸¥ÂÊ °ü°è¾øÀÌ ÀÌ°É ¸¸³ª¸é ±× Àü±îÁö¸¸ Ã£±â
-# field  : character ´ÜÀ§ÀÇ ±¸ºÐÀÚ. ¿©·¯°³ »ç¿ë°¡´ÉÇÏµµ·Ï string »ç¿ë
-# include: bit º°·Î ÀÇ¹Ì¸¦ °¡Áü.
-#          0x01 = left¸¦ Æ÷ÇÔ
-#          0x02 = right¸¦ Æ÷ÇÔ
-#          0x04 = use it (¿©·¯°³°¡ ¹ß°ßµÈ °æ¿ì¿¡ °¡Àå °¡±î¿î °ÍÀ» ¼±ÅÃÇÏ´Â µ¥,
-#                         ÀÌ bit°¡ ¼±ÅÃµÈ °æ¿ì ÀÌ°É »ç¿ë)
-# action : ¹Ýµå½Ã NULLÀÌ ¾Æ´Ï¾î¾ß ÇÔ. ÇöÀç´Â URL È¤Àº STRING Áß
-#          ÇÏ³ª¸¦ ¼±ÅÃÇØ¾ß¸¸ ÇÔ.
-# cancel : ÇöÀç´Â ¹«Á¶°Ç NULL
-# check  : ¼±ÅÃµÈ ¹®ÀÚ¿­ÀÌ validÇÑÁö checkÇÏ´Â ±â´É.
-#          URL   : URL checkº¸´Ù´Â URLÀ» validÇÏ°Ô ¸¸µê.
-#          NONNUM: ¼ýÀÚ°¡ ¾Æ´Ñ°¡?
-#          NUMBER: ¼ýÀÚÀÎ°¡?
-#          NULL  : check ¾ÊÇÔ.
+# left	 : ë§ˆìš°ìŠ¤ë¡œ í´ë¦­í•œ ê³³ì—ì„œ ì™¼ìª½ìœ¼ë¡œ ì°¾ì„ íŒ¨í„´
+# right	 : ë§ˆìš°ìŠ¤ë¡œ í´ë¦­í•œ ê³³ì—ì„œ ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì°¾ì„ íŒ¨í„´
+# guard  : ì™¼ìª½/ì˜¤ë¥¸ìª½ ê´€ê³„ì—†ì´ ì´ê±¸ ë§Œë‚˜ë©´ ê·¸ ì „ê¹Œì§€ë§Œ ì°¾ê¸°
+# field  : character ë‹¨ìœ„ì˜ êµ¬ë¶„ìž. ì—¬ëŸ¬ê°œ ì‚¬ìš©ê°€ëŠ¥í•˜ë„ë¡ string ì‚¬ìš©
+# include: bit ë³„ë¡œ ì˜ë¯¸ë¥¼ ê°€ì§.
+#          0x01 = leftë¥¼ í¬í•¨
+#          0x02 = rightë¥¼ í¬í•¨
+#          0x04 = use it (ì—¬ëŸ¬ê°œê°€ ë°œê²¬ëœ ê²½ìš°ì— ê°€ìž¥ ê°€ê¹Œìš´ ê²ƒì„ ì„ íƒí•˜ëŠ” ë°,
+#                         ì´ bitê°€ ì„ íƒëœ ê²½ìš° ì´ê±¸ ì‚¬ìš©)
+# action : ë°˜ë“œì‹œ NULLì´ ì•„ë‹ˆì–´ì•¼ í•¨. í˜„ìž¬ëŠ” URL í˜¹ì€ STRING ì¤‘
+#          í•˜ë‚˜ë¥¼ ì„ íƒí•´ì•¼ë§Œ í•¨.
+# cancel : í˜„ìž¬ëŠ” ë¬´ì¡°ê±´ NULL
+# check  : ì„ íƒëœ ë¬¸ìžì—´ì´ validí•œì§€ checkí•˜ëŠ” ê¸°ëŠ¥.
+#          URL   : URL checkë³´ë‹¤ëŠ” URLì„ validí•˜ê²Œ ë§Œë“¦.
+#          NONNUM: ìˆ«ìžê°€ ì•„ë‹Œê°€?
+#          NUMBER: ìˆ«ìžì¸ê°€?
+#          NULL  : check ì•Ší•¨.
 #
 # left	     right guard field include action   cancel   check
 
@@ -25,11 +25,11 @@
 "telnet://"  NULL  NULL  NULL  5       URL	NULL	 URL
 
 # (H,DN,DD,...)
-# (1. »èÁ¦  2. Ãë¼Ò ...)
+# (1. ì‚­ì œ  2. ì·¨ì†Œ ...)
 
 "("	     ")"   NULL       ",:./" 0  STRING  NULL	 ALNUM
 
-# 05. ÀÚ·á½Ç
+# 05. ìžë£Œì‹¤
 # 0xa6 0xa2: |
 # 0xa6 0xa9: -|
 
@@ -48,7 +48,7 @@ NULL         "."  "\xa6\xa2"  NULL  0  STRING  NULL  NUMBER
 "\xa6\xa9"   "."  "\xa6\xa9"  NULL  0  STRING  NULL  NUMBER
 NULL         "."  "\xa6\xa9"  NULL  0  STRING  NULL  NUMBER
 
-# Ãµ¸®¾È ¸®´ª½º µ¿È£È¸
+# ì²œë¦¬ì•ˆ ë¦¬ëˆ…ìŠ¤ ë™í˜¸íšŒ
 " U"         "."  "\xa6\xa9"  NULL  1  STRING  NULL  ALNUM
 " W"         "."  "\xa6\xa9"  NULL  1  STRING  NULL  ALNUM
 " D"         "."  "\xa6\xa9"  NULL  1  STRING  NULL  ALNUM
@@ -57,12 +57,12 @@ NULL         "."  "\xa6\xa9"  NULL  0  STRING  NULL  NUMBER
 " S"         "."  "\xa6\xa9"  NULL  1  STRING  NULL  ALNUM
 NULL         "."  "\xa6\xa9"  NULL  0  STRING  NULL  ALNUM
 
-# ...ÇÏ·Á¸é 'Y'¸¦ ÀÔ·ÂÇÏ¼¼¿ä?
-# ¾çÂÊÀÌ °°Àº ¹®ÀÚÀÌ¹Ç·Î ÇöÀç´Â ' »çÀÌ¸¦ Á¤È®È÷ Å¬¸¯ÇØ¾ß ¼±ÅÃµÈ´Ù.
+# ...í•˜ë ¤ë©´ 'Y'ë¥¼ ìž…ë ¥í•˜ì„¸ìš”?
+# ì–‘ìª½ì´ ê°™ì€ ë¬¸ìžì´ë¯€ë¡œ í˜„ìž¬ëŠ” ' ì‚¬ì´ë¥¼ ì •í™•ížˆ í´ë¦­í•´ì•¼ ì„ íƒëœë‹¤.
 
 "'"          "'"  NULL        NULL  0  STRING  NULL  ALNUM
 
-# °ø¹é»çÀÌ¿¡ ÀÖ´Â ¼ýÀÚ¸¦ ¼±ÅÃÇÑ °æ¿ì (°Ô½ÃÆÇ)
+# ê³µë°±ì‚¬ì´ì— ìžˆëŠ” ìˆ«ìžë¥¼ ì„ íƒí•œ ê²½ìš° (ê²Œì‹œíŒ)
 
 NULL         " "  NULL        NULL  0  STRING  NULL  NUMBER
 

@@ -1,5 +1,5 @@
 # ==========================================================================
-#  xmodemÀ» ÀÌ¿ëÇÑ DEBUG MONITOR upload script sample
+#  xmodemì„ ì´ìš©í•œ DEBUG MONITOR upload script sample
 # ==========================================================================
 
 set config IdleGapBetweenChar 1000
@@ -16,7 +16,7 @@ clear
 kflush
 rflush
 
-# monitor prompt »óÅÂ¸¦ È®ÀÎ
+# monitor prompt ìƒíƒœë¥¼ í™•ì¸
 transmit    "^M"
 waitfor     $prompt      2
 
