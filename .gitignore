@@ -4,6 +4,7 @@
 *.tar.gz
 .*.swp
 .deps/
+cscope.*
 ABOUT-NLS
 COPYING
 INSTALL
