@@ -13,6 +13,16 @@ NOTE
 COMMAND LIST
 ------------
 
+-.  ADD
+    usage:  add varname value
+    desc :  add 'value' to the 'varname' (mathematical addition).
+    ex   :  assign loop 0
+	    loop:
+		add loop 1
+		message "Loop: $loop\n"
+		transmit "ls\n"
+		goto loop
+
 -.  ASSIGN
     사용: assign varname "string"
     설명: 새로운 변수를 생성한다. 이후 다른 데서
@@ -98,6 +108,13 @@ COMMAND LIST
     설명: 연결을 끊는다.
     예제: disconnect
  
+-.  DIV
+    usage:  div varname value
+    desc :  divide the 'varname' by 'value' (mathematical division).
+    ex   :  assign num 100
+	    div num 10
+	    message "num: $num\n"
+
 -.  DOWNLOAD
     사용: receivefile zmodem
     설명: file을 download한다.
@@ -194,6 +211,24 @@ COMMAND LIST
     설명: 화면에 string을 프린트. transmit처럼 remote로 send하지는 않는다.
     예제: message "Hello, world!!!"
  
+-.  MUL
+    usage:  mul varname value
+    desc :  multiply 'value' to the 'varname' (mathematical multiplication).
+    ex   :  assign num 2
+	    mul num 10
+	    message "num: $num\n"
+
+-.  PAUSE
+    사용: pause [secs]
+    설명: 'secs' 초 동안 sleep. 'secs'는 실수(float) 단위이고, 0.1초 이상.
+    예제: pause 3
+	  pause 0.5
+
+-.  RFLUSH
+    사용: rflush
+    설명: rx buffer flush? 현재는 아무 동작도 수행하지 않는다.
+    예제: rflush
+
 -.  RUN
     사용: run 'filename'
     설명: 'filename' file을 실행.
@@ -225,17 +260,13 @@ COMMAND LIST
     설명: status bar에 string을 프린트.
     예제: stsmsg "Hello, world!!!"
  
--.  PAUSE
-    사용: pause [secs]
-    설명: 'secs' 초 동안 sleep. 'secs'는 실수(float) 단위이고, 0.1초 이상.
-    예제: pause 3
-	  pause 0.5
- 
--.  RFLUSH
-    사용: rflush
-    설명: rx buffer flush? 현재는 아무 동작도 수행하지 않는다.
-    예제: rflush
- 
+-.  SUB
+    usage:  sub varname value
+    desc :  subtract 'value' from the 'varname' (mathematical subtraction).
+    ex   :  assign num 50
+	    sub num 10
+	    message "num: $num\n"
+
 -.  TRANSMIT
     사용: transmit "string"
     설명: 문자열을 remote로 보낸다.

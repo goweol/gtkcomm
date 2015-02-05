@@ -33,6 +33,7 @@ char *ScriptAnimFile;
 /* script enum {{{1 */
 enum {
     SCR_NONE,		/* nothing */
+    SCR_ADD,		/* math add */
     SCR_ASSIGN, 	/* assign은 특별하게 처리 */
     SCR_AUTORES,	/* auto response file 포함 */
     SCR_BEEP,		/* 삑 소리 냄 */
@@ -42,6 +43,7 @@ enum {
     SCR_CLEAR,		/* 화면 clear */
     SCR_CTLMENU,	/* control-bar에 menu 추가 */
     SCR_DISCONNECT,	/* 연결 끊기 */
+    SCR_DIV,		/* math divide */
     SCR_DOWNLOAD,	/* file download */
     SCR_ELSE,		/* else */
     SCR_ELSEIF,		/* elseif/elif */
@@ -56,10 +58,12 @@ enum {
     SCR_KFLUSH,		/* key buffer flush */
     SCR_LABEL,		/* control-bar에 label 추가 */
     SCR_MESSAGE,	/* 화면에 메시지 출력 */
+    SCR_MUL,		/* math multiply */
     SCR_RUN,		/* external command execute */
     SCR_PAUSE,		/* pause seconds */
     SCR_RFLUSH,		/* rx buffer flush */
     SCR_STSMSG,		/* status bar에 메시지 출력 */
+    SCR_SUB,		/* math subtract */
     SCR_TODEC,		/* hex-decimal to decimal */
     SCR_TOHEX,		/* decimal to hexa-decimal */
     SCR_TRANSMIT,	/* transmit string */
@@ -150,6 +154,7 @@ static const ScriptTableType ScriptWinTable[] = {
 
 /* ScriptMainTable {{{1 */
 static const ScriptTableType ScriptMainTable[] = {
+    {SCR_ADD, "add", 2, NULL },		/* add varname #val */
     /* assign S? "string"   (? = number).
      * assign은 label과 마찬가지로 특별하게 처리한다.
      */
@@ -162,6 +167,7 @@ static const ScriptTableType ScriptMainTable[] = {
     {SCR_CLEAR, "clear", 0, NULL},	/* clear */
     {SCR_CTLMENU, "ctlmenu", 5, NULL},	/* ctlmenu [add/gadd] title name [string/script] "string-action" */
     {SCR_DISCONNECT, "disconnect", 0, NULL},	/* disconnect */
+    {SCR_DIV, "div", 2, NULL },		/* div varname #val */
     {SCR_DOWNLOAD, "receivefile", 1, NULL},	/* receivefile xmodem filename */
     {SCR_ELSE, "else", 0, NULL},	/* else */
     {SCR_ELSEIF, "elseif", 3, NULL},	/* elseif $var == "val" */
@@ -178,12 +184,14 @@ static const ScriptTableType ScriptMainTable[] = {
     {SCR_KFLUSH, "kflush", 0, NULL},	/* kflush */
     {SCR_LABEL, "label", 2, NULL}, /* label [add/gadd/rmv] [baudrate/protocol/emulate/linestatus] */
     {SCR_MESSAGE, "message", 1, NULL},	/* message "string" */
+    {SCR_MUL, "mul", 2, NULL },		/* mul varname #val */
     {SCR_RUN, "run", 1, NULL},	/* run 'filename' */
     {SCR_SET, "set", 1, ScriptSetTable},	/* set ??? */
     {SCR_GET, "get", 1, ScriptGetTable}, 	/* get ??? */
     {SCR_PAUSE, "pause", 1, NULL},	/* pause secs */
     {SCR_RFLUSH, "rflush", 0, NULL},	/* rflush */
     {SCR_STSMSG, "stsmsg", 1, NULL},	/* stsmsg "string" */
+    {SCR_SUB, "sub", 2, NULL },		/* sub varname #val */
     {SCR_TODEC, "todec", 2, NULL}, /* todec $hexnum decnum */
     {SCR_TOHEX, "tohex", 2, NULL}, /* tohex $decnum hexnum */
     {SCR_TRANSMIT, "transmit", 1, NULL},	/* transmit "string" */
@@ -1259,6 +1267,106 @@ ScriptRun(ScriptType * script)
     _exit(1);
 }
 
+/* script_add() {{{1 */
+static int
+script_add(ScriptType *script)
+{
+    long n, n2;
+    char *err;
+    char *varname = (char *) script->argv[0];
+    char *numstr = (char *) script->argv[1];
+    AssignType *a;
+
+    if ((a = GetAssign(varname)) == NULL)
+	return -1;
+
+    n = strtol(numstr, &err, 0);
+    if (*err != '\0')
+	return -1;
+
+    n2 = strtol(a->val, NULL, 0);
+    n2 += n;
+
+    g_free(a->val);
+    a->val = g_strdup_printf("%ld", n2);
+    return 0;
+}
+
+/* script_div() {{{1 */
+static int
+script_div(ScriptType *script)
+{
+    long n, n2;
+    char *err;
+    char *varname = (char *) script->argv[0];
+    char *numstr = (char *) script->argv[1];
+    AssignType *a;
+
+    if ((a = GetAssign(varname)) == NULL)
+	return -1;
+
+    n = strtol(numstr, &err, 0);
+    if (*err != '\0')
+	return -1;
+
+    n2 = strtol(a->val, NULL, 0);
+    n2 /= n;
+
+    g_free(a->val);
+    a->val = g_strdup_printf("%ld", n2);
+    return 0;
+}
+
+/* script_mul() {{{1 */
+static int
+script_mul(ScriptType *script)
+{
+    long n, n2;
+    char *err;
+    char *varname = (char *) script->argv[0];
+    char *numstr = (char *) script->argv[1];
+    AssignType *a;
+
+    if ((a = GetAssign(varname)) == NULL)
+	return -1;
+
+    n = strtol(numstr, &err, 0);
+    if (*err != '\0')
+	return -1;
+
+    n2 = strtol(a->val, NULL, 0);
+    n2 *= n;
+
+    g_free(a->val);
+    a->val = g_strdup_printf("%ld", n2);
+    return 0;
+}
+
+/* script_sub() {{{1 */
+static int
+script_sub(ScriptType *script)
+{
+    long n, n2;
+    char *err;
+    char *varname = (char *) script->argv[0];
+    char *numstr = (char *) script->argv[1];
+    AssignType *a;
+
+    if ((a = GetAssign(varname)) == NULL)
+	return -1;
+
+    n = strtol(numstr, &err, 0);
+    if (*err != '\0')
+	return -1;
+
+    n2 = strtol(a->val, NULL, 0);
+    n2 -= n;
+
+    g_free(a->val);
+    a->val = g_strdup_printf("%ld", n2);
+    return 0;
+}
+
 /* ScriptToDec() {{{1 */
 static int
 ScriptToDec(ScriptType *script)
@@ -1843,6 +1951,9 @@ ScriptRunNext(void)
 
     switch (script->type)
     {
+	case SCR_ADD:
+	    ScriptResult = script_add(script);
+	    break;
 	case SCR_ASSIGN:
 	    ScriptResult = ScriptAssign(script);
 	    break;
@@ -1905,6 +2016,9 @@ ScriptRunNext(void)
 	case SCR_DISCONNECT:
 	    PC_Hangup();
 	    ScriptResult = 0;
+	    break;
+	case SCR_DIV:
+	    ScriptResult = script_div(script);
 	    break;
 	case SCR_DOWNLOAD:
 	    if (!g_ascii_strcasecmp(script->argv[0], "zmodem"))
@@ -1976,6 +2090,9 @@ ScriptRunNext(void)
 	    g_free(p);
 	    ScriptResult = 0;
 	    break;
+	case SCR_MUL:
+	    ScriptResult = script_mul(script);
+	    break;
 	case SCR_PAUSE:
 	    /* pause가 마지막이면 pause가 의미가 있겠는가? */
 	    if (CurrScriptItem->next)
@@ -2003,6 +2120,9 @@ ScriptRunNext(void)
 	    StatusShowMessage("%s", p);
 	    g_free(p);
 	    ScriptResult = 0;
+	    break;
+	case SCR_SUB:
+	    ScriptResult = script_sub(script);
 	    break;
 	case SCR_TODEC:
 	    ScriptResult = ScriptToDec(script);
@@ -2180,6 +2300,8 @@ static void
 ScriptParsingError(char *param[], int nParam)
 {
     int i;
+
+    StatusShowMessage(_("Invalid line in script: %s"), param[0]);
 
     /* print as many as possible to make debug easy */
     g_print(_("%s: Invalid line in script. nParam=%d\n\t%s"), __FUNCTION__,
