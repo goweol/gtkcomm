@@ -2787,7 +2787,7 @@ typedef struct {
     guint tag;
 } ScriptAnimType;
 
-static ScriptAnimType *ScriptAnim = NULL;
+static ScriptAnimType *ScriptAnim;
 
 guint32 RunIconLargeSize, RunIconSmallSize;
 
@@ -2834,7 +2834,7 @@ ScriptRunAnimInit(GCallback runCB)
 	if (filename == NULL)
 	    return NULL;
 
-	ScriptAnim = g_new(ScriptAnimType, 1);
+	ScriptAnim = g_new0(ScriptAnimType, 1);
 	sa = ScriptAnim;
 
 	if (!g_ascii_strcasecmp(ToolBarType, "BOTH"))
