@@ -219,10 +219,11 @@ COMMAND LIST
 	    message "num: $num\n"
 
 -.  PAUSE
-    사용: pause [secs]
-    설명: 'secs' 초 동안 sleep. 'secs'는 실수(float) 단위이고, 0.1초 이상.
-    예제: pause 3
-	  pause 0.5
+    usage: pause [secs]
+    desc : sleep 'secs' seconds. 'secs' is a float number and should be larger
+	   or equal than 0.001 (1msec).
+    ex   : pause 3
+	   pause 0.01
 
 -.  RFLUSH
     사용: rflush

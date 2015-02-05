@@ -2094,12 +2094,13 @@ ScriptRunNext(void)
 	    ScriptResult = script_mul(script);
 	    break;
 	case SCR_PAUSE:
-	    /* pause가 마지막이면 pause가 의미가 있겠는가? */
+	    /* Ignore if the pause is the last command */
 	    if (CurrScriptItem->next)
 	    {
 		float f;
-		if (sscanf(script->argv[0], "%f", &f) == 1 && f >= 0.1)
-		    PauseTag = gtk_timeout_add((guint32) (f * 1000UL),
+		if (sscanf(script->argv[0], "%f", &f) == 1
+		    && (long) (f * 1000L) >= 1L)
+		    PauseTag = gtk_timeout_add((guint32) (f * 1000L),
 					       (GtkFunction) ScriptRunNext,
 					       NULL);
 		else
