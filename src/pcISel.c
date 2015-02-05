@@ -155,6 +155,7 @@ I_SelectInit(void)
 	    {
 		g_warning(_("%s: invalid param, action = %s"), __FUNCTION__,
 			  param[5]);
+		g_free(isp);
 		break;
 	    }
 
@@ -164,6 +165,7 @@ I_SelectInit(void)
 	    {
 		g_warning(_("%s: invalid param, cancel = %s"), __FUNCTION__,
 			  param[6]);
+		g_free(isp);
 		break;
 	    }
 
@@ -181,6 +183,7 @@ I_SelectInit(void)
 	    {
 		g_warning(_("%s: invalid param, check = %s"), __FUNCTION__,
 			  param[7]);
+		g_free(isp);
 		break;
 	    }
 
