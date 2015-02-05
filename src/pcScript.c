@@ -2363,7 +2363,7 @@ ScriptCreateItem(char *param[], int nArg, int paramPos,
 				    result);
 	else
 	{
-	    script = g_new(ScriptType, 1);
+	    script = g_new0(ScriptType, 1);
 	    script->type = tbl->type;
 	    script->savedArgv = NULL;
 	    if (nArg > 0 || tbl->argc > 0)
@@ -2375,13 +2375,12 @@ ScriptCreateItem(char *param[], int nArg, int paramPos,
 		    return NULL;
 		}
 		script->argc = nArg;
-		script->argv = g_new(gpointer, nArg);
+		script->argv = g_new0(gpointer, nArg + 1);
 		++paramPos;
 		for (i = 0; i < nArg; i++)
 		    script->argv[i] = g_strdup(param[paramPos + i]);
 	    }
-	    else
-		script->argc = 0;
+
 	    *result = 0;
 	    return script;
 	}
@@ -2398,7 +2397,7 @@ ScriptCreateItem(char *param[], int nArg, int paramPos,
 		script = g_new(ScriptType, 1);
 		script->type = SCR_GOTO_TAG;
 		script->argc = 1;
-		script->argv = g_new(gpointer, 1);
+		script->argv = g_new0(gpointer, 2);
 		script->argv[0] = g_strdup(param[0]);
 		script->savedArgv = NULL;
 		*result = 0;
