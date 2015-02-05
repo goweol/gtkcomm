@@ -434,19 +434,23 @@ MenuRunEditor(const char *file)
 static void
 MenuEditScript(void)
 {
-    const char *s = NULL;
+    const char *s;
+    char buf[MAX_PATH];
+
+    buf[0] = '\0';
 
     if (ScriptBox)
-	s = gtk_entry_get_text(GTK_ENTRY(ScriptBox));
-    if (s && *s)
     {
-	s = ScriptGetFullPath(s);
+	s = gtk_entry_get_text(GTK_ENTRY(ScriptBox));
 	if (s && *s)
 	{
-	    GeneralInputQuery(_("Script Edit"), _("Filename:"), s,
-			      (void (*)(char *)) MenuRunEditor, NULL);
+	    char *sp = ScriptGetFullPath(s);
+	    g_strlcpy(buf, sp, sizeof(buf));
+	    g_free(sp);
 	}
     }
+
+    util_file_query(_("Script Edit"), buf, MenuRunEditor);
 }
 
 /* TB_Script() {{{1 */
