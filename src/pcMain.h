@@ -343,6 +343,8 @@ extern void GeneralInputQuery(const char *title, const char *labelName,
 			      const char *contents,
 			      void (*okFunc) (char *),
 			      void (*cancelFunc) (void));
+void util_file_query(const char *title, const char *filename,
+		     void (*ok_func)(const char *));
 extern void PC_Sleep(guint32 msec);
 extern int SoundPlay(const char *file);
 

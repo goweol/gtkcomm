@@ -581,6 +581,48 @@ GeneralInputQuery(const char *title, const char *labelName,
     gtk_widget_grab_focus(GeneralInputEntry);
 }
 
+/* util_file_query() {{{1 */
+void
+util_file_query(const char *title, const char *filename,
+		void (*ok_func)(const char *))
+{
+    GtkWidget *w;
+    GtkFileChooserAction act;
+    static char *prev_dir;
+    const char *folder = prev_dir? prev_dir: ScriptPath;
+
+    if (filename)
+	act = GTK_FILE_CHOOSER_ACTION_SAVE;
+    else
+	act = GTK_FILE_CHOOSER_ACTION_OPEN;
+    w = gtk_file_chooser_dialog_new(title,
+				    GTK_WINDOW(MainWin),
+				    act,
+				    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+				    GTK_STOCK_OK, GTK_RESPONSE_ACCEPT,
+				    NULL);
+    gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(w), folder);
+    if (filename)
+	gtk_file_chooser_set_current_name(GTK_FILE_CHOOSER(w), filename);
+
+    if (gtk_dialog_run(GTK_DIALOG(w)) == GTK_RESPONSE_ACCEPT)
+    {
+	char *p, *scriptname;
+
+	scriptname = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(w));
+	if ((p = strrchr(scriptname, '/')) != NULL)
+	{
+	    if (prev_dir)
+		g_free(prev_dir);
+	    prev_dir = g_strdup(scriptname);
+	    prev_dir[(int) (p - scriptname)] = '\0';
+	}
+	ok_func(scriptname);
+	g_free(scriptname);
+    }
+    gtk_widget_destroy(w);
+}
+
 /* SleepCB() {{{1 */
 static gint
 SleepCB(void)

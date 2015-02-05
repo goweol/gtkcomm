@@ -389,22 +389,13 @@ MenuResetTTY(void)
 }
 
 /* MenuRunScript() {{{1 */
-/* ScriptBox에서 script file명을 얻어오지 않음으로서 사용자가
- * 언제든 원하는 script file을 입력할 수 있도록 한다.
- */
 static void
 MenuRunScript(void)
 {
     if (ScriptRunning)
 	ScriptCancel();
     else
-    {
-	const char *s = NULL;
-	if (ScriptBox)
-	    gtk_entry_get_text(GTK_ENTRY(ScriptBox));
-	GeneralInputQuery(_("Script Run"), _("Filename:"), s,
-			  (void (*)(char *)) ScriptRunFromFile, NULL);
-    }
+	util_file_query(_("Script Run"), NULL, ScriptRunFromFile);
 }
 
 /* MenuRunEditor() {{{1 */
