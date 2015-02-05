@@ -573,13 +573,16 @@ CaptureInputFilter(const char *s, int len)
 
 	    if ((log_flags & LOG_FLAGS_TIMESTAMP) != 0 && log_start_of_line)
 	    {
-		time_t tim;
+		struct timeval tv;
 		struct tm *lt;
 		char buf[128];
 
-		tim = time(NULL);
-		lt = localtime(&tim);
-		n = strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S ", lt);
+		gettimeofday(&tv, NULL);
+		lt = localtime(&tv.tv_sec);
+		n = strftime(buf, sizeof(buf) - 8, "[%Y-%m-%d %H:%M:%S", lt);
+		if (n >= 0)
+		    n += snprintf(&buf[n], 8, ".%03u] ",
+				  (unsigned int) (tv.tv_usec / 1000));
 		if (n > 0)
 		    capture_data_write(buf, n);
 	    }
