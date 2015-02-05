@@ -122,6 +122,8 @@ CreateStatusBar(GtkWidget *w)
     StatusLabel = gtk_label_new(_("Welcome!!!"));
     gtk_box_pack_start(GTK_BOX(w), StatusLabel, FALSE, FALSE, 5);
     gtk_misc_set_alignment(GTK_MISC(StatusLabel), 0.0, 0.5);
+    gtk_widget_set_size_request(GTK_WIDGET(StatusLabel),
+				TermCol * Term->fontWidth, -1);
     gtk_widget_show(StatusLabel);
 
     /* 시간 레이블 */
@@ -148,22 +150,6 @@ StatusShowMessage(const gchar *format, ...)
     buf = g_strdup_vprintf(format, args);
     va_end(args);
 
-    /* FIXME: status area의 길이를 얻어와서 처리 */
-    if ((len = strlen(buf)) > 60)
-    {
-	buf[60] = '\0';
-	/* avoid multibyte corruption */
-	for (i = 59; i > 0; --i)
-	{
-	    if (isspace(buf[i]))
-	    {
-		for (j = 0; i < len && j < 3; ++j)
-		    buf[i++] = '.';
-		buf[i] = '\0';
-		break;
-	    }
-	}
-    }
     /* change '\n' to space */
     for (p = buf; (p = strchr(p, '\n')) != NULL; p++)
 	*p = ' ';
