@@ -879,7 +879,7 @@ CreateMainWindow(void)
 	{N_("/_Tools/_Capture"), "<alt>l",
 	 (GtkItemFactoryCallback) CaptureControl, 0, NULL, NULL},
 	{N_("/_Tools/Script _Run-Stop"), "<alt>s", MenuRunScript, 0, NULL, NULL},
-	{N_("/_Tools/Script _Edit"), "<alt>e", MenuEditScript, 0, NULL, NULL},
+	{N_("/_Tools/Script _Edit"), "<control><shift>s", MenuEditScript, 0, NULL, NULL},
 	{N_("/_Tools/Cha_t"), "<alt>c", MenuChat, 0, NULL, NULL},
 	{N_("/_Tools/Reset Ter_minal"), "<alt>u", MenuResetTTY, 0,
 	    "<StockItem>", GTK_STOCK_CLEAR},
