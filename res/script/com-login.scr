@@ -1,9 +1,16 @@
-# COM direct connect 로그인 script for target board debug.
+#
+# serial port config script for target board debug.
+#
 
 clear
 
-set config IdleGapBetweenChar 0
-set config IdleGapBetweenLine 0
+#
+# Because many embedded system does not support flow-control on serial
+# interface, they lost a character from time to time if we send them
+# without delay.
+#
+set config IdleGapBetweenChar 10000
+set config IdleGapBetweenLine 10000
 set config IdleGuardString ""
 set config UseISel FALSE
 
@@ -22,10 +29,10 @@ set title "%p: %n"
 # crlf = lf
 set config EnterConvert 2
 
-# baudrate를 target board의 default speed로
-set baudrate 9600
+# serial speed
+set baudrate 115200
 
-# mouse 왼쪽 버튼 클릭시 아무짓도 하지 마세요.
+# do nothing for left mouse click
 set config LeftMouseClickStr ""
 
 # add baudrate change menu to control-bar
@@ -47,7 +54,6 @@ ctlmenu add Baudrate 9600 script "set baudrate 9600"
 # add protocol change menu to control-bar
 ctlmenu add Protocol ASCII script "set protocol ascii"
 ctlmenu add Protocol RAW-ASCII script "set protocol raw-ascii"
-#NOT YET SUPPORTED ctlmenu add Protocol KERMIT script "set protocol kermit"
 ctlmenu add Protocol XMODEM script "set protocol xmodem"
 ctlmenu add Protocol YMODEM script "set protocol ymodem"
 ctlmenu add Protocol ZMODEM script "set protocol zmodem"
@@ -56,36 +62,34 @@ label add baudrate
 label add protocol
 label add linestatus
 
-# target board에서 download command를 입력한 경우 upload file 대화상자를
-# 연다.
+# Open a upload dialog if user inputs download command in a target
+# system
 #
-# FIXME: autores에 의해 sendfile 대화상자가 열려서 loading하는 경우
-# loading을 stop 시키면 대화상자가 다시 열린다. autores가 다시 수행되는
-# 것으로 보인다. 수동으로 처리하면 그런 현상이 않생김.
+# FIXME: There is an issue for this autores feature.  Do not use it now.
 #autores add "Waiting a Motorola S-record or Intel Hex." \
 #	    script "sendfile ascii \"?\""
 #autores add "Waiting a binary file..." script "sendfile xmodem \"?\""
 
-# baudrate를 바꾸는 example
-button add "115200" script 'transmit "pf -b 115200\r"; \
+# baudrate change examples
+button add "115200" script 'transmit "baudrate 115200\n"; \
 			  waitfor "ENTER.."; \
 			  set baudrate 115200; \
-			  transmit "\r"; \
+			  transmit "\n"; \
 			  waitfor "\$" 1; \
-			  transmit "\r"'
+			  transmit "\n"'
 
-button add "38400" script 'transmit "pf -b 38400\r"; \
+button add "38400" script 'transmit "baudrate 38400\n"; \
 			  waitfor "ENTER.."; \
 			  set baudrate 38400; \
-			  transmit "\r"; \
+			  transmit "\n"; \
 			  waitfor "\$" 1; \
-			  transmit "\r"'
+			  transmit "\n"'
 
-button add "9600" script 'transmit "pf -b 9600\r"; \
+button add "9600" script 'transmit "baudrate 9600\n"; \
 			  waitfor "ENTER.."; \
 			  set baudrate 9600; \
-			  transmit "\r"; \
+			  transmit "\n"; \
 			  waitfor "\$" 1; \
-			  transmit "\r"'
+			  transmit "\n"'
 
 # vim:set ft=sh:
