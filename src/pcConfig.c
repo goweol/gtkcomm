@@ -192,7 +192,7 @@ CreateColor(float r, float g, float b)
 {
     GdkColor *c;
 
-    c = g_new(GdkColor, 1);
+    c = g_new0(GdkColor, 1);
     c->red = r * 65535.0;
     c->green = g * 65535.0;
     c->blue = b * 65535.0;
