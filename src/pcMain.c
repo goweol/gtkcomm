@@ -115,19 +115,33 @@ PC_Hangup(void)
 static void
 DoExitClean(void)
 {
+    g_print("Clean-ups to exit\n");
     SoundPlay(SoundExitFile);
+    g_print("Hangup the connection\n");
     PC_Hangup();	/* hangup the modem or telnet if it was opened */
+    g_print("Stop the transfer\n");
     TRxStop();	/* file 전송중이면 종료 */
+    g_print("Stop the logging\n");
     CaptureFinish();	/* close capture file if it was opened. */
+    g_print("Stop the chatting\n");
     ChatExit();
+    g_print("Stop the isel\n");
     I_SelectExit();
+    g_print("Stop the autores\n");
     AutoResponseExit();
+    g_print("Remove the control menu\n");
     ControlMenuExit();
+    g_print("Stop the script\n");
     ScriptExit();
+    g_print("Destroy modem interface\n");
     ModemExit();
+    g_print("Destroy telnet interface\n");
     TelnetExit();
+    g_print("Cleanup the config\n");
     ConfigExit();
+    g_print("Destroy terminal\n");
     TermExit();
+    g_print("Remove signal handlers and input filters\n");
     ChildSignalHandlerExit();
     if (InputFilterList)
 	g_slist_free(InputFilterList);
@@ -135,9 +149,12 @@ DoExitClean(void)
 	g_slist_free(ConnectFuncList);
     if (DisconnectFuncList)
 	g_slist_free(DisconnectFuncList);
+    g_print("Destroy the script animation\n");
     ScriptRunAnimDestroy();
     g_free((gpointer)MyName);
+    g_print("Close the iconv\n");
     PC_IconvClose();
+    g_print("Done clean-ups to exit\n");
 }
 
 /* DoExit() {{{1 */
