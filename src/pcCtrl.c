@@ -29,6 +29,7 @@ guint32 MaxCaptureSize; /* maximum capture file size */
 char *CapturePath;
 char *CaptureFile;
 char *LogFile;
+unsigned int log_flags;
 
 /* Local variables {{{1 */
 
@@ -540,7 +541,6 @@ static int CaptureFD = -1;
 static guint32 CurrCaptureSize = 0;
 static GtkWidget *CaptureFrame = NULL;
 static gchar *new_log_dir = NULL;
-static unsigned int log_flags;
 static gboolean log_start_of_line;
 
 /* capture_data_write() {{{1 */
@@ -570,9 +570,6 @@ CaptureInputFilter(const char *s, int len)
 	for (i = 0; i < len; i++)
 	{
 	    c = s[i];
-	    if ((log_flags & LOG_FLAGS_PLAIN_TEXT) != 0
-		&& !isprint((int) c) && !isspace((int) c))
-		continue;
 
 	    if ((log_flags & LOG_FLAGS_TIMESTAMP) != 0 && log_start_of_line)
 	    {
@@ -607,7 +604,6 @@ CaptureFinish(void)
 {
     if (CaptureFD != -1)
     {
-	InputFilterList = g_slist_remove(InputFilterList, CaptureInputFilter);
 	close(CaptureFD);
 	CaptureFD = -1;
 	CurrCaptureSize = 0UL;
@@ -739,8 +735,6 @@ CaptureStart(const char *filename, unsigned int flags)
     }
     else
     {
-	InputFilterList = g_slist_append(InputFilterList, CaptureInputFilter);
-
 	StatusShowMessage(_("Capture starts to '%s'."), buf);
 
 	if ((log_flags & LOG_FLAGS_INCLUDE_BUFFER) != 0)

@@ -171,6 +171,7 @@ extern char *UploadPath;
 extern char *ScriptPath;
 extern char *ScriptAnimFile;
 extern char *LogFile;
+extern unsigned int log_flags;
 
 /* 꾀돌이 마우스에서 URL 선택시 실행할 명령 */
 extern gboolean UseISel;

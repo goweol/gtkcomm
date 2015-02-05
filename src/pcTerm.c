@@ -2416,6 +2416,31 @@ TermReceiveString(TermType *term, const guchar *buf, int len)
     }
     TermHideCursor(term);
 
+    if ((log_flags & LOG_FLAGS_PLAIN_TEXT) == 0)
+    {
+	CaptureInputFilter((char *) buf, len);
+    }
+    else
+    {
+	for (p = (char *) buf; *p; p++)
+	{
+	    char c = *p;
+
+	    /* Though the user wants to log plain text, let's save the
+	     * backspace as is.  So that, user will know the real input
+	     * command if he modifies the command with backspace.
+	     */
+	    if (!isprint((int) c) && !isspace((int) c) && c != '\b')
+		continue;
+	    /* Old gtkcomm was handled this as optional.
+	     * should we?
+	     */
+	    if (c == '\r')
+		continue;
+	    CaptureInputFilter(&c, 1);
+	}
+    }
+
     p = g_malloc(len);
     while (len > 0)
     {
