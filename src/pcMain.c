@@ -842,17 +842,13 @@ CreateMainWindow(void)
 	{"STRING", 0, 0}
     };
     GtkItemFactoryEntry entry;
-    /* NOTE: Terminal emulation 프로그램이므로 메뉴에서는 단축글쇠 사용을
-     * 자재할 필요가 있다. 특히 Control 키와의 조합은 절대 사용하지 말것이며
-     * 일반적으로 Alt key는 안전하다고 하겠다.
-     *
-     * Used hotkey list:
-     * Alt: c d e f h l o p r s t u w x
+    /* NOTE: Because it is a terminal emulation, we should not use control
+     * key.  Here we use Alt or Control-Shift as modifier key.
      */
     static GtkItemFactoryEntry menuItems[] = {
 	{N_("/_File"), NULL, 0, 0, "<Branch>", NULL},
 	{N_("/_File/_Open"), "<alt>o", MenuOpen, 0, "<StockItem>", GTK_STOCK_OPEN},
-	{N_("/_File/_Close"), NULL, MenuClose, 0, "<StockItem>", GTK_STOCK_CLOSE},
+	{N_("/_File/_Close"), "", MenuClose, 0, "<StockItem>", GTK_STOCK_CLOSE},
 	{("/_File/---"), NULL, 0, 0, "<Separator>", NULL},
 	{N_("/_File/_Exit"), "<alt>x", MenuQuit, 0, "<StockItem>", GTK_STOCK_QUIT},
 	{N_("/_Edit"), NULL, 0, 0, "<Branch>", NULL},
@@ -889,7 +885,7 @@ CreateMainWindow(void)
     };
     static GtkItemFactoryEntry helpEntry[] = {
 	{N_("/_Help"), NULL, 0, 0, "<LastBranch>", NULL},
-	{N_("/_Help/_About..."), NULL, aboutDialog, 0, "<StockItem>", GTK_STOCK_HELP}
+	{N_("/_Help/_About..."), "", aboutDialog, 0, "<StockItem>", GTK_STOCK_HELP}
     };
 
     GtkClipboard *clipboard = gtk_clipboard_get(GDK_SELECTION_PRIMARY);
