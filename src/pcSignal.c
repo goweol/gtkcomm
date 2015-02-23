@@ -2,7 +2,7 @@
  *
  * Signal
  *
- * Copyright (C) 2000-2002, Nam SungHyun and various contributors
+ * Copyright (C) 2000-2015, SungHyun Nam and various contributors
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -66,17 +66,9 @@ RemoveChildSignalHandler(SignalType *handler)
     g_free(handler);
 }
 
-/* RunChildSignalHandler() {{{1 */
-static gint
-RunChildSignalHandler(void (*func)(void))
-{
-    (*func)();
-    return FALSE;	/* end timer */
-}
-
 /* ChildSignalHandler() {{{1 */
 static void
-ChildSignalHandler(int sig)
+ChildSignalHandler(int sig G_GNUC_UNUSED)
 {
     GSList *slist;
     SignalType *handler;
@@ -87,24 +79,14 @@ ChildSignalHandler(int sig)
     for (slist = SignalCallbackList; slist;)
     {
 	handler = slist->data;
-
-	/* list remove가 일어나기 전에 다음 list를 얻어오는 것이 안전하다.
-	 * 밑에서 list remove후 break하므로 여기는 don't care이지만...
-	 */
 	slist = slist->next;
 
 	if (handler && pid == handler->pid)
 	{
-	    /* handler를 바로 수행할 수 없는 데, 그것은 현재의 glib handler가
-	     * 시그널에 의해 interrupt 당하는 경우를 고려하지 않고 있기 때문.
-	     */
-	    gtk_timeout_add(1, (GtkFunction) RunChildSignalHandler,
-			    handler->func);
-	    SignalCallbackList = g_slist_remove(SignalCallbackList, handler);
-	    g_free(handler);
+	    handler->func();
+	    RemoveChildSignalHandler(handler);
 	    break;
 	}
     }
     RegisterChildSignalHandler();
-    sig = 0;	/* to make gcc happy */
 }
