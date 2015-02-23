@@ -4,7 +4,6 @@
 *.tar.gz
 .*.swp
 .deps/
-cscope.*
 ABOUT-NLS
 COPYING
 INSTALL
@@ -19,6 +18,7 @@ config.log
 config.rpath
 config.status
 configure
+cscope.*
 depcomp
 gtkcomm.lang
 install-sh
@@ -31,6 +31,7 @@ po/*.pot
 po/POTFILES
 po/cat-id-tbl.c
 res/gtkrc
+res/script/startup.scr
 src/gtkcomm
 src/gtkcomm_lock
 stamp-*
