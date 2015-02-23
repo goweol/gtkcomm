@@ -2,7 +2,7 @@
  *
  * GTK+에서 윈도그용 프로콤과 비슷한 환경 구현.
  *
- * Copyright (C) 2000-2005, Nam SungHyun and various contributors
+ * Copyright (C) 2000-2015, SungHyun Nam and various contributors
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -679,27 +679,22 @@ static GtkWidget *
 CreateNewPixmap(const char *filename)
 {
     GtkWidget *w = NULL;
-    GdkPixmap *pixmap;
-    GdkBitmap *mask;
+    GdkPixbuf *pixbuf;
+    GError *err = NULL;
     char *f;
 
     /* check if I can access pixmap file */
     if ((f = GetRealFilename(filename, PKGDATADIR "/pixmap")) == NULL)
 	return NULL;
 
-    pixmap = gdk_pixmap_colormap_create_from_xpm(NULL,
-						 gtk_widget_get_colormap(MainWin),
-						 &mask,
-						 &MainWin->style->bg[GTK_STATE_NORMAL],
-						 (const gchar *)f);
+    pixbuf = gdk_pixbuf_new_from_file(f, &err);
     g_free(f);
 
-    if (pixmap)
+    if (pixbuf)
     {
-	w = gtk_image_new_from_pixmap(pixmap, mask);
+	w = gtk_image_new_from_pixbuf(pixbuf);
 
-	g_object_unref(pixmap);
-	g_object_unref(mask);
+	g_object_unref(pixbuf);
     }
 
     return w;
