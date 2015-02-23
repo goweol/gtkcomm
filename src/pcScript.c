@@ -2,7 +2,7 @@
  *
  * Script
  *
- * Copyright (C) 2000-2005, Nam SungHyun and various contributors
+ * Copyright (C) 2000-2015, SungHyun Nam and various contributors
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -513,6 +513,8 @@ WaitForTimer(gpointer data)
 static void
 ScriptWaitFor(ScriptType *script, float seconds)
 {
+    char *str;
+
     if (WaitForString)
 	g_free(WaitForString);
     WaitForString = ConvertCtrlChar((char *) script->argv[0]);
@@ -531,17 +533,19 @@ ScriptWaitFor(ScriptType *script, float seconds)
 
     InputFilterList = g_slist_append(InputFilterList, WaitForInputFilter);
 
+    str = PC_IconvStr(WaitForString, -1);
     if ((long) (seconds * 10.0f) >= 1L)
     {
-	StatusShowMessage(_("Waiting '%s' (%.1f secs)..."), WaitForString,
+	StatusShowMessage(_("Waiting '%s' (%.1f secs)..."), str,
 			  seconds);
 	WaitForTimeoutTag = gtk_timeout_add((guint32) (seconds * 1000UL),
 					    WaitForTimer, NULL);
     }
     else
     {
-	StatusShowMessage(_("Waiting '%s' (endless)..."), WaitForString);
+	StatusShowMessage(_("Waiting '%s' (endless)..."), str);
     }
+    g_free(str);
 }
 
 /* ScriptGetBaudrate() {{{1 */

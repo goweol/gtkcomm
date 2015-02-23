@@ -2,7 +2,7 @@
  *
  * config.
  *
- * Copyright (C) 2000-2004, Nam SungHyun and various contributors
+ * Copyright (C) 2000-2015, SungHyun Nam and various contributors
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -507,7 +507,7 @@ AddBookmarkMenus(GtkItemFactory *factory, void (*modemCB)(gpointer),
 			switch (getInfoID(s[0]))
 			{
 			    case INFO_NAME:
-				info->name = g_strdup(s[1]);
+				info->name = PC_IconvStr(s[1], -1);
 				break;
 
 			    case INFO_NUMBER:
@@ -637,10 +637,8 @@ AddBookmarkMenus(GtkItemFactory *factory, void (*modemCB)(gpointer),
 		}
 
 		/* add to bookmark menu */
-		p = PC_IconvStr(info->name, -1);
 		entry.path = g_strconcat("/_Bookmarks/_Modem/",
-					 p, NULL);
-		PC_IconvStrFree(info->name, p);
+					 info->name, NULL);
 		entry.item_type = "";
 		entry.callback = modemCB;
 		gtk_item_factory_create_item(factory, &entry, info->name,
@@ -679,7 +677,7 @@ AddBookmarkMenus(GtkItemFactory *factory, void (*modemCB)(gpointer),
 			switch (getInfoID(s[0]))
 			{
 			    case INFO_NAME:
-				info->name = g_strdup(s[1]);
+				info->name = PC_IconvStr(s[1], -1);
 				break;
 
 			    case INFO_HOSTNAME:
@@ -735,10 +733,8 @@ AddBookmarkMenus(GtkItemFactory *factory, void (*modemCB)(gpointer),
 		}
 
 		/* add to bookmark menu */
-		p = PC_IconvStr(info->name, -1);
 		entry.path = g_strconcat("/_Bookmarks/_Telnet/",
-					 p, NULL);
-		PC_IconvStrFree(info->name, p);
+					 info->name, NULL);
 		entry.item_type = "";
 		entry.callback = telnetCB;
 		gtk_item_factory_create_item(factory, &entry, info->name,
