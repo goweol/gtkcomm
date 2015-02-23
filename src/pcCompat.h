@@ -2,7 +2,7 @@
  *
  * gtk 1.x와 2.x 사이의 다른 점
  *
- * Copyright (C) 2002-2003, Nam SungHyun and various contributors
+ * Copyright (C) 2002-2015, SungHyun Nam and various contributors
  */
 #ifndef __PCCOMPAT_H
 #define __PCCOMPAT_H 1
@@ -14,7 +14,7 @@ extern guint32 gdk_time_get(void);
 extern char *PC_IconvStr(const char *from, int fromlen);
 extern void PC_IconvOpen(void);
 extern void PC_IconvClose(void);
-#define PC_IconvStrFree(a,b) G_STMT_START{ if (a!=b) g_free(b); }G_STMT_END
+#define PC_IconvStrFree(a,b) g_free(b)
 
 extern gboolean gu_utf8_validate_conv(const gchar *str, gint len,
 				      gchar **euc, gsize *euc_len);

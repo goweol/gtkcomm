@@ -89,7 +89,7 @@ PC_IconvStr(const char *from, int fromlen)
 	if (gu_euckr_validate_conv(from, fromlen, &utf, NULL) == TRUE)
 	    return utf;
 
-    return (char *) from;
+    return (char *) g_strdup_printf("%.*s", fromlen, from);
 }
 
 /* gu_utf8_validate_conv() {{{1 */
