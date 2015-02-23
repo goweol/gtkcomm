@@ -2,7 +2,7 @@
  *
  * main.
  *
- * Copyright (C) 2000-2005, Nam SungHyun and various contributors
+ * Copyright (C) 2000-2015, SungHyun Nam and various contributors
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,13 +21,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+
 #include <gdk/gdk.h>
-#include <gdk/gdkkeysyms.h>
-#include <gdk/gdkprivate.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkdrawingarea.h>
-#include <gtk/gtkscrolledwindow.h>
-#include <gdk-pixbuf/gdk-pixbuf.h>
 
 #ifdef ENABLE_NLS
 #include <libintl.h>
@@ -38,7 +34,7 @@
 #endif
 #define N_(String) String
 
-#include "pcSetting.h"	/* 기본 설정 정의 */
+#include "pcSetting.h"
 #include "pcCompat.h"
 
 #define UNUSED(a) ((void) (a))
@@ -78,7 +74,7 @@ typedef struct {
     void (*func) (void);
 } SignalType;
 
-/* pcTRx.c의 protocol names와 순서가 같아야 한다 */
+/* Order should not change: check the protocol names in pcTRx.c */
 enum {
     TRX_PROT_ASCII,
     TRX_PROT_RAW_ASCII,
@@ -90,12 +86,12 @@ enum {
 extern const char *TRxProtocolNames[];
 extern guint32 TRxProtocol;
 
-/* pcCtrl.c의 emulate names와 순서가 같아야 한다 */
+/* Order should not change: check the emulate names in pcCtrl.c */
 enum { EMULATE_ANSI, EMULATE_VT100 };
 extern const char *EmulateNames[];
 extern guint32 EmulateMode;
 
-extern const char *MyName; /* 실행파일 이름 */
+extern const char *MyName;
 
 extern GtkWidget *MainWin;
 extern GtkWidget *MainBox;
@@ -148,10 +144,8 @@ extern char *SoundBeepFile;
 extern gboolean AR_CheckFlag;
 extern gboolean AutoResCheckEnabled;
 
-/* 혼잣말 스크립트가 실행중인가? */
 extern gboolean ScriptRunning;
 
-/* download/upload 중인가? */
 enum { TRX_IDLE, TRX_UPLOAD, TRX_DOWNLOAD };
 extern int TRxRunning;
 extern gfloat TRxPercent;
@@ -173,7 +167,6 @@ extern char *ScriptAnimFile;
 extern char *LogFile;
 extern unsigned int log_flags;
 
-/* 꾀돌이 마우스에서 URL 선택시 실행할 명령 */
 extern gboolean UseISel;
 extern char *ISel_HTTP_Command;
 extern char *ISel_FTP_Command;
@@ -196,10 +189,7 @@ extern GSList *DisconnectFuncList;
 extern char *TelnetCommand;
 extern gboolean UseZtelnet;
 
-/* 설정 파일에서 읽어들인 telnet info 목록 */
 extern GSList *TelnetInfoList;
-
-/* 설정 파일에서 읽어들인 phone info 목록 */
 extern GSList *ModemInfoList;
 
 extern guint32 RunIconLargeSize, RunIconSmallSize;

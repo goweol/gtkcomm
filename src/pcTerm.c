@@ -4,7 +4,7 @@
  *
  * NOTE: terminal buffer의 문자열은 항상 EUC-KR로 encoding되어있다.
  *
- * Copyright (C) 2000-2004, Nam SungHyun and various contributors
+ * Copyright (C) 2000-2015, SungHyun Nam and various contributors
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,8 @@
 #include "config.h"
 #include <ctype.h>	/* isalnum() */
 #include <sys/ioctl.h>	/* ioctl() */
+
+#include <gdk/gdkkeysyms.h>
 
 #include "pcMain.h"
 #include "pcTerm.h"

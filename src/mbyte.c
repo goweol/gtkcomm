@@ -1,11 +1,12 @@
 /*
  * Code specifically for handling multi-byte characters.
  *
- * VIM의 mbyte.c에서 필요한 부분만 가져온 것임.
+ * stolen from mbyte.c in VIM.
  */
 #include "config.h"
-#include "mbyte.h"
 #include <ctype.h>
+
+#include "mbyte.h"
 
 struct interval {
     unsigned short first;

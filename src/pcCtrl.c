@@ -2,7 +2,7 @@
  *
  * Control bar
  *
- * Copyright (C) 2000-2004, Nam SungHyun and various contributors
+ * Copyright (C) 2000-2015, SungHyun Nam and various contributors
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,9 +19,10 @@
 #include <time.h>	/* time(), localtime() */
 #include <fcntl.h>	/* open() */
 
+#include <gdk/gdkx.h>
+
 #include "pcMain.h"
 #include "pcTerm.h"
-#include <gdk/gdkx.h>
 
 /* Global variables/functions {{{1 */
 
@@ -37,7 +38,7 @@ static GtkWidget *BaudFrame = NULL, *BaudLabel = NULL;
 static GtkWidget *EmulFrame = NULL, *EmulLabel = NULL;
 static GtkWidget *ProtFrame = NULL, *ProtLabel = NULL;
 
-/* pcMain.h의 emulate enum과 순서가 같아야 한다. */
+/* Order should not change: check the emulate enum in pcMain.h */
 const char *EmulateNames[] = { "ANSI", "VT100" };
 
 /* ControlBaudrateChange() {{{1 */
@@ -691,10 +692,6 @@ CaptureStart(const char *filename, unsigned int flags)
     char buf[MAX_PATH];
     int append = (flags & LOG_FLAGS_APPEND)? O_APPEND: 0;
 
-    /* script의 경우 event (가령 auto-response)에 의해 capture를 ON하는 경우 이
-     * 함수가 여러번 불려질 수 있다. 이미 capture하고 있는 경우에는 성공을
-     * return해 준다.
-     */
     if (CaptureFD != -1)
 	return 0;
 

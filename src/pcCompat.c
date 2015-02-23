@@ -1,13 +1,12 @@
 /* vim:tabstop=8:softtabstop=4:shiftwidth=4:noexpandtab:
  *
- * gtk 1.x와 2.x 사이의 다른 점
- *
- * Copyright (C) 2002-2003, Nam SungHyun and various contributors
+ * Copyright (C) 2002-2015, SungHyun Nam and various contributors
  */
 #include "config.h"
+#include <sys/time.h>
+
 #include "pcMain.h"
 #include "pcTerm.h"
-#include <sys/time.h>
 
 static GIConv ConvEUC2UTF = (GIConv) -1;
 static GIConv ConvUTF2EUC = (GIConv) -1;
@@ -83,9 +82,8 @@ PC_IconvStr(const char *from, int fromlen)
     if (fromlen < 0)
 	fromlen = strlen(from);
 
-    /* g_utf8_validate()를 사용해도 문제이고, 사용하지 않아도 문제이지만
-     * 사용하는 게 그나마 나아보인다. 이것은 어떤 문자열은 EUC-KR인지
-     * UTF-8인지 구별이 가지 않는 경우가 있기 때문이다.
+    /* It seems there is no perfect solution, but using the
+     * g_utf8_validate() seems reasonable.
      */
     if (g_utf8_validate(from, fromlen, NULL) == FALSE)
 	if (gu_euckr_validate_conv(from, fromlen, &utf, NULL) == TRUE)
