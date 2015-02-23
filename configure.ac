@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script
 
-AC_INIT([gtkcomm], [0.8.1])
+AC_INIT([gtkcomm], [0.8.2])
 AC_CONFIG_SRCDIR([src/pcSetting.h])
 AM_INIT_AUTOMAKE
 AM_CONFIG_HEADER(config.h)

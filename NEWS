@@ -1,3 +1,12 @@
+gtkcomm 0.8.2
+o   improved status display
+o   capture: improved logging feature
+    added some options (inspired by teraterm).
+o   script: support 1msec resolution for 'pause'
+o   script: added 'stsmsg/add/div/mul/sub'
+o   added copy&paste menu
+o   various minor bug fixed
+
 gtkcomm 0.8.1
 o   redraw the terminal after resizing (#210, iamboy93)
 o   added mbyte.h to SOURCES (#209, iamboy93)
