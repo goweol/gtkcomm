@@ -4,7 +4,7 @@
 
 localedir = $(datadir)/locale
 AM_CPPFLAGS = \
-	$(GTK_CFLAGS) $(GTHREAD_CFLAGS)			\
+	$(GC_CFLAGS)					\
 	-DLOCALE_DIR=\"$(localedir)\"			\
 	-DG_DISABLE_DEPRECATED
 #	-DGDK_PIXBUF_DISABLE_DEPRECATED
@@ -13,8 +13,7 @@ AM_CPPFLAGS = \
 
 
 bin_PROGRAMS = gtkcomm
-gtkcomm_LDADD = $(GTK_LIBS) $(GTHREAD_LIBS) $(GDK_IMLIB_LIBS) \
-		$(UTIL_LIBS) $(GLIB_LIBS) -lX11
+gtkcomm_LDADD = $(GC_LIBS) $(UTIL_LIBS) -lX11
 
 gtkcomm_SOURCES = \
 	pcAutoRes.c	\

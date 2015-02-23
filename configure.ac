@@ -34,13 +34,12 @@ AC_TYPE_SIGNAL
 AC_CHECK_FUNCS(setenv putenv)
 AC_CHECK_FUNCS(connect,,[AC_CHECK_LIB(socket,connect)])
 
-PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.0.6)
-PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.0.6)
-
-AC_SUBST(GLIB_CFLAGS)
-AC_SUBST(GLIB_LIBS)
-AC_SUBST(GTK_CFLAGS)
-AC_SUBST(GTK_LIBS)
+pkg_modules="glib-2.0 >= 2.24
+	     gtk+-2.0 >= 2.24
+"
+PKG_CHECK_MODULES(GC, [$pkg_modules])
+AC_SUBST(GC_CFLAGS)
+AC_SUBST(GC_LIBS)
 
 AC_CHECK_LIB(util, openpty,
     [ UTIL_LIBS="-lutil"],
@@ -65,8 +64,6 @@ if test "x$enable_debug" = "xyes"; then
   CFLAGS="$CFLAGS -DG_ENABLE_DEBUG -D_DEBUG_"
   CFLAGS=`echo "$CFLAGS" | sed 's/-fomit-frame-pointer//'`
   if test "x$CC" = "xgcc"; then
-    # NOTE: -Wshadow -Wstrict-prototypes
-    #       를 추가하고 싶지만 gtk+ header 쪽에서 경고가 많이 나와서...
     CFLAGS="$CFLAGS -W -Wall -Wparentheses"
   fi
 else
