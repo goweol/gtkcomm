@@ -36,14 +36,11 @@ AC_CHECK_FUNCS(connect,,[AC_CHECK_LIB(socket,connect)])
 
 PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.0.6)
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.0.6)
-PKG_CHECK_MODULES(GTHREAD, gthread-2.0 >= 2.0.6)
 
 AC_SUBST(GLIB_CFLAGS)
 AC_SUBST(GLIB_LIBS)
 AC_SUBST(GTK_CFLAGS)
 AC_SUBST(GTK_LIBS)
-AC_SUBST(GTHREAD_CFLAGS)
-AC_SUBST(GTHREAD_LIBS)
 
 AC_CHECK_LIB(util, openpty,
     [ UTIL_LIBS="-lutil"],
@@ -56,30 +53,6 @@ AC_CHECK_LIB(util, openpty,
       echo "sleep 3 seconds";
       sleep 3;
       UTIL_LIBS="-lgnomesupport"])
-
-# AC_CHECK_LIB(pthread, pthread_create,
-#     [ UTIL_LIBS="${UTIL_LIBS} -lpthread"
-#       AC_DEFINE(HAVE_PTHREAD_LIB)
-#       CFLAGS="$CFLAGS -D_REENTRANT"
-#     ],
-#     # Test for libc_r for FreeBSD
-#     [ AC_CHECK_LIB(c_r, pthread_create,
-#         [ UTIL_LIBS="${UTIL_LIBS} -lc_r"
-#           AC_DEFINE(HAVE_PTHREAD_LIB)
-# 	  CFLAGS="$CFLAGS -D_REENTRANT -D_THREAD_SAFE"
-#         ],
-#         [ echo ;
-#           echo "***********************************************************";
-#           echo "* Warning: Cannot find the pthread libraries. It is not   *";
-#           echo "* critical but some functions, especially ASCII transfer, *";
-#           echo "* are not work smoothly.                                  *";
-#           echo "***********************************************************";
-#           echo "sleep 3 seconds";
-#           sleep 3;
-#         ]
-#       )
-#     ]
-# )
 
 # Stealed from GTK+'s configure.in
 AC_MSG_CHECKING(if user want to debug)
